@@ -1,5 +1,3 @@
-var Thread = require('../models/thread.js');
-var Post = require('../models/post.js');
 var Film = require('../models/film');
 
 exports.show = function(req, res){
