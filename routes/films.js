@@ -19,10 +19,13 @@ router.get('/:filmid', function(req, res, next) {
         var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
         if(!fs.existsSync(poster_file_path)){
             var poster_file = fs.createWriteStream(poster_file_path);
-            https.get(filmObj.poster_film_big, function(posterres) {
-                posterres.pipe(poster_file);
-                poster_file.on('finish', function() {
-                    poster_file.close(cb);
+            poster_file.on('open', function(fd) {
+                https.request(filmObj.poster_film_big, function(posterres) {
+                    posterres.on('data', function(image) {
+                        poster_file.write(image);
+                    }).on('end', function() {
+                        poster_file.end();
+                    });
                 });
             });
         }
