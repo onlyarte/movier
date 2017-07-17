@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request-json');
 var client = request.createClient('http://getmovie.cc/');
-var http = require('http');
+var https = require('https');
 var fs = require('fs');
 
 /* GET film page. */
@@ -19,7 +19,7 @@ router.get('/:filmid', function(req, res, next) {
         var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '');
         if (!fs.existsSync(poster_file_path)) {
             var poster_file = fs.createWriteStream(poster_file_path);
-            var request = http.get(filmObj.poster_film_big, function(posterres) {
+            var request = https.get(filmObj.poster_film_big, function(posterres) {
                 posterres.pipe(poster_file);
                 poster_file.on('finish', function() {
                     poster_file.close(cb);
