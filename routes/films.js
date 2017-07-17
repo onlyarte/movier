@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request-json');
 var client = request.createClient('http://getmovie.cc/');
 var https = require('https');
-var fs = require('fs');
+var path = require('path'); 
 
 /* GET film page. */
 router.get('/:filmid', function(req, res, next) {
@@ -17,15 +17,17 @@ router.get('/:filmid', function(req, res, next) {
 
         // download poster if absent
         var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
-        if (!fs.existsSync(poster_file_path)) {
-            var poster_file = fs.createWriteStream(poster_file_path);
-            var request = https.get(filmObj.poster_film_big, function(posterres) {
-                posterres.pipe(poster_file);
-                poster_file.on('finish', function() {
-                    poster_file.close(cb);
+        path.exists(poster_file_path, function(exists) {
+            if(!exists){
+                var poster_file = fs.createWriteStream(poster_file_path);
+                var request = https.get(filmObj.poster_film_big, function(posterres) {
+                    posterres.pipe(poster_file);
+                    poster_file.on('finish', function() {
+                        poster_file.close(cb);
+                    });
                 });
-            });
-        }
+            }
+        });
         var poster_user_path = '/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
 
         res.render('film', { title_original: filmObj.name_en,
