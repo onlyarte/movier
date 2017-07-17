@@ -17,7 +17,7 @@ router.get('/:filmid', function(req, res, next) {
 
         // download poster if absent
         var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
-        if(fs.existsSync(poster_file_path)){
+        if(!fs.existsSync(poster_file_path)){
             var poster_file = fs.createWriteStream(poster_file_path);
             https.get(filmObj.poster_film_big, function(posterres) {
                 posterres.pipe(poster_file);
