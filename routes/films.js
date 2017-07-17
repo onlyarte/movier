@@ -16,16 +16,17 @@ router.get('/:filmid', function(req, res, next) {
         var filmObj = JSON.parse(kpres.body);
 
         // download poster if absent
-        var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+        var poster_file_path = './public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
         if(!fs.existsSync(poster_file_path)){
-            var poster_file = fs.createWriteStream(poster_file_path);
-            poster_file.on('open', function(fd) {
-                https.request(filmObj.poster_film_big, function(posterres) {
-                    posterres.on('data', function(image) {
-                        poster_file.write(image);
-                    }).on('end', function() {
-                        poster_file.end();
+            var file = fs.createWriteStream(poster_file_path);
+            file.on('open', function(fd) {
+                https.get(filmObj.poster_film_big, function(response) {
+                    response.pipe(file);
+                    file.on('finish', function() {
+                        file.close();
                     });
+                }).on('error', function(err) {
+                    fs.unlink(poster_file_path);
                 });
             });
         }
@@ -36,7 +37,7 @@ router.get('/:filmid', function(req, res, next) {
             year: filmObj.year,
             country: filmObj.country,
             genre: filmObj.genre,
-            director: filmObj.creators.director,
+            director: filmObj.creators.director || [],
             description: filmObj.description,
             poster: poster_user_path,
             rating_kp: filmObj.rating.kp_rating,
