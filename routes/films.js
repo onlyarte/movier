@@ -26,7 +26,7 @@ router.get('/:filmid', function(req, res, next) {
                 });
             });
         }
-        var poster_user_path = './images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+        var poster_user_path = '/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
 
         res.render('film', { title_original: filmObj.name_en,
             title_rus: filmObj.name_ru,
