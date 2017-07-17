@@ -16,7 +16,7 @@ router.get('/:filmid', function(req, res, next) {
         var filmObj = JSON.parse(kpres.body);
 
         // download poster if absent
-        var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '');
+        var poster_file_path = '../public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
         if (!fs.existsSync(poster_file_path)) {
             var poster_file = fs.createWriteStream(poster_file_path);
             var request = https.get(filmObj.poster_film_big, function(posterres) {
@@ -26,6 +26,7 @@ router.get('/:filmid', function(req, res, next) {
                 });
             });
         }
+        var poster_user_path = './images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
 
         res.render('film', { title_original: filmObj.name_en,
             title_rus: filmObj.name_ru,
@@ -34,7 +35,7 @@ router.get('/:filmid', function(req, res, next) {
             genre: filmObj.genre,
             director: filmObj.creators.director,
             description: filmObj.description,
-            poster: poster_file_path,
+            poster: poster_user_path,
             rating_kp: filmObj.rating.kp_rating,
             rating_imdb: filmObj.rating.imdb});
     });
