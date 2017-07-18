@@ -16,7 +16,7 @@ router.get('/:filmid', function(req, res, next) {
         var filmObj = JSON.parse(kpres.body);
 
         // download poster if absent
-        var poster_file_path = './public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+        var poster_file_path = '/public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
         if(!fs.existsSync(poster_file_path)){
             var file = fs.createWriteStream(poster_file_path);
             file.on('open', function(fd) {
