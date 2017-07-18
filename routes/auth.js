@@ -10,15 +10,14 @@ router.post('/:token', function(req, res, next) {
     req.params.token,
     CLIENT_ID,
     function(err, login) {
-        if(err){
-            console.log('auth failed');
-            return;
-        }
+        if(err)
+            res.send('failed');
         var payload = login.getPayload();
         var userid = payload['sub'];
         var useremail = payload['email'];
         var username = payload['name'];
         console.log('user authenticated #' + userid + ' / ' + useremail + ' / ' + username);
+        res.send('authenticated');
     });
 });
 
