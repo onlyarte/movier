@@ -1,15 +1,18 @@
 extends layout
 
 block content
-  h1 #{title_rus} / #{title_original}
-  img(src=poster)
-  p IMDB #{rating_imdb} KP #{rating_kp}
-  p Год #{year}
-  p Страна #{country}
-  p Жанр #{genre}
-  p Режиссер
-  each person in director
-    - var name = person.name_person_ru
-    p= name
-  h2 Описание
-  p!= description
+    div(class='content')
+        div(class='poster col')
+            img(src=poster, width=300)
+        div(class='info col')
+            h1 #{title_rus} / #{title_original}
+            p IMDB #{rating_imdb} KP #{rating_kp}
+            p Год #{year}
+            p Страна #{country}
+            p Жанр #{genre}
+            p Режиссер
+            each person in director
+                - var name = person.name_person_ru
+                p= name
+            h2 Описание
+            p!= description
