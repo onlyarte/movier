@@ -16,7 +16,7 @@ router.get('/:filmid', function(req, res, next) {
         var filmObj = JSON.parse(kpres.body);
 
         // download poster if absent
-        /*var poster_file_path = './public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+        var poster_file_path = './public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
         if(!fs.existsSync(poster_file_path)){
             var file = fs.createWriteStream(poster_file_path);
             file.on('open', function(fd) {
@@ -30,8 +30,8 @@ router.get('/:filmid', function(req, res, next) {
                 });
             });
         }
-        var poster_user_path = '/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';*/
-        var poster_user_path = 'http://www.impawards.com/intl/france/2015/posters/love_xlg.jpg';
+        var poster_user_path = '/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+        //var poster_user_path = 'http://www.impawards.com/intl/france/2015/posters/love_xlg.jpg';
 
         res.render('film', { title_original: filmObj.name_en,
             title_rus: filmObj.name_ru,

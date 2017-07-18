@@ -10,8 +10,10 @@ router.post('/:token', function(req, res, next) {
     req.params.token,
     CLIENT_ID,
     function(err, login) {
-        if(err)
+        if(err){
+            console.log('auth failed');
             return;
+        }
         var payload = login.getPayload();
         var userid = payload['sub'];
         var useremail = payload['email'];
