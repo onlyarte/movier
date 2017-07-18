@@ -5,9 +5,7 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail());*/
 
-    var id_token = profile.getAuthResponse().id_token;
-
-    console.log(id_token);
+    var id_token = googleUser.getAuthResponse().id_token;
 
     var http = new XMLHttpRequest();
     var url = '/auth/' + id_token;
@@ -17,10 +15,8 @@ function onSignIn(googleUser) {
 
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
-            console.log('sent');
             alert('Congrats');
         }
-        console.log('not sent');
     }
     http.send('Auth request');
 }
