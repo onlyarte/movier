@@ -7,6 +7,8 @@ function onSignIn(googleUser) {
 
     var id_token = profile.getAuthResponse().id_token;
 
+    console.log(id_token);
+
     var http = new XMLHttpRequest();
     var url = '/auth/' + id_token;
     http.open("POST", url, true);
@@ -15,8 +17,10 @@ function onSignIn(googleUser) {
 
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
+            console.log('sent');
             alert('Congrats');
         }
+        console.log('not sent');
     }
     http.send('Auth request');
 }
