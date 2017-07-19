@@ -18,16 +18,14 @@ function onSignIn(googleUser) {
     xhr.open('POST', '/auth/' + id_token);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
-        var user = JSON.parse(xhr.responseText);
-        if(user != null){
-            /*console.log('Signed in as: ' + user._id);
-            console.log(user);*/
-            localStorage.setItem('user', profile.getId());
+        console.log(xhr.responseText);
+        //var user = JSON.parse(xhr.responseText);
+        /*if(user != null){
+            console.log('Signed in as: ' + user._id);
+            console.log(user);
+            localStorage.setItem('user', user);
             localStorage.setItem('auth', true);
-            /*localStorage.setItem('id', profile.getId());
-            localStorage.setItem('name', profile.getName());
-            localStorage.setItem('imageURL', profile.getImageUrl());*/
-        }
+        }*/
     };
     xhr.send();
 }
