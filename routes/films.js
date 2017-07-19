@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request-json');
+var filmapi = require('../controllers/filmapi');
 var client = request.createClient('http://getmovie.cc/');
 var https = require('https');
 var fs = require('fs');
 
-/* GET film page. */
+/* GET film page. Using romote data, not own mongodb data */
 router.get('/:filmid', function(req, res, next) {
     var path = 'api/kinopoisk.json?id=' + req.params.filmid + '&token=037313259a17be837be3bd04a51bf678';
     client.get(path, function(err, kpres, body) {
