@@ -30,7 +30,7 @@ router.post('/:token', function(req, res, next) {
                         watchlist: [],
                         watched: []
                     }
-                }
+                };
                 userapi.add(new_user);
                 user = new_user;
             }
