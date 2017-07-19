@@ -9,15 +9,15 @@ var findById = function(id, callback){
 }
 
 var findByTitle = function(title, callback){
-    Film.find({ $or: [{_title: title}, {_title_original : title}]}, function(error, films{
+    Film.find({ $or: [{_title: title}, {_title_original : title}]}, function(error, films) {
         if(!error){
             callback(films);
         }
-    }));
+    });
 }
 
 var add = function(film, callback){
-    new Film({_
+    new Film({
         _id: film.id,
         _title: film.title,
         _title_original: film.title_original,
