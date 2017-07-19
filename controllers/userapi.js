@@ -5,6 +5,7 @@ var findById = function(id, callback){
         populate('_films').
         exec(function(error, user){
             if(!error){
+                console.log('user has already been added')
                 callback(user);
             }
         });
@@ -22,7 +23,7 @@ var add = function(user, callback){
             _watched: user.films.watched
         }
     }).save();
-
+    console.log('user added to database')
     // run optional callback
     if(typeof callback === 'function')
         callback();
