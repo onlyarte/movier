@@ -1,22 +1,26 @@
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    /*console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());*/
 
+    // if user authenticated
+    if(typeof(Storage) !== 'undefined' && localStorage.auth && localStorage.id == profile.getId())
+        return;
+
+    // if user not authenticated, send request to server
     var id_token = googleUser.getAuthResponse().id_token;
-
-    var http = new XMLHttpRequest();
-    var url = '/auth/' + id_token;
-    http.open("POST", url, true);
-
-    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-    http.onreadystatechange = function() {
-        if(http.readyState == 4 && http.status == 200) {
-            alert('Congrats');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/auth/' + id_token);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        console.log('Signed in as: ' + xhr.responseText);
+        if(typeof(Storage) !== 'undefined'){
+            localStorage.setItem('auth', true);
+            localStorage.setItem('id', profile.getId());
+            localStorage.setItem('name', profile.getName());
+            localStorage.setItem('imageURL', profile.getImageUrl());
         }
-    }
-    http.send('Auth request');
+        else{
+            alert('Please update your browser to sign in');
+        }
+    };
+    xhr.send();
 }
