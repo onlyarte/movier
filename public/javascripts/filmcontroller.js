@@ -51,7 +51,11 @@ function containsFilm(arr, filmId){
         return film.id == filmId;
     }
 
-    return arr.find(isFound);
+    var res = arr.find(isFound);
+    if(res === 'undefined')
+        return false;
+    else
+        return true;
 }
 
 window.onload = showControlls;
