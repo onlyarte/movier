@@ -5,20 +5,20 @@ var profile = googleUser.getBasicProfile();
 // The ID token you need to pass to your backend:
 var id_token = googleUser.getAuthResponse().id_token;
 
-var xhr = new XMLHttpRequest();
+/*var xhr = new XMLHttpRequest();
 xhr.open('POST', '/auth/' + id_token);
 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 xhr.onload = function() {
     console.log(xhr.responseText);
-    /*var user = JSON.parse(xhr.responseText);
+    var user = JSON.parse(xhr.responseText);
     if(user != null){
         console.log('Signed in as: ' + user._id);
         console.log(user);
         localStorage.setItem('user', user);
         localStorage.setItem('auth', true);
-    }*/
+    }
 };
-xhr.send(null);
+xhr.send(null);*/
 };
 
 /*function onSignIn(googleUser) {
