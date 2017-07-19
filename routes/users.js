@@ -5,6 +5,7 @@ var userapi = require('../controllers/userapi');
 /* GET users listing. */
 router.get('/:id', function(req, res, next) {
     userapi.findById(req.params.id, function(user){
+        console.log(user);
         if(user == null)
             res.render('error');
         else{
