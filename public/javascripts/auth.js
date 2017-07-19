@@ -3,7 +3,7 @@ function onSignIn(googleUser) {
 
     var id_token = googleUser.getAuthResponse().id_token;
     // if user authenticated
-    if(typeof(Storage) !== 'undefined'){
+    /*if(typeof(Storage) !== 'undefined'){
         // save token to update user data on server if requested
         localStorage.setItem('id_token', id_token);
         // if user already authenticated do not notify server again
@@ -11,7 +11,7 @@ function onSignIn(googleUser) {
             return;
     }
     else
-        return;
+        return;*/
 
     // if user not authenticated, send request to server
     var xhr = new XMLHttpRequest();
