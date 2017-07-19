@@ -47,15 +47,23 @@ function showControlls() {
 }
 
 function containsFilm(arr, filmId){
+    if(arr.length == 0)
+        return false;
+
     function isFound(film) {
         return film.id == filmId;
     }
 
     var res = arr.find(isFound);
-    if(res === 'undefined')
+
+    if(res === 'undefined'){
+        console.log('not contains')
         return false;
-    else
+    }
+    else{
+        console.log('contains ' + res);
         return true;
+    }
 }
 
 window.onload = showControlls;
