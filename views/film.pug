@@ -2,6 +2,7 @@ extends layout
 
 block content
     div(class='content')
+        script(src='/javascripts/filmcontroller.js', async, defer)
         div(class='poster col')
             img(src=poster, width=300)
             div(id='controlls', filmId=id)
