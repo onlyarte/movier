@@ -11,33 +11,33 @@ function showControlls() {
         fav.id = 'fav';
         if(isFav){
             fav.src = '/images/icons/favtrue.png';
-            fav.onclick = 'removeFav';
+            fav.onclick = removeFromFav();
         }
         else{
             fav.src = '/images/icons/favfalse.png';
-            fav.onclick = 'addFav';
+            fav.onclick = addToFav();
         }
 
         var watchlist = document.createElement('img');
         watchlist.id = 'watchlist';
         if(isInWatchList){
             watchlist.src = '/images/icons/towatchtrue.png';
-            watchlist.onclick = 'removeWatchlist';
+            watchlist.onclick = removeFromWatchlist();
         }
         else{
             watchlist.src = '/images/icons/towatchfalse.png';
-            watchlist.onclick = 'addWatchlist';
+            watchlist.onclick = addToWatchlist();
         }
 
         var watched = document.createElement('img');
         watched.id = 'watched';
         if(isWatched){
             watched.src = '/images/icons/watchedtrue.png';
-            watched.onclick = 'removeWatched';
+            watched.onclick = removeFromWatched();
         }
         else{
             watched.src = '/images/icons/watchedfalse.png';
-            watched.onclick = 'addWatched';
+            watched.onclick = addToWatched();
         }
 
         controlls.appendChild(fav);
