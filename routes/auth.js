@@ -12,7 +12,7 @@ router.post('/:token', function(req, res, next) {
     CLIENT_ID,
     function(err, login) {
         if(err)
-            res.send('failed');
+            res.send('');
         var payload = login.getPayload();
         var userid = payload['sub'];
         var useremail = payload['email'];
@@ -32,10 +32,10 @@ router.post('/:token', function(req, res, next) {
                     }
                 }
                 userapi.add(new_user);
+                user = new_user;
             }
+            res.send(JSON.stringify(user));
         });
-        console.log('user authenticated #' + userid);
-        res.send('authenticated');
     });
 });
 
