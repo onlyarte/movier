@@ -5,16 +5,15 @@ var mongoose = require('mongoose'),
     ObjectId = Schema.ObjectId;
 
 var filmSchema = new Schema({
-    id: Number,
-    title: String,
-    title_original: String,
-    year: Number,
-    country: [String],
-    genre: [String],
-    director: [ObjectId],
-    actors: [ObjectId],
-    kp: Number,
-    fb: Number
+    _id: Number,
+    _title: String,
+    _title_original: String,
+    _poster: String,
+    _year: Number,
+    _country: [String],
+    _genre: [String],
+    _director: [Number],
+    _actors: [Number]
 });
 
 module.exports = mongoose.model('Film', filmSchema);
