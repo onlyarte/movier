@@ -20,9 +20,9 @@ function onSignIn(googleUser) {
     xhr.onload = function() {
         var user = JSON.parse(xhr.responseText);
         if(user != null){
-            console.log('Signed in as: ' + user._id);
-            console.log(user);
-            localStorage.setItem('user', user);
+            /*console.log('Signed in as: ' + user._id);
+            console.log(user);*/
+            localStorage.setItem('user', profile.getId());
             localStorage.setItem('auth', true);
             /*localStorage.setItem('id', profile.getId());
             localStorage.setItem('name', profile.getName());
