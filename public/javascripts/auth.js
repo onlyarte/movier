@@ -20,9 +20,8 @@ function onSignIn(googleUser) {
     xhr.onload = function() {
         var user = JSON.parse(xhr.responseText);
         if(user != null){
-            console.log('Signed in as: ' + user.id);
             console.log(user);
-            localStorage.setItem('user', user);
+            localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
         }
     };

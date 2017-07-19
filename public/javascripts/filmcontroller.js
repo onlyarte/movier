@@ -1,13 +1,11 @@
 function showControlls() {
     if(typeof(Storage) !== 'undefined' && localStorage.auth){
-        var user = localStorage.user;
-        console.log(user);
-        console.log(user.id);
+        var user = JSON.parse(localStorage.user);
         var controlls = document.getElementById('controlls');
         var filmId = controlls.filmId;
-        var isFav = containsFilm(user.films.favs, filmId) || false;
-        var isInWatchList = containsFilm(user.films.watchlist, filmId) || false;
-        var isWatched = containsFilm(user.films.watched, filmId) || false;
+        var isFav = containsFilm(user.films.favs, filmId);
+        var isInWatchList = containsFilm(user.films.watchlist, filmId);
+        var isWatched = containsFilm(user.films.watched, filmId);
 
         var fav = document.createElement('img');
         fav.id = 'fav';
