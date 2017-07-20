@@ -30,6 +30,7 @@ var add = function(user, callback){
 }
 
 var addToFav = function(userId, filmId, callback){
+    console.log('addToFav' + filmId + ' from ' + userId);
     filmapi.add(filmId);
     User.findOneAndUpdate(
         { _id: userId },

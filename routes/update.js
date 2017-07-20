@@ -7,6 +7,7 @@ var auth = new GoogleAuth;
 var client = new auth.OAuth2(CLIENT_ID, '', '');
 
 router.post('/:token/:type/:value', function(req, res, next) {
+    console.log(req.params.type + ' ' + req.params.value);
     client.verifyIdToken(
     req.params.token,
     CLIENT_ID,
@@ -18,6 +19,7 @@ router.post('/:token/:type/:value', function(req, res, next) {
 
         var payload = login.getPayload();
         var userid = payload['sub'];
+        console.log('user ' + userid + 'identified');
 
         var sendRes = function(user){
             if(user == null)

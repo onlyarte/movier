@@ -24,27 +24,32 @@ var findByTitle = function(title, callback){
 var add = function(filmId, callback){
     Film.findById(filmId, function(film){
         if(film == null){
+            console.log('film ' + filmId + ' not found');
             getFromKP(filmId, function(filmKP){
                 if(typeof callback === 'function' && filmKP == null)
                     callback(null);
-                new Film({
-                    _id: filmKP.id,
-                    _title: filmKP.title,
-                    _title_original: filmKP.title_original,
-                    _poster: filmKP.poster,
-                    _year: filmKP.year,
-                    _country: filmKP.country,
-                    _genre: filmKP.genre,
-                    _director: filmKP.director,
-                    _actors: filmKP.actors,
-                    _description: filmKP.description
-                }).save();
+                else{
+                    new Film({
+                        _id: filmKP.id,
+                        _title: filmKP.title,
+                        _title_original: filmKP.title_original,
+                        _poster: filmKP.poster,
+                        _year: filmKP.year,
+                        _country: filmKP.country,
+                        _genre: filmKP.genre,
+                        _director: filmKP.director,
+                        _actors: filmKP.actors,
+                        _description: filmKP.description
+                    }).save();
+                    console.log('film ' + filmKP.id + ' saved');
+                }
             });
         }
     });
 }
 
 var getFromKP = function(filmId, callback){
+    console.log('film ' + filmId + ' requested from kp');
     var path = 'api/kinopoisk.json?id=' + filmId + '&token=037313259a17be837be3bd04a51bf678';
     client.get(path, function(err, kpres, body) {
         if(err){
@@ -85,6 +90,8 @@ var getFromKP = function(filmId, callback){
                 rating_kp: filmObj.kp_rating,
                 rating_imdb: filmObj.imdb
             };
+
+            console.log(film);
 
             callback(film);
         }
