@@ -10,6 +10,9 @@ var findById = function(id, callback){
         if(!error){
             callback(film);
         }
+        else{
+            callback(null);
+        }
     });
 }
 
@@ -41,7 +44,7 @@ var add = function(filmId, callback){
                         _actors: filmKP.actors,
                         _description: filmKP.description
                     }).save();
-                    console.log('film ' + filmKP.id + ' saved');
+                    callback(filmKP);
                 }
             });
         }
