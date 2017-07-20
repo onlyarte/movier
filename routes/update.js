@@ -11,13 +11,16 @@ router.post('/:token/:type/:value', function(req, res, next) {
     req.params.token,
     CLIENT_ID,
     function(err, login) {
-        if(err)
+        if(err){
+            console.log('token not verified');
             res.send('');
+        }
+
         var payload = login.getPayload();
         var userid = payload['sub'];
 
         var sendRes = function(user){
-            if(user === '')
+            if(user == null)
                 res.send('');
             else
                 res.send(JSON.stringify(user));

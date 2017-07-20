@@ -39,7 +39,7 @@ var addToFav = function(userId, filmId, callback){
             if(!error)
                 callback(user);
             else
-                callback('');
+                callback(null);
         }
     );
 }
@@ -54,7 +54,7 @@ var addToWatchlist = function(userId, filmId, callback){
             if(!error)
                 callback(user);
             else
-                callback('');
+                callback(null);
         }
     );
 }
@@ -69,7 +69,7 @@ var addToWatched = function(userId, filmId, callback){
             if(!error)
                 callback(user);
             else
-                callback('');
+                callback(null);
         }
     );
 }
@@ -83,7 +83,7 @@ var removeFromFav = function(userId, filmId, callback){
             if(!error)
                 callback(user);
             else
-                callback('');
+                callback(null);
         }
     );
 }
@@ -97,7 +97,7 @@ var removeFromWatchlist = function(userId, filmId, callback){
             if(!error)
                 callback(user);
             else
-                callback('');
+                callback(null);
         }
     );
 }
@@ -111,7 +111,7 @@ var removeFromWatched = function(userId, filmId, callback){
             if(!error)
                 callback(user);
             else
-                callback('');
+                callback(null);
         }
     );
 }
