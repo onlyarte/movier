@@ -1,3 +1,7 @@
+var client = request.createClient('http://getmovie.cc/');
+var https = require('https');
+var fs = require('fs');
+
 var Film = require('../models/film');
 
 var findById = function(id, callback){
@@ -16,20 +20,75 @@ var findByTitle = function(title, callback){
     });
 }
 
-var add = function(film, callback){
-    new Film({
-        _id: film.id,
-        _title: film.title,
-        _title_original: film.title_original,
-        _poster: film.poster,
-        _year: film.year,
-        _country: film.country,
-        _genre: film.genre,
-        _director: film.director,
-        _actors: film.actors
-    }).save();
+var add = function(filmId, callback){
+    findById(filmId, function(film){
+        if(film == null){
+            getFromKP(filmId, function(filmKP){
+                if(typeof callback === 'function' && filmKP == null)
+                    callback(null);
+                new Film({
+                    _id: filmKP.id,
+                    _title: filmKP.title,
+                    _title_original: filmKP.title_original,
+                    _poster: filmKP.poster,
+                    _year: filmKP.year,
+                    _country: filmKP.country,
+                    _genre: filmKP.genre,
+                    _director: filmKP.director,
+                    _actors: filmKP.actors,
+                    _description: filmKP.description
+                }).save();
+            });
+        }
+    })
+}
+
+var getFromKP = function(filmId, callback){
+    var path = 'api/kinopoisk.json?id=' + filmId + '&token=037313259a17be837be3bd04a51bf678';
+    client.get(path, function(err, kpres, body) {
+        if(err){
+            callback(null);
+        }
+        else{
+            var filmObj = JSON.parse(kpres.body);
+
+            // download poster if absent
+            var poster_file_path = './public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+            if(!fs.existsSync(poster_file_path)){
+                var file = fs.createWriteStream(poster_file_path);
+                file.on('open', function(fd) {
+                    https.get(filmObj.poster_film_big, function(response) {
+                        response.pipe(file);
+                        file.on('finish', function() {
+                            file.close();
+                        });
+                    }).on('error', function(err) {
+                        fs.unlink(poster_file_path);
+                    });
+                });
+            }
+            var poster_user_path = '/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
+            //var poster_user_path = 'http://www.impawards.com/intl/france/2015/posters/love_xlg.jpg';
+
+            var film = {
+                id: filmObj.id,
+                title: filmObj.name_ru,
+                title_original: filmObj.name_en,
+                poster: poster_user_path,
+                year: filmObj.year,
+                country: filmObj.country,
+                genre: filmObj.genre,
+                director: filmObj.creators.director || [],
+                actors: filmObj.creators.actor || [],
+                description: filmObj.description
+            }
+
+            callback(film);
+        }
+    });
 }
 
 module.exports.findById = findById;
 module.exports.findByTitle = findByTitle;
 module.exports.add = add;
+module.exports.getFromKP = getFromKP;

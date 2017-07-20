@@ -13,6 +13,7 @@ function showControlls() {
             fav.src = '/images/icons/favtrue.png';
             fav.onclick = function(){
                 sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromFav/' + filmId);
+                removeControlls();
                 showControlls();
             };
         }
@@ -20,6 +21,7 @@ function showControlls() {
             fav.src = '/images/icons/favfalse.png';
             fav.onclick = function(){
                 sendUpdateRequest('/update/' + localStorage.id_token + '/addToFav/' + filmId);
+                removeControlls();
                 showControlls();
             };
         }
@@ -30,6 +32,7 @@ function showControlls() {
             watchlist.src = '/images/icons/towatchtrue.png';
             watchlist.onclick = function(){
                 sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromWatchlist/' + filmId);
+                removeControlls();
                 showControlls();
             };
         }
@@ -37,6 +40,7 @@ function showControlls() {
             watchlist.src = '/images/icons/towatchfalse.png';
             watchlist.onclick = function(){
                 sendUpdateRequest('/update/' + localStorage.id_token + '/addToWatchlist/' + filmId);
+                removeControlls();
                 showControlls();
             };
         }
@@ -47,6 +51,7 @@ function showControlls() {
             watched.src = '/images/icons/watchedtrue.png';
             watched.onclick = function(){
                 sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromWatched/' + filmId);
+                removeControlls();
                 showControlls();
             };
         }
@@ -54,6 +59,7 @@ function showControlls() {
             watched.src = '/images/icons/watchedfalse.png';
             watched.onclick = function(){
                 sendUpdateRequest('/update/' + localStorage.id_token + '/addToWatched/' + filmId);
+                removeControlls();
                 showControlls();
             };
         }
@@ -61,6 +67,13 @@ function showControlls() {
         controlls.appendChild(fav);
         controlls.appendChild(watchlist);
         controlls.appendChild(watched);
+    }
+}
+
+function removeControlls(){
+    var controlls = document.getElementById('controlls');
+    while(controlls.firstChild){
+        controlls.removeChild(controlls.firstChild);
     }
 }
 

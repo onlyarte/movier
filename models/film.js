@@ -14,7 +14,8 @@ var filmSchema = new Schema({
     _country: [String],
     _genre: [String],
     _director: [Number],
-    _actors: [Number]
+    _actors: [Number],
+    _description: String
 });
 
 module.exports = mongoose.model('Film', filmSchema);
