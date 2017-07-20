@@ -22,7 +22,7 @@ var findByTitle = function(title, callback){
 }
 
 var add = function(filmId, callback){
-    findById(filmId, function(film){
+    Film.findById(filmId, function(film){
         if(film == null){
             getFromKP(filmId, function(filmKP){
                 if(typeof callback === 'function' && filmKP == null)
@@ -41,7 +41,7 @@ var add = function(filmId, callback){
                 }).save();
             });
         }
-    })
+    });
 }
 
 var getFromKP = function(filmId, callback){
@@ -81,7 +81,9 @@ var getFromKP = function(filmId, callback){
                 genre: filmObj.genre,
                 director: filmObj.creators.director || [],
                 actors: filmObj.creators.actor || [],
-                description: filmObj.description
+                description: filmObj.description,
+                rating_kp: filmObj.kp_rating,
+                rating_imdb: filmObj.imdb
             };
 
             callback(film);
