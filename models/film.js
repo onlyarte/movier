@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var connection = mongoose.createConnection('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
+//var connection = mongoose.createConnection('mongodb://purii:ruslan16@ds161012.mlab.com:61012/filmbase');
 
 var filmSchema = new Schema({
     _id: Number,
@@ -17,4 +17,4 @@ var filmSchema = new Schema({
     _actors: [Number]
 });
 
-module.exports = connection.model('Film', filmSchema);
+module.exports = mongoose.model('Film', filmSchema);
