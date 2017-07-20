@@ -18,8 +18,10 @@ router.post('/:token', function(req, res, next) {
         var useremail = payload['email'];
         var username = payload['name'];
         var userimage = payload['picture'];
+        console.log('user ' + userid + ' login request');
         userapi.findById(userid, function(user){
             if(user == null){
+                console.log('user ' + userid + 'not registered');
                 var new_user = {
                     id: userid,
                     email: useremail,

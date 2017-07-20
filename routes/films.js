@@ -19,7 +19,9 @@ router.get('/:filmid', function(req, res, next) {
                 genre: film.genre,
                 director: film.director,
                 actors: film.actors,
-                description: film.description
+                description: film.description,
+                rating_imdb: film.rating_imdb,
+                rating_kp: film.rating_kp
             });
         }
     });

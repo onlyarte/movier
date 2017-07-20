@@ -6,7 +6,12 @@ var findById = function(id, callback){
         populate('_films').
         exec(function(error, user){
             if(!error){
+                console.log('user ' + user._id + ' found');
                 callback(user);
+            }
+            else{
+                console.log('user ' + id + ' not found');
+                callback(null);
             }
         });
 }

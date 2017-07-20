@@ -91,8 +91,6 @@ var getFromKP = function(filmId, callback){
                 rating_imdb: filmObj.rating.imdb
             };
 
-            console.log(film);
-
             callback(film);
         }
     });
