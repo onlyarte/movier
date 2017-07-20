@@ -17,4 +17,4 @@ var filmSchema = new Schema({
     _actors: [Number]
 });
 
-module.exports = mongoose.model('Film', filmSchema);
+module.exports = mongoose.connection.model('Film', filmSchema);
