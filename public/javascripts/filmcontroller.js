@@ -2,7 +2,7 @@ function showControlls() {
     if(typeof(Storage) !== 'undefined' && localStorage.auth){
         var user = JSON.parse(localStorage.user);
         var controlls = document.getElementById('controlls');
-        var filmId = controlls.filmId;
+        var filmId = document.getElementById('id').innerHTML;
         console.log('film id = ' + filmId);
         var isFav = containsFilm(user.films.favs, filmId);
         var isInWatchList = containsFilm(user.films.watchlist, filmId);

@@ -2,9 +2,7 @@ var filmapi = require('./filmapi');
 var User = require('../models/user');
 
 var findById = function(id, callback){
-    User.findOne({ _id: id }).
-        populate('_films').
-        exec(function(error, user){
+    User.findOne({ _id: id }, function(error, user){
             if(!error){
                 console.log('user ' + user._id + ' found');
                 callback(user);

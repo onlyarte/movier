@@ -5,7 +5,8 @@ block content
         script(src='/javascripts/filmcontroller.js', async, defer)
         div(class='poster col')
             img(src=poster, width=300)
-            div(id='controlls', filmId=id)
+            div(id='controlls')
+            div(id='id', hidden='true')= id
         div(class='info col')
             h1 #{title} / #{title_original}
             p IMDB #{rating_imdb} KP #{rating_kp}
