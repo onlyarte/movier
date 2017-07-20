@@ -1,3 +1,4 @@
+var request = require('request-json');
 var client = request.createClient('http://getmovie.cc/');
 var https = require('https');
 var fs = require('fs');
