@@ -1,3 +1,4 @@
+var filmapi = require('./filmapi');
 var User = require('../models/user');
 
 var findById = function(id, callback){
@@ -29,6 +30,7 @@ var add = function(user, callback){
 }
 
 var addToFav = function(userId, filmId, callback){
+    filmapi.add(filmId);
     User.findOneAndUpdate(
         { _id: userId },
         { $push: { '_films._favs': filmId } },
@@ -43,6 +45,7 @@ var addToFav = function(userId, filmId, callback){
 }
 
 var addToWatchlist = function(userId, filmId, callback){
+    filmapi.add(filmId);
     User.findOneAndUpdate(
         { _id: userId },
         { $push: { '_films._watchlist': filmId } },
@@ -57,6 +60,7 @@ var addToWatchlist = function(userId, filmId, callback){
 }
 
 var addToWatched = function(userId, filmId, callback){
+    filmapi.add(filmId);
     User.findOneAndUpdate(
         { _id: userId },
         { $push: { '_films._watched': filmId } },

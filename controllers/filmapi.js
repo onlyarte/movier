@@ -81,7 +81,7 @@ var getFromKP = function(filmId, callback){
                 director: filmObj.creators.director || [],
                 actors: filmObj.creators.actor || [],
                 description: filmObj.description
-            }
+            };
 
             callback(film);
         }
