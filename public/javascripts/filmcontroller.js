@@ -11,39 +11,73 @@ function showControlls() {
         fav.id = 'fav';
         if(isFav){
             fav.src = '/images/icons/favtrue.png';
-            fav.onclick = removeFromFav();
+            fav.onclick = function(){
+                sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromFav/' + filmId);
+                showControlls();
+            };
         }
         else{
             fav.src = '/images/icons/favfalse.png';
-            fav.onclick = addToFav();
+            fav.onclick = function(){
+                sendUpdateRequest('/update/' + localStorage.id_token + '/addToFav/' + filmId);
+                showControlls();
+            };
         }
 
         var watchlist = document.createElement('img');
         watchlist.id = 'watchlist';
         if(isInWatchList){
             watchlist.src = '/images/icons/towatchtrue.png';
-            watchlist.onclick = removeFromWatchlist();
+            watchlist.onclick = function(){
+                sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromWatchlist/' + filmId);
+                showControlls();
+            };
         }
         else{
             watchlist.src = '/images/icons/towatchfalse.png';
-            watchlist.onclick = addToWatchlist();
+            watchlist.onclick = function(){
+                sendUpdateRequest('/update/' + localStorage.id_token + '/addToWatchlist/' + filmId);
+                showControlls();
+            };
         }
 
         var watched = document.createElement('img');
         watched.id = 'watched';
         if(isWatched){
             watched.src = '/images/icons/watchedtrue.png';
-            watched.onclick = removeFromWatched();
+            watched.onclick = function(){
+                sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromWatched/' + filmId);
+                showControlls();
+            };
         }
         else{
             watched.src = '/images/icons/watchedfalse.png';
-            watched.onclick = addToWatched();
+            watched.onclick = function(){
+                sendUpdateRequest('/update/' + localStorage.id_token + '/addToWatched/' + filmId);
+                showControlls();
+            };
         }
 
         controlls.appendChild(fav);
         controlls.appendChild(watchlist);
         controlls.appendChild(watched);
     }
+}
+
+//req is a url containing parameters
+function sendUpdateRequest(req){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', req);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function() {
+        var user = JSON.parse(xhr.responseText);
+        if(user != null){
+            console.log(user);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('auth', true);
+        }
+    };
+    xhr.send();
 }
 
 function containsFilm(arr, filmId){
