@@ -34,6 +34,7 @@ router.post('/:token', function(req, res, next) {
                 userapi.add(new_user);
                 user = new_user;
             }
+            console.log(user);
             res.send(JSON.stringify(user));
         });
     });

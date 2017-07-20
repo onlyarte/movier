@@ -3,6 +3,7 @@ function showControlls() {
         var user = JSON.parse(localStorage.user);
         var controlls = document.getElementById('controlls');
         var filmId = controlls.filmId;
+        console.log('film id = ' + filmId);
         var isFav = containsFilm(user.films.favs, filmId);
         var isInWatchList = containsFilm(user.films.watchlist, filmId);
         var isWatched = containsFilm(user.films.watched, filmId);
