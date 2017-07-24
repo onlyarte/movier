@@ -41,7 +41,6 @@ var add = function(user, callback){
             _watched: user.films.watched
         }
     }).save();
-    console.log('user added to database')
     // run optional callback
     if(typeof callback === 'function')
         callback();

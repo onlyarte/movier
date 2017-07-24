@@ -27,11 +27,22 @@ var findByTitle = function(title, callback){
 var add = function(filmId, callback){
     Film.findById(filmId, function(film){
         if(film == null){
-            console.log('film ' + filmId + ' not found');
             getFromKP(filmId, function(filmKP){
                 if(typeof callback === 'function' && filmKP == null)
                     callback(null);
                 else{
+                    var directors = [];
+                    function addDirector(director, index, arr){
+                        directors.push(director.name_person_ru);
+                    }
+                    filmKP.director.forEach(addDirector);
+
+                    var actors = [];
+                    function addActor(actor, index, arr){
+                        actors.push(actor.name_person_ru);
+                    }
+                    filmKP.actors.forEach(addActor);
+
                     var new_film = new Film({
                         _id: filmKP.id,
                         _title: filmKP.title,
@@ -40,13 +51,11 @@ var add = function(filmId, callback){
                         _year: filmKP.year,
                         _country: filmKP.country,
                         _genre: filmKP.genre,
-                        _director: filmKP.director,
-                        _actors: filmKP.actors,
+                        _director: directors,
+                        _actors: directors,
                         _description: filmKP.description
                     });
                     new_film.save();
-                    console.log("new film");
-                    console.log(JSON.stringify(new_film));
                     if(typeof callback === 'function')
                         callback(new_film);
                 }
