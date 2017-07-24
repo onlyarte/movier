@@ -103,7 +103,7 @@ function containsFilm(arr, filmId){
 
     var res = arr.find(isFound);
 
-    if(res === 'undefined'){
+    if(res == 'undefined'){
         console.log('not contains')
         return false;
     }
