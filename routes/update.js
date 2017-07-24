@@ -7,49 +7,47 @@ var auth = new GoogleAuth;
 var client = new auth.OAuth2(CLIENT_ID, '', '');
 
 router.post('/:token/:type/:value', function(req, res, next) {
-    console.log(req.params.type + ' ' + req.params.value);
     client.verifyIdToken(
     req.params.token,
     CLIENT_ID,
     function(err, login) {
         if(err){
-            console.log('token not verified');
             res.send('');
         }
+        else{
+            var payload = login.getPayload();
+            var userid = payload['sub'];
 
-        var payload = login.getPayload();
-        var userid = payload['sub'];
-        console.log('user ' + userid + 'identified');
+            var sendRes = function(user){
+                if(user == null)
+                    res.send('');
+                else
+                    res.send(JSON.stringify(user));
+            }
 
-        var sendRes = function(user){
-            if(user == null)
-                res.send('');
-            else
-                res.send(JSON.stringify(user));
-        }
-
-        // delegate acction to userapi
-        switch (req.params.type) {
-            case 'addToFav':
-                userapi.addToFav(userid, req.params.value, sendRes);
-                break;
-            case 'addToWatchlist':
-                userapi.addToWatchlist(userid, req.params.value, sendRes);
-                break;
-            case 'addToWatched':
-                userapi.addToWatched(userid, req.params.value, sendRes);
-                bresk;
-            case 'removeFromFav':
-                userapi.removeFromFav(userid, req.params.value, sendRes);
-                break;
-            case 'removeFromWatchlist':
-                userapi.removeFromWatchlist(userid, req.params.value, sendRes);
-                break;
-            case 'removeFromWatched':
-                userapi.removeFromWatched(userid, req.params.value, sendRes);
-                break;
-            default:
-                res.send('');
+            // delegate acction to userapi
+            switch (req.params.type) {
+                case 'addToFav':
+                    userapi.addToFav(userid, req.params.value, sendRes);
+                    break;
+                case 'addToWatchlist':
+                    userapi.addToWatchlist(userid, req.params.value, sendRes);
+                    break;
+                case 'addToWatched':
+                    userapi.addToWatched(userid, req.params.value, sendRes);
+                    bresk;
+                case 'removeFromFav':
+                    userapi.removeFromFav(userid, req.params.value, sendRes);
+                    break;
+                case 'removeFromWatchlist':
+                    userapi.removeFromWatchlist(userid, req.params.value, sendRes);
+                    break;
+                case 'removeFromWatched':
+                    userapi.removeFromWatched(userid, req.params.value, sendRes);
+                    break;
+                default:
+                    res.send('');
+            }
         }
     });
 });
