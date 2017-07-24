@@ -74,12 +74,12 @@ var getFromKP = function(filmId, callback){
         else{
             var filmObj = JSON.parse(kpres.body);
 
-            savePoster(filmObj.poster_film_big, function(){
+            savePoster(filmObj.poster_film_big, function(image_url){
                 var film = {
                     id: filmObj.id,
                     title: filmObj.name_ru,
                     title_original: filmObj.name_en,
-                    poster: poster_user_path,
+                    poster: image_url,
                     year: filmObj.year,
                     country: filmObj.country,
                     genre: filmObj.genre,
