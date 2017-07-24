@@ -13,8 +13,8 @@ var filmSchema = new Schema({
     _year: Number,
     _country: [String],
     _genre: [String],
-    _director: [Number],
-    _actors: [Number],
+    _director: [String],
+    _actors: [String],
     _description: String
 });
 
