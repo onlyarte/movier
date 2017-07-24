@@ -3,9 +3,9 @@ function showControlls() {
         var user = JSON.parse(localStorage.user);
         var controlls = document.getElementById('controlls');
         var filmId = document.getElementById('id').innerHTML;
-        var isFav = containsFilm(user._films._favs, filmId);
-        var isInWatchList = containsFilm(user._films._watchlist, filmId);
-        var isWatched = containsFilm(user._films._watched, filmId);
+        var isFav = containsFilm(user.films.favs, filmId);
+        var isInWatchList = containsFilm(user.films.watchlist, filmId);
+        var isWatched = containsFilm(user.films.watched, filmId);
 
         var fav = document.createElement('img');
         fav.id = 'fav';

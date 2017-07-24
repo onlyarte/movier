@@ -14,8 +14,6 @@ var findById = function(id, callback){
             callback(null);
         }
     });
-
-    //revert
 }
 
 var findByTitle = function(title, callback){

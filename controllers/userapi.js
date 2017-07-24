@@ -14,8 +14,6 @@ var findById = function(id, callback){
             callback(null);
         }
     });
-
-    //test
 }
 
 var add = function(user, callback){
