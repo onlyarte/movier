@@ -110,7 +110,6 @@ var savePoster = function(original_url, callback){
                 });
             }).on('error', function(err) {
                 fs.unlink(copy_path);
-                callback('');
             });
         });
     }
