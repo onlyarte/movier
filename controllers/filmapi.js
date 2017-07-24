@@ -44,7 +44,8 @@ var add = function(filmId, callback){
                         _actors: filmKP.actors,
                         _description: filmKP.description
                     }).save();
-                    callback(filmKP);
+                    if(typeof callback === 'function')
+                        callback(filmKP);
                 }
             });
         }
