@@ -35,7 +35,7 @@ router.post('/:token/:type/:value', function(req, res, next) {
                     break;
                 case 'addToWatched':
                     userapi.addToWatched(userid, req.params.value, sendRes);
-                    bresk;
+                    break;
                 case 'removeFromFav':
                     userapi.removeFromFav(userid, req.params.value, sendRes);
                     break;

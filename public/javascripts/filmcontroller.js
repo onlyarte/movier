@@ -86,8 +86,8 @@ function sendUpdateRequest(req){
     xhr.onload = function() {
         var user = JSON.parse(xhr.responseText);
         if(user != null){
-            console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
+            console.log(localStorage.user);
             localStorage.setItem('auth', true);
         }
     };
