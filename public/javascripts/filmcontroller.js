@@ -1,7 +1,6 @@
 function showControlls() {
     if(typeof(Storage) !== 'undefined' && localStorage.auth){
         var user = JSON.parse(localStorage.user);
-        console.log(JSON.stringify(user));
         var controlls = document.getElementById('controlls');
         var filmId = document.getElementById('id').innerHTML;
         var isFav = containsFilm(user._films._favs, filmId);
@@ -97,13 +96,15 @@ function sendUpdateRequest(req){
 function containsFilm(arr, filmId){
 
     function equals(current, index, array){
-        if(current._id == filmId)
-            return true;
+        return current._id == filmId;
     }
 
-    arr.forEach(equals);
-
-    return false;
+    var res = arr.find(equals);
+    
+    if(res == undefined)
+        return false;
+    else
+        return true;
 }
 
 window.onload = showControlls;
