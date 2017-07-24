@@ -95,23 +95,15 @@ function sendUpdateRequest(req){
 }
 
 function containsFilm(arr, filmId){
-    if(arr.length == 0)
-        return false;
 
-    function isFound(film) {
-        return film.id == filmId;
+    function equals(current, index, array){
+        if(current._id == filmId)
+            return true;
     }
 
-    var res = arr.find(isFound);
+    arr.forEach(equals);
 
-    if(res == 'undefined'){
-        console.log('not contains')
-        return false;
-    }
-    else{
-        console.log('contains ' + res);
-        return true;
-    }
+    return false;
 }
 
 window.onload = showControlls;
