@@ -2,23 +2,8 @@ var filmapi = require('./filmapi');
 var User = require('../models/user');
 
 var findById = function(id, callback){
-    /*User.findOne({ _id: id }, function(error, user){
+    User.findOne({ _id: id }, function(error, user){
             if(!error){
-                console.log('user ' + user._id + ' found');
-                callback(user);
-            }
-            else{
-                console.log('user ' + id + ' not found');
-                callback(null);
-            }
-        });*/
-        console.log('find req');
-        User.findOne({ _id: id })
-        .populate('_films._favs')
-        .populate('_films._watchlist')
-        .populate('_films._watched')
-        .exec(function(err, user){
-            if(!err){
                 console.log('user ' + user._id + ' found');
                 callback(user);
             }
