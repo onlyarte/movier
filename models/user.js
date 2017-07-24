@@ -13,7 +13,7 @@ var userSchema = new Schema({
     _films: {
         _favs: [{ type: Number, ref: 'Film' }],
         _watchlist: [{ type: Number, ref: 'Film' }],
-        _watched: [{ type: Number, ref: 'Film' }]
+        _watched: [{ type: Number, ref: 'Film' }],
     }
 });
 
