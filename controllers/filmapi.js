@@ -32,7 +32,7 @@ var add = function(filmId, callback){
                 if(typeof callback === 'function' && filmKP == null)
                     callback(null);
                 else{
-                    new Film({
+                    var new_film = new Film({
                         _id: filmKP.id,
                         _title: filmKP.title,
                         _title_original: filmKP.title_original,
@@ -43,9 +43,11 @@ var add = function(filmId, callback){
                         _director: filmKP.director,
                         _actors: filmKP.actors,
                         _description: filmKP.description
-                    }).save();
+                    });
+                    console.log("new film");
+                    console.log(JSON.stringify(new_film));
                     if(typeof callback === 'function')
-                        callback(filmKP);
+                        callback(new_film);
                 }
             });
         }
