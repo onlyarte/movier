@@ -12,7 +12,7 @@ var findById = function(id, callback){
                 callback(null);
             }
         });*/
-
+        console.log('find req');
         User.findOne({ _id: id })
         .populate('_films._favs')
         .populate('_films._watchlist')
