@@ -44,6 +44,7 @@ var add = function(filmId, callback){
                         _actors: filmKP.actors,
                         _description: filmKP.description
                     });
+                    new_film.save();
                     console.log("new film");
                     console.log(JSON.stringify(new_film));
                     if(typeof callback === 'function')
