@@ -1,10 +1,9 @@
 function showControlls() {
     if(typeof(Storage) !== 'undefined' && localStorage.auth){
         var user = JSON.parse(localStorage.user);
-        console.log('localstorage user ' + user)
+        console.log('localstorage user ' + JSON.stringify(user);
         var controlls = document.getElementById('controlls');
         var filmId = document.getElementById('id').innerHTML;
-        console.log('film id = ' + filmId);
         var isFav = containsFilm(user.films.favs, filmId);
         var isInWatchList = containsFilm(user.films.watchlist, filmId);
         var isWatched = containsFilm(user.films.watched, filmId);
