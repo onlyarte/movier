@@ -8,11 +8,11 @@ function showControlls() {
         var isWatched = containsFilm(user._films._watched, filmId);
 
         var updateControlls = function(){
-            removeControlls();
             showControlls();
         };
 
-        var fav = document.createElement('img');
+        // if fav added, update; else create fav
+        var fav = document.getElementById('fav') || document.createElement('img');
         fav.id = 'fav';
         if(isFav){
             fav.src = '/images/icons/favtrue.png';
@@ -29,7 +29,7 @@ function showControlls() {
             };
         }
 
-        var watchlist = document.createElement('img');
+        var watchlist = document.getElementById('watchlist') || document.createElement('img');
         watchlist.id = 'watchlist';
         if(isInWatchList){
             watchlist.src = '/images/icons/towatchtrue.png';
@@ -46,7 +46,7 @@ function showControlls() {
             };
         }
 
-        var watched = document.createElement('img');
+        var watched = document.getElementById('watched') || document.createElement('img');
         watched.id = 'watched';
         if(isWatched){
             watched.src = '/images/icons/watchedtrue.png';
@@ -63,16 +63,12 @@ function showControlls() {
             };
         }
 
-        controlls.appendChild(fav);
-        controlls.appendChild(watchlist);
-        controlls.appendChild(watched);
-    }
-}
-
-function removeControlls(){
-    var controlls = document.getElementById('controlls');
-    while(controlls.firstChild){
-        controlls.removeChild(controlls.firstChild);
+        // if no controlls added
+        if(!controlls.firstChild){
+            controlls.appendChild(fav);
+            controlls.appendChild(watchlist);
+            controlls.appendChild(watched);
+        }
     }
 }
 
