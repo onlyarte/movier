@@ -14,7 +14,7 @@ var findById = function(id, callback){
             callback(null);
         }
     });
-}
+};
 
 var findByTitle = function(title, callback){
     Film.find({ $or: [{_title: title}, {_title_original : title}]}, function(error, films) {
@@ -22,7 +22,7 @@ var findByTitle = function(title, callback){
             callback(films);
         }
     });
-}
+};
 
 var add = function(filmId, callback){
     Film.findById(filmId, function(film){
@@ -62,7 +62,7 @@ var add = function(filmId, callback){
             });
         }
     });
-}
+};
 
 var getFromKP = function(filmId, callback){
     console.log('film ' + filmId + ' requested from kp');
@@ -74,42 +74,50 @@ var getFromKP = function(filmId, callback){
         else{
             var filmObj = JSON.parse(kpres.body);
 
-            // download poster if absent
-            var poster_file_path = './public/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
-            if(!fs.existsSync(poster_file_path)){
-                var file = fs.createWriteStream(poster_file_path);
-                file.on('open', function(fd) {
-                    https.get(filmObj.poster_film_big, function(response) {
-                        response.pipe(file);
-                        file.on('finish', function() {
-                            file.close();
-                        });
-                    }).on('error', function(err) {
-                        fs.unlink(poster_file_path);
-                    });
-                });
-            }
-            var poster_user_path = '/images/temp/' + filmObj.poster_film_big.replace(/[^\w\s]/gi, '') + '.jpg';
-            //var poster_user_path = 'http://www.impawards.com/intl/france/2015/posters/love_xlg.jpg';
-
-            var film = {
-                id: filmObj.id,
-                title: filmObj.name_ru,
-                title_original: filmObj.name_en,
-                poster: poster_user_path,
-                year: filmObj.year,
-                country: filmObj.country,
-                genre: filmObj.genre,
-                director: filmObj.creators.director || [],
-                actors: filmObj.creators.actor || [],
-                description: filmObj.description,
-                rating_kp: filmObj.rating.kp_rating,
-                rating_imdb: filmObj.rating.imdb
-            };
-
-            callback(film);
+            getPoster(filmObj.poster_film_big, function(poster_url){
+                var film = {
+                    id: filmObj.id,
+                    title: filmObj.name_ru,
+                    title_original: filmObj.name_en,
+                    poster: poster_url,
+                    year: filmObj.year,
+                    country: filmObj.country,
+                    genre: filmObj.genre,
+                    director: filmObj.creators.director || [],
+                    actors: filmObj.creators.actor || [],
+                    description: filmObj.description,
+                    rating_kp: filmObj.rating.kp_rating,
+                    rating_imdb: filmObj.rating.imdb
+                };
+                
+                callback(film);
+            });
         }
     });
+};
+
+function getPoster(original_url, callback){
+    var file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
+    var path = './public/images/temp/' + file_name;
+    var copy_url = '/images/temp/' + file_name;
+    if(!fs.existsSync(path)){
+        var file = fs.createWriteStream(path);
+        file.on('open', function(fd) {
+            https.get(filmObj.poster_film_big, function(response) {
+                response.pipe(file);
+                file.on('finish', function() {
+                    file.close();
+                    callback(copy_url);
+                });
+            }).on('error', function(err) {
+                fs.unlink(path);
+                callback('#not_found');
+            });
+        });
+    }
+    else{
+        callback(copy_url);
+    }
 }
 
 module.exports.findById = findById;
