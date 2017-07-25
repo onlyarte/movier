@@ -89,7 +89,7 @@ var getFromKP = function(filmId, callback){
                     rating_kp: filmObj.rating.kp_rating,
                     rating_imdb: filmObj.rating.imdb
                 };
-                
+
                 callback(film);
             });
         }
@@ -103,7 +103,7 @@ function getPoster(original_url, callback){
     if(!fs.existsSync(path)){
         var file = fs.createWriteStream(path);
         file.on('open', function(fd) {
-            https.get(filmObj.poster_film_big, function(response) {
+            https.get(original_url, function(response) {
                 response.pipe(file);
                 file.on('finish', function() {
                     file.close();
