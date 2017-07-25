@@ -73,7 +73,7 @@ var getFromKP = function(filmId, callback){
         }
         else{
             var filmObj = JSON.parse(kpres.body);
-            console.log(filmObj.poster_film_big);
+            console.log(filmObj);
             getPoster(filmObj.poster_film_big, function(poster_url){
                 var film = {
                     id: filmObj.id,
@@ -97,13 +97,6 @@ var getFromKP = function(filmId, callback){
 };
 
 function getPoster(original_url, callback){
-    if(original_url === undefined || original_url === null){
-        callback('#not_found');
-        return;
-    }
-    else{
-        console.log(original_url);
-    }
     var file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
     var path = './public/images/temp/' + file_name;
     var copy_url = '/images/temp/' + file_name;
