@@ -1,5 +1,5 @@
 function showControlls() {
-    if(typeof(Storage) !== 'undefined' && localStorage.auth){
+    if(typeof(Storage) !== 'undefined' && localStorage.getItem('auth')){
         var user = JSON.parse(localStorage.user);
         var controlls = document.getElementById('controlls');
         var filmId = document.getElementById('id').innerHTML;

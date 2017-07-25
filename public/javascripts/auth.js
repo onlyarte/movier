@@ -3,9 +3,15 @@ function onSignIn(googleUser) {
 
     var id_token = googleUser.getAuthResponse().id_token;
     // if user authenticated
-    if(typeof(Storage) !== 'undefined'){
+    if(typeof(Storage) !== undefined){
         // save token to update user data on server if requested
         localStorage.setItem('id_token', id_token);
+        //add sign out link
+        var signout = document.createElement('a');
+        signout.href = '#';
+        signout.onclick = signOut;
+        signout.textContent = 'Sign Out';
+        document.getElementById('g-signout2').appendChild(signout);
         // if user already authenticated do not notify server again
         if(localStorage.auth && localStorage.user._id == profile.getId())
             return;
@@ -26,4 +32,15 @@ function onSignIn(googleUser) {
         }
     };
     xhr.send();
+}
+
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        var signout_box = document.getElementById('g-signout2');
+        signout_box.removeChild(signout_box.firstChild);
+        localStorage.removeItem('user');
+        localStorage.removeItem('auth');
+        localStorage.removeItem('id_token');
+    });
 }
