@@ -17,7 +17,7 @@ function onSignIn(googleUser) {
     document.getElementById('g-signout2').appendChild(signout);
 
     // if user authenticated, do not send request to server
-    if(localStorage.getItem('auth') === null)
+    if(localStorage.getItem('auth') !== null)
         return;
 
     var xhr = new XMLHttpRequest();
@@ -29,7 +29,7 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
-            document.reload();
+            location.reload();
         }
     };
     xhr.send();
