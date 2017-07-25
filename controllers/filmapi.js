@@ -97,6 +97,10 @@ var getFromKP = function(filmId, callback){
 };
 
 function getPoster(original_url, callback){
+    if(original_url == null){
+        callback('#not_found');
+    }
+    console.log(original_url);
     var file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
     var path = './public/images/temp/' + file_name;
     var copy_url = '/images/temp/' + file_name;
