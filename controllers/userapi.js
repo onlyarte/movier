@@ -34,19 +34,24 @@ var add = function(user, callback){
 }
 
 var addToFav = function(userId, filmId, callback){
-    console.log('addToFav' + filmId + ' from ' + userId);
     filmapi.add(filmId);
     User.findOneAndUpdate(
         { _id: userId },
         { $push: { '_films._favs': filmId } },
-        { new: true },
-        function(error, user){
-            if(!error)
-                callback(user);
-            else
-                callback(null);
+        { new: true }
+    )
+    .populate('_films._favs')
+    .populate('_films._watchlist')
+    .populate('_films._watched')
+    .exec(function(err, user){
+        if(!err && user != null){
+            callback(user);
         }
-    );
+        else{
+            callback(null);
+        }
+    });
+
 }
 
 var addToWatchlist = function(userId, filmId, callback){
@@ -54,14 +59,19 @@ var addToWatchlist = function(userId, filmId, callback){
     User.findOneAndUpdate(
         { _id: userId },
         { $push: { '_films._watchlist': filmId } },
-        { new: true },
-        function(error, user){
-            if(!error)
-                callback(user);
-            else
-                callback(null);
+        { new: true }
+    )
+    .populate('_films._favs')
+    .populate('_films._watchlist')
+    .populate('_films._watched')
+    .exec(function(err, user){
+        if(!err && user != null){
+            callback(user);
         }
-    );
+        else{
+            callback(null);
+        }
+    });
 }
 
 var addToWatched = function(userId, filmId, callback){
@@ -69,56 +79,76 @@ var addToWatched = function(userId, filmId, callback){
     User.findOneAndUpdate(
         { _id: userId },
         { $push: { '_films._watched': filmId } },
-        { new: true },
-        function(error, user){
-            if(!error)
-                callback(user);
-            else
-                callback(null);
+        { new: true }
+    )
+    .populate('_films._favs')
+    .populate('_films._watchlist')
+    .populate('_films._watched')
+    .exec(function(err, user){
+        if(!err && user != null){
+            callback(user);
         }
-    );
+        else{
+            callback(null);
+        }
+    });
 }
 
 var removeFromFav = function(userId, filmId, callback){
     User.findOneAndUpdate(
         { _id: userId },
         { $pull: { '_films._favs': filmId } },
-        { new: true },
-        function(error, user){
-            if(!error)
-                callback(user);
-            else
-                callback(null);
+        { new: true }
+    )
+    .populate('_films._favs')
+    .populate('_films._watchlist')
+    .populate('_films._watched')
+    .exec(function(err, user){
+        if(!err && user != null){
+            callback(user);
         }
-    );
+        else{
+            callback(null);
+        }
+    });
 }
 
 var removeFromWatchlist = function(userId, filmId, callback){
     User.findOneAndUpdate(
         { _id: userId },
         { $pull: { '_films._watchlist': filmId } },
-        { new: true },
-        function(error, user){
-            if(!error)
-                callback(user);
-            else
-                callback(null);
+        { new: true }
+    )
+    .populate('_films._favs')
+    .populate('_films._watchlist')
+    .populate('_films._watched')
+    .exec(function(err, user){
+        if(!err && user != null){
+            callback(user);
         }
-    );
+        else{
+            callback(null);
+        }
+    });
 }
 
 var removeFromWatched = function(userId, filmId, callback){
     User.findOneAndUpdate(
         { _id: userId },
         { $pull: { '_films._watched': filmId } },
-        { new: true },
-        function(error, user){
-            if(!error)
-                callback(user);
-            else
-                callback(null);
+        { new: true }
+    )
+    .populate('_films._favs')
+    .populate('_films._watchlist')
+    .populate('_films._watched')
+    .exec(function(err, user){
+        if(!err && user != null){
+            callback(user);
         }
-    );
+        else{
+            callback(null);
+        }
+    });
 }
 
 module.exports.findById = findById;
