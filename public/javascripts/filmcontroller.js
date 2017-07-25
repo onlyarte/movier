@@ -85,7 +85,8 @@ function sendUpdateRequest(req){
     xhr.onload = function() {
         var user = JSON.parse(xhr.responseText);
         if(user != null){
-            localStorage.setItem('user', JSON.parse(user));
+            localStorage.setItem('user', JSON.stringify(user));
+            console.log(JSON.parse(localStorage.user));
         }
     };
     xhr.send();
