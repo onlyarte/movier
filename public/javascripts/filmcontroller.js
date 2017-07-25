@@ -7,22 +7,25 @@ function showControlls() {
         var isInWatchList = containsFilm(user._films._watchlist, filmId);
         var isWatched = containsFilm(user._films._watched, filmId);
 
+        var updateControlls = function(){
+            removeControlls();
+            showControlls();
+        };
+
         var fav = document.createElement('img');
         fav.id = 'fav';
         if(isFav){
             fav.src = '/images/icons/favtrue.png';
             fav.onclick = function(){
-                sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromFav/' + filmId);
-                removeControlls();
-                showControlls();
+                var req = '/update/' + localStorage.id_token + '/removeFromFav/' + filmId;
+                sendUpdateRequest(req, updateControlls);
             };
         }
         else{
             fav.src = '/images/icons/favfalse.png';
             fav.onclick = function(){
-                sendUpdateRequest('/update/' + localStorage.id_token + '/addToFav/' + filmId);
-                removeControlls();
-                showControlls();
+                var req = '/update/' + localStorage.id_token + '/addToFav/' + filmId;
+                sendUpdateRequest(req, updateControlls);
             };
         }
 
@@ -31,17 +34,15 @@ function showControlls() {
         if(isInWatchList){
             watchlist.src = '/images/icons/towatchtrue.png';
             watchlist.onclick = function(){
-                sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromWatchlist/' + filmId);
-                removeControlls();
-                showControlls();
+                var req = '/update/' + localStorage.id_token + '/removeFromWatchlist/' + filmId;
+                sendUpdateRequest(req, updateControlls);
             };
         }
         else{
             watchlist.src = '/images/icons/towatchfalse.png';
             watchlist.onclick = function(){
-                sendUpdateRequest('/update/' + localStorage.id_token + '/addToWatchlist/' + filmId);
-                removeControlls();
-                showControlls();
+                var req = '/update/' + localStorage.id_token + '/addToWatchlist/' + filmId;
+                sendUpdateRequest(req, updateControlls);
             };
         }
 
@@ -50,17 +51,15 @@ function showControlls() {
         if(isWatched){
             watched.src = '/images/icons/watchedtrue.png';
             watched.onclick = function(){
-                sendUpdateRequest('/update/' + localStorage.id_token + '/removeFromWatched/' + filmId);
-                removeControlls();
-                showControlls();
+                var req = '/update/' + localStorage.id_token + '/removeFromWatched/' + filmId;
+                sendUpdateRequest(req, updateControlls);
             };
         }
         else{
             watched.src = '/images/icons/watchedfalse.png';
             watched.onclick = function(){
-                sendUpdateRequest('/update/' + localStorage.id_token + '/addToWatched/' + filmId);
-                removeControlls();
-                showControlls();
+                var req = '/update/' + localStorage.id_token + '/addToWatched/' + filmId;
+                sendUpdateRequest(req, updateControlls);
             };
         }
 
@@ -78,7 +77,7 @@ function removeControlls(){
 }
 
 //req is a url containing parameters
-function sendUpdateRequest(req){
+function sendUpdateRequest(req, callback){
     var xhr = new XMLHttpRequest();
     xhr.open('POST', req);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -87,6 +86,7 @@ function sendUpdateRequest(req){
         if(user != null){
             localStorage.setItem('user', JSON.stringify(user));
             console.log(JSON.parse(localStorage.user));
+            callback();
         }
     };
     xhr.send();
