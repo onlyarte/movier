@@ -37,10 +37,9 @@ function onSignIn(googleUser) {
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
-        var signout_box = document.getElementById('g-signout2');
-        signout_box.removeChild(signout_box.firstChild);
         localStorage.removeItem('user');
         localStorage.removeItem('auth');
         localStorage.removeItem('id_token');
+        location.reload();
     });
 }
