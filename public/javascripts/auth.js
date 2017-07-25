@@ -3,23 +3,23 @@ function onSignIn(googleUser) {
 
     var id_token = googleUser.getAuthResponse().id_token;
     // if user authenticated
-    if(typeof(Storage) !== undefined){
-        // save token to update user data on server if requested
-        localStorage.setItem('id_token', id_token);
-        //add sign out link
-        var signout = document.createElement('a');
-        signout.href = '#';
-        signout.onclick = signOut;
-        signout.textContent = 'Sign Out';
-        document.getElementById('g-signout2').appendChild(signout);
-        // if user already authenticated do not notify server again
-        if(localStorage.auth && localStorage.user._id == profile.getId())
-            return;
-    }
-    else
+    if(typeof(Storage) === undefined)
         return;
 
-    // if user not authenticated, send request to server
+    // save token to update user data on server if requested
+    localStorage.setItem('id_token', id_token);
+
+    //add sign out link
+    var signout = document.createElement('a');
+    signout.href = '#';
+    signout.onclick = signOut;
+    signout.textContent = 'Sign Out';
+    document.getElementById('g-signout2').appendChild(signout);
+
+    // if user authenticated, do not send request to server
+    if(localStorage.getItem('auth') === null)
+        return;
+
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/auth/' + id_token);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -29,6 +29,7 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
+            document.reload();
         }
     };
     xhr.send();
