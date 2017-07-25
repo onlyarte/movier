@@ -85,9 +85,7 @@ function sendUpdateRequest(req){
     xhr.onload = function() {
         var user = JSON.parse(xhr.responseText);
         if(user != null){
-            localStorage.setItem('user', JSON.stringify(user));
-            console.log(localStorage.user);
-            localStorage.setItem('auth', true);
+            localStorage.setItem('user', JSON.parse(user));
         }
     };
     xhr.send();
@@ -100,7 +98,7 @@ function containsFilm(arr, filmId){
     }
 
     var res = arr.find(equals);
-    
+
     if(res == undefined)
         return false;
     else
