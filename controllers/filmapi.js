@@ -97,26 +97,30 @@ var getFromKP = function(filmId, callback){
 };
 
 function getPoster(original_url, callback){
-    var file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
-    var path = './public/images/temp/' + file_name;
-    var copy_url = '/images/temp/' + file_name;
-    if(!fs.existsSync(path)){
-        var file = fs.createWriteStream(path);
-        file.on('open', function(fd) {
-            https.get(original_url, function(response) {
-                response.pipe(file);
-                file.on('finish', function() {
-                    file.close();
-                    callback(copy_url);
-                });
-            }).on('error', function(err) {
-                fs.unlink(path);
-                callback('#not_found');
-            });
-        });
-    }
+    if(original_url == '' || original_url === undefined || original_url === null)
+        callback('#not_found');
     else{
-        callback(copy_url);
+        var file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
+        var path = './public/images/temp/' + file_name;
+        var copy_url = '/images/temp/' + file_name;
+        if(!fs.existsSync(path)){
+            var file = fs.createWriteStream(path);
+            file.on('open', function(fd) {
+                https.get(original_url, function(response) {
+                    response.pipe(file);
+                    file.on('finish', function() {
+                        file.close();
+                        callback(copy_url);
+                    });
+                }).on('error', function(err) {
+                    fs.unlink(path);
+                    callback('#not_found');
+                });
+            });
+        }
+        else{
+            callback(copy_url);
+        }
     }
 }
 
