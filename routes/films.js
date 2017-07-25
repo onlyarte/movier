@@ -5,7 +5,6 @@ var filmapi = require('../controllers/filmapi');
 /* GET film page. Using romote data, not own mongodb data */
 router.get('/:filmid', function(req, res, next) {
     filmapi.getFromKP(req.params.filmid, function(film){
-        filmapi.add(req.params.filmid);
         if(film == null){
             res.send('not found');
         }
