@@ -7,7 +7,7 @@ var Film = require('../models/film');
 
 var findById = function(id, callback){
     Film.findOne({_id: id}, function(error, film) {
-        if(!error){
+        if(!err && film != null){
             callback(film);
         }
         else{
