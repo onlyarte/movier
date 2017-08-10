@@ -33,6 +33,9 @@ a:hover {
 *:focus {
   outline: none; }
 
+.g-signin2 {
+  visibility: hidden; }
+
 .logo {
   font-family: 'Megrim', cursive;
   font-size: 3em; }
@@ -179,7 +182,7 @@ a:hover {
     position: fixed;
     right: 40px;
     top: 30px; }
-  #menu .menu-content {
+  #menu #menu-content {
     height: 100%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -200,8 +203,8 @@ a:hover {
     flex-flow: column;
     align-items: center;
     justify-content: center; }
-    #menu .menu-content a {
+    #menu #menu-content a {
       font-size: 2em; }
-    #menu .menu-content #user-img img {
+    #menu #menu-content #user-img img {
       border-radius: 50%;
       width: 120px; }
