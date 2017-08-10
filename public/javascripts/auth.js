@@ -10,11 +10,18 @@ function onSignIn(googleUser) {
     localStorage.setItem('id_token', id_token);
 
     //add sign out link
-    var signout = document.createElement('a');
-    signout.href = '#';
-    signout.onclick = signOut;
-    signout.textContent = 'Sign Out';
-    document.getElementById('g-signout2').appendChild(signout);
+    var login = document.getElementById('log-in');
+    login.parentNode.removeChild(login);
+
+    var logout_link = document.createElement('a'); logout_link.onclick = signOut; logout_link.textContent = 'Выйти';
+    document.getElementById('log-out').appendChild(logout_link);
+
+    var userimg_link = document.createElement('a'); userimg_link.href = '/users/' + localStorage.user.id + '/';
+    var userimg_pic = document.createElement('img'); userimg_pic.src = localStorage.user.image; userimg_link.appendChild(userimg_pic);
+    document.getElementById('user-img').appendChild(userimg_link);
+
+    var username_link = document.createElement('a'); username_link.href = '/users/' + localStorage.user.id + '/'; username_link.textContent = localStorage.user.name;
+    document.getElementById('user-name').appendChild(username_link);
 
     // if user authenticated, do not send request to server
     if(localStorage.getItem('auth') !== null)
@@ -29,6 +36,7 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
+            
             location.reload();
         }
     };
