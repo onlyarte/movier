@@ -13,7 +13,7 @@ function onSignIn(googleUser) {
     var login = document.getElementById('log-in');
     login.parentNode.removeChild(login);
 
-    var logout_link = document.createElement('a'); logout_link.onclick = signOut; logout_link.textContent = 'Выйти';
+    var logout_link = document.createElement('a'); logout_link.href = '#'; logout_link.onclick = signOut; logout_link.textContent = 'Выйти';
     document.getElementById('log-out').appendChild(logout_link);
 
     var userimg_link = document.createElement('a'); userimg_link.href = '/users/' + localStorage.user.id + '/';
@@ -36,7 +36,7 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
-            
+
             location.reload();
         }
     };
