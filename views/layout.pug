@@ -1,12 +1,20 @@
 doctype html
 html
     head
-        title= title
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        script(src='https://apis.google.com/js/platform.js', async, defer)
+        meta(charset='utf-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title #{title} / MOVIER
+        // Font
+        link(href='https://fonts.googleapis.com/css?family=Megrim|Poiret+One|Open+Sans:300|Source+Sans+Pro:200|Roboto', rel="stylesheet")
+        // Main styles
+        link(href='/stylesheets/css/style.css', rel='stylesheet')
+        // Google auth
+        script(src='https://apis.google.com/js/platform.js', async='', defer='')
         script(src='/javascripts/auth.js', async, defer)
+        // Custom JS
+        script(src='/javascripts/nav.js', async, defer)
         meta(name='google-signin-client_id', content='409529861195-h34jm5fsvrdfoagfl2bg71u4c59243o7.apps.googleusercontent.com')
     body
         div(class='g-signin2', data-onsuccess='onSignIn')
-        div(id='g-signout2')
         block content

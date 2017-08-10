@@ -1,21 +1,56 @@
 extends layout
 
 block content
-    div(class='content')
-        script(src='/javascripts/filmcontroller.js', async, defer)
-        div(class='poster col')
-            img(src=poster, width=300)
-            div(id='controlls')
-            div(id='id', hidden='true')= id
-        div(class='info col')
-            h1 #{title} / #{title_original}
-            p IMDB #{rating_imdb} KP #{rating_kp}
-            p Год #{year}
-            p Страна #{country}
-            p Жанр #{genre}
-            p Режиссер
-            each person in director
-                - var name = person.name_person_ru
-                p= name
-            h2 Описание
-            p!= description
+    //.g-signin2(data-onsuccess='onSignIn')
+    .flex-container
+        #left
+            .poster
+                img(src=poster, width='100%')
+            .controlls
+                a
+                    img(src='/images/icons/favtrue.png')
+                a
+                    img(src='/images/icons/towatchfalse.png')
+                a
+                    img(src='/images/icons/watchedtrue.png')
+        #right
+            .wrapper
+                .top-bar
+                    form(onsubmit='search()')
+                        input.search(type='text' placeholder='Поиск')
+                        input(type='submit', hidden, onclick='search()')
+                    .menu-icon
+                        a(onclick='openNav()')
+                            img(src='/images/icons/menu.png', height='60px')
+                .info
+                    .film-title
+                        h1= title
+                    .film-sub-title
+                        h2= title_original
+                    p <b>IMDB</b> #{rating_imdb} <b>KP</b> #{rating_kp}
+                    p <b>Год</b> #{year}
+                    p <b>Страна</b> #{country}
+                    p <b>Жанр</b> #{genre}
+                    p <b>Режиссер</b>
+                        each person in director
+                            - var name = person.name_person_ru
+                            | &nbsp;#{name}
+                    p.description!= description
+
+    #menu
+        .menu-close-icon
+            a(onclick='closeNav()')
+                img(src='/images/icons/close.png', height='60px')
+        .menu-content
+            #user-img
+                a(href='/users/101344521490443068698/')
+                    img(src='https://lh3.googleusercontent.com/-OVK_8I_pl-A/AAAAAAAAAAI/AAAAAAAAAh8/nmt0EPcmI0o/s96-c/photo.jpg?sz=500')
+            #user-name
+                a(href='/users/101344521490443068698/') Ruslan Purii
+            #log-out
+                a(href='#' onclick='logout()') Выйти
+            #log-in
+                a(href='#') Войти
+            a.menu-item(href='/') Главная
+            .logo
+                h1 MOVIER

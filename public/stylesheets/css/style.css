@@ -1,0 +1,207 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block; }
+
+a {
+  background-color: transparent;
+  text-decoration: none; }
+
+a:active,
+a:hover {
+  outline: 0; }
+
+*:focus {
+  outline: none; }
+
+.logo {
+  font-family: 'Megrim', cursive;
+  font-size: 3em; }
+
+.flex-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap; }
+  .flex-container #left {
+    position: relative; }
+    @media screen and (min-width: 600px) {
+      .flex-container #left {
+        -webkit-flex-basis: 40%;
+        -ms-flex-preferred-size: 40%;
+        flex-basis: 40%; } }
+    @media screen and (max-width: 600px) {
+      .flex-container #left {
+        -webkit-flex-basis: 100%;
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%; } }
+    .flex-container #left .poster {
+      padding: 0; }
+      .flex-container #left .poster img {
+        display: block; }
+    @media screen and (min-width: 600px) {
+      .flex-container #left .poster:hover + .controlls, .flex-container #left .controlls:hover {
+        opacity: 1; } }
+    .flex-container #left .controlls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 300px;
+      padding: 10px 100px 10px 100px;
+      -webkit-transition: opacity 1s linear;
+      -o-transition: opacity 1s linear;
+      transition: opacity 1s linear;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+      @media screen and (min-width: 600px) {
+        .flex-container #left .controlls {
+          top: 0;
+          background: -webkit-gradient(linear, left top, left bottom, from(white), to(rgba(255, 255, 255, 0)));
+          background: -webkit-linear-gradient(top, white, rgba(255, 255, 255, 0));
+          background: -o-linear-gradient(top, white, rgba(255, 255, 255, 0));
+          background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+          opacity: 0; } }
+      @media screen and (max-width: 600px) {
+        .flex-container #left .controlls {
+          bottom: 0;
+          background: -webkit-gradient(linear, left bottom, left top, from(white), to(rgba(255, 255, 255, 0)));
+          background: -webkit-linear-gradient(bottom, white, rgba(255, 255, 255, 0));
+          background: -o-linear-gradient(bottom, white, rgba(255, 255, 255, 0));
+          background: linear-gradient(to top, white, rgba(255, 255, 255, 0)); } }
+  @media screen and (min-width: 600px) {
+    .flex-container #right {
+      -webkit-flex-basis: 60%;
+      -ms-flex-preferred-size: 60%;
+      flex-basis: 60%; } }
+  @media screen and (max-width: 600px) {
+    .flex-container #right {
+      -webkit-flex-basis: 100%;
+      -ms-flex-preferred-size: 100%;
+      flex-basis: 100%; } }
+  .flex-container #right .wrapper {
+    padding: 30px; }
+    .flex-container #right .wrapper .top-bar {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      @media screen and (min-width: 600px) {
+        .flex-container #right .wrapper .top-bar form {
+          -webkit-flex-basis: 85%;
+          -ms-flex-preferred-size: 85%;
+          flex-basis: 85%; } }
+      @media screen and (max-width: 600px) {
+        .flex-container #right .wrapper .top-bar form {
+          -webkit-flex-basis: 70%;
+          -ms-flex-preferred-size: 70%;
+          flex-basis: 70%; } }
+      .flex-container #right .wrapper .top-bar form .search {
+        width: 100%;
+        height: 50px;
+        border: 0;
+        border-bottom: 1px solid black;
+        padding: 7px;
+        font-size: 32px; }
+      .flex-container #right .wrapper .top-bar .menu-icon {
+        right: 0; }
+        .flex-container #right .wrapper .top-bar .menu-icon img {
+          display: block;
+          height: 64px; }
+    .flex-container #right .wrapper .info .description {
+      text-align: justify; }
+
+#menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  visibility: hidden;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  transition: opacity 1s;
+  background-color: black; }
+  #menu a, #menu .logo, #menu a:hover, #menu a:active {
+    color: white; }
+  #menu .menu-close-icon {
+    position: fixed;
+    right: 40px;
+    top: 30px; }
+  #menu .menu-content {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-flow: column;
+    -ms-flex-flow: column;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center; }
+    #menu .menu-content a {
+      font-size: 2em; }
+    #menu .menu-content #user-img img {
+      border-radius: 50%;
+      width: 120px; }

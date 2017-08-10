@@ -73,7 +73,6 @@ var getFromKP = function(filmId, callback){
         }
         else{
             var filmObj = JSON.parse(kpres.body);
-            console.log(filmObj);
             getPoster(filmObj.poster_film_big, function(poster_url){
                 var film = {
                     id: filmObj.id,
