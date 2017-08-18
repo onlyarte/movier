@@ -8,7 +8,7 @@ var startApp = function() {
             // Request scopes in addition to 'profile' and 'email'
             //scope: 'additional_scope'
         });
-        attachSignin(document.getElementById('log-in'));
+        attachSignin(document.getElementById('customBtn'));
     });
 };
 
