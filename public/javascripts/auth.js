@@ -73,3 +73,5 @@ function signOut() {
         location.reload();
     });
 }
+
+startApp();
