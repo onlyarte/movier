@@ -14,7 +14,10 @@ var startApp = function() {
 
 function attachSignin(element) {
     console.log(element.id);
-    auth2.attachClickHandler(element, {}, onSignIn(googleUser), function(error) {
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          console.log(googleUser.getBasicProfile().getName());
+        }, function(error) {
         alert(JSON.stringify(error, undefined, 2));
     });
 }
