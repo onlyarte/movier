@@ -30,6 +30,7 @@ function onSignIn(googleUser) {
     // save token to update user data on server if requested
     localStorage.setItem('id_token', id_token);
 
+    console.log(localStorage.id_token);
     //add sign out link
     var login = document.getElementById('log-in');
     login.parentNode.removeChild(login);
