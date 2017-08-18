@@ -8,6 +8,8 @@ var startApp = function() {
             // Request scopes in addition to 'profile' and 'email'
             //scope: 'additional_scope'
         });
+        if (auth2.isSignedIn.get())
+            onSignIn(auth2.currentUser.get());
         attachSignin(document.getElementById('customBtn'));
     });
 };
@@ -30,7 +32,6 @@ function onSignIn(googleUser) {
     // save token to update user data on server if requested
     localStorage.setItem('id_token', id_token);
 
-    console.log(localStorage.id_token);
     //add sign out link
     var login = document.getElementById('log-in');
     login.parentNode.removeChild(login);
