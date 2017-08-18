@@ -16,11 +16,11 @@ function onSignIn(googleUser) {
     var logout_link = document.createElement('a'); logout_link.href = '#'; logout_link.onclick = signOut; logout_link.textContent = 'Выйти';
     document.getElementById('log-out').appendChild(logout_link);
 
-    var userimg_link = document.createElement('a'); userimg_link.href = '/users/' + localStorage.user.id + '/';
-    var userimg_pic = document.createElement('img'); userimg_pic.src = localStorage.user.image; userimg_link.appendChild(userimg_pic);
+    var userimg_link = document.createElement('a'); userimg_link.href = '/users/' + profile.getId() + '/';
+    var userimg_pic = document.createElement('img'); userimg_pic.src = profile.getImageUrl() + '?sz=500'; userimg_link.appendChild(userimg_pic);
     document.getElementById('user-img').appendChild(userimg_link);
 
-    var username_link = document.createElement('a'); username_link.href = '/users/' + localStorage.user.id + '/'; username_link.textContent = localStorage.user.name;
+    var username_link = document.createElement('a'); username_link.href = '/users/' + profile.getId() + '/'; username_link.textContent = profile.getName();
     document.getElementById('user-name').appendChild(username_link);
 
     // if user authenticated, do not send request to server
@@ -36,8 +36,6 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
-
-            
         }
         else {
             signOut();
