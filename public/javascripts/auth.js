@@ -10,8 +10,8 @@ function onSignIn(googleUser) {
     localStorage.setItem('id_token', id_token);
 
     //add sign out link
-    var login = document.getElementById('log-in');
-    login.parentNode.removeChild(login);
+    /*var login = document.getElementById('log-in');
+    login.parentNode.removeChild(login);*/
 
     var logout_link = document.createElement('a'); logout_link.href = '#'; logout_link.onclick = signOut; logout_link.textContent = 'Выйти';
     document.getElementById('log-out').appendChild(logout_link);
