@@ -10,7 +10,8 @@ html
         // Main styles
         link(href='/stylesheets/css/style.css', rel='stylesheet')
         // Google auth
-        script(src='https://apis.google.com/js/api:client.js')
+        script(src='https://apis.google.com/js/platform.js', async, defer)
+        meta(name='google-signin-client_id', content='409529861195-h34jm5fsvrdfoagfl2bg71u4c59243o7.apps.googleusercontent.com')
         // Custom JS
         script(src='/javascripts/nav.js', async, defer)
     body
@@ -24,7 +25,7 @@ html
                 #user-name
                 #log-out
                 #log-in
-                    a#customBtn.customGPlusSignIn(href='#') Войти
+                    .g-signin2(data-onsuccess='onSignIn')
                 a.menu-item(href='/') Главная
                 .logo
                     h1 MOVIER

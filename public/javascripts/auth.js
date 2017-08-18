@@ -1,26 +1,3 @@
-var googleUser = {};
-var startApp = function() {
-    gapi.load('auth2', function(){
-        // Retrieve the singleton for the GoogleAuth library and set up the client.
-        auth2 = gapi.auth2.init({
-            client_id: '409529861195-h34jm5fsvrdfoagfl2bg71u4c59243o7.apps.googleusercontent.com',
-            cookiepolicy: 'single_host_origin',
-            // Request scopes in addition to 'profile' and 'email'
-            //scope: 'additional_scope'
-        });
-        if (auth2.isSignedIn.get())
-            onSignIn(auth2.currentUser.get());
-        attachSignin(document.getElementById('customBtn'));
-    });
-};
-
-function attachSignin(element) {
-    auth2.attachClickHandler(element, {},
-        onSignIn, function(error) {
-        alert(JSON.stringify(error, undefined, 2));
-    });
-}
-
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
 
@@ -39,11 +16,11 @@ function onSignIn(googleUser) {
     var logout_link = document.createElement('a'); logout_link.href = '#'; logout_link.onclick = signOut; logout_link.textContent = 'Выйти';
     document.getElementById('log-out').appendChild(logout_link);
 
-    var userimg_link = document.createElement('a'); userimg_link.href = '/users/' + profile.getId() + '/';
-    var userimg_pic = document.createElement('img'); userimg_pic.src = profile.getImageUrl() + '?sz=500'; userimg_link.appendChild(userimg_pic);
+    var userimg_link = document.createElement('a'); userimg_link.href = '/users/' + localStorage.user.id + '/';
+    var userimg_pic = document.createElement('img'); userimg_pic.src = localStorage.user.image; userimg_link.appendChild(userimg_pic);
     document.getElementById('user-img').appendChild(userimg_link);
 
-    var username_link = document.createElement('a'); username_link.href = '/users/' + profile.getId() + '/'; username_link.textContent = profile.getName();
+    var username_link = document.createElement('a'); username_link.href = '/users/' + localStorage.user.id + '/'; username_link.textContent = localStorage.user.name;
     document.getElementById('user-name').appendChild(username_link);
 
     // if user authenticated, do not send request to server
@@ -59,6 +36,11 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
+
+            
+        }
+        else {
+            signOut();
         }
     };
     xhr.send();
@@ -73,5 +55,3 @@ function signOut() {
         location.reload();
     });
 }
-
-startApp();
