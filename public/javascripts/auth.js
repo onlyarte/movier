@@ -13,7 +13,6 @@ var startApp = function() {
 };
 
 function attachSignin(element) {
-    console.log(element.id);
     auth2.attachClickHandler(element, {},
         onSignIn, function(error) {
         alert(JSON.stringify(error, undefined, 2));
@@ -58,8 +57,6 @@ function onSignIn(googleUser) {
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('auth', true);
-
-            location.reload();
         }
     };
     xhr.send();
