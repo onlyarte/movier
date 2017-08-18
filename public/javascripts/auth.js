@@ -46,7 +46,7 @@ function onSignIn(googleUser) {
     document.getElementById('user-name').appendChild(username_link);
 
     // if user authenticated, do not send request to server
-    if(localStorage.getItem('auth') !== null)
+    /*if(localStorage.getItem('auth') !== null)
         return;
 
     var xhr = new XMLHttpRequest();
@@ -62,7 +62,7 @@ function onSignIn(googleUser) {
             location.reload();
         }
     };
-    xhr.send();
+    xhr.send();*/
 }
 
 function signOut() {
