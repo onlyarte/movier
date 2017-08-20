@@ -18,6 +18,7 @@ var add = function(list){
     new List({
         _owner: list.owner,
         _is_open: list.is_open,
+        _name: list.name,
         _films: list.films
     }).save();
 }
