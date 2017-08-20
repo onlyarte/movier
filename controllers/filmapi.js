@@ -34,24 +34,6 @@ var add = function(filmId, callback){
             if(error)
                 return callback(error, null);
 
-            var directors = [];
-            function addDirector(director, index, arr){
-                directors.push(director.name_person_ru);
-            }
-            filmKP.directors.forEach(addDirector);
-
-            var writers = [];
-            function addWriter(writer, index, arr){
-                writers.push(writer.name_person_ru);
-            }
-            filmKP.writers.forEach(addWriter);
-
-            var actors = [];
-            function addActor(actor, index, arr){
-                actors.push(actor.name_person_ru);
-            }
-            filmKP.actors.forEach(addActor);
-
             var new_film = new Film({
                 _id: filmKP.id,
                 _title: filmKP.title,
@@ -60,9 +42,9 @@ var add = function(filmId, callback){
                 _year: filmKP.year,
                 _country: filmKP.country,
                 _genre: filmKP.genre,
-                _directors: directors,
-                _writers: writers,
-                _actors: actors,
+                _directors: filmKP.directors,
+                _writers: filmKP.writers,
+                _actors: filmKP.actors,
                 _description: filmKP.description
             });
             new_film.save();
@@ -84,6 +66,15 @@ var getFromKP = function(filmId, callback){
             return callback(new Error('Film not found'), null);
 
         getPoster(filmObj.poster_film_big, function(poster_url){
+            function personToString(input){
+                var people = [];
+                function addPerson(person, index, arr){
+                    people.push(person.name_person_ru);
+                }
+                input.forEach(addPerson);
+                return people;
+            }
+
             var film = {
                 id: filmObj.id,
                 title: filmObj.name_ru,
@@ -101,9 +92,9 @@ var getFromKP = function(filmId, callback){
             };
 
             if(filmObj.creators){
-                film.directors = filmObj.creators.director;
-                film.writers = filmObj.creators.writer;
-                film.actors = filmObj.creators.actor;
+                film.directors = personToString(filmObj.creators.director);
+                film.writers = personToString(filmObj.creators.writer);
+                film.actors = personToString(filmObj.creators.actor);
             }
 
             callback(null, film);
