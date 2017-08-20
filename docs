@@ -1,0 +1,45 @@
+ТЗ
+
+MOVIER — база данных фильмов, где фильм рассматривается в контексте списка.
+
+Канал
+Пользователь может создать канал (страницу).
+Канал по умолчанию содержит 3 закрытых списка: любимые фильмы, просмотренные, буду смотреть.
+
+channel: {
+    _id: String, //identifier
+    _email: String, //for access recovering
+    _password: String,
+    _name: String,
+    _image: String,
+    _lists: [id]
+}
+
+Список
+Пользователь может добавить в свой канал любое количество закрытых или открытых списков.
+Пользователь может добавить или удалить фильм из списка.
+
+list: {
+    _id: String,
+    _owner: String, //chanel
+    _is_open: Boolean,
+    _films: [id]
+}
+
+Фильм
+Пользователь не может добавлять фильмы. База данных фильмов взята из открытых источников.
+
+film: {
+    _id: Number,
+    _title: String,
+    _title_original: String,
+    _is_full: Boolean, // full contains all info, not full contains only id and title
+    _poster: String,
+    _year: Number,
+    _country: String,
+    _genre: String,
+    _directors: [String],
+    _writers: [String],
+    _actors: [String],
+    _description: String
+}
