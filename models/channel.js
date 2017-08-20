@@ -9,7 +9,8 @@ var channelSchema = new Schema({
     _password: String,
     _name: String,
     _image: String,
-    _lists: [{ type: Schema.Types.ObjectId, ref: 'List' }]
+    _lists: [{ type: Schema.Types.ObjectId, ref: 'List' }],
+    _saved_lists: [{ type: Schema.Types.ObjectId, ref: 'List' }]
 });
 
 module.exports = mongoose.model('Channel', channelSchema);

@@ -11,6 +11,13 @@ var findById = function(id, callback){
             model: 'Film'
         }
     })
+    .populate({
+        path: '_saved_lists',
+        populate: {
+            path: '_films',
+            model: 'Film'
+        }
+    })
     .exec(function(error, channel){
         if(error)
             return callback(error, null);
@@ -28,7 +35,8 @@ var add = function(channel){
         _password: channel.password,
         _name: channel.name,
         _image: channel.image,
-        _lists: channel.lists
+        _lists: channel.lists,
+        _saved_lists: channel.saved_lists
     }).save();
 }
 
