@@ -7,7 +7,8 @@ router.get('/:id', function(req, res, next) {
         if(error)
             return next(error);
 
-        res.render('film', film);
+        //res.render('film', film);
+        res.send(film);
     });
 });
 

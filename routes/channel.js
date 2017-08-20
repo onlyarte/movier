@@ -7,7 +7,8 @@ router.get('/:id', function(req, res, next) {
         if(error)
             return next(error);
 
-        res.render('channel', channel);
+        //res.render('channel', channel);
+        res.send(channel);
     });
 });
 

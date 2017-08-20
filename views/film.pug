@@ -32,7 +32,7 @@ block content
                     p <b>Страна</b> #{country}
                     p <b>Жанр</b> #{genre}
                     p <b>Режиссер</b>
-                        each person in director
+                        each person in directors
                             - var name = person.name_person_ru
                             | &nbsp;#{name}
                     p.description!= description
