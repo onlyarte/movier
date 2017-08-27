@@ -1,38 +1,46 @@
 extends layout
 
+mixin getPPList(arr, title)
+    .pp-row
+        .pp-title!= title
+        .pp-list(id!=attributes.id)
+            each person, index in arr
+                if index < 5 && index != arr.length-1
+                    | #{person},&nbsp;
+                else if index==5 || (index==arr.length-1 && index<5)
+                    | #{person}
+
+mixin getListGroupItem(icon, title)
+    .list-button(id!=attributes.id)
+        img(src=icon)
+        span.button-title!= title
+
 block content
-    //.g-signin2(data-onsuccess='onSignIn')
     .flex-container
         #left
-            .poster
-                img(src=poster, width='100%')
-            .controlls
-                a
-                    img(src='/images/icons/favtrue.png')
-                a
-                    img(src='/images/icons/towatchfalse.png')
-                a
-                    img(src='/images/icons/watchedtrue.png')
+            #menu-open
+                img(src='/images/icons/menu.png')
+            #image-background(style="background-image: url('" + poster + "')")
+            #poster
+                #poster-caption= title
+                img(src=poster)
         #right
-            .wrapper
-                .top-bar
-                    form(onsubmit='search()')
-                        input.search(type='text' placeholder='Поиск')
-                        input(type='submit', hidden, onclick='search()')
-                    .menu-icon
-                        a(onclick='openNav()')
-                            img(src='/images/icons/menu.png', height='60px')
-                .info
-                    .film-title
-                        h1= title
-                    .film-sub-title
-                        h2= title_original
-                    p <b>IMDB</b> #{rating_imdb} <b>KP</b> #{rating_kp}
-                    p <b>Год</b> #{year}
-                    p <b>Страна</b> #{country}
-                    p <b>Жанр</b> #{genre}
-                    p <b>Режиссер</b>
-                        each person in directors
-                            - var name = person.name_person_ru
-                            | &nbsp;#{name}
-                    p.description!= description
+            #film-info
+                #rate
+                    span#kp #{rating_kp}
+                    | &nbsp;/ 10
+                h1#film-title
+                    |#{title} / #{title_original}
+                #short-info
+                    | #{year} | #{genre}
+
+                p.description!= description
+                +getPPList(directors, 'Режиссер')(id='directors')
+                +getPPList(writers, 'Сценарий')(id='writers')
+                +getPPList(actors, 'В ролях')(id='actors')
+
+            .list-group
+                +getListGroupItem('/images/icons/heart.png', 'ЛЮБИМЫЕ')(id='jcdknjc')
+                +getListGroupItem('/images/icons/eye.png', 'ПРОСМОТРЕННЫЕ')(id='jcd523jjc')
+                +getListGroupItem('/images/icons/list.png', 'БУДУ СМОТРЕТЬ')(id='78t61728jcdknjc')
+                +getListGroupItem('/images/icons/sharp.png', 'ДРУГОЙ СПИСОК')

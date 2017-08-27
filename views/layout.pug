@@ -1,33 +1,23 @@
 doctype html
-html
+html(lang='ru')
     head
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
         title #{title} / MOVIER
         // Font
-        link(href='https://fonts.googleapis.com/css?family=Megrim|Poiret+One|Open+Sans:300|Source+Sans+Pro:200|Roboto', rel="stylesheet")
+        link(href='https://fonts.googleapis.com/css?family=Megrim|Open+Sans|Roboto|Rubik|Istok+Web', rel="stylesheet")
         // Main styles
         link(href='/stylesheets/css/style.css', rel='stylesheet')
-        // Google auth
-        script(src='https://apis.google.com/js/platform.js', async, defer)
-        meta(name='google-signin-client_id', content='409529861195-h34jm5fsvrdfoagfl2bg71u4c59243o7.apps.googleusercontent.com')
-        // Custom JS
-        script(src='/javascripts/nav.js', async, defer)
     body
         block content
-        #menu
+        /*#menu
             .menu-close-icon
                 a(onclick='closeNav()')
                     img(src='/images/icons/close.png', height='60px')
-            #menu-content
-                #user-img
-                #user-name
-                #log-out
+            .menu-content
                 #log-in
-                    .g-signin2(data-onsuccess='onSignIn')
+                    a(href='#') Войти
                 a.menu-item(href='/') Главная
                 .logo
-                    h1 MOVIER
-        script
-            include ../public/javascripts/auth.js
+                    h1 MOVIER*/
