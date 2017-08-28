@@ -12,7 +12,10 @@ var findById = function(id, callback){
         if(!film)
             return callback(new Error('Film not found'), null);
 
-        callback(null, film);
+        getPoster(film._poster, function(poster_url){
+            film._poster = poster_url;
+            callback(null, film);
+        });
     });
 };
 
@@ -21,6 +24,11 @@ var findByTitle = function(title, callback){
         if(error)
             return callback(error, null);
 
+        for each(var film in films){
+            getPoster(film._poster, function(poster_url){
+                film._poster = poster_url;
+            });
+        }
         callback(null, films);
     });
 };
@@ -38,7 +46,7 @@ var add = function(filmId, callback){
                 _id: filmKP.id,
                 _title: filmKP.title,
                 _title_original: filmKP.title_original,
-                _poster: filmKP.poster,
+                _poster: filmKP.poster_orig,
                 _year: filmKP.year,
                 _country: filmKP.country,
                 _genre: filmKP.genre,
@@ -80,6 +88,7 @@ var getFromKP = function(filmId, callback){
                 title: filmObj.name_ru,
                 title_original: filmObj.name_en,
                 poster: poster_url,
+                poster_orig: filmObj.poster_film_big,
                 year: filmObj.year,
                 country: filmObj.country,
                 genre: filmObj.genre,
@@ -102,7 +111,7 @@ var getFromKP = function(filmId, callback){
     });
 };
 
-function getPoster(original_url, callback){
+var getPoster = function getPoster(original_url, callback){
     if(!original_url)
         return callback('#not_found');
 
@@ -132,3 +141,4 @@ module.exports.findById = findById;
 module.exports.findByTitle = findByTitle;
 module.exports.add = add;
 module.exports.getFromKP = getFromKP;
+module.exports.getPoster = getPoster;

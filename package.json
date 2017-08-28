@@ -10,6 +10,8 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "express-session": "~1.15.5",
+    "express-validator": "^4.0.0",
     "find-remove": "~1.0.1",
     "google-auth-library": "^0.10.0",
     "googleapis": "^20.1.0",
