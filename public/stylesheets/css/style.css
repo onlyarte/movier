@@ -25,7 +25,8 @@ summary {
 
 a {
   background-color: transparent;
-  text-decoration: none; }
+  text-decoration: none;
+  color: white; }
 
 a:active,
 a:hover {
@@ -36,10 +37,6 @@ a:hover {
 
 img {
   display: block; }
-
-.logo {
-  font-family: 'Megrim', cursive;
-  font-size: 3em; }
 
 .flex-container {
   display: -webkit-box;
@@ -141,7 +138,7 @@ img {
         -webkit-align-items: flex-start;
         -ms-flex-align: start;
         align-items: flex-start;
-        overflow-x: scroll;
+        overflow-x: auto;
         overflow-y: hidden;
         margin-bottom: 20px; }
         .flex-container #left #list #slider .list-item {
@@ -207,7 +204,7 @@ img {
         -ms-flex-preferred-size: 60%;
         flex-basis: 60%;
         height: 100vh;
-        overflow-y: scroll; } }
+        overflow-y: auto; } }
     @media only screen and (max-width: 600px) {
       .flex-container #right {
         -webkit-flex-basis: 100%;
@@ -308,6 +305,78 @@ img {
           padding: 0px 10px 0px 20px; }
         .flex-container #right .list-group .list-button .button-title {
           padding-right: 20px; }
+    .flex-container #right #index-wrapper {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh; }
+      .flex-container #right #index-wrapper #info {
+        text-align: center; }
+        .flex-container #right #index-wrapper #info #title {
+          margin: 0;
+          font-family: "Megrim", cursive;
+          font-size: 4em; }
+        .flex-container #right #index-wrapper #info #subtitle {
+          font-size: 1.5em; }
+      .flex-container #right #index-wrapper #auth #caption {
+        text-align: center;
+        margin: 20px 0px; }
+      .flex-container #right #index-wrapper #auth form {
+        width: 200px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center; }
+        .flex-container #right #index-wrapper #auth form input {
+          height: 50px;
+          border-radius: 50px;
+          color: white; }
+          .flex-container #right #index-wrapper #auth form input[type='text'], .flex-container #right #index-wrapper #auth form input[type='email'], .flex-container #right #index-wrapper #auth form input[type='password'] {
+            width: 200px;
+            background-color: #3E3E3E;
+            border: 0;
+            padding: 0px 20px; }
+          .flex-container #right #index-wrapper #auth form input[type='submit'] {
+            background-color: black;
+            border: 5px solid white;
+            padding: 0px 20px; }
+        .flex-container #right #index-wrapper #auth form label {
+          padding: 0px 15px;
+          height: 30px;
+          width: 120px;
+          text-align: center;
+          border: 1px solid white;
+          border-radius: 30px;
+          background-color: #3E3E3E;
+          line-height: 30px;
+          font-size: 0.8em;
+          color: gray; }
+      .flex-container #right #index-wrapper #auth #reg-form {
+        display: none; }
 
 #menu {
   position: fixed;
