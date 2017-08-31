@@ -31,6 +31,7 @@ router.post('/', function(req, res, next) {
 
 //register
 router.post('/new', function(req, res, next){
+    console.log('new req');
     //Check that the fields are not empty
     req.checkBody('email', 'Email required').notEmpty();
     req.checkBody('login', 'Login required').notEmpty();
@@ -45,36 +46,37 @@ router.post('/new', function(req, res, next){
     if(errors || !req.files.image){
         res.render('index', { title: 'MOVIER' });
     } else {
-        cloudinary.v2.uploader.upload("/home/my_image.jpg",
-        function(error, result) {console.log(result)});
+        console.log('info checked');
 
         channelapi.findById(res.body.login, function(error, channel){
-            if(!error)
+            if(!error){
+                console.log('already added');
                 return res.render('index', { title: 'MOVIER' });
+            }
 
             //save image localy
             var path = '/public/images/temp/' + req.params.login + req.files.image.name;
             req.files.image.mv(path, function(error) {
                 if (error)
                     return res.render('index', { title: 'MOVIER' });
+                console.log('saved localy');
+                cloudinary.v2.uploader.upload(path, function(error, result) {
+                    if(error)
+                        return res.render('index', { title: 'MOVIER' });
+                    console.log('saved to cloud');
+                    var newchannel = {
+                        id: req.params.login,
+                        email: req.params.email,
+                        password: req.params.password,
+                        name: req.params.password,
+                        image: result.url,
+                        lists: [],
+                        saved_lists: []
+                    }
 
-                    cloudinary.v2.uploader.upload(path, function(error, result) {
-                        if(error)
-                            return res.render('index', { title: 'MOVIER' });
-
-                        var newchannel = {
-                            id: req.params.login,
-                            email: req.params.email,
-                            password: req.params.password,
-                            name: req.params.password,
-                            image: result.url,
-                            lists: [],
-                            saved_lists: []
-                        }
-
-                        channelapi.add(newchannel);
-                        res.redirect('/channel/' + newchannel.id);
-                    });
+                    channelapi.add(newchannel);
+                    res.redirect('/channel/' + newchannel.id);
+                });
             });
         });
    }
