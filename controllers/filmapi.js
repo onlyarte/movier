@@ -75,6 +75,8 @@ var getFromKP = function(filmId, callback){
 
         getPoster(filmObj.poster_film_big, function(poster_url){
             function personToString(input){
+                if(!input)
+                    return;
                 var people = [];
                 function addPerson(person, index, arr){
                     people.push(person.name_person_ru);
@@ -101,9 +103,12 @@ var getFromKP = function(filmId, callback){
             };
 
             if(filmObj.creators){
-                film.directors = personToString(filmObj.creators.director);
-                film.writers = personToString(filmObj.creators.writer);
-                film.actors = personToString(filmObj.creators.actor);
+                if(film.directors)
+                    film.directors = personToString(filmObj.creators.director);
+                if(film.writers)
+                    film.writers = personToString(filmObj.creators.writer);
+                if(film.actors)
+                    film.actors = personToString(filmObj.creators.actor);
             }
 
             callback(null, film);
