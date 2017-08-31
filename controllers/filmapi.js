@@ -24,9 +24,9 @@ var findByTitle = function(title, callback){
         if(error)
             return callback(error, null);
 
-        for(var film in films){
-            getPoster(film._poster, function(poster_url){
-                film._poster = poster_url;
+        for(var i in films){
+            getPoster(films[i]._poster, function(poster_url){
+                films[i]._poster = poster_url;
             });
         }
         callback(null, films);
