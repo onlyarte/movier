@@ -6,13 +6,14 @@ var cloudinary = require('cloudinary');
 
 //log in
 router.post('/', function(req, res, next) {
-    channelapi.findById(req.params.login, function(error, channel){
+    channelapi.findById(req.body.login, function(error, channel){
         if(error)
-            res.render('index', { title: 'MOVIER' });
-        else {
-            req.session.channel = channel;
-            res.redirect('/channel/' + channel._id);
-        }
+            return next(error);
+        if(channel._password != req.body.password)
+            return next(new Error('Wrong password'));
+
+        req.session.channel = channel;
+        res.redirect('/channel/' + channel._id);
     });
 });
 
@@ -44,7 +45,7 @@ router.post('/new', function(req, res, next){
                         id: req.body.login,
                         email: req.body.email,
                         password: req.body.password,
-                        name: req.body.password,
+                        name: req.body.name,
                         image: result.url,
                         lists: [],
                         saved_lists: []
