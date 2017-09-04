@@ -32,8 +32,8 @@ router.post('/', function(req, res, next) {
 //register
 router.post('/new', function(req, res, next){
     console.log('req');
-    console.log(req.params.login);
-    console.log(req.params.password);
+    console.log(req.body.login);
+    console.log(req.body.password);
 
     channelapi.findById(req.params.login, function(error, channel){
         if(!error)
