@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
     if(errors){
         res.render('index', { title: 'MOVIER' });
     } else {
-        channelapi.findById(res.body.login, function(error, channel){
+        channelapi.findById(res.params.login, function(error, channel){
             if(error)
                 res.render('index', { title: 'MOVIER' });
             else {

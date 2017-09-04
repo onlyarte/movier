@@ -4,6 +4,21 @@ var Channel = require('../models/channel');
 var findById = function(id, callback){
     console.log(id);
     Channel.findOne({ _id: id })
+    .populate('_lists')
+    .populate({
+        path: '_lists',
+        populate: {
+            path: '_films',
+            model: 'Film'
+        }
+    })
+    .populate({
+        path: '_saved_lists',
+        populate: {
+            path: '_films',
+            model: 'Film'
+        }
+    })
     .exec(function(error, channel){
         console.log('found/not');
         if(error)
