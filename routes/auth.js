@@ -54,6 +54,7 @@ router.post('/new', function(req, res, next){
                 return res.render('index', { title: 'MOVIER' });
             }
 
+            console.log(req.files.image.name);
             //save image localy
             var path = '/public/images/temp/' + req.params.login + req.files.image.name;
             req.files.image.mv(path, function(error) {
