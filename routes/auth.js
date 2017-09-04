@@ -37,7 +37,7 @@ router.post('/new', function(req, res, next){
             return next(new Error('Login already exists'));
 
         //save image localy
-        var path = '../public/images/temp/' + req.body.login + req.files.image.name;
+        var path = '/public/images/temp/' + req.body.login + req.files.image.name;
         var file = req.files.image;
         file.mv(path, function(error) {
             console.log('tried to save localy');
