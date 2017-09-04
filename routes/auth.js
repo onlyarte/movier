@@ -31,54 +31,39 @@ router.post('/', function(req, res, next) {
 
 //register
 router.post('/new', function(req, res, next){
-    //Check that the fields are not empty
-    req.checkBody('email', 'Email required').notEmpty();
-    req.checkBody('login', 'Login required').notEmpty();
-    req.checkBody('password', 'Password required').notEmpty();
-    req.checkBody('name', 'Name required').notEmpty();
+    console.log('req');
+    console.log(req.params.login);
+    console.log(req.params.password);
 
-    //Trim and escape the fields.
-    req.sanitize('login').escape(); req.sanitize('login').trim();
+    channelapi.findById(req.params.login, function(error, channel){
+        if(!error)
+            return next(new Error('Login already exists'));
 
-    //Run the validators
-    var errors = req.validationErrors();
-    if(errors || !req.files.image){
-        res.render('index', { title: 'MOVIER' });
-    } else {
-        console.log('req');
-        console.log(req.params.login);
-        console.log(req.params.password);
-
-        channelapi.findById(req.params.login, function(error, channel){
-            if(!error)
-                return next(new Error('Login already exists'));
-
-            //save image localy
-            var path = '../public/images/temp/' + req.params.login + req.files.image.name;
-            var file = req.files.image;
-            file.mv(path, function(error) {
-                if (error)
+        //save image localy
+        var path = '../public/images/temp/' + req.params.login + req.files.image.name;
+        var file = req.files.image;
+        file.mv(path, function(error) {
+            if (error)
+                return next(error);
+            cloudinary.v2.uploader.upload(path, function(error, result) {
+                if(error)
                     return next(error);
-                cloudinary.v2.uploader.upload(path, function(error, result) {
-                    if(error)
-                        return next(error);
-                    console.log('saved to cloud');
-                    var newchannel = {
-                        id: req.params.login,
-                        email: req.params.email,
-                        password: req.params.password,
-                        name: req.params.password,
-                        image: result.url,
-                        lists: [],
-                        saved_lists: []
-                    }
+                console.log('saved to cloud');
+                var newchannel = {
+                    id: req.params.login,
+                    email: req.params.email,
+                    password: req.params.password,
+                    name: req.params.password,
+                    image: result.url,
+                    lists: [],
+                    saved_lists: []
+                }
 
-                    channelapi.add(newchannel);
-                    res.redirect('/channel/' + newchannel.id);
-                });
+                channelapi.add(newchannel);
+                res.redirect('/channel/' + newchannel.id);
             });
         });
-   }
+    });
 });
 
 module.exports = router;
