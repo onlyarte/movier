@@ -4,6 +4,9 @@ var channelapi = require('../controllers/channelapi');
 var fileUpload = require('express-fileupload');
 var cloudinary = require('cloudinary');
 
+const { check, validationResult } = require('express-validator/check');
+const { matchedData } = require('express-validator/filter');
+
 //log in
 router.post('/', function(req, res, next) {
     //Check that the fields are not empty
@@ -31,7 +34,6 @@ router.post('/', function(req, res, next) {
 
 //register
 router.post('/new', function(req, res, next){
-    console.log('new req');
     //Check that the fields are not empty
     req.checkBody('email', 'Email required').notEmpty();
     req.checkBody('login', 'Login required').notEmpty();
@@ -46,7 +48,7 @@ router.post('/new', function(req, res, next){
     if(errors || !req.files.image){
         res.render('index', { title: 'MOVIER' });
     } else {
-        console.log('info checked');
+        console.log(JSON.stringify(req));
 
         channelapi.findById(req.params.login, function(error, channel){
             if(!error)
