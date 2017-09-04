@@ -51,7 +51,7 @@ router.post('/new', function(req, res, next){
         channelapi.findById(res.body.login, function(error, channel){
             if(!error){
                 console.log('already added');
-                return res.render('index', { title: 'MOVIER' });
+                res.render('index', { title: 'MOVIER' });
             }
 
             console.log(req.files.image.name);
