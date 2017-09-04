@@ -48,7 +48,7 @@ router.post('/new', function(req, res, next){
     } else {
         console.log('info checked');
 
-        channelapi.findById(res.body.login, function(error, channel){
+        channelapi.findById(res.params.login, function(error, channel){
             if(!error){
                 console.log('already added');
                 res.render('index', { title: 'MOVIER' });
