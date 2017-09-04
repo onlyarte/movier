@@ -4,9 +4,6 @@ var channelapi = require('../controllers/channelapi');
 var fileUpload = require('express-fileupload');
 var cloudinary = require('cloudinary');
 
-const { check, validationResult } = require('express-validator/check');
-const { matchedData } = require('express-validator/filter');
-
 //log in
 router.post('/', function(req, res, next) {
     //Check that the fields are not empty
@@ -48,11 +45,14 @@ router.post('/new', function(req, res, next){
     if(errors || !req.files.image){
         res.render('index', { title: 'MOVIER' });
     } else {
-        console.log(JSON.stringify(req));
+        console.log('req');
+        console.log(req.params.login);
+        console.log(req.params.password);
 
         channelapi.findById(req.params.login, function(error, channel){
             if(!error)
                 return next(new Error('Login already exists'));
+
             //save image localy
             var path = '../public/images/temp/' + req.params.login + req.files.image.name;
             var file = req.files.image;
