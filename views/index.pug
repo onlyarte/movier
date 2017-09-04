@@ -10,18 +10,19 @@ block content
     .flex-container
         #left
             #menu-open
-              img(src='/images/icons/menu.png')
+                img(src='/images/icons/menu.png')
             #image-background(style="background-image: url('" + 'https://film-base.herokuapp.com' + films[0].poster + "')")
             #list
-              #list-title= name
-              #list-owner= owner
-              #slider
+                #list-title= name
+                #list-owner= owner
+                #slider
                   each film in films
                       a.list-item(href='/film/' + film.id)
                           img(src='https://film-base.herokuapp.com' + film.poster)
                           .item-title= film.title
-              .save-button(id!= id)
-                  span.button-title СОХРАНИТЬ
+                if channel
+                    .save-button(id!= id)
+                        span.button-title СОХРАНИТЬ
 
         #right
             #index-wrapper
