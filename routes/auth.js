@@ -40,8 +40,13 @@ router.post('/new', function(req, res, next){
         var path = '../public/images/temp/' + req.body.login + req.files.image.name;
         var file = req.files.image;
         file.mv(path, function(error) {
-            if (error)
+            console.log('tried to save localy');
+            if (error){
+                console.log(error);
                 return next(error);
+            }
+
+            console.log('saved localy');
             cloudinary.v2.uploader.upload(path, function(error, result) {
                 if(error)
                     return next(error);
