@@ -31,16 +31,13 @@ router.post('/', function(req, res, next) {
 
 //register
 router.post('/new', function(req, res, next){
-    console.log('req');
-    console.log(req.body.login);
-    console.log(req.body.password);
 
-    channelapi.findById(req.params.login, function(error, channel){
+    channelapi.findById(req.body.login, function(error, channel){
         if(!error)
             return next(new Error('Login already exists'));
 
         //save image localy
-        var path = '../public/images/temp/' + req.params.login + req.files.image.name;
+        var path = '../public/images/temp/' + req.body.login + req.files.image.name;
         var file = req.files.image;
         file.mv(path, function(error) {
             if (error)
@@ -50,10 +47,10 @@ router.post('/new', function(req, res, next){
                     return next(error);
                 console.log('saved to cloud');
                 var newchannel = {
-                    id: req.params.login,
-                    email: req.params.email,
-                    password: req.params.password,
-                    name: req.params.password,
+                    id: req.body.login,
+                    email: req.body.email,
+                    password: req.body.password,
+                    name: req.body.password,
                     image: result.url,
                     lists: [],
                     saved_lists: []
