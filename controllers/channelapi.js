@@ -20,7 +20,6 @@ var findById = function(id, callback){
         }
     })
     .exec(function(error, channel){
-        console.log('found/not');
         if(error)
             return callback(error, null);
         if(!channel)

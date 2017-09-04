@@ -49,20 +49,17 @@ router.post('/new', function(req, res, next){
         console.log('info checked');
 
         channelapi.findById(req.params.login, function(error, channel){
-            if(!error){
-                console.log('already added');
-                res.render('index', { title: 'MOVIER' });
-            }
+            if(!error)
+                return next(new Error('Login already exists'));
             //save image localy
             var path = '../public/images/temp/' + req.params.login + req.files.image.name;
             var file = req.files.image;
             file.mv(path, function(error) {
                 if (error)
-                    return res.render('index', { title: 'MOVIER' });
-                console.log('saved localy');
+                    return next(error);
                 cloudinary.v2.uploader.upload(path, function(error, result) {
                     if(error)
-                        return res.render('index', { title: 'MOVIER' });
+                        return next(error);
                     console.log('saved to cloud');
                     var newchannel = {
                         id: req.params.login,
