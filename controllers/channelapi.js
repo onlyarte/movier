@@ -2,6 +2,7 @@ var listapi = require('./listapi');
 var Channel = require('../models/channel');
 
 var findById = function(id, callback){
+    console.log(id);
     Channel.findOne({ _id: id })
     .populate('_lists')
     .populate({
@@ -19,6 +20,7 @@ var findById = function(id, callback){
         }
     })
     .exec(function(error, channel){
+        console.log('found/not');
         if(error)
             return callback(error, null);
         if(!channel)
