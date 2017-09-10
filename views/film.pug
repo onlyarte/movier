@@ -16,8 +16,10 @@ mixin getListGroupItem(icon, title)
         span.button-title!= title
 
 block content
+    script
+        include ../public/javascripts/filmcontroller.js
     script.
-        var channel = channel
+        var channel = !{JSON.stringify(channel)}
     .flex-container
         #left
             #menu-open

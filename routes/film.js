@@ -9,22 +9,15 @@ router.get('/:id', function(req, res, next) {
         if(error)
             return next(error);
 
-        //get channel from db
-        var channel;
         if(req.session.channel){
-            channelapi.findById(req.session.channel, function(error, dbchannel){
-                if(!error)
-                    channel = dbchannel;
+            channelapi.findById(req.session.channel, function(error, channel){
+                if(error)
+                    next(error);
+                res.render('film', { film: film, channel: channel});
             });
+        } else {
+            res.render('film', { film : film });
         }
-
-        //data obj
-        var info = {
-            film: film,
-            channel: channel
-        }
-
-        res.render('film', info);
     });
 });
 
