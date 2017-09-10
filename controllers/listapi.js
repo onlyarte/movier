@@ -3,6 +3,7 @@ var List = require('../models/list');
 
 var findById = function(id, callback){
     List.findOne({ _id: id })
+    .populate('_owner')
     .populate('_films')
     .exec(function(error, list){
         if(error)
@@ -14,13 +15,13 @@ var findById = function(id, callback){
     });
 }
 
-var add = function(list){
+var add = function(list, callback){
     new List({
         _owner: list.owner,
         _is_open: list.is_open,
         _name: list.name,
         _films: list.films
-    }).save();
+    }).save(callback);
 }
 
 var remove = function(id, callback){
@@ -34,7 +35,7 @@ var addToList = function(listId, filmId, callback){
     filmapi.add(filmId);
     List.findOneAndUpdate(
         { _id: listId },
-        { $push: { '_films': filmId } },
+        { $addToSet: { '_films': filmId } },
         { new: true }
     ).populate('_films')
     .exec(function(error, list){

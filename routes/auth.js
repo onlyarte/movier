@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var channelapi = require('../controllers/channelapi');
+var listapi = require('../controllers/listapi');
 var fileUpload = require('express-fileupload');
 var cloudinary = require('cloudinary');
 
@@ -49,10 +50,31 @@ router.post('/new', function(req, res, next){
                         image: result.url,
                         lists: [],
                         saved_lists: []
-                    }
+                    };
 
-                    channelapi.add(newchannel);
-                    res.redirect('/channel/' + newchannel.id);
+                    channelapi.add(newchannel, function(error, added_channel){
+                        var addList = function(_name){
+                            listapi.add({
+                                owner: added_channel._id,
+                                is_open: false,
+                                name: _name,
+                                films: []
+                            }, function(error, list){
+                                if(!error)
+                                    added_channel._lists.push(list._id);
+                            });
+                        };
+
+                        addList('Любимые'); addList('Просмотренные'); addList('Буду смотреть');
+                        added_channel.save();
+                        channelapi.findById(added_channel._id, function(error, populated_channel){
+                            if(error)
+                                return next(error);
+
+                            req.session.channel = populated_channel;
+                            res.redirect('/channel/' + populated_channel._id);
+                        });
+                    });
                 });
         });
     });

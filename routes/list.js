@@ -13,11 +13,10 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
-//TO DO: replace owner with session variable
 //add new list
 router.post('/', function(req, res, next){
     var list = JSON.parse(req.body);
-    list.owner = 'session_id';
+    list.owner = req.session._id;
     listapi.add(list, function(error, list){
         if(error)
             return next(error);
@@ -39,8 +38,8 @@ router.delete('/:id', function(req, res, next){
 
 //TO DO: replace channelid with session variable
 //save to channel
-router.post('/:id/save/:channelid', function(req, res, next) {
-    channelapi.saveList(req.params.channelid, req.params.id, function(error, channel){
+router.post('/:id/save', function(req, res, next) {
+    channelapi.saveList(req.session.channel._id, req.params.id, function(error, channel){
         if(error)
             return next(error);
 
@@ -49,8 +48,8 @@ router.post('/:id/save/:channelid', function(req, res, next) {
 });
 
 //remove from channel
-router.post('/:id/save/:channelid', function(req, res, next) {
-    channelapi.removeFromSaved(req.params.channelid, req.params.id, function(error, channel){
+router.post('/:id/remove', function(req, res, next) {
+    channelapi.removeFromSaved(req.session.channel._id, req.params.id, function(error, channel){
         if(error)
             return next(error);
 

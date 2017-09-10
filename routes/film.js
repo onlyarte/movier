@@ -8,6 +8,7 @@ router.get('/:id', function(req, res, next) {
         if(error)
             return next(error);
 
+        film.channel = req.session.channel;
         res.render('film', film);
         //res.send(film);
     });

@@ -16,10 +16,10 @@ block content
                 #list-title= name
                 #list-owner= owner
                 #slider
-                  each film in films
-                      a.list-item(href='/film/' + film.id)
-                          img(src='https://film-base.herokuapp.com' + film.poster)
-                          .item-title= film.title
+                    each film in films
+                        a.list-item(href='/film/' + film.id)
+                            img(src='https://film-base.herokuapp.com' + film.poster)
+                            .item-title= film.title
                 if channel
                     .save-button(id!= id)
                         span.button-title СОХРАНИТЬ
