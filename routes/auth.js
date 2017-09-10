@@ -41,7 +41,7 @@ router.post('/new', function(req, res, next){
 
     //save image localy
     function saveImageLocally(){
-        var path = './public/images/temp/' + channel.is + req.files.image.name;
+        var path = './public/images/temp/' + channel.id + req.files.image.name;
         var file = req.files.image;
         file.mv(path, function(error) {
             if (error)

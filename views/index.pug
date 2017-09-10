@@ -45,22 +45,22 @@ block content
                           document.getElementById('reg-form').style.display = 'flex';
                       }
                   form#auth-form(action='/auth', enctype='multipart/form-data', method='post')
-                      input(type='text', name='login', placeholder='ЛОГИН')
+                      input(type='text', name='login', placeholder='ЛОГИН', required)
                       br
-                      input(type='password', name='password', placeholder='ПАРОЛЬ')
+                      input(type='password', name='password', placeholder='ПАРОЛЬ', required)
                       br
                       input(type='submit', value='ВОЙТИ')
                   form#reg-form(action='/auth/new', enctype='multipart/form-data', method='post')
-                      input(type='email', name='email', placeholder='ПОЧТА')
+                      input(type='email', name='email', placeholder='ПОЧТА', required)
                       br
-                      input(type='text', name='login', placeholder='ЛОГИН')
+                      input(type='text', name='login', placeholder='ЛОГИН', required)
                       br
-                      input(type='password', name='password', placeholder='ПАРОЛЬ')
+                      input(type='password', name='password', placeholder='ПАРОЛЬ', required)
                       br
-                      input(type='text', name='name', placeholder='НАЗВАНИЕ КАНАЛА')
+                      input(type='text', name='name', placeholder='НАЗВАНИЕ КАНАЛА', required)
                       br
                       label
-                          input(type='file', name='image', accept='image/*', hidden)
+                          input(type='file', name='image', accept='image/*', hidden, required)
                           | ИЗОБРАЖЕНИЕ
                       br
                       input(type='submit', value='СОЗДАТЬ КАНАЛ')
