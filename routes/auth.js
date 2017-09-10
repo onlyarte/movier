@@ -13,7 +13,7 @@ router.post('/', function(req, res, next) {
         if(channel._password != req.body.password)
             return next(new Error('Wrong password'));
 
-        req.session.channel = channel;
+        req.session.channel = channel._id;
         res.redirect('/channel/' + channel._id);
     });
 });
@@ -81,14 +81,9 @@ router.post('/new', function(req, res, next){
     addList('Просмотренные');
     addList('Буду смотреть');
 
-    //save channel as session variable
-    channelapi.findById(channel.id, function(error, populated_channel){
-        if(error)
-            return next(error);
-
-        req.session.channel = populated_channel;
-        res.redirect('/channel/' + populated_channel._id);
-    });
+    //add session var
+    req.session.channel = populated_channel._id;
+    res.redirect('/channel/' + populated_channel._id);
 
 });
 

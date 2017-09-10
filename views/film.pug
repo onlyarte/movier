@@ -20,25 +20,25 @@ block content
         #left
             #menu-open
                 img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + poster + "')")
+            #image-background(style="background-image: url('" + film.poster + "')")
             #poster
-                #poster-caption= title
-                img(src=poster)
+                #poster-caption= film.title
+                img(src=film.poster)
         #right
             #film-info
-                span#film-id(hidden)= id
+                span#film-id(hidden)= film.id
                 #rate
-                    span#kp #{rating_kp}
+                    span#kp #{film.rating_kp}
                     | &nbsp;/ 10
                 h1#film-title
-                    |#{title} / #{title_original}
+                    |#{film.title} / #{film.title_original}
                 #short-info
-                    | #{year} | #{genre}
+                    | #{film.year} | #{film.genre}
 
-                p.description!= description
-                +getPPList(directors, 'Режиссер')(id='directors')
-                +getPPList(writers, 'Сценарий')(id='writers')
-                +getPPList(actors, 'В ролях')(id='actors')
+                p.description!= film.description
+                +getPPList(film.directors, 'Режиссер')(id='directors')
+                +getPPList(film.writers, 'Сценарий')(id='writers')
+                +getPPList(film.actors, 'В ролях')(id='actors')
 
             if channel
                 .list-group
