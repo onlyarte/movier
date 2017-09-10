@@ -11,7 +11,7 @@ mixin getPPList(arr, title)
                     | #{person}
 
 mixin getListGroupItem(icon, title)
-    .list-button(id!=attributes.id)
+    .list-button(onclick='changeState(#{attributes.id})')
         img(src=icon)
         span.button-title!= title
 
