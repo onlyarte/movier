@@ -36,7 +36,7 @@ router.post('/new', function(req, res, next){
         if(!error)
             return next(new Error('Login already exists'));
 
-        saveImage();
+        saveImageLocally();
     });
 
     //save image localy
