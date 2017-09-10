@@ -32,19 +32,23 @@ var remove = function(id, callback){
 }
 
 var addToList = function(listId, filmId, callback){
-    filmapi.add(filmId);
-    List.findOneAndUpdate(
-        { _id: listId },
-        { $addToSet: { '_films': filmId } },
-        { new: true }
-    ).populate('_films')
-    .exec(function(error, list){
+    filmapi.add(filmId, function(error, film){
         if(error)
             return callback(error, null);
-        if(!list)
-            return callback(new Error('List not found'), null);
 
-        callback(null, list);
+        List.findOneAndUpdate(
+            { _id: listId },
+            { $addToSet: { '_films': filmId } },
+            { new: true }
+        ).populate('_films')
+        .exec(function(error, list){
+            if(error)
+                return callback(error, null);
+            if(!list)
+                return callback(new Error('List not found'), null);
+
+            callback(null, list);
+        });
     });
 }
 
