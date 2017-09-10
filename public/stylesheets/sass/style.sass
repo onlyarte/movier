@@ -1,10 +1,21 @@
+$break: 600px
+$roboto: 'Roboto', sans-serif
+$megrim: 'Megrim', cursive
+
+@mixin respond-to($media)
+    @if $media == small
+        @media only screen and (max-width: $break) { @content; }
+    @else
+        @media only screen and (min-width: $break) { @content; }
+
 html
     font-family: sans-serif
     -webkit-text-size-adjust: 100%
     -ms-text-size-adjust: 100%
 body
     margin: 0
-    font-family: 'Open Sans', sans-serif
+    font-family: 'Istok Web', sans-serif
+    color: white
 article,
 aside,
 details,
@@ -23,6 +34,7 @@ summary
 a
   background-color: transparent
   text-decoration: none
+  color: white
 a:active,
 a:hover
   outline: 0
@@ -30,79 +42,234 @@ a:hover
 *:focus
     outline: none
 
-.g-signin2
-    visibility: hidden
-
-.logo
-    font-family: 'Megrim', cursive
-    font-size: 3em
+img
+    display: block
 
 .flex-container
     display: flex
-    align-items: center
-    justify-content: center
     flex-flow: row wrap
     #left
         position: relative
-        @media screen and (min-width: 600px)
+        overflow: hidden
+        background: black
+        @include respond-to(big)
             flex-basis: 40%
-        @media screen and (max-width: 600px)
+            height: 100vh
+        @include respond-to(small)
             flex-basis: 100%
-        .poster
-            padding: 0
-            img
-                display: block
-        @media screen and (min-width: 600px)
-            .poster:hover + .controlls, .controlls:hover
-                opacity: 1
-        .controlls
+            height: 60vh
+        #menu-open
             position: absolute
-            @media screen and (min-width: 600px)
-                top: 0
-                background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
-                opacity: 0
-            @media screen and (max-width: 600px)
-                bottom: 0
-                background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))
+            top: 20px
+            left: 20px
+            z-index: 2
+            img
+                width: 50px
+        #image-background, #poster, #list
+            position: absolute
+        #image-background
+            filter: blur(15px)
+            top: -30px
+            left: -30px
+            width: 45vw
+            height: 110vh
+            opacity: 0.7
+            background-size: cover
+            background-position: center center
+            background-repeat: no-repeat
+        #list
+            z-index: 1
             left: 0
-            right: 0
-            height: 300px
-            padding: 10px 100px 10px 100px
-            transition: opacity 1s linear
+            @include respond-to(small)
+                width: 100vw
+                top: 10vh
+            @include respond-to(big)
+                width: 40vw
+                top: 8vh
             display: flex
+            flex-direction: column
+            align-items: center
+            #list-title
+                text-transform: uppercase
+                font-size: 1.3em
+                font-family: $roboto
+            #list-owner
+                margin: 10px 0px 40px 0px
+                @include respond-to(small)
+                    margin-bottom: 20px
+                font-size: 1.2em
+                font-family: $roboto
+            #slider
+                width: 100%
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                align-items: flex-start
+                overflow-x: auto
+                overflow-y: hidden
+                margin-bottom: 20px
+                .list-item
+                    @include respond-to(small)
+                        width: 60vw
+                    @include respond-to(big)
+                        width: 24vw
+                    margin: 0px 15px
+                    img
+                        height: 40vh
+                    .item-title
+                        margin: 15px 0px
+                        font-size: 1.2em
+                        font-family: $roboto
+                        text-align: center
+            #slider::-webkit-scrollbar-track
+              	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+              	border-radius: 10px
+              	background-color: #F5F5F5
+            #slider::-webkit-scrollbar
+                width: 12px
+            #slider::-webkit-scrollbar-thumb
+              	border-radius: 10px
+              	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3)
+              	background-color: #555
+            .save-button
+                display: inline-flex
+                align-items: center
+                height: 50px
+                margin: 10px
+                border-radius: 50px
+                border: 5px solid white
+                padding: 0px 20px
+
+        #poster
+            z-index: 1
+            top: 8vh
+            left: 8vw
+            img, #poster-caption
+                @include respond-to(big)
+                    width: 24vw
+                @include respond-to(small)
+                    width: 84vw
+            #poster-caption
+                margin: 30px 0px
+                text-align: center
+                text-transform: uppercase
+                font-size: 1.3em
+                font-family: 'Roboto', sans-serif
+
+
+    #right
+        background: black
+        @include respond-to(big)
+            flex-basis: 60%
+            height: 100vh
+            overflow-y: auto
+        @include respond-to(small)
+            flex-basis: 100%
+        #film-info
+            padding: 10px 40px
+            #rate
+                float: right
+                font-size: 2em
+                line-height: 3em
+                #kp
+                    font-size: 1.5em
+            #film-title
+                @include respond-to(small)
+                    clear: both
+                    padding-top: 20px
+                font-family: 'Roboto', sans-serif
+                font-weight: 400
+            #short-info
+                display: block
+                font-size: 1.2em
+                margin-bottom: 30px
+            .pp-row
+                display: flex
+                flex-flow: row wrap
+                margin-bottom: 12px
+                font-size: 1.1em
+                .pp-title
+                    flex-basis: 30%
+                .pp-list
+                    flex-basis: 70%
+        .list-group
+            width: 100%
+            @include respond-to(big)
+                display: flex
+                flex-direction: row
+                flex-wrap: wrap
+                justify-content: center
+            @include respond-to(small)
+                display: inline-flex
+                flex-direction: column
+                align-items: center
+            .list-button
+                display: inline-flex
+                align-items: center
+                height: 50px
+                margin: 10px
+                border-radius: 50px
+                border: 5px solid white
+                opacity: 0.5
+                img
+                    display: inline-block
+                    max-width: 40px
+                    min-width: 40px
+                    max-height: 40px
+                    padding: 0px 10px 0px 20px
+                .button-title
+                    padding-right: 20px
+        #index-wrapper
+            display: flex
+            flex-direction: column
             align-items: center
             justify-content: center
-    #right
-        @media screen and (min-width: 600px)
-            flex-basis: 60%
-        @media screen and (max-width: 600px)
-            flex-basis: 100%
-        .wrapper
-            padding: 30px
-            .top-bar
-                display: flex
-                align-items: center
-                justify-content: space-between
+            width: 100%
+            height: 100vh
+            #info
+                text-align: center
+                #title
+                    margin: 0
+                    font-family: $megrim
+                    font-size: 4em
+                #subtitle
+                    font-size: 1.5em
+            #auth
+                #caption
+                    text-align: center
+                    margin: 20px 0px
                 form
-                    @media screen and (min-width: 600px)
-                        flex-basis: 85%
-                    @media screen and (max-width: 600px)
-                        flex-basis: 70%
-                    .search
-                        width: 100%
+                    width: 200px
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    input
                         height: 50px
-                        border: 0
-                        border-bottom: 1px solid black
-                        padding: 7px
-                        font-size: 32px
-                .menu-icon
-                    right: 0
-                    img
-                        display: block
-                        height: 64px
-            .info
-                .description
-                    text-align: justify
+                        border-radius: 50px
+                        color: white
+                        &[type='text'], &[type='email'], &[type='password']
+                            width: 200px
+                            background-color: #3E3E3E
+                            border: 0
+                            padding: 0px 20px
+                        &[type='submit']
+                            background-color: black
+                            border: 5px solid white
+                            padding: 0px 20px
+                    label
+                        padding: 0px 15px
+                        height: 30px
+                        width: 120px
+                        text-align: center
+                        border: 1px solid white
+                        border-radius: 30px
+                        background-color: #3E3E3E
+                        line-height: 30px
+                        font-size: 0.8em
+                        color: gray
+                #reg-form
+                    display: none
+
 
 #menu
     position: fixed
@@ -121,7 +288,7 @@ a:hover
         position: fixed
         right: 40px
         top: 30px
-    #menu-content
+    .menu-content
         height: 100%
         display: flex
         align-items: center

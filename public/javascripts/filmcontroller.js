@@ -1,6 +1,24 @@
 var filmid = document.getElementById('film-id').textContent;
 
+document.onload = function(){
+    var listbuttons = document.getElementsByClassName('list-button');
+
+    for(var i = 0; i < listbuttons.length; i++){
+        if(listbuttons[i].id && containsFilm(listbuttons[i].id)){
+            listbuttons[i].style.opacity = 1;
+        }
+    }
+}
+
 function changeState(listid){
+    if(containsFilm(listid)){
+        removeFromList(listid);
+    } else {
+        addToList(listid);
+    }
+}
+
+function containsFilm(listid){
     var list = channel._lists.find(function(element){
         return element._id == listid;
     });
@@ -8,9 +26,9 @@ function changeState(listid){
         return element._id == filmid;
     });
     if(film){
-        removeFromList(listid);
+        return true;
     } else {
-        addToList(listid);
+        return false;
     }
 }
 

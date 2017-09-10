@@ -296,7 +296,8 @@ img {
         height: 50px;
         margin: 10px;
         border-radius: 50px;
-        border: 5px solid white; }
+        border: 5px solid white;
+        opacity: 0.5; }
         .flex-container #right .list-group .list-button img {
           display: inline-block;
           max-width: 40px;
