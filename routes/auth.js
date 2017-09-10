@@ -82,8 +82,8 @@ router.post('/new', function(req, res, next){
     addList('Буду смотреть');
 
     //add session var
-    req.session.channel = populated_channel._id;
-    res.redirect('/channel/' + populated_channel._id);
+    req.session.channel = channel.id;
+    res.redirect('/channel/' + channel.id);
 
 });
 
