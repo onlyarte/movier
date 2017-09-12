@@ -11,7 +11,7 @@ mixin getPPList(arr, title)
                     | #{person}
 
 mixin getListGroupItem(icon, title)
-    .list-button(id!=attributes.id)
+    .list-button(id!=attributes.id, onclick='changeState(this.id)')
         img(src=icon)
         span.button-title!= title
 
@@ -20,10 +20,11 @@ block content
         #left
             #menu-open
                 img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + 'https://film-base.herokuapp.com' + _films[0]._poster + "')")
+            #image-background(style="background-image: url('" + _films[0]._poster + "')")
             #list
                 #list-title= _name
-                #list-owner= _owner._name
+                #list-owner=
+                    a(href= '/channel/' + _owner._id)= _owner._name
                 #slider
                     each film in _films
                         a.list-item(href='/film/' + film._id)
@@ -36,7 +37,7 @@ block content
         #right
             #film-info
                 #rate
-                    span#kp 0.0
+                    span#kp= _films[0]._rating_kp
                     | &nbsp;/ 10
                 h1#film-title
                     |#{_films[0]._title} / #{_films[0]._title_original}

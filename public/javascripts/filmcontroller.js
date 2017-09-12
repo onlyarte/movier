@@ -1,4 +1,8 @@
 window.onload = function(){
+    updateOpacity();
+}
+
+function updateOpacity(){
     let listbuttons = document.getElementsByClassName('list-button');
 
     for(let i = 0; i < listbuttons.length; i++){
@@ -14,6 +18,7 @@ function changeState(listid){
     } else {
         addToList(listid);
     }
+    updateOpacity();
 }
 
 function containsFilm(listid){
