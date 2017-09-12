@@ -36,15 +36,16 @@ let addToList = function(listId, filmId, callback){
         if(error)
             return callback(error, null);
 
-
         List.findOneAndUpdate(
             { _id: listId },
             { $addToSet: { '_films': filmId } },
             { new: true }
         ).populate('_films')
         .exec(function(error, list){
-            if(error)
+            if(error){
+                console.log('db');
                 return callback(error, null);
+            }
             if(!list)
                 return callback(new Error('List not found'), null);
 
