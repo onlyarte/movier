@@ -60,7 +60,7 @@ let removeFromList = function(listId, filmId, callback){
         { new: true }
     ).populate('_films')
     .exec(function(error, list){
-        if(err)
+        if(error)
             return callback(error, null);
         if(!list)
             return callback(new Error('List not found'), null);
