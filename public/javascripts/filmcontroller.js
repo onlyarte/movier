@@ -1,4 +1,4 @@
-document.onload = function(){
+window.onload = function(){
     let listbuttons = document.getElementsByClassName('list-button');
 
     for(let i = 0; i < listbuttons.length; i++){
