@@ -77,26 +77,38 @@ router.post('/new', function(req, res, next){
     //create and add defalt lists to channel
     function addDefaultLists(){
         let addList = function(name){
-            listapi.add({
-                owner: channel.id,
-                is_open: false,
-                name: name,
-                films: []
-            }, function(error, list){
-                if(error)
-                    return next(error);
-
-                channelapi.addList(channel.id, list._id, function(error, channel){
+            return new Promise(function(resolve, reject){
+                listapi.add({
+                    owner: channel.id,
+                    is_open: false,
+                    name: name,
+                    films: []
+                }, function(error, list){
                     if(error)
-                        return next(error);
+                        reject(error);
+
+                    channelapi.addList(channel.id, list._id, function(error, channel){
+                        if(error)
+                            reject(error);
+                        resolve(channel);
+                    });
                 });
             });
-        };
-        addList('Любимые');
-        addList('Просмотренные');
-        addList('Буду смотреть');
 
-        redirect();
+        };
+        addList('Любимые')
+            .then(function(response){
+                return addList('Просмотренные');
+            })
+            .then(function(response){
+                return addList('Буду смотреть');
+            })
+            .then(function(response){
+                redirect();
+            })
+            .catch(function(error){
+                next(error);
+            });
     }
 
     //save session var and redirect to channel
