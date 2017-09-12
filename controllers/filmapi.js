@@ -37,6 +37,8 @@ let findByTitle = function(title, callback){
 let add = function(filmId, callback){
     console.log('add film called');
     findById(filmId, function(error, film){
+        if(error)
+            return callback(error, null);
         if(!error)
             return callback(null, film);
 
