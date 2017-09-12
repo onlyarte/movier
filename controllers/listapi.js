@@ -33,8 +33,10 @@ let remove = function(id, callback){
 
 let addToList = function(listId, filmId, callback){
     filmapi.add(filmId, function(error, film){
-        if(error)
+        if(error){
+            console.log('film not added');
             return callback(error, null);
+        }
 
         List.findOneAndUpdate(
             { _id: listId },
@@ -42,10 +44,8 @@ let addToList = function(listId, filmId, callback){
             { new: true }
         ).populate('_films')
         .exec(function(error, list){
-            if(error){
-                console.log('db');
+            if(error)
                 return callback(error, null);
-            }
             if(!list)
                 return callback(new Error('List not found'), null);
 
