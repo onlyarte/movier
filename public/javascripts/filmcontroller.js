@@ -20,6 +20,8 @@ function containsFilm(listid){
     let list = channel._lists.find(function(element){
         return element._id == listid;
     });
+    if(!list)
+        return false;
     let film = list._films.find(function(element){
         return element._id == filmid;
     });
