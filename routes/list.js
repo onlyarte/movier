@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var listapi = require('../controllers/listapi');
-var channelapi = require('../controllers/channelapi');
+const express = require('express');
+const router = express.Router();
+const listapi = require('../controllers/listapi');
+const channelapi = require('../controllers/channelapi');
 
 router.get('/:id', function(req, res, next) {
     listapi.findById(req.params.id, function(error, list){

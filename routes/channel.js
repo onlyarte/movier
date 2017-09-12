@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var channelapi = require('../controllers/channelapi');
+const express = require('express');
+const router = express.Router();
+const channelapi = require('../controllers/channelapi');
 
 router.get('/:id', function(req, res, next) {
     channelapi.findById(req.params.id, function(error, channel){

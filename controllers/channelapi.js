@@ -1,7 +1,7 @@
-var listapi = require('./listapi');
-var Channel = require('../models/channel');
+const listapi = require('./listapi');
+const Channel = require('../models/channel');
 
-var findById = function(id, callback){
+let findById = function(id, callback){
     Channel.findOne({ _id: id })
     .populate('_lists')
     .populate({
@@ -28,7 +28,7 @@ var findById = function(id, callback){
     });
 }
 
-var add = function(channel, callback){
+let add = function(channel, callback){
     new Channel({
         _id: channel.id,
         _email: channel.email,
@@ -40,14 +40,14 @@ var add = function(channel, callback){
     }).save(callback);
 }
 
-var remove = function(id, callback){
+let remove = function(id, callback){
     Channel.remove({ _id: id }, function(error){
         if(error) return callback(error);
         callback(null);
     });
 }
 
-var addList = function(id, listid, callback){
+let addList = function(id, listid, callback){
     Channel.findByIdAndUpdate(
         id,
         { $push: { '_lists': listid } },
@@ -77,7 +77,7 @@ var addList = function(id, listid, callback){
     });
 }
 
-var saveList = function(id, listid, callback){
+let saveList = function(id, listid, callback){
     Channel.findByIdAndUpdate(
         id,
         { $push: { '_saved_lists': listid } },

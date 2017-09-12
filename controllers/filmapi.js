@@ -36,7 +36,8 @@ let findByTitle = function(title, callback){
 let add = function(filmId, callback){
     findById(filmId, function(error, film){
         if(!error)
-            return callback(film);
+            return callback(null, film);
+
 
         getFromKP(filmId, function(error, filmKP){
             if(error)
@@ -57,14 +58,10 @@ let add = function(filmId, callback){
                 _rating_imdb: filmKP.rating_imdb
             });
 
-            console.log(new_film);
-
             cloudinary.v2.uploader.upload(filmKP.poster_orig,
                 function(error, result) {
-                    if(error){
-                        console.log("cannot upload poster");
+                    if(error)
                         return next(error);
-                    }
 
                     new_film._poster = result.url;
                     new_film.save();

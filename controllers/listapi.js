@@ -1,7 +1,7 @@
-var filmapi = require('./filmapi');
-var List = require('../models/list');
+const filmapi = require('./filmapi');
+const List = require('../models/list');
 
-var findById = function(id, callback){
+let findById = function(id, callback){
     List.findOne({ _id: id })
     .populate('_owner')
     .populate('_films')
@@ -15,7 +15,7 @@ var findById = function(id, callback){
     });
 }
 
-var add = function(list, callback){
+let add = function(list, callback){
     new List({
         _owner: list.owner,
         _is_open: list.is_open,
@@ -24,14 +24,14 @@ var add = function(list, callback){
     }).save(callback);
 }
 
-var remove = function(id, callback){
+let remove = function(id, callback){
     List.remove({ _id: id }, function(error){
         if(error) return callback(error);
         callback(null);
     });
 }
 
-var addToList = function(listId, filmId, callback){
+let addToList = function(listId, filmId, callback){
     filmapi.add(filmId, function(error, film){
         if(error)
             return callback(error, null);
@@ -53,7 +53,7 @@ var addToList = function(listId, filmId, callback){
     });
 }
 
-var removeFromList = function(listId, filmId, callback){
+let removeFromList = function(listId, filmId, callback){
     List.findOneAndUpdate(
         { _id: listId },
         { $pull: { '_films': filmId } },
