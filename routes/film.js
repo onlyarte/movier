@@ -24,8 +24,11 @@ router.get('/:id', function(req, res, next) {
 //add film to list
 router.post('/:id/tolist/:listid', function(req, res, next) {
     console.log('req tolist');
-    listapi.findById(req.params.listid, function(error, list){
-        res.send(list);
+    listapi.addToList(req.params.listid, req.params.id, function(error, list){
+        if(error)
+            return next(error);
+
+        res.send('okay');
     });
 });
 
