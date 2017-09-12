@@ -59,15 +59,10 @@ let add = function(filmId, callback){
                 _rating_imdb: filmKP.rating_imdb
             });
 
-            cloudinary.v2.uploader.upload(filmKP.poster_orig,
-                function(error, result) {
-                    if(error)
-                        return next(error);
 
-                    new_film._poster = result.url;
+                    new_film._poster = filmKP.poster_orig;
                     new_film.save();
                     return callback(null, new_film);
-            });
         });
     });
 };
