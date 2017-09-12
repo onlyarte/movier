@@ -57,10 +57,14 @@ let add = function(filmId, callback){
                 _rating_imdb: filmKP.rating_imdb
             });
 
+            console.log(new_film);
+
             cloudinary.v2.uploader.upload(filmKP.poster_orig,
                 function(error, result) {
-                    if(error)
+                    if(error){
+                        console.log("cannot upload poster");
                         return next(error);
+                    }
 
                     new_film._poster = result.url;
                     new_film.save();
