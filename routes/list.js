@@ -8,8 +8,8 @@ router.get('/:id', function(req, res, next) {
         if(error)
             return next(error);
 
-        //res.render('list', list);
-        res.send(list);
+        res.render('list', list);
+        //res.send(list);
     });
 });
 
