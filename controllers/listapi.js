@@ -32,6 +32,7 @@ let remove = function(id, callback){
 }
 
 let addToList = function(listId, filmId, callback){
+    console.log('addtolist called');
     filmapi.add(filmId, function(error, film){
         if(error){
             console.log('film not added');

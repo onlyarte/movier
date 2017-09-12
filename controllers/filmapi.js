@@ -35,10 +35,12 @@ let findByTitle = function(title, callback){
 };
 
 let add = function(filmId, callback){
+    console.log('add film called');
     findById(filmId, function(error, film){
         if(!error)
             return callback(null, film);
 
+        console.log('film not exists');
 
         getFromKP(filmId, function(error, filmKP){
             if(error)
@@ -59,15 +61,21 @@ let add = function(filmId, callback){
                 _rating_imdb: filmKP.rating_imdb
             });
 
+            cloudinary.v2.uploader.upload(filmKP.poster_orig,
+                function(error, result) {
+                    if(error)
+                        return next(error);
 
-                    new_film._poster = filmKP.poster_orig;
+                    new_film._poster = result.url;
                     new_film.save();
                     return callback(null, new_film);
+            });
         });
     });
 };
 
 let getFromKP = function(filmId, callback){
+    console.log('kp req');
     const path = 'api/kinopoisk.json?id=' + filmId + '&token=037313259a17be837be3bd04a51bf678';
     client.get(path, function(error, kpres, body) {
         if(error)
