@@ -23,13 +23,12 @@ router.get('/:id', function(req, res, next) {
 
 //add film to list
 router.post('/:id/tolist/:listid', function(req, res, next) {
-    res.send('okay');
-    /*listapi.addToList(req.params.listid, req.params.id, function(error, list){
+    listapi.addToList(req.params.listid, req.params.id, function(error, list){
         if(error)
             return next(error);
 
-        res.send(list);
-    });*/
+        res.send('okay');
+    });
 });
 
 //remove film from list
