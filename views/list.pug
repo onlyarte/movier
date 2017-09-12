@@ -24,7 +24,7 @@ block content
             #list
                 #list-title= _name
                 #list-owner=
-                    a(href= '/channel/' + _owner._id)= _owner._name
+                    a(href= '/channel/' + _owner._id) _owner._name
                 #slider
                     each film in _films
                         a.list-item(href='/film/' + film._id)
