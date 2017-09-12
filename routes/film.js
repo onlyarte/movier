@@ -27,7 +27,7 @@ router.post('/:id/tolist/:listid', function(req, res, next) {
         if(error)
             return next(error);
 
-        res.send(list);
+        res.redirect('/');
     });
 });
 
