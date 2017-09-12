@@ -1,7 +1,4 @@
-let filmid;
-
 document.onload = function(){
-    filmid = document.getElementById('film-id').textContent;
     let listbuttons = document.getElementsByClassName('list-button');
 
     for(let i = 0; i < listbuttons.length; i++){

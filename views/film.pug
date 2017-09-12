@@ -20,6 +20,7 @@ block content
         include ../public/javascripts/filmcontroller.js
     script.
         var channel = !{JSON.stringify(channel)}
+        var filmid = !{film.id}
     .flex-container
         #left
             #menu-open
@@ -30,7 +31,6 @@ block content
                 img(src=film.poster)
         #right
             #film-info
-                span#film-id(hidden)= film.id
                 #rate
                     span#kp #{film.rating_kp}
                     | &nbsp;/ 10
