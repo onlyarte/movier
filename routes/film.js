@@ -25,7 +25,7 @@ router.get('/:id', function(req, res, next) {
 router.post('/:id/tolist/:listid', function(req, res, next) {
     listapi.addToList(req.params.listid, req.params.id, function(error, list){
         if(error)
-            console.log(error);
+            return next(error);
 
         res.send(list);
     });

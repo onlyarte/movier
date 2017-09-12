@@ -33,8 +33,11 @@ var remove = function(id, callback){
 
 var addToList = function(listId, filmId, callback){
     filmapi.add(filmId, function(error, film){
-        if(error)
+        if(error){
+            console.log('cannot add film to db');
             return callback(error, null);
+        }
+
 
         List.findOneAndUpdate(
             { _id: listId },

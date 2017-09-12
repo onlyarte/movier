@@ -59,10 +59,8 @@ let add = function(filmId, callback){
 
             cloudinary.v2.uploader.upload(filmKP.poster_orig,
                 function(error, result) {
-                    if(error){
-                        console.log(error);
+                    if(error)
                         return next(error);
-                    }
 
                     new_film._poster = result.url;
                     new_film.save();
@@ -137,7 +135,7 @@ let getPoster = function(original_url, callback){
     if(fs.existsSync(path))
         return callback(copy_url);
 
-    let file = fs.createWriteStream(path);
+    var file = fs.createWriteStream(path);
     file.on('open', function(fd) {
         https.get(original_url, function(response) {
             response.pipe(file);
