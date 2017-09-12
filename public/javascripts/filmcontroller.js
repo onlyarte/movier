@@ -1,9 +1,10 @@
-var filmid = document.getElementById('film-id').textContent;
+let filmid;
 
 document.onload = function(){
-    var listbuttons = document.getElementsByClassName('list-button');
+    filmid = document.getElementById('film-id').textContent;
+    let listbuttons = document.getElementsByClassName('list-button');
 
-    for(var i = 0; i < listbuttons.length; i++){
+    for(let i = 0; i < listbuttons.length; i++){
         if(listbuttons[i].id && containsFilm(listbuttons[i].id)){
             listbuttons[i].style.opacity = 1;
         }
@@ -19,10 +20,10 @@ function changeState(listid){
 }
 
 function containsFilm(listid){
-    var list = channel._lists.find(function(element){
+    let list = channel._lists.find(function(element){
         return element._id == listid;
     });
-    var film = list._films.find(function(element){
+    let film = list._films.find(function(element){
         return element._id == filmid;
     });
     if(film){
@@ -43,7 +44,7 @@ function removeFromList(listid){
 
 //req is a url containing parameters
 function sendUpdateRequest(req){
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open('POST', req);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
