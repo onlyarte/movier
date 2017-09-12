@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var channelapi = require('../controllers/channelapi');
-var listapi = require('../controllers/listapi');
-var fileUpload = require('express-fileupload');
-var cloudinary = require('cloudinary');
+const express = require('express');
+const router = express.Router();
+const channelapi = require('../controllers/channelapi');
+const listapi = require('../controllers/listapi');
+const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary');
 
 //log in
 router.post('/', function(req, res, next) {
@@ -20,8 +20,7 @@ router.post('/', function(req, res, next) {
 
 //register
 router.post('/new', function(req, res, next){
-
-    var channel = {
+    let channel = {
         id: req.body.login,
         email: req.body.email,
         password: req.body.password,
@@ -39,8 +38,8 @@ router.post('/new', function(req, res, next){
         saveImageLocally();
     });
 
-    var path = './public/images/temp/' + channel.id + req.files.image.name;
-    var file = req.files.image;
+    const path = './public/images/temp/' + channel.id + req.files.image.name;
+    let file = req.files.image;
 
     //save image localy
     function saveImageLocally(){
@@ -77,7 +76,7 @@ router.post('/new', function(req, res, next){
 
     //create and add defalt lists to channel
     function addDefaultLists(){
-        var addList = function(name){
+        let addList = function(name){
             listapi.add({
                 owner: channel.id,
                 is_open: false,

@@ -1,9 +1,9 @@
 // The Film model
 
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var filmSchema = new Schema({
+let filmSchema = new Schema({
     _id: Number,
     _title: String,
     _title_original: String,
@@ -16,6 +16,8 @@ var filmSchema = new Schema({
     _writers: [String],
     _actors: [String],
     _description: String
+    _rating_kp: Number,
+    _rating_imdb: Number
 });
 
 module.exports = mongoose.model('Film', filmSchema);

@@ -1,9 +1,9 @@
 // The List model
 
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var listSchema = new Schema({
+let listSchema = new Schema({
     _owner: { type: String, ref: 'Channel' },
     _is_open: Boolean,
     _name: String,

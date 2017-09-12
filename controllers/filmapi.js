@@ -1,11 +1,11 @@
-var request = require('request-json');
-var client = request.createClient('http://getmovie.cc/');
-var https = require('https');
-var fs = require('fs');
+const request = require('request-json');
+const client = request.createClient('http://getmovie.cc/');
+const https = require('https');
+const fs = require('fs');
 
-var Film = require('../models/film');
+const Film = require('../models/film');
 
-var findById = function(id, callback){
+let findById = function(id, callback){
     Film.findOne({_id: id}, function(error, film) {
         if(error)
             return callback(error, null);
@@ -19,12 +19,12 @@ var findById = function(id, callback){
     });
 };
 
-var findByTitle = function(title, callback){
+let findByTitle = function(title, callback){
     Film.find({ $or: [{_title: title}, {_title_original : title}]}, function(error, films) {
         if(error)
             return callback(error, null);
 
-        for(var i in films){
+        for(let i in films){
             getPoster(films[i]._poster, function(poster_url){
                 films[i]._poster = poster_url;
             });
@@ -33,7 +33,7 @@ var findByTitle = function(title, callback){
     });
 };
 
-var add = function(filmId, callback){
+let add = function(filmId, callback){
     findById(filmId, function(error, film){
         if(!error)
             return callback(film);
@@ -42,33 +42,41 @@ var add = function(filmId, callback){
             if(error)
                 return callback(error, null);
 
-            var new_film = new Film({
+            let new_film = new Film({
                 _id: filmKP.id,
                 _title: filmKP.title,
                 _title_original: filmKP.title_original,
-                _poster: filmKP.poster_orig,
                 _year: filmKP.year,
                 _country: filmKP.country,
                 _genre: filmKP.genre,
                 _directors: filmKP.directors,
                 _writers: filmKP.writers,
                 _actors: filmKP.actors,
-                _description: filmKP.description
+                _description: filmKP.description,
+                _rating_kp: filmKP.rating_kp,
+                _rating_imdb: filmKP.rating_imdb
             });
-            new_film.save();
 
-            return callback(null, new_film);
+            cloudinary.v2.uploader.upload(filmKP.poster_orig,
+                function(error, result) {
+                    if(error)
+                        return next(error);
+
+                    new_film._poster = result.url;
+                    new_film.save();
+                    return callback(null, new_film);
+            });
         });
     });
 };
 
-var getFromKP = function(filmId, callback){
-    var path = 'api/kinopoisk.json?id=' + filmId + '&token=037313259a17be837be3bd04a51bf678';
+let getFromKP = function(filmId, callback){
+    const path = 'api/kinopoisk.json?id=' + filmId + '&token=037313259a17be837be3bd04a51bf678';
     client.get(path, function(error, kpres, body) {
         if(error)
             return callback(error, null);
 
-        var filmObj = JSON.parse(kpres.body);
+        let filmObj = JSON.parse(kpres.body);
 
         if(!filmObj.name_ru && !filmObj.name_en)
             return callback(new Error('Film not found'), null);
@@ -77,7 +85,7 @@ var getFromKP = function(filmId, callback){
             function personToString(input){
                 if(!input)
                     return;
-                var people = [];
+                let people = [];
                 function addPerson(person, index, arr){
                     people.push(person.name_person_ru);
                 }
@@ -85,7 +93,7 @@ var getFromKP = function(filmId, callback){
                 return people;
             }
 
-            var film = {
+            let film = {
                 id: filmObj.id,
                 title: filmObj.name_ru,
                 title_original: filmObj.name_en,
@@ -116,18 +124,18 @@ var getFromKP = function(filmId, callback){
     });
 };
 
-var getPoster = function getPoster(original_url, callback){
+let getPoster = function(original_url, callback){
     if(!original_url)
         return callback('#not_found');
 
-    var file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
-    var path = './public/images/temp/' + file_name;
-    var copy_url = '/images/temp/' + file_name;
+    const file_name = original_url.replace(/[^\w\s]/gi, '') + '.jpg';
+    const path = './public/images/temp/' + file_name;
+    const copy_url = '/images/temp/' + file_name;
 
     if(fs.existsSync(path))
         return callback(copy_url);
 
-    var file = fs.createWriteStream(path);
+    let file = fs.createWriteStream(path);
     file.on('open', function(fd) {
         https.get(original_url, function(response) {
             response.pipe(file);

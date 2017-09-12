@@ -1,9 +1,9 @@
 // The Channel model
 
-var mongoose = require('mongoose'),
+const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var channelSchema = new Schema({
+let channelSchema = new Schema({
     _id: String,
     _email: String, //for access recovering
     _password: String,
