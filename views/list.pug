@@ -23,8 +23,8 @@ block content
             #image-background(style="background-image: url('" + _films[0]._poster + "')")
             #list
                 #list-title= _name
-                #list-owner=
-                    a(href= '/channel/' + _owner._id) _owner._name
+                #list-owner
+                    a(href= '/channel/' + _owner._id)= _owner._name
                 #slider
                     each film in _films
                         a.list-item(href='/film/' + film._id)
