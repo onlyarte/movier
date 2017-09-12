@@ -15,7 +15,7 @@ let filmSchema = new Schema({
     _directors: [String],
     _writers: [String],
     _actors: [String],
-    _description: String
+    _description: String,
     _rating_kp: Number,
     _rating_imdb: Number
 });
