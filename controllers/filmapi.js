@@ -35,41 +35,33 @@ let findByTitle = function(title, callback){
 };
 
 let add = function(filmId, callback){
-    console.log('add film called');
-    findById(filmId, function(error, film){
-        if(!error)
-            return callback(null, film);
+    getFromKP(filmId, function(error, filmKP){
+        if(error)
+            return callback(error, null);
 
-        console.log('film not exists');
+        let new_film = new Film({
+            _id: filmKP.id,
+            _title: filmKP.title,
+            _title_original: filmKP.title_original,
+            _year: filmKP.year,
+            _country: filmKP.country,
+            _genre: filmKP.genre,
+            _directors: filmKP.directors,
+            _writers: filmKP.writers,
+            _actors: filmKP.actors,
+            _description: filmKP.description,
+            _rating_kp: filmKP.rating_kp,
+            _rating_imdb: filmKP.rating_imdb
+        });
 
-        getFromKP(filmId, function(error, filmKP){
-            if(error)
-                return callback(error, null);
+        cloudinary.v2.uploader.upload(filmKP.poster_orig,
+            function(error, result) {
+                if(error)
+                    return next(error);
 
-            let new_film = new Film({
-                _id: filmKP.id,
-                _title: filmKP.title,
-                _title_original: filmKP.title_original,
-                _year: filmKP.year,
-                _country: filmKP.country,
-                _genre: filmKP.genre,
-                _directors: filmKP.directors,
-                _writers: filmKP.writers,
-                _actors: filmKP.actors,
-                _description: filmKP.description,
-                _rating_kp: filmKP.rating_kp,
-                _rating_imdb: filmKP.rating_imdb
-            });
-
-            cloudinary.v2.uploader.upload(filmKP.poster_orig,
-                function(error, result) {
-                    if(error)
-                        return next(error);
-
-                    new_film._poster = result.url;
-                    new_film.save();
-                    return callback(null, new_film);
-            });
+                new_film._poster = result.url;
+                new_film.save();
+                return callback(null, new_film);
         });
     });
 };
