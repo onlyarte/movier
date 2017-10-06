@@ -30,7 +30,7 @@ block content
                     h1.block-title Мои коллекции
                     .list-items
                         each list in channel._lists
-                            .list-item
+                            a.list-item(href='/list/' + list._id)
                                 each film, index in list._films
                                     if index == 0
                                         img(src=film._poster)
