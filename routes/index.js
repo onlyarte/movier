@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const channelapi = require('../controllers/channelapi');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
