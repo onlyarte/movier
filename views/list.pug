@@ -54,5 +54,6 @@ block content
                         .list-button(id!=list._id, onclick='changeState(this.id)')
                             span.button-title!= list._name
                     form
-                        input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
                         input(type='text', name='filmid', value=list._films[0]._id)
+                        input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
+                        input(type='submit', hidden)

@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
         channelapi.findById(req.session.channel, function(error, channel){
             if(error)
                 next(error);
-            channel.password = null;
+            channel._password = null;
             res.render('index', { title: 'MOVIER', authch: channel });
         });
     } else {

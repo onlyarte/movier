@@ -12,7 +12,7 @@ router.get('/:id', function(req, res, next) {
             channelapi.findById(req.session.channel, function(error, channel){
                 if(error)
                     next(error);
-                channel.password = null;
+                channel._password = null;
                 res.render('list', { list: list, authch: channel});
             });
         } else {
