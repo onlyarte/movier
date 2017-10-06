@@ -46,4 +46,4 @@ block content
                             span.button-title!= list._name
                     form(action='/list', method='post')
                         input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
-                        input(type='text', name='filmid', value=film.id)
+                        input(type='text', name='filmid', value=film.id, hidden)
