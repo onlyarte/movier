@@ -7,9 +7,16 @@ router.get('/:id', function(req, res, next) {
     listapi.findById(req.params.id, function(error, list){
         if(error)
             return next(error);
-
-        res.render('list', list);
-        //res.send(list);
+            
+        if(req.session.channel){
+            channelapi.findById(req.session.channel, function(error, channel){
+                if(error)
+                    next(error);
+                res.render('list', { list: list, authch: channel});
+            });
+        } else {
+            res.render('list', { list : list });
+        }
     });
 });
 

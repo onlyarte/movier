@@ -19,7 +19,7 @@ block content
     script
         include ../public/javascripts/filmcontroller.js
     script.
-        var channel = !{JSON.stringify(channel)};
+        var channel = !{JSON.stringify(authch)};
         var filmid = !{film.id};
     .flex-container
         #left
@@ -44,9 +44,9 @@ block content
                 +getPPList(film.writers, 'Сценарий')(id='writers')
                 +getPPList(film.actors, 'В ролях')(id='actors')
 
-            if channel
+            if authch
                 .list-group
-                    each list in channel._lists
+                    each list in authch._lists
                         if list._name == 'Любимые'
                             +getListGroupItem('/images/icons/heart.png', list._name)(id=list._id)
                         else if list._name == 'Просмотренные'

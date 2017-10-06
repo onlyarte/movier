@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    .flex-container
+        #left.custom-sized-left-user
+            #menu-open
+                img(src='/images/icons/menu.png')
+            #image-background(style="background-image: url('" + channel._image + "')")
+
+            #user
+                img(src=channel._image)
+                #name= channel._name
+                #desc
+                #stat
+                    .stat-item
+                        .num 178
+                        .stat-desc фильмов
+                    .stat-item
+                        .num 17
+                        .stat-desc списков
+                    .stat-item
+                        .num 30
+                        .stat-desc читателей
+                #edit-button.button
+                    span.button-title(id=channel._id) Редактировать
+
+        #right
+            #user-wrapper
+                .lists-block
+                    h1.block-title Мои коллекции
+                    .list-items
+                        each list in channel._lists
+                            .list-item
+                                each film, index in list._films
+                                    if index == 0
+                                        img(src=film._poster)
+                                span.list-title=list._name
+                .lists-block
+                    h1.block-title Сохраненные
+                    .list-items
+                        each list in channel._saved_lists
+                            .list-item
+                                each film, index in list._films
+                                    if index == 0
+                                        img(src=film._poster)
+                                span.list-title=list._name

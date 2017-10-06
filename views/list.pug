@@ -20,42 +20,42 @@ block content
         #left
             #menu-open
                 img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + _films[0]._poster + "')")
+            #image-background(style="background-image: url('" + list._films[0]._poster + "')")
             #list
-                #list-title= _name
+                #list-title= list._name
                 #list-owner
-                    a(href= '/channel/' + _owner._id)= _owner._name
+                    a(href= '/channel/' + list._owner._id)= list._owner._name
                 #slider
-                    each film in _films
+                    each film in list._films
                         a.list-item(href='/film/' + film._id)
                             img(src=film._poster)
                             .item-title= film._title
-                if channel
-                    .save-button(id!= _id)
+                if authch
+                    .save-button(id!= list._id)
                         span.button-title СОХРАНИТЬ
 
         #right
             #film-info
                 #rate
-                    span#kp= _films[0]._rating_kp
+                    span#kp= list._films[0]._rating_kp
                     | &nbsp;/ 10
                 h1#film-title
-                    |#{_films[0]._title} / #{_films[0]._title_original}
+                    |#{list._films[0]._title} / #{list._films[0]._title_original}
                 #short-info
-                    | #{_films[0]._year} | #{_films[0]._genre}
+                    | #{list._films[0]._year} | #{list._films[0]._genre}
 
-                p.description!= _films[0]._description
-                +getPPList(_films[0]._directors, 'Режиссер')(id='directors')
-                +getPPList(_films[0]._writers, 'Сценарий')(id='writers')
-                +getPPList(_films[0]._actors, 'В ролях')(id='actors')
+                p.description!= list._films[0]._description
+                +getPPList(list._films[0]._directors, 'Режиссер')(id='directors')
+                +getPPList(list._films[0]._writers, 'Сценарий')(id='writers')
+                +getPPList(list._films[0]._actors, 'В ролях')(id='actors')
 
-            if channel
+            if authch
                 .list-group
-                    each list in channel._lists
-                        if list._name == 'Любимые'
-                            +getListGroupItem('/images/icons/heart.png', list._name)(id=list._id)
-                        else if list._name == 'Просмотренные'
-                            +getListGroupItem('/images/icons/eye.png', list._name)(id=list._id)
-                        else if list._name == 'Буду смотреть'
-                            +getListGroupItem('/images/icons/list.png', list._name)(id=list._id)
+                    each alist in authch._lists
+                        if alist._name == 'Любимые'
+                            +getListGroupItem('/images/icons/heart.png', alist._name)(id=alist._id)
+                        else if alist._name == 'Просмотренные'
+                            +getListGroupItem('/images/icons/eye.png', alist._name)(id=alist._id)
+                        else if alist._name == 'Буду смотреть'
+                            +getListGroupItem('/images/icons/list.png', alist._name)(id=alist._id)
                     +getListGroupItem('/images/icons/sharp.png', 'ДРУГОЙ СПИСОК')(id='more-lists')

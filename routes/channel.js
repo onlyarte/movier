@@ -7,8 +7,15 @@ router.get('/:id', function(req, res, next) {
         if(error)
             return next(error);
 
-        //res.render('channel', channel);
-        res.send(channel);
+            if(req.session.channel){
+                channelapi.findById(req.session.channel, function(error, authchannel){
+                    if(error)
+                        next(error);
+                    res.render('channel', { channel: channel, authch: authchannel});
+                });
+            } else {
+                res.render('channel', { channel : channel });
+            }
     });
 });
 
