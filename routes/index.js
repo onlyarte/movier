@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
             res.render('index', { title: 'MOVIER', authch: channel });
         });
     } else {
-        res.render('film', { film : film });
+        res.render('index', { title: 'MOVIER' });
     }
 });
 
