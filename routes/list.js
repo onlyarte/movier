@@ -34,7 +34,7 @@ router.post('/', function(req, res, next){
             return next(error);
 
         //res.render('list', list);
-        res.send(list);
+        res.redirect('/list/' + list._id);
     });
 });
 

@@ -1,4 +1,6 @@
 const filmapi = require('./filmapi');
+const channelapi = require('./channelapi');
+
 const List = require('../models/list');
 
 let findById = function(id, callback){
@@ -21,7 +23,15 @@ let add = function(list, callback){
         _is_open: list.is_open,
         _name: list.name,
         _films: list.films
-    }).save(callback);
+    }).save(function(error, slist){
+        if (error) return callback(error, null);
+
+        channelapi.addList(list.owner, slist._id, function(error){
+            if(error) return callback(error, null);
+
+            return callback(null, slist);
+        });
+    });
 }
 
 let addAndSave = function(list, filmid, callback) {
