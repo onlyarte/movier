@@ -9,6 +9,9 @@ function updateOpacity(){
         if(listbuttons[i].id && containsFilm(listbuttons[i].id)){
             listbuttons[i].style.opacity = 1;
         }
+        else{
+            listbuttons[i].style.opacity = 0.6;
+        }
     }
 }
 
