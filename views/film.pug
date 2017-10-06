@@ -10,11 +10,6 @@ mixin getPPList(arr, title)
                 else if index==5 || (index==arr.length-1 && index<5)
                     | #{person}
 
-mixin getListGroupItem(icon, title)
-    .list-button(id!=attributes.id, onclick='changeState(this.id)')
-        img(src=icon)
-        span.button-title!= title
-
 block content
     script
         include ../public/javascripts/filmcontroller.js
@@ -47,10 +42,8 @@ block content
             if authch
                 .list-group
                     each list in authch._lists
-                        if list._name == 'Любимые'
-                            +getListGroupItem('/images/icons/heart.png', list._name)(id=list._id)
-                        else if list._name == 'Просмотренные'
-                            +getListGroupItem('/images/icons/eye.png', list._name)(id=list._id)
-                        else if list._name == 'Буду смотреть'
-                            +getListGroupItem('/images/icons/list.png', list._name)(id=list._id)
-                    +getListGroupItem('/images/icons/sharp.png', 'ДРУГОЙ СПИСОК')(id='more-lists')
+                        .list-button(id!=list._id, onclick='changeState(this.id)')
+                            span.button-title!= list._name
+                    form(action='/list', method='post')
+                        input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
+                        input(type='text', name='filmid', value=film.id)

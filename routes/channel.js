@@ -11,6 +11,7 @@ router.get('/:id', function(req, res, next) {
                 channelapi.findById(req.session.channel, function(error, authchannel){
                     if(error)
                         next(error);
+                    authchannel.password = null;
                     res.render('channel', { channel: channel, authch: authchannel});
                 });
             } else {

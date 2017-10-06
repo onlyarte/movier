@@ -24,6 +24,16 @@ let add = function(list, callback){
     }).save(callback);
 }
 
+let addAndSave = function(list, filmid, callback) {
+    add(list, function(error, list){
+        if(error) return callback(error, null);
+        addToList(list._id, filmid, function(error, list){
+            if(error) return callback(error, null);
+            callback(null, list);
+        });
+    });
+}
+
 let remove = function(id, callback){
     List.remove({ _id: id }, function(error){
         if(error) return callback(error);
@@ -35,7 +45,7 @@ let addToList = function(listId, filmId, callback){
     filmapi.add(filmId, function(error, film){
         if(error)
             callback(error, null);
-        
+
         List.findOneAndUpdate(
             { _id: listId },
             { $addToSet: { '_films': filmId } },
@@ -70,5 +80,6 @@ let removeFromList = function(listId, filmId, callback){
 
 module.exports.findById = findById;
 module.exports.add = add;
+module.exports.addAndSave = addAndSave;
 module.exports.addToList = addToList;
 module.exports.removeFromList = removeFromList;

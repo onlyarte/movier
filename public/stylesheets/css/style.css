@@ -38,7 +38,7 @@ a:hover {
 img {
   display: block; }
 
-.button, .flex-container #left #list .save-button, .flex-container #right .list-group .list-button {
+.button, .flex-container #left #list .save-button {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -375,14 +375,24 @@ img {
           -webkit-align-items: center;
           -ms-flex-align: center;
           align-items: center; } }
-      .flex-container #right .list-group .list-button img {
-        display: inline-block;
-        max-width: 40px;
-        min-width: 40px;
-        max-height: 40px;
-        padding: 0px 10px 0px 20px; }
-      .flex-container #right .list-group .list-button .button-title {
-        padding-right: 20px; }
+      .flex-container #right .list-group .list-button {
+        height: 50px;
+        border-radius: 50px;
+        color: white;
+        background-color: #3E3E3E;
+        margin: 10px; }
+        .flex-container #right .list-group .list-button .button-title {
+          line-height: 50px;
+          padding: 0px 20px; }
+      .flex-container #right .list-group form input {
+        height: 50px;
+        border-radius: 50px;
+        color: white;
+        background-color: #3E3E3E;
+        border: 0;
+        padding: 0px 20px;
+        margin: 10px;
+        text-align: center; }
     .flex-container #right #user-wrapper .lists-block {
       padding: 20px; }
       .flex-container #right #user-wrapper .lists-block .block-title {

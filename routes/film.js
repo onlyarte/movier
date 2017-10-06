@@ -13,6 +13,7 @@ router.get('/:id', function(req, res, next) {
             channelapi.findById(req.session.channel, function(error, channel){
                 if(error)
                     next(error);
+                channel.password = null;
                 res.render('film', { film: film, authch: channel});
             });
         } else {

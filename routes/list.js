@@ -7,11 +7,12 @@ router.get('/:id', function(req, res, next) {
     listapi.findById(req.params.id, function(error, list){
         if(error)
             return next(error);
-            
+
         if(req.session.channel){
             channelapi.findById(req.session.channel, function(error, channel){
                 if(error)
                     next(error);
+                channel.password = null;
                 res.render('list', { list: list, authch: channel});
             });
         } else {
@@ -22,9 +23,13 @@ router.get('/:id', function(req, res, next) {
 
 //add new list
 router.post('/', function(req, res, next){
-    var list = JSON.parse(req.body);
-    list.owner = req.session._id;
-    listapi.add(list, function(error, list){
+    let list = {
+        is_open: false,
+        owner: req.session.channel,
+        name: req.body.name,
+        films: []
+    };
+    listapi.addAndSave(list, req.body.filmid, function(error, list){
         if(error)
             return next(error);
 
