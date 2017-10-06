@@ -38,6 +38,20 @@ a:hover {
 img {
   display: block; }
 
+.button, .flex-container #left #list .save-button, .flex-container #right .list-group .list-button {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 50px;
+  margin: 10px;
+  border-radius: 50px;
+  border: 3px solid white; }
+
 .flex-container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -71,19 +85,25 @@ img {
       z-index: 2; }
       .flex-container #left #menu-open img {
         width: 50px; }
-    .flex-container #left #image-background, .flex-container #left #poster, .flex-container #left #list {
+    .flex-container #left #image-background, .flex-container #left #poster, .flex-container #left #list, .flex-container #left #user {
       position: absolute; }
     .flex-container #left #image-background {
       -webkit-filter: blur(15px);
       filter: blur(15px);
-      top: -30px;
-      left: -30px;
-      width: 45vw;
-      height: 110vh;
+      top: -5vh;
+      left: -2.5vw;
       opacity: 0.7;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat; }
+      @media only screen and (max-width: 600px) {
+        .flex-container #left #image-background {
+          width: 105vw;
+          height: 110vh; } }
+      @media only screen and (min-width: 600px) {
+        .flex-container #left #image-background {
+          width: 45vw;
+          height: 110vh; } }
     .flex-container #left #list {
       z-index: 1;
       left: 0;
@@ -167,18 +187,6 @@ img {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #555; }
       .flex-container #left #list .save-button {
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 50px;
-        margin: 10px;
-        border-radius: 50px;
-        border: 5px solid white;
         padding: 0px 20px; }
     .flex-container #left #poster {
       z-index: 1;
@@ -196,6 +204,89 @@ img {
         text-transform: uppercase;
         font-size: 1.3em;
         font-family: 'Roboto', sans-serif; }
+    .flex-container #left #user {
+      z-index: 1;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      @media only screen and (max-width: 600px) {
+        .flex-container #left #user {
+          height: 80vh;
+          width: 100vw; } }
+      @media only screen and (min-width: 600px) {
+        .flex-container #left #user {
+          height: 100vh;
+          width: 40vw; } }
+      .flex-container #left #user > * {
+        margin: 10px 0px; }
+      @media only screen and (min-width: 600px) {
+        .flex-container #left #user img {
+          width: 16vw;
+          border-radius: 16vw; } }
+      @media only screen and (max-width: 600px) {
+        .flex-container #left #user img {
+          width: 60vw;
+          border-radius: 84vw; } }
+      .flex-container #left #user #name {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.3em;
+        font-family: 'Roboto', sans-serif; }
+        @media only screen and (min-width: 600px) {
+          .flex-container #left #user #name {
+            width: 16vw; } }
+        @media only screen and (max-width: 600px) {
+          .flex-container #left #user #name {
+            width: 84vw; } }
+      .flex-container #left #user #stat {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row; }
+        .flex-container #left #user #stat .stat-item {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+          margin: 0px 15px; }
+          .flex-container #left #user #stat .stat-item .num {
+            font-size: 3em;
+            font-family: "Megrim", cursive;
+            font-weight: 500; }
+      .flex-container #left #user #edit-button {
+        padding: 0px 20px;
+        margin: 30px 0px; }
+  @media only screen and (max-width: 600px) {
+    .flex-container .custom-sized-left-user {
+      height: 80vh !important; } }
   .flex-container #right {
     background: black; }
     @media only screen and (min-width: 600px) {
@@ -284,28 +375,36 @@ img {
           -webkit-align-items: center;
           -ms-flex-align: center;
           align-items: center; } }
-      .flex-container #right .list-group .list-button {
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-        height: 50px;
-        margin: 10px;
-        border-radius: 50px;
-        border: 5px solid white;
-        opacity: 0.5; }
-        .flex-container #right .list-group .list-button img {
-          display: inline-block;
-          max-width: 40px;
-          min-width: 40px;
-          max-height: 40px;
-          padding: 0px 10px 0px 20px; }
-        .flex-container #right .list-group .list-button .button-title {
-          padding-right: 20px; }
+      .flex-container #right .list-group .list-button img {
+        display: inline-block;
+        max-width: 40px;
+        min-width: 40px;
+        max-height: 40px;
+        padding: 0px 10px 0px 20px; }
+      .flex-container #right .list-group .list-button .button-title {
+        padding-right: 20px; }
+    .flex-container #right #user-wrapper .lists-block {
+      padding: 20px; }
+      .flex-container #right #user-wrapper .lists-block .block-title {
+        font-family: "Roboto", sans-serif;
+        font-weight: 300; }
+      .flex-container #right #user-wrapper .lists-block .list-items {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row; }
+        .flex-container #right #user-wrapper .lists-block .list-items .list-item {
+          margin: 10px;
+          text-align: center; }
+          .flex-container #right #user-wrapper .lists-block .list-items .list-item img {
+            height: 35vh; }
+          .flex-container #right #user-wrapper .lists-block .list-items .list-item .list-title {
+            line-height: 2em; }
     .flex-container #right #index-wrapper {
       display: -webkit-box;
       display: -webkit-flex;
