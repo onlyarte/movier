@@ -11,17 +11,18 @@ block content
         #left
             #menu-open
                 img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + 'https://film-base.herokuapp.com' + films[0].poster + "')")
+            #image-background(style="background-image: url('" + list._films[0]._poster + "')")
             #list
-                #list-title= name
-                #list-owner= owner
+                #list-title= list._name
+                #list-owner
+                    a(href= '/channel/' + list._owner._id)= list._owner._name
                 #slider
-                    each film in films
-                        a.list-item(href='/film/' + film.id)
-                            img(src='https://film-base.herokuapp.com' + film.poster)
-                            .item-title= film.title
+                    each film in list._films
+                        a.list-item(href='/film/' + film._id)
+                            img(src=film._poster)
+                            .item-title= film._title
                 if authch
-                    .save-button(id!= id)
+                    .save-button(id!= list._id)
                         span.button-title СОХРАНИТЬ
 
         #right
