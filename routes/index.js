@@ -23,7 +23,6 @@ router.get('/', function(req, res, next) {
             if(error)
             return next(error);
 
-            channel._password = null;
             res.render('index', { title: 'MOVIER', list: coverlist });
         });
     }
