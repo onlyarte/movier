@@ -150,10 +150,6 @@ img {
         -webkit-flex-direction: row;
         -ms-flex-direction: row;
         flex-direction: row;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
         -webkit-box-align: start;
         -webkit-align-items: flex-start;
         -ms-flex-align: start;
@@ -164,13 +160,11 @@ img {
         .flex-container #left #list #slider .list-item {
           margin: 0px 15px; }
           @media only screen and (max-width: 600px) {
-            .flex-container #left #list #slider .list-item {
-              width: 60vw; } }
+            .flex-container #left #list #slider .list-item img {
+              height: 40vh; } }
           @media only screen and (min-width: 600px) {
-            .flex-container #left #list #slider .list-item {
-              width: 24vw; } }
-          .flex-container #left #list #slider .list-item img {
-            height: 40vh; }
+            .flex-container #left #list #slider .list-item img {
+              height: 50vh; } }
           .flex-container #left #list #slider .list-item .item-title {
             margin: 15px 0px;
             font-size: 1.2em;
@@ -407,14 +401,27 @@ img {
         -webkit-box-direction: normal;
         -webkit-flex-direction: row;
         -ms-flex-direction: row;
-        flex-direction: row; }
+        flex-direction: row;
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
         .flex-container #right #user-wrapper .lists-block .list-items .list-item {
-          margin: 10px;
-          text-align: center; }
+          margin: 10px; }
           .flex-container #right #user-wrapper .lists-block .list-items .list-item img {
             height: 35vh; }
           .flex-container #right #user-wrapper .lists-block .list-items .list-item .list-title {
-            line-height: 2em; }
+            max-width: 10em;
+            overflow: hidden;
+            white-space: nowrap;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            text-align: center;
+            font-family: "Roboto", sans-serif;
+            margin: 10px 0px; }
     .flex-container #right #index-wrapper {
       display: -webkit-box;
       display: -webkit-flex;

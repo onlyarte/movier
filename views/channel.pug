@@ -34,13 +34,13 @@ block content
                                 each film, index in list._films
                                     if index == 0
                                         img(src=film._poster)
-                                span.list-title=list._name
+                                span.list-title(title=list._name)=list._name
                 .lists-block
                     h1.block-title Сохраненные
                     .list-items
                         each list in channel._saved_lists
-                            .list-item
+                            a.list-item
                                 each film, index in list._films
                                     if index == 0
                                         img(src=film._poster)
-                                span.list-title=list._name
+                                span.list-title(title=list._name)=list._name

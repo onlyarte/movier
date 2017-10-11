@@ -115,19 +115,17 @@ img
                 width: 100%
                 display: flex
                 flex-direction: row
-                justify-content: space-between
                 align-items: flex-start
                 overflow-x: auto
                 overflow-y: hidden
                 margin-bottom: 20px
                 .list-item
-                    @include respond-to(small)
-                        width: 60vw
-                    @include respond-to(big)
-                        width: 24vw
                     margin: 0px 15px
                     img
-                        height: 40vh
+                        @include respond-to(small)
+                            height: 40vh
+                        @include respond-to(big)
+                            height: 50vh
                     .item-title
                         margin: 15px 0px
                         font-size: 1.2em
@@ -288,13 +286,20 @@ img
                 .list-items
                     display: flex
                     flex-direction: row
+                    align-items: flex-start
+                    flex-wrap: wrap
                     .list-item
                         margin: 10px
                         img
                             height: 35vh
-                        text-align: center
                         .list-title
-                            line-height: 2em
+                            max-width: 10em
+                            overflow: hidden
+                            white-space: nowrap
+                            text-overflow: ellipsis
+                            text-align: center
+                            font-family: $roboto
+                            margin: 10px 0px
 
         #index-wrapper
             display: flex
