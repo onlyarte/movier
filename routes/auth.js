@@ -87,15 +87,11 @@ router.post('/new', function(req, res, next){
                     if(error)
                         reject(error);
 
-                    channelapi.addList(channel.id, list._id, function(error, channel){
-                        if(error)
-                            reject(error);
-                        resolve(channel);
-                    });
+                    resolve(list);
                 });
             });
-
         };
+
         addList('Любимые')
             .then(function(response){
                 return addList('Просмотренные');
