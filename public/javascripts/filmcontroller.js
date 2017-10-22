@@ -17,11 +17,14 @@ function updateOpacity(){
 
 function changeState(listid){
     if(containsFilm(listid)){
-        removeFromList(listid);
+        removeFromList(listid, function(){
+            location.reload();
+        });
     } else {
-        addToList(listid);
+        addToList(listid, function(){
+            location.reload();
+        });
     }
-    updateOpacity();
 }
 
 function containsFilm(listid){
@@ -40,22 +43,10 @@ function containsFilm(listid){
     }
 }
 
-function addToList(listid){
-    sendUpdateRequest('/film/' + filmid + '/tolist/' + listid);
+function addToList(listid, callback){
+    sendUpdateRequest('/film/' + filmid + '/tolist/' + listid, callback);
 }
 
-function removeFromList(listid){
-    sendUpdateRequest('/film/' + filmid + '/fromlist/' + listid);
-}
-
-
-//req is a url containing parameters
-function sendUpdateRequest(req){
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', req);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        console.log('req ' + req + ' processed');
-    };
-    xhr.send();
+function removeFromList(listid, callback){
+    sendUpdateRequest('/film/' + filmid + '/fromlist/' + listid, callback);
 }

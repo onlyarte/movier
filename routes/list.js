@@ -48,10 +48,9 @@ router.delete('/:id', function(req, res, next){
     });
 });
 
-//TO DO: replace channelid with session variable
 //save to channel
 router.post('/:id/save', function(req, res, next) {
-    channelapi.saveList(req.session.channel._id, req.params.id, function(error, channel){
+    channelapi.saveList(req.session.channel, req.params.id, function(error, channel){
         if(error)
             return next(error);
 
@@ -61,7 +60,8 @@ router.post('/:id/save', function(req, res, next) {
 
 //remove from channel
 router.post('/:id/remove', function(req, res, next) {
-    channelapi.removeFromSaved(req.session.channel._id, req.params.id, function(error, channel){
+    console.log("req recieved");
+    channelapi.removeFromSaved(req.session.channel, req.params.id, function(error, channel){
         if(error)
             return next(error);
 

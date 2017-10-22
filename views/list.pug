@@ -12,13 +12,14 @@ mixin getPPList(arr, title)
 
 block content
     script
+        include ../public/javascripts/connect.js
         include ../public/javascripts/filmcontroller.js
+        include ../public/javascripts/listcontroller.js
+
     script.
         var channel = !{JSON.stringify(authch)};
 
-
-
-        var list = !{JSON.stringify(list)};
+        var listid = "!{list._id}";
     .flex-container
         #left
             #menu-open
@@ -33,9 +34,13 @@ block content
                         a.list-item(href='/film/' + film._id)
                             img(src=film._poster)
                             .item-title= film._title
-                if authch
-                    .save-button(id!= list._id)
+                if authch && authch._id == list._owner._id
+                    #edit-button
+                        span.button-title РЕДАКТИРОВАТЬ
+                else
+                    #save-button(onclick='changeListState()')
                         span.button-title СОХРАНИТЬ
+                
 
         #right
             #film-info

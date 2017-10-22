@@ -12,6 +12,7 @@ mixin getPPList(arr, title)
 
 block content
     script
+        include ../public/javascripts/connect.js
         include ../public/javascripts/filmcontroller.js
     script.
         var channel = !{JSON.stringify(authch)};

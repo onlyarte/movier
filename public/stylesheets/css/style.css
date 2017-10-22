@@ -38,14 +38,8 @@ a:hover {
 img {
   display: block; }
 
-.button, .flex-container #left #list .save-button {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
+.button, .flex-container #left #list #save-button, .flex-container #left #list #edit-button {
   display: inline-flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
   height: 50px;
   margin: 10px;
@@ -53,14 +47,7 @@ img {
   border: 3px solid white; }
 
 .flex-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
   flex-flow: row wrap; }
   .flex-container #left {
     position: relative;
@@ -68,14 +55,10 @@ img {
     background: black; }
     @media only screen and (min-width: 600px) {
       .flex-container #left {
-        -webkit-flex-basis: 40%;
-        -ms-flex-preferred-size: 40%;
         flex-basis: 40%;
         height: 100vh; } }
     @media only screen and (max-width: 600px) {
       .flex-container #left {
-        -webkit-flex-basis: 100%;
-        -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
         height: 60vh; } }
     .flex-container #left #menu-open {
@@ -88,7 +71,6 @@ img {
     .flex-container #left #image-background, .flex-container #left #poster, .flex-container #left #list, .flex-container #left #user {
       position: absolute; }
     .flex-container #left #image-background {
-      -webkit-filter: blur(15px);
       filter: blur(15px);
       top: -5vh;
       left: -2.5vw;
@@ -107,18 +89,8 @@ img {
     .flex-container #left #list {
       z-index: 1;
       left: 0;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
       flex-direction: column;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
       align-items: center; }
       @media only screen and (max-width: 600px) {
         .flex-container #left #list {
@@ -141,18 +113,8 @@ img {
             margin-bottom: 20px; } }
       .flex-container #left #list #slider {
         width: 100%;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
         flex-direction: row;
-        -webkit-box-align: start;
-        -webkit-align-items: flex-start;
-        -ms-flex-align: start;
         align-items: flex-start;
         overflow-x: auto;
         overflow-y: hidden;
@@ -180,7 +142,7 @@ img {
         border-radius: 10px;
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #555; }
-      .flex-container #left #list .save-button {
+      .flex-container #left #list #save-button, .flex-container #left #list #edit-button {
         padding: 0px 20px; }
     .flex-container #left #poster {
       z-index: 1;
@@ -200,22 +162,9 @@ img {
         font-family: 'Roboto', sans-serif; }
     .flex-container #left #user {
       z-index: 1;
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
       flex-direction: column;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
       justify-content: center;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
       align-items: center; }
       @media only screen and (max-width: 600px) {
         .flex-container #left #user {
@@ -247,36 +196,19 @@ img {
           .flex-container #left #user #name {
             width: 84vw; } }
       .flex-container #left #user #stat {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
         flex-direction: row; }
         .flex-container #left #user #stat .stat-item {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
           display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-          -ms-flex-direction: column;
           flex-direction: column;
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-          -ms-flex-align: center;
           align-items: center;
           margin: 0px 15px; }
           .flex-container #left #user #stat .stat-item .num {
             font-size: 3em;
             font-family: "Megrim", cursive;
             font-weight: 500; }
-      .flex-container #left #user #edit-button {
-        padding: 0px 20px;
+      .flex-container #left #user #edit-button, .flex-container #left #user #subscribe-button {
+        padding: 0px 30px;
         margin: 30px 0px; }
   @media only screen and (max-width: 600px) {
     .flex-container .custom-sized-left-user {
@@ -285,15 +217,11 @@ img {
     background: black; }
     @media only screen and (min-width: 600px) {
       .flex-container #right {
-        -webkit-flex-basis: 60%;
-        -ms-flex-preferred-size: 60%;
         flex-basis: 60%;
         height: 100vh;
         overflow-y: auto; } }
     @media only screen and (max-width: 600px) {
       .flex-container #right {
-        -webkit-flex-basis: 100%;
-        -ms-flex-preferred-size: 100%;
         flex-basis: 100%; } }
     .flex-container #right #film-info {
       padding: 10px 40px; }
@@ -315,59 +243,26 @@ img {
         font-size: 1.2em;
         margin-bottom: 30px; }
       .flex-container #right #film-info .pp-row {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-flow: row wrap;
-        -ms-flex-flow: row wrap;
         flex-flow: row wrap;
         margin-bottom: 12px;
         font-size: 1.1em; }
         .flex-container #right #film-info .pp-row .pp-title {
-          -webkit-flex-basis: 30%;
-          -ms-flex-preferred-size: 30%;
           flex-basis: 30%; }
         .flex-container #right #film-info .pp-row .pp-list {
-          -webkit-flex-basis: 70%;
-          -ms-flex-preferred-size: 70%;
           flex-basis: 70%; }
     .flex-container #right .list-group {
       width: 100%; }
       @media only screen and (min-width: 600px) {
         .flex-container #right .list-group {
-          display: -webkit-box;
-          display: -webkit-flex;
-          display: -ms-flexbox;
           display: flex;
-          -webkit-box-orient: horizontal;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: row;
-          -ms-flex-direction: row;
           flex-direction: row;
-          -webkit-flex-wrap: wrap;
-          -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-          -webkit-box-pack: center;
-          -webkit-justify-content: center;
-          -ms-flex-pack: center;
           justify-content: center; } }
       @media only screen and (max-width: 600px) {
         .flex-container #right .list-group {
-          display: -webkit-inline-box;
-          display: -webkit-inline-flex;
-          display: -ms-inline-flexbox;
           display: inline-flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          -webkit-flex-direction: column;
-          -ms-flex-direction: column;
           flex-direction: column;
-          -webkit-box-align: center;
-          -webkit-align-items: center;
-          -ms-flex-align: center;
           align-items: center; } }
       .flex-container #right .list-group .list-button {
         height: 50px;
@@ -393,21 +288,9 @@ img {
         font-family: "Roboto", sans-serif;
         font-weight: 300; }
       .flex-container #right #user-wrapper .lists-block .list-items {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
         flex-direction: row;
-        -webkit-box-align: start;
-        -webkit-align-items: flex-start;
-        -ms-flex-align: start;
         align-items: flex-start;
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
         flex-wrap: wrap; }
         .flex-container #right #user-wrapper .lists-block .list-items .list-item {
           margin: 10px; }
@@ -417,28 +300,14 @@ img {
             max-width: 10em;
             overflow: hidden;
             white-space: nowrap;
-            -o-text-overflow: ellipsis;
             text-overflow: ellipsis;
             text-align: center;
             font-family: "Roboto", sans-serif;
             margin: 10px 0px; }
     .flex-container #right #index-wrapper {
-      display: -webkit-box;
-      display: -webkit-flex;
-      display: -ms-flexbox;
       display: flex;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
       flex-direction: column;
-      -webkit-box-align: center;
-      -webkit-align-items: center;
-      -ms-flex-align: center;
       align-items: center;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
       justify-content: center;
       width: 100%;
       height: 100vh; }
@@ -455,18 +324,8 @@ img {
         margin: 20px 0px; }
       .flex-container #right #index-wrapper #auth form {
         width: 200px;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
         display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
         flex-direction: column;
-        -webkit-box-align: center;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
         align-items: center; }
         .flex-container #right #index-wrapper #auth form input {
           height: 50px;
@@ -504,8 +363,6 @@ img {
   height: 100%;
   width: 100%;
   opacity: 0;
-  -webkit-transition: opacity 1s;
-  -o-transition: opacity 1s;
   transition: opacity 1s;
   background-color: black; }
   #menu a, #menu .logo, #menu a:hover, #menu a:active {
@@ -516,22 +373,9 @@ img {
     top: 30px; }
   #menu .menu-content {
     height: 100%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-flow: column;
-    -ms-flex-flow: column;
     flex-flow: column;
     align-items: center;
     justify-content: center; }

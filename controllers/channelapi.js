@@ -50,7 +50,7 @@ let remove = function(id, callback){
 let addList = function(id, listid, callback){
     Channel.findByIdAndUpdate(
         id,
-        { $push: { '_lists': listid } },
+        { $addToSet: { '_lists': listid } },
         { new: true }
     ).populate('_lists')
     .populate({
@@ -80,7 +80,37 @@ let addList = function(id, listid, callback){
 let saveList = function(id, listid, callback){
     Channel.findByIdAndUpdate(
         id,
-        { $push: { '_saved_lists': listid } },
+        { $addToSet: { '_saved_lists': listid } },
+        { new: true }
+    ).populate('_lists')
+    .populate({
+        path: '_lists',
+        populate: {
+            path: '_films',
+            model: 'Film'
+        }
+    })
+    .populate({
+        path: '_saved_lists',
+        populate: {
+            path: '_films',
+            model: 'Film'
+        }
+    })
+    .exec(function(error, channel){
+        if(error)
+            return callback(error, null);
+        if(!channel)
+            return callback(new Error('Channel not found'), null);
+
+        callback(null, channel);
+    });
+}
+
+let removeFromSaved = function(id, listid, callback){
+    Channel.findByIdAndUpdate(
+        id,
+        { $pull: { '_saved_lists': listid } },
         { new: true }
     ).populate('_lists')
     .populate({
@@ -112,3 +142,4 @@ module.exports.add = add;
 module.exports.remove = remove;
 module.exports.addList = addList;
 module.exports.saveList = saveList;
+module.exports.removeFromSaved = removeFromSaved;

@@ -1,0 +1,2110 @@
+{
+ "kind": "customsearch#search",
+ "url": {
+  "type": "application/json",
+  "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+ },
+ "queries": {
+  "request": [
+   {
+    "title": "Google Custom Search - this",
+    "totalResults": "674000",
+    "searchTerms": "this",
+    "count": 10,
+    "startIndex": 1,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "015865584787196170358:edihmyabb88"
+   }
+  ],
+  "nextPage": [
+   {
+    "title": "Google Custom Search - this",
+    "totalResults": "674000",
+    "searchTerms": "this",
+    "count": 10,
+    "startIndex": 11,
+    "inputEncoding": "utf8",
+    "outputEncoding": "utf8",
+    "safe": "off",
+    "cx": "015865584787196170358:edihmyabb88"
+   }
+  ]
+ },
+ "context": {
+  "title": "TheMovier Film Search"
+ },
+ "searchInformation": {
+  "searchTime": 0.675946,
+  "formattedSearchTime": "0,68",
+  "totalResults": "674000",
+  "formattedTotalResults": "674 000"
+ },
+ "items": [
+  {
+   "kind": "customsearch#result",
+   "title": "Это мы (2016, сериал, 3 сезона) — КиноПоиск",
+   "htmlTitle": "Это мы (2016, сериал, 3 сезона) — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/eto-my-2016-969141/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Это мы (2016) — This Is Us. Всё о сериале: сезоны и эпизоды, даты выхода, \nактеры, трейлеры, фото. Отзывы зрителей и профессиональные рецензии\n ...",
+   "htmlSnippet": "Это мы (2016) — \u003cb\u003eThis\u003c/b\u003e Is Us. Всё о сериале: сезоны и эпизоды, даты выхода, \u003cbr\u003e\nактеры, трейлеры, фото. Отзывы зрителей и профессиональные рецензии\u003cbr\u003e\n&nbsp;...",
+   "cacheId": "llBHykC09IoJ",
+   "formattedUrl": "https://www.kinopoisk.ru/film/eto-my-2016-969141/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/film/eto-my-2016-969141/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTGKUt94J_dgFzO5TitCwyKzG878YRgjN7zeBU-KN416-R_EcFoTLNlHR0"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/eto-my-2016-969141/",
+      "title": "Это мы"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Это мы (сериал 2016 – ...)",
+      "alternativeheadline": "This Is Us",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_969141.jpg",
+      "director": "Гленн Фикарра, Кен Олин, Джон Рекуа, ...",
+      "producer": "Стив Бирс, Гленн Фикарра, Дэн Фогельман, ...",
+      "musicby": "Сиддхарта Кхосла",
+      "genre": "драма, комедия",
+      "datecreated": "2016-09-20",
+      "actors": "Майло Вентимилья",
+      "description": "18 миллионов ныне живущих в мире людей одновременно отмечают собственный день рождения. Но одинаковая празд..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Одна большая семья",
+      "reviewbody": "2016 год был очень насыщенным на различные новые ТВ-проекты. Но именно этот сериал хотелось бы особенно упомя..."
+     },
+     {
+      "headline": "Это мы — словно в точку!",
+      "reviewbody": "Это мы — одно из не многочисленных названий, которое подходит к данному фильму! Наша жизнь состоит не тольк..."
+     },
+     {
+      "headline": "Такое теплое счастье",
+      "reviewbody": "Сказать, что это была любовь с первой серии — не сказать ничего. Ты смотришь и вливаешься в процесс, тебе..."
+     },
+     {
+      "headline": "Теплый сериал",
+      "reviewbody": "Честно говоря, не понимаю, почему так мало отзывов об этом качественном продукте. Он очень хорошо снят, отли..."
+     },
+     {
+      "headline": "Просто. Гениально.",
+      "reviewbody": "Впервые услышал о сериале от своей любимой. Однажды вечером, на вопрос «Что смотришь?», она ответила «Да..."
+     },
+     {
+      "headline": "1 сезон",
+      "reviewbody": "Создатели сериалов в последнее время из кожи вон лезут, чтобы, прежде всего, удивить зрителя. Супергерои,..."
+     },
+     {
+      "headline": "Люблю этих ребят, черт побери!",
+      "reviewbody": "Даже не уверена, что мне можно писать рецензию на этот сериал. Я настолько полюбила персонажей, что мое мнен..."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2264760-15-432942.jpg",
+      "name": "el_tirador"
+     },
+     {
+      "name": "Rtutic"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/13724131-43-330052.jpg",
+      "name": "mikituchka"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_218154-20-822239.jpg",
+      "name": "ритуля 007"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2373098-12-453425.jpg",
+      "name": "Devils Reject"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_463226-29.jpg",
+      "name": "flametongue"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_612638-59.jpg",
+      "name": "Tuesday"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "8.2",
+      "ratingcount": "2933"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2016-10-01T17:15:29+0300",
+      "ya:ovs:adult": "false",
+      "og:type": "video.tv_show",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a0000015782671ecfd362a407dda43f90ec/640x360_2",
+      "title": "«Это мы» (This Is Us, 2016 - ...)",
+      "og:title": "«Это мы» (This Is Us, 2016 - ...)",
+      "twitter:title": "«Это мы» (This Is Us, 2016 - ...)",
+      "og:url": "https://www.kinopoisk.ru/film/eto-my-2016-969141/",
+      "og:director": "Гленн Фикарра, Кен Олин, Джон Рекуа",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/969141",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/969141",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/m-27186-1578263da36-d5250dab17a73cd6?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/m-27186-1578263da36-d5250dab17a73cd6?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D135261%26film%3D969141%26tid%3Dkinopoisk.ru-This-Is-Us-319120.mp4&autostart=true&link=https://www.kinopoisk.ru/film/eto-my-2016-969141/",
+      "video:duration": "152",
+      "og:duration": "152",
+      "video_height": "304",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/969141/kinopoisk.ru-This-Is-Us-319120.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "304",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/969141/kinopoisk.ru-This-Is-Us-319120.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Это мы» (This Is Us, 2016 - ...)",
+      "mrc__share_description": "18 миллионов ныне живущих в мире людей одновременно отмечают собственный день рождения. Но одинаковая праздничная дата - не единственное обстоятельство, объединяющее их при всей своей непохожести&#133;",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Это мы (2016) — This Is Us. Всё о сериале: сезоны и эпизоды, даты выхода, актеры, трейлеры, фото. Отзывы зрителей и профессиональные рецензии. Рейтинг. Интересные факты и ошибки в сериале"
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер (сезон 1; русский язык)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a0000015782671ecfd362a407dda43f90ec/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a0000015782671ecfd362a407dda43f90ec/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/eto-my-2016-969141/video/135261/",
+      "duration": "02:32",
+      "isfamilyfriendly": "true",
+      "description": "18 миллионов ныне живущих в мире людей одновременно отмечают собственный день рождения. Но одинаковая празд...",
+      "uploaddate": "2016-10-01T17:15:29+0300",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "4.0",
+      "best": "10",
+      "originalrating": "8.2",
+      "votes": "2933",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_969141.jpg",
+      "name": "Это мы (сериал 2016 – ...)",
+      "genre": "драма, комедия",
+      "directed_by": "Гленн Фикарра, Кен Олин, Джон Рекуа, ...",
+      "starring": "Майло Вентимилья, Мэнди Мур, Стерлинг К. Браун",
+      "summary": "18 миллионов ныне живущих в мире людей одновременно отмечают собственный день рождени..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a0000015782671ecfd362a407dda43f90ec/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Значит, война (2012) — КиноПоиск",
+   "htmlTitle": "Значит, война (2012) — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/znachit-voyna-2012-497233/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Значит, война (2012) — This Means War. Всё о фильме: дата выхода, \nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "htmlSnippet": "Значит, война (2012) — \u003cb\u003eThis\u003c/b\u003e Means War. Всё о фильме: дата выхода, \u003cbr\u003e\nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "cacheId": "eKzCRB7bQ_kJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../znachit-voyna-2012-497233/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../znachit-voyna-2012-497233/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH6C6ggrBn2Q3qo5YW6UIxkVm5LR9Jz_LkNPgmDuHvY2T65J82QxnE0nA"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/znachit-voyna-2012-497233/",
+      "title": "Значит, война"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Значит, война",
+      "alternativeheadline": "This Means War",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_497233.jpg",
+      "director": "МакДжи",
+      "producer": "Саймон Кинберг, Джеймс Ласситер, Роберт Симондз, ...",
+      "musicby": "Кристоф Бек",
+      "genre": "боевик, мелодрама, комедия",
+      "datecreated": "2012-01-30",
+      "actors": "Том Харди",
+      "description": "Два секретных агента, которые к тому же и закадычные друзья, влюбляются в одну и ту же женщину, но ни один..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Как это плохо… Но как все-таки хорошо! (с)",
+      "reviewbody": "Трейлер фильма «Значит, война» очень меня заинтриговал, так как обещал веселое и захватывающее зрелище!..."
+     },
+     {
+      "headline": "Любовь и перестрелки",
+      "reviewbody": "Только что посмотрел мегафильм для четырнадцатого февраля! Великолепная работа в стиле Мистер и Миссис..."
+     },
+     {
+      "headline": "2 шпиона — 1 проблема…",
+      "reviewbody": "«Значит, война!» — одна из самых ожидаемых премьер за последний месяц. Риз Уизерспун, не появлявшаяся на..."
+     },
+     {
+      "headline": "Воюем, сегодня мы с тобой воюем",
+      "reviewbody": "Даже секретные агенты влюбляются. Да-да, как самые обычные люди. Двое агентов ЦРУ, работающих в одной команд..."
+     },
+     {
+      "headline": "Третий — лишний",
+      "reviewbody": "Что мы имеем: есть два закадычных друга не-разлей-вода, которые являются ко всему прочему еще и агентами..."
+     },
+     {
+      "headline": "Просто, но вкусно",
+      "reviewbody": "Режиссер МакДжи никогда нас особо не баловал своими достижениями. За ним числится проваленный «Терминатор:..."
+     },
+     {
+      "headline": "За Риз, наверное, грех не сразиться.",
+      "reviewbody": "Весь этот год кинематограф не очень-то радует меня своими премьерами, но после просмотра этой картины впеча..."
+     },
+     {
+      "headline": "Очередная битва за блондинку.",
+      "reviewbody": "Фильм «Значит, война» я долго не хотела смотреть по одной простой причине — не люблю актера Криса Пайна...."
+     },
+     {
+      "headline": "Женщина vs Дружба мужчин",
+      "reviewbody": "Лёгкое, очень смешное и жизнерадостное кино забористого режиссёра МакДжи (\"Агнелы Чарли 1, 2»). Этот отличный..."
+     },
+     {
+      "headline": "Крышесносящее кино.",
+      "reviewbody": "Сказать, что я считала дни до выхода этого фильма? — Солгу. Сказать, что я абсолютно не интересовалась этим..."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/27708/495145-52-520660.jpg",
+      "name": "_Tatia_"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1068852-20-764394.jpg",
+      "name": "tulupoff mix"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1815505-18-788272.jpg",
+      "name": "rita-bogdanova"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_647281-23-384947.jpg",
+      "name": "Polidevk"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1578473-44-826465.jpg",
+      "name": "Очень"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/69337/1666271-16-646986.jpg",
+      "name": "Danse avec le diable"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1711376-53-47019.jpg",
+      "name": "Supercreativa"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1025067-59-600953.jpg",
+      "name": "Ambrace"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_106798-25.jpg",
+      "name": "Rimeyer"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1554114-40-544241.jpg",
+      "name": "Гитаробрынчалка"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "7.1",
+      "ratingcount": "103429"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2011-11-23T14:12:12+0400",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/2a00000151eacc05aeb961b56fd3e076cd93/640x360_2",
+      "title": "«Значит, война» (This Means War, 2012)",
+      "og:title": "«Значит, война» (This Means War, 2012)",
+      "twitter:title": "«Значит, война» (This Means War, 2012)",
+      "og:url": "https://www.kinopoisk.ru/film/znachit-voyna-2012-497233/",
+      "og:director": "МакДжи",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/497233",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/497233",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/ipnshfrr2i.4929?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/ipnshfrr2i.4929?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D56894%26film%3D497233%26tid%3Dkinopoisk.ru-This-Means-War-88040.mp4&autostart=true&link=https://www.kinopoisk.ru/film/znachit-voyna-2012-497233/",
+      "video:duration": "139",
+      "og:duration": "139",
+      "video_height": "230",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/497233/kinopoisk.ru-This-Means-War-88040.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "230",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/497233/kinopoisk.ru-This-Means-War-88040.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Значит, война» (This Means War, 2012)",
+      "mrc__share_description": "Два секретных агента, которые к тому же и закадычные друзья, влюбляются в одну и ту же женщину, но ни один не желает уступить другому.",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Значит, война (2012) — This Means War. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер (дублированный)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/2a00000151eacc05aeb961b56fd3e076cd93/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/2a00000151eacc05aeb961b56fd3e076cd93/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/znachit-voyna-2012-497233/video/56894/",
+      "duration": "02:19",
+      "isfamilyfriendly": "true",
+      "description": "Два секретных агента, которые к тому же и закадычные друзья, влюбляются в одну и ту же женщину, но ни один...",
+      "uploaddate": "2011-11-23T14:12:12+0400",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.5",
+      "best": "10",
+      "originalrating": "7.1",
+      "votes": "103429",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_497233.jpg",
+      "name": "Значит, война",
+      "genre": "боевик, мелодрама, комедия",
+      "directed_by": "МакДжи",
+      "starring": "Том Харди, Крис Пайн, Риз Уизерспун",
+      "summary": "Два секретных агента, которые к тому же и закадычные друзья, влюбляются в одну и ту..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/28788/2a00000151eacc05aeb961b56fd3e076cd93/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Пазманский дьявол (2016) — КиноПоиск",
+   "htmlTitle": "Пазманский дьявол (2016) — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/pazmanskiy-dyavol-2016-502723/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Пазманский дьявол (2016) — Bleed for This. Всё о фильме: дата выхода, \nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "htmlSnippet": "Пазманский дьявол (2016) — Bleed for \u003cb\u003eThis\u003c/b\u003e. Всё о фильме: дата выхода, \u003cbr\u003e\nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "cacheId": "k9jAoERUezIJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../pazmanskiy-dyavol-2016-502723/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../pazmanskiy-dyavol-2016-502723/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlLvOnS1ZsiDB0ML-9aR0DiR-olM08LnPhu-9b_ubMkuYGMzYNkmLgsQyY"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/pazmanskiy-dyavol-2016-502723/",
+      "title": "Пазманский дьявол"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Пазманский дьявол",
+      "alternativeheadline": "Bleed for This",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_502723.jpg",
+      "director": "Бен Янгер",
+      "producer": "Брюс Коэн, Бен Мэттью Эмпи, Дэвид Гендрон, ...",
+      "musicby": "Джулия Холтер",
+      "genre": "драма, биография, спорт",
+      "datecreated": "2016-09-02",
+      "actors": "Майлз Теллер",
+      "description": "Винни Пациенца — один из самых выдающихся чемпионов по боксу. Молодой, яркий, безрассудный… Его называли..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Через боль к победе",
+      "reviewbody": "Сюжет фильма повествует нам об известном американском боксере итальянского происхождения Винни Пациенце..."
+     },
+     {
+      "headline": "Бой. Авария. Чемпион.",
+      "reviewbody": "На большой экран выходит спортивный байопик, повествующий о многоступенчатой жизни буйного боксера-профес..."
+     },
+     {
+      "headline": "Фильм о человеке с мотором вместо сердца",
+      "reviewbody": "Еще одна история спортсмена с богатым прошлым, еще одно повествование о преодолении самого себя на пути..."
+     },
+     {
+      "headline": "Боксерская «Одержимость»",
+      "reviewbody": "Я долго ждала выхода этого фильма и следила за тем, как Майлз Теллер ради роли Винни Пациенцы превращается..."
+     },
+     {
+      "reviewbody": "Пазманский дьявол-это фильм о смелом боксере Винни Пациенца, который получив серьезную травму шейных позво..."
+     },
+     {
+      "reviewbody": "Если честно, посмотрев трейлер, я думал, что это будет проходной кинчик. И в каком же шоке я вышел из зала!..."
+     },
+     {
+      "headline": "Пазманский дьявол",
+      "reviewbody": "Я всегда считал, что нет большей сокровищницы и кладези идей, чем реально произошедшие события из нашей..."
+     },
+     {
+      "headline": "Герой боксерского класса",
+      "reviewbody": "Имя Винни Пациенца, популярная история которого показана в «Пазманском дьяволе», известно больше специали..."
+     },
+     {
+      "headline": "Пазманский дьявол",
+      "reviewbody": "В жанре фильмов про спорт существует особая категория. Это боксерские драмы. Авторы подобных картин доволь..."
+     },
+     {
+      "headline": "Через подвал — к звёздам.",
+      "reviewbody": "Возможность посмотреть фильм задолго до февральского проката предоставил международный фестиваль авторс..."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_182980-53.jpg",
+      "name": "Andrey1990"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2328670-19-96108.jpg",
+      "name": "Алишер Улфатшоев"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2728582-15-421462.jpg",
+      "name": "C_B_J"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_657485-06.jpg",
+      "name": "Maurita"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_17179-16-416067.jpg",
+      "name": "Detochkina"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/13981655-20-709311.jpg",
+      "name": "Кинокляча"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/27708/210021-25-620374.jpg",
+      "name": "Alex Croft"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/28790/6671188-24-833574.jpg",
+      "name": "kicking"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/27708/7177809-42-635925.jpg",
+      "name": "Nigan"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/34118/589194-42-255085.jpg",
+      "name": "Jedi Aragorn"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "6.6",
+      "ratingcount": "7171"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2016-11-14T10:23:21+0300",
+      "ya:ovs:adult": "true",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015992e98dd6a553c42793640d19e4/640x360_2",
+      "title": "«Пазманский дьявол» (Bleed for This, 2016)",
+      "og:title": "«Пазманский дьявол» (Bleed for This, 2016)",
+      "twitter:title": "«Пазманский дьявол» (Bleed for This, 2016)",
+      "og:url": "https://www.kinopoisk.ru/film/pazmanskiy-dyavol-2016-502723/",
+      "og:director": "Бен Янгер",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/502723",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/502723",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/m-43541-15992e9ff2f-6e3b30489604ee9b?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/m-43541-15992e9ff2f-6e3b30489604ee9b?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D136001%26film%3D502723%26tid%3Dkinopoisk.ru-Bleed-for-This-328107.mp4&autostart=true&link=https://www.kinopoisk.ru/film/pazmanskiy-dyavol-2016-502723/",
+      "video:duration": "149",
+      "og:duration": "149",
+      "video_height": "226",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/502723/kinopoisk.ru-Bleed-for-This-328107.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "226",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/502723/kinopoisk.ru-Bleed-for-This-328107.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Пазманский дьявол» (Bleed for This, 2016)",
+      "mrc__share_description": "Винни Пациенца - один из самых выдающихся чемпионов по боксу. Молодой, яркий, безрассудный&#133; Его называли Пазманским дьяволом. Его карьера была на самом пике, но страшная авария в одночасье разрушила все планы. Врачи говорили, что он больше никогда не сможет ходить. Однако Винни решил  ...",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Пазманский дьявол (2016) — Bleed for This. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер (дублированный)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015992e98dd6a553c42793640d19e4/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015992e98dd6a553c42793640d19e4/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/pazmanskiy-dyavol-2016-502723/video/136001/",
+      "duration": "02:29",
+      "isfamilyfriendly": "false",
+      "description": "Винни Пациенца – один из самых выдающихся чемпионов по боксу. Молодой, яркий, безрассудный... Его называли...",
+      "uploaddate": "2016-11-14T10:23:21+0300",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.5",
+      "best": "10",
+      "originalrating": "6.6",
+      "votes": "7171",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_502723.jpg",
+      "name": "Пазманский дьявол",
+      "genre": "драма, биография, спорт",
+      "directed_by": "Бен Янгер",
+      "starring": "Майлз Теллер, Аарон Экхарт, Кэти Сагал",
+      "summary": "Винни Пациенца — один из самых выдающихся чемпионов по боксу. Молодой, яркий, безрасс..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015992e98dd6a553c42793640d19e4/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Фантастическая любовь и где ее найти (2016) — КиноПоиск",
+   "htmlTitle": "Фантастическая любовь и где ее найти (2016) — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/fantasticheskaya-lyubov-i-gde-ee-nayti-2016-902577/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Фантастическая любовь и где ее найти (2016) — This Beautiful Fantastic. Всё \nо фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и ...",
+   "htmlSnippet": "Фантастическая любовь и где ее найти (2016) — \u003cb\u003eThis\u003c/b\u003e Beautiful Fantastic. Всё \u003cbr\u003e\nо фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и&nbsp;...",
+   "cacheId": "w6cid-Z55wQJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../fantasticheskaya-lyubov-i-gde-ee-nayti-2016- 902577/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../fantasticheskaya-lyubov-i-gde-ee-nayti-2016- 902577/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "299",
+      "height": "168",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDq-a4C6AXCJBIBUaJU6dYI8iTRqIXOdyFEX8Bt6JORnX4hQyoDCO6rDz_"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/fantasticheskaya-lyubov-i-gde-ee-nayti-2016-902577/",
+      "title": "Фантастическая любовь и где ее найти"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Фантастическая любовь и где ее найти",
+      "alternativeheadline": "This Beautiful Fantastic",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_902577.jpg",
+      "director": "Саймон Эбауд",
+      "producer": "Кристин Алдерсон, Моника Бакарди, Андреа Иерволино, ...",
+      "musicby": "Энн Никитин",
+      "genre": "фэнтези, драма, мелодрама, комедия",
+      "datecreated": "2016-10-20",
+      "actors": "Джессика Браун-Финдли",
+      "description": "Знаете ли вы, что все события, происходящие в нашем мире, даже самые незначительные, взаимосвязаны самым..."
+     }
+    ],
+    "review": [
+     {
+      "reviewbody": "Жила-была девочка, строго по правилам: к 9-ти на работу и все полотенчики по ранжиру. Только она растений..."
+     },
+     {
+      "headline": "Умиротворяющая сказка",
+      "reviewbody": "На самом деле фильм, при прекрасной задумке вышел достаточно слабым. История в центре которой выступает..."
+     },
+     {
+      "headline": "Fantastic",
+      "reviewbody": "Еще один фильм, заслуживающий внимания широкой публики — «Фантастическая любовь и где ее найти» (в оригина..."
+     },
+     {
+      "headline": "«Я улыбаюсь печенью»",
+      "reviewbody": "Этот фильм появился в ожиданиях зрителей ещё год назад. Тогда было анонсировано сразу несколько картин,..."
+     },
+     {
+      "headline": "«Я хочу знать, что же будет дальше»",
+      "reviewbody": "С переменным успехом пробуя себя на почве короткого и полного метра, британский режиссер и сценарист Саймо..."
+     },
+     {
+      "headline": "8 уток из 10.",
+      "reviewbody": "А вы соскучились по старой доброй сказке? Невероятное волшебство, неожиданный хэппи-энд и мудрый жизненный..."
+     },
+     {
+      "reviewbody": "This Beautiful Fantastic — прекрасный кинематографический опыт. Это фильм, который объединяет двух одиноких людей,..."
+     },
+     {
+      "headline": "Это фантастически красиво!",
+      "reviewbody": "Когда ты думаешь, что тебя никто не замечает, и в тебе нет ничего особенного, найдётся тот, кто заметит и..."
+     },
+     {
+      "headline": "Дивный, дивный мир!",
+      "reviewbody": "Самая настоящая сказка о добрых волшебниках и злых колдунах. Или, как часто бывает в жизни, ненавистных..."
+     },
+     {
+      "headline": "Миленькая банальная пустышка.",
+      "reviewbody": "Давно я не испытывала такого разочарования после похода в кино. Симпатичный, но совершенно пустой фильм...."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2128-35.jpg",
+      "name": "murzillo"
+     },
+     {
+      "name": "OOdessitka1801"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_764588-07-926013.jpg",
+      "name": "Natalia09"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/13696267-2-633808.jpg",
+      "name": "m_latariya"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_61706-51.jpg",
+      "name": "PALPATINE"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/69337/14229641-36-886630.jpg",
+      "name": "Arrenskaya"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2104132-56-147239.jpg",
+      "name": "Cattus_Kat"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/13584473-23-290897.jpg",
+      "name": "VolkovaKa"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/27708/10223620-41-390377.jpg",
+      "name": "Annabel_Me"
+     },
+     {
+      "name": "Livibirdy"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "6.7",
+      "ratingcount": "5116"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2016-11-07T12:15:31+0300",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015afa8e1df46e6aa6be2b967597ff/640x360_2",
+      "title": "«Фантастическая любовь и где ее найти» (This Beautiful Fantastic, 2016)",
+      "og:title": "«Фантастическая любовь и где ее найти» (This Beautiful Fantastic, 2016)",
+      "twitter:title": "«Фантастическая любовь и где ее найти» (This Beautiful Fantastic, 2016)",
+      "og:url": "https://www.kinopoisk.ru/film/fantasticheskaya-lyubov-i-gde-ee-nayti-2016-902577/",
+      "og:director": "Саймон Эбауд",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/902577",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/902577",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/m-67227-15afa8e3a74-6c5bc668f3bea388?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/m-67227-15afa8e3a74-6c5bc668f3bea388?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D135894%26film%3D902577%26tid%3Dkinopoisk.ru-This-Beautiful-Fantastic-336339.mp4&autostart=true&link=https://www.kinopoisk.ru/film/fantasticheskaya-lyubov-i-gde-ee-nayti-2016-902577/",
+      "video:duration": "153",
+      "og:duration": "153",
+      "video_height": "240",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/902577/kinopoisk.ru-This-Beautiful-Fantastic-336339.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "240",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/902577/kinopoisk.ru-This-Beautiful-Fantastic-336339.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Фантастическая любовь и где ее найти» (This Beautiful Fantastic, 2016)",
+      "mrc__share_description": "Знаете ли вы, что все события, происходящие в нашем мире, даже самые незначительные, взаимосвязаны самым удивительным образом?  Как полет бабочки может вызвать где-то мощный ураган, так и странные поступки тихой и одинокой девушки, живущей в мире своих фантазий, могут навсегда изменить  ...",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Фантастическая любовь и где ее найти (2016) — This Beautiful Fantastic. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер (русский язык)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015afa8e1df46e6aa6be2b967597ff/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015afa8e1df46e6aa6be2b967597ff/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/fantasticheskaya-lyubov-i-gde-ee-nayti-2016-902577/video/135894/",
+      "duration": "02:33",
+      "isfamilyfriendly": "true",
+      "description": "Знаете ли вы, что все события, происходящие в нашем мире, даже самые незначительные, взаимосвязаны самым...",
+      "uploaddate": "2016-11-07T12:15:31+0300",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.5",
+      "best": "10",
+      "originalrating": "6.7",
+      "votes": "5116",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_902577.jpg",
+      "name": "Фантастическая любовь и где ее найти",
+      "genre": "фэнтези, драма, мелодрама, комедия",
+      "directed_by": "Саймон Эбауд",
+      "starring": "Джессика Браун-Финдли, Эндрю Скотт, Джереми Ирвин",
+      "summary": "Знаете ли вы, что все события, происходящие в нашем мире, даже самые незначительные,..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/175804/2a0000015afa8e1df46e6aa6be2b967597ff/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Майкл Джексон: Вот и всё — КиноПоиск",
+   "htmlTitle": "Майкл Джексон: Вот и всё — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/maykl-dzhekson-vot-i-vsyo-2009-470314/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Майкл Джексон: Вот и всё (2009) — This Is It. Всё о фильме: дата выхода, \nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "htmlSnippet": "Майкл Джексон: Вот и всё (2009) — \u003cb\u003eThis\u003c/b\u003e Is It. Всё о фильме: дата выхода, \u003cbr\u003e\nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "cacheId": "xAHUwb_F1wAJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../maykl-dzhekson-vot-i-vsyo-2009-470314/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../maykl-dzhekson-vot-i-vsyo-2009-470314/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQtQtvBT9ZTm1o-cOujZ7lUOxPEeO0IHqTgmuV3fhGFnJic_pKIF5yfed4"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/maykl-dzhekson-vot-i-vsyo-2009-470314/",
+      "title": "Майкл Джексон: Вот и всё"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Майкл Джексон: Вот и всё",
+      "alternativeheadline": "This Is It",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_470314.jpg",
+      "director": "Кенни Ортега",
+      "producer": "Майкл Берден, Джон Бранка, Тодд Коган, ...",
+      "musicby": "Майкл Берден",
+      "genre": "документальный, музыка",
+      "datecreated": "2009-10-28",
+      "actors": "Майкл Джексон",
+      "description": "Он изменил мир: современная музыка и в целом поп-культура сформировались под огромным влиянием его творчес..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Why, why, tell them that is human nature…",
+      "reviewbody": "Так как я сам вырос на музыке Майкла, то это было моим святым, так сказать, долгом — отправиться в кинотеатр...."
+     },
+     {
+      "reviewbody": "Своим появлением он потряс весь мир. Он заставил людей поверить в себя, дал им надежду, дал мечты. Этот докум..."
+     },
+     {
+      "reviewbody": "Как много он сделал для этого мира, как много хотел. Но он ушел, и что бы показать нам, как сильно он любил..."
+     },
+     {
+      "headline": "Все с любовью, во имя любви!",
+      "reviewbody": "Господи, это потрясающее нежанровое кино! Майкл неповторим. Все два часа ты сидишь и не знаешь, сколько еще..."
+     },
+     {
+      "headline": "Посмотрите это, но не стоит тратить на это деньги",
+      "reviewbody": "Признаюсь, я не поклонник Майкла Джексона и даже когда он умер, я отнесся к этому достаточно спокойно. И..."
+     },
+     {
+      "headline": "Все",
+      "reviewbody": "Вряд ли найдется человек, который не знал имени Майкл Джексон. После же его внезапной смерти те, кто его..."
+     },
+     {
+      "headline": "God bless you, Michael Jackson",
+      "reviewbody": "Сегодня сходил на «Майкл Джексон: Вот и всё». Никогда особо не являлся фанатом Майкла Джексона, но вот после..."
+     },
+     {
+      "headline": "Вот и всё?",
+      "reviewbody": "Выходя из зала, хочется кричать от обиды. ПОЧЕМУ? Почему Майкл закончил свою жизнь именно так, почему ему..."
+     },
+     {
+      "headline": "Господь с тобой, Майкл.",
+      "reviewbody": "Никогда не являлась фанаткой Майкла, но, как только узнала, что выйдет этот фильм, стала ждать премьеры...."
+     },
+     {
+      "headline": "This Is It",
+      "reviewbody": "Начну свою рецензию с небольшого вступления. Не так давно все узнали шокирующую и неожиданную новость —..."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_840051-08-696095.jpg",
+      "name": "ChelOvEG-ZoMbIE"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_493756-50.jpg",
+      "name": "spider arty 13"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_716849-50.jpg",
+      "name": "FahrenheiT30"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_359028-59.jpg",
+      "name": "Милютень"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_765660-23.jpg",
+      "name": "Captain Price"
+     },
+     {
+      "name": "Buratina"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/34118/123648-22-273153.jpg",
+      "name": "_Ромич_"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_600785-26-629551.jpg",
+      "name": "kantaqa"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_743147-20-444446.jpg",
+      "name": "ФильмоЛюб"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "7.7",
+      "ratingcount": "12187"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2009-09-14T13:12:31+0400",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/34144/2a00000151e9f8c78e27de58e5bbee6e955a/640x360_2",
+      "title": "«Майкл Джексон: Вот и всё» (This Is It, 2009)",
+      "og:title": "«Майкл Джексон: Вот и всё» (This Is It, 2009)",
+      "twitter:title": "«Майкл Джексон: Вот и всё» (This Is It, 2009)",
+      "og:url": "https://www.kinopoisk.ru/film/maykl-dzhekson-vot-i-vsyo-2009-470314/",
+      "og:director": "Кенни Ортега",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/470314",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/470314",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/ybbpwmlkca.113?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/ybbpwmlkca.113?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D16521%26film%3D470314%26tid%3Dkinopoisk.ru-This-Is-It-39695.flv&autostart=true&link=https://www.kinopoisk.ru/film/maykl-dzhekson-vot-i-vsyo-2009-470314/",
+      "video:duration": "146",
+      "og:duration": "146",
+      "video_height": "292",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/470314/kinopoisk.ru-This-Is-It-39695.flv",
+      "twitter:player:width": "540",
+      "twitter:player:height": "292",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/470314/kinopoisk.ru-This-Is-It-39695.flv",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Майкл Джексон: Вот и всё» (This Is It, 2009)",
+      "mrc__share_description": "Он изменил мир: современная музыка и в целом поп-культура сформировались под огромным влиянием его творчества. Мир изменил его: став божеством сцены, он лишился свободы быть простым человеком. Майкл Джексон - символ ХХ века, одухотворенного и жестокого. В XXI веке артист готовился к  ...",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Майкл Джексон: Вот и всё (2009) — This Is It. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Русский трейлер",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/34144/2a00000151e9f8c78e27de58e5bbee6e955a/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/34144/2a00000151e9f8c78e27de58e5bbee6e955a/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/maykl-dzhekson-vot-i-vsyo-2009-470314/video/16521/",
+      "duration": "02:26",
+      "isfamilyfriendly": "true",
+      "description": "Он изменил мир: современная музыка и в целом поп-культура сформировались под огромным влиянием его творчес...",
+      "uploaddate": "2009-09-14T13:12:31+0400",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "4.0",
+      "best": "10",
+      "originalrating": "7.7",
+      "votes": "12187",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_470314.jpg",
+      "name": "Майкл Джексон: Вот и всё",
+      "genre": "документальный, музыка",
+      "directed_by": "Кенни Ортега",
+      "starring": "Майкл Джексон, Алекс Аль, Александра Апжарова",
+      "summary": "Он изменил мир: современная музыка и в целом поп-культура сформировались под огромным..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/34144/2a00000151e9f8c78e27de58e5bbee6e955a/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Конец света 2013: Апокалипсис по-голливудски (2013 ...",
+   "htmlTitle": "Конец света 2013: Апокалипсис по-голливудски (2013 ...",
+   "link": "https://www.kinopoisk.ru/film/konec-sveta-2013-apokalipsis-po-gollivudski-2013-462514/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Конец света 2013: Апокалипсис по-голливудски (2013) — This Is the End. Всё \nо фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и ...",
+   "htmlSnippet": "Конец света 2013: Апокалипсис по-голливудски (2013) — \u003cb\u003eThis\u003c/b\u003e Is the End. Всё \u003cbr\u003e\nо фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и&nbsp;...",
+   "cacheId": "nwN64hnLV0oJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../konec-sveta-2013-apokalipsis-po-gollivudski- 2013-462514/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../konec-sveta-2013-apokalipsis-po-gollivudski- 2013-462514/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQUYqfrcc9VxU9QeSKjmiyIKHjbX_K7qt1BzCdE60QFIGiMQxo4zf1IDcM"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/konec-sveta-2013-apokalipsis-po-gollivudski-2013-462514/",
+      "title": "Конец света 2013: Апокалипсис по-голливудски"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Конец света 2013: Апокалипсис по-голливудски",
+      "alternativeheadline": "This Is the End",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_462514.jpg",
+      "director": "Сет Роген, Эван Голдберг",
+      "producer": "Эван Голдберг, Сет Роген, Джеймс Уивер, ...",
+      "musicby": "Генри Джекман",
+      "genre": "комедия, фэнтези",
+      "datecreated": "2013-06-03",
+      "actors": "Сет Роген",
+      "description": "Джей Барушель приезжает в Лос-Анджелес, чтобы посетить старого друга и коллегу, актера Сета Рогена, который..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Очередной конец света",
+      "reviewbody": "Фильмы о конце света захватили наши кинотеатры и телеэкраны. Каждый день человечество по нескольку раз..."
+     },
+     {
+      "reviewbody": "Рай, ад, и все, что межу ними расположено Находится у тебя под кожей. Маятник пройдет путь от плохого до хорош..."
+     },
+     {
+      "headline": "New vs. Old",
+      "reviewbody": "Выйдя из кинотеатра, не знала, что и думать, что и чувствовать… С одной стороны, вроде бы и приевшаяся идея..."
+     },
+     {
+      "reviewbody": "Очередное кино от Сета Рогена. На этот раз он меня удивил. Что сразу очень интригует, так это герои фильма..."
+     },
+     {
+      "reviewbody": "Этот год в киноиндустрии оказался годом дуплетов — тематика сомалийских пиратов, захват Белого Дома, а..."
+     },
+     {
+      "headline": "АХТЫЖБ**!",
+      "reviewbody": "Вот что за фраза проскальзывала в моем мозгу чуть ли не каждые две минуты хронометража данной комедии. А..."
+     },
+     {
+      "headline": "Безбашенный апокалипсис",
+      "reviewbody": "Честно сказать, раньше я вообще не увлекался комедиями. Но вот сейчас что-то сильно на них потянуло. И, надо..."
+     },
+     {
+      "headline": "This is not the end",
+      "reviewbody": "Конец света 2013: Апокалипсис по-голливудски для меня фильм получился хорошим в плане юмора и актеров. Сюжет..."
+     },
+     {
+      "headline": "Американская мечта",
+      "reviewbody": "Фильм неплохой, сделан в стиле американской комедии. Прекрасные актеры сыгравшие сами себя, это очень даже..."
+     },
+     {
+      "headline": "Судный день",
+      "reviewbody": "В 2007 году Сет Роген и Джей Барушель сняли короткометражку «Джей и Сет против апокалипсиса», рассказывавшей..."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_3712198-48-205403.jpg",
+      "name": "Elliah Bilenko-Shumacher"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_793327-25-436627.jpg",
+      "name": "Horseofhell"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_3300342-16-129021.jpg",
+      "name": "So Shy"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_682790-02-566272.jpg",
+      "name": "dimax_1994"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_10353-55-151810.jpg",
+      "name": "Ali_Mensaf"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/364010-39-840426.jpg",
+      "name": "Twenty_First"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1613147-16-64018.jpg",
+      "name": "NEVERKIT"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2624293-21-809257.jpg",
+      "name": "TVBurbon"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1960185-19-820486.jpg",
+      "name": "batistuta-99"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2556522-55-523012.jpg",
+      "name": "Dr_White"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "6.0",
+      "ratingcount": "51672"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2012-12-22T00:59:50+0400",
+      "ya:ovs:adult": "true",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e9f9fb52dc72b70b5b42906a7d/640x360_2",
+      "title": "«Конец света 2013: Апокалипсис по-голливудски» (This Is the End, 2013)",
+      "og:title": "«Конец света 2013: Апокалипсис по-голливудски» (This Is the End, 2013)",
+      "twitter:title": "«Конец света 2013: Апокалипсис по-голливудски» (This Is the End, 2013)",
+      "og:url": "https://www.kinopoisk.ru/film/konec-sveta-2013-apokalipsis-po-gollivudski-2013-462514/",
+      "og:director": "Сет Роген, Эван Голдберг",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/462514",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/462514",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/67r8l1a5dg.7422?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/67r8l1a5dg.7422?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D72809%26film%3D462514%26tid%3Dkinopoisk.ru-This-Is-the-End-173135.mp4&autostart=true&link=https://www.kinopoisk.ru/film/konec-sveta-2013-apokalipsis-po-gollivudski-2013-462514/",
+      "video:duration": "190",
+      "og:duration": "190",
+      "video_height": "223",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/462514/kinopoisk.ru-This-Is-the-End-173135.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "223",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/462514/kinopoisk.ru-This-Is-the-End-173135.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Конец света 2013: Апокалипсис по-голливудски» (This Is the End, 2013)",
+      "mrc__share_description": "Джей Барушель приезжает в Лос-Анджелес, чтобы посетить старого друга и коллегу, актера Сета Рогена, который пригласил Барушеля на новоселье, которое организовывает Джеймс Франко. На не очень приличную вечеринку приехали многие знаменитости. Барушелю неудобно среди такого количества людей,  ...",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Конец света 2013: Апокалипсис по-голливудски (2013) — This Is the End. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Red-band трейлер (русский язык)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e9f9fb52dc72b70b5b42906a7d/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e9f9fb52dc72b70b5b42906a7d/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/konec-sveta-2013-apokalipsis-po-gollivudski-2013-462514/video/72809/",
+      "duration": "03:10",
+      "isfamilyfriendly": "false",
+      "description": "Джей Барушель приезжает в Лос-Анджелес, чтобы посетить старого друга и коллегу, актера Сета Рогена, который...",
+      "uploaddate": "2012-12-22T00:59:50+0400",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.0",
+      "best": "10",
+      "originalrating": "6.0",
+      "votes": "51672",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_462514.jpg",
+      "name": "Конец света 2013: Апокалипсис по-голливудски",
+      "genre": "комедия, фэнтези",
+      "directed_by": "Сет Роген, Эван Голдберг",
+      "starring": "Сет Роген, Джей Барушель, Джеймс Франко",
+      "summary": "Джей Барушель приезжает в Лос-Анджелес, чтобы посетить старого друга и коллегу, актер..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e9f9fb52dc72b70b5b42906a7d/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Любовь по-взрослому (2012) — КиноПоиск",
+   "htmlTitle": "Любовь по-взрослому (2012) — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/lyubov-po-vzroslomu-2012-570047/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Любовь по-взрослому (2012) — This Is 40. Всё о фильме: дата выхода, \nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "htmlSnippet": "Любовь по-взрослому (2012) — \u003cb\u003eThis\u003c/b\u003e Is 40. Всё о фильме: дата выхода, \u003cbr\u003e\nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "cacheId": "1sXOuA8Og_kJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../lyubov-po-vzroslomu-2012-570047/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../lyubov-po-vzroslomu-2012-570047/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "299",
+      "height": "168",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6PTFcevYQFNsLgU-nwryDeBBxQG7RvlboFpgUByJ77FSSkVtSLzyptqvP"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/lyubov-po-vzroslomu-2012-570047/",
+      "title": "Любовь по-взрослому"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Любовь по-взрослому",
+      "alternativeheadline": "This Is 40",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_570047.jpg",
+      "director": "Джадд Апатоу",
+      "producer": "Джадд Апатоу, Бэрри Мендел, Клэйтон Таунсенд, ...",
+      "musicby": "Джон Брайон",
+      "genre": "комедия",
+      "datecreated": "2012-12-20",
+      "actors": "Лесли Манн",
+      "description": "Спин-офф комедии «Немножко беременна» 2007 года. Взгляд на жизнь Пита и Дебби спустя несколько лет после собы..."
+     }
+    ],
+    "review": [
+     {
+      "reviewbody": "Кинематографический прием «правда тела» — это когда подозреваемого выдает капелька пота, выступившая..."
+     },
+     {
+      "headline": "Обычная необычная семья",
+      "reviewbody": "М-м-м, какой фильм! Так хочется его прокомментировать, но так не хочется становиться его частью. Такие житейс..."
+     },
+     {
+      "headline": "Дела семейные.",
+      "reviewbody": "Я категорически не переношу сортирный юмор и пошлятину на экране. Ознакомившись с мнениями других зрителей..."
+     },
+     {
+      "headline": "Время освежить отношения",
+      "reviewbody": "Господин Джудд Апатоу известен своим талантом производить американские комедии, не обремененные глубоким..."
+     },
+     {
+      "headline": "Взрослый фильм.",
+      "reviewbody": "Некоторые полагают, что Джудд Апатоу король комедий. Думаю так и есть, может быть, конечно, я и преувеличила,..."
+     },
+     {
+      "headline": "В быту…",
+      "reviewbody": "Сейчас особенно забавно наблюдать за тем, как Джудд Апатоу, некогда символизирующий собой для прочих продю..."
+     },
+     {
+      "headline": "Семейные ценности меломана Джудда Апатоу",
+      "reviewbody": "Я тут искал фильм смешнее «21 и больше». Я нашёл. С каждым новым фильмом мой любимый комедиограф Джудд Апатоу..."
+     },
+     {
+      "reviewbody": "«Сорокалетие» (или «Любовь по-взрослому») — это взгляд на жизнь Пита и Дебби, второстепенных персонажей..."
+     },
+     {
+      "headline": "Семейная жизнь",
+      "reviewbody": "Посмотрев комедию «Немножко беременна», я вскоре узнал, что недавно к этому фильму сняли спин-офф, то есть..."
+     },
+     {
+      "headline": "Взрослым о взрослых",
+      "reviewbody": "О чем собственно фильм «Любовь по-взрослому»? Да о жизни. О жизни миллионов американцев, европейцев, россиян..."
+     }
+    ],
+    "person": [
+     {
+      "name": "Rdra"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_3085470-37-46627.jpg",
+      "name": "сосямба"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1586939-59-219127.jpg",
+      "name": "Alexandr Kinolove"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_3735446-02-688177.jpg",
+      "name": "dsisley"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2060665-18-608670.jpg",
+      "name": "Мисс 2012"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/69337/1666271-16-646986.jpg",
+      "name": "Danse avec le diable"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1337807-46-692005.jpg",
+      "name": "vovan meloman"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_691089-23-954521.jpg",
+      "name": "Chriz Bale"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/27708/2893306-48-641412.jpg",
+      "name": "Barnaul_MAN"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_331395-23.jpg",
+      "name": "LennoxL"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "6.0",
+      "ratingcount": "14523"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2013-01-25T19:36:38+0400",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e97737a491a6991ce08360b1d1/640x360_2",
+      "title": "«Любовь по-взрослому» (This Is 40, 2012)",
+      "og:title": "«Любовь по-взрослому» (This Is 40, 2012)",
+      "twitter:title": "«Любовь по-взрослому» (This Is 40, 2012)",
+      "og:url": "https://www.kinopoisk.ru/film/lyubov-po-vzroslomu-2012-570047/",
+      "og:director": "Джадд Апатоу",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/570047",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/570047",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/nj7g34mr7x.5514?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/nj7g34mr7x.5514?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D74292%26film%3D570047%26tid%3Dkinopoisk.ru-This-Is-40-135119.mp4&autostart=true&link=https://www.kinopoisk.ru/film/lyubov-po-vzroslomu-2012-570047/",
+      "video:duration": "159",
+      "og:duration": "159",
+      "video_height": "230",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/570047/kinopoisk.ru-This-Is-40-135119.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "230",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/570047/kinopoisk.ru-This-Is-40-135119.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Любовь по-взрослому» (This Is 40, 2012)",
+      "mrc__share_description": "Спин-офф комедии «Немножко беременна» 2007 года. Взгляд на жизнь Пита и Дебби спустя несколько лет после событий первого фильма: к сложностям брака прибавляются финансовые проблемы.",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Любовь по-взрослому (2012) — This Is 40. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер (дублированный)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e97737a491a6991ce08360b1d1/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e97737a491a6991ce08360b1d1/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/lyubov-po-vzroslomu-2012-570047/video/74292/",
+      "duration": "02:39",
+      "isfamilyfriendly": "true",
+      "description": "Спин-офф комедии «Немножко беременна» 2007 года. Взгляд на жизнь Пита и Дебби спустя несколько лет после собы...",
+      "uploaddate": "2013-01-25T19:36:38+0400",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.0",
+      "best": "10",
+      "originalrating": "6.0",
+      "votes": "14523",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_570047.jpg",
+      "name": "Любовь по-взрослому",
+      "genre": "комедия",
+      "directed_by": "Джадд Апатоу",
+      "starring": "Лесли Манн, Пол Радд, Альберт Брукс",
+      "summary": "Спин-офф комедии «Немножко беременна» 2007 года. Взгляд на жизнь Пита и Дебби спустя..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151e97737a491a6991ce08360b1d1/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Где бы ты ни был — КиноПоиск",
+   "htmlTitle": "Где бы ты ни был — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/gde-by-ty-ni-byl-2011-537136/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Где бы ты ни был (2011) — This Must Be the Place. Всё о фильме: дата \nвыхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные ...",
+   "htmlSnippet": "Где бы ты ни был (2011) — \u003cb\u003eThis\u003c/b\u003e Must Be the Place. Всё о фильме: дата \u003cbr\u003e\nвыхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные&nbsp;...",
+   "cacheId": "SgCixI0Bf4cJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../gde-by-ty-ni-byl-2011-537136/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../gde-by-ty-ni-byl-2011-537136/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZrYwcvSyZyLCxr4fBWVQ6aOr7wXhLWloJTK4bqiw1wKjYeqKm98qeSaQ"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/gde-by-ty-ni-byl-2011-537136/",
+      "title": "Где бы ты ни был"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Где бы ты ни был",
+      "alternativeheadline": "This Must Be the Place",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_537136.jpg",
+      "director": "Паоло Соррентино",
+      "producer": "Франческа Чима, Никола Джулиано, Андреа Оккипинти, ...",
+      "musicby": "Дэвид Бирн, Уилл Олдхэм",
+      "genre": "драма",
+      "datecreated": "2011-05-20",
+      "actors": "Шон Пенн",
+      "description": "Рок-певец, скучающий на пенсии, отправляется на поиски палача своего отца, бывшего нацистского военного..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Должно быть, это здесь…",
+      "reviewbody": "Паоло Соррентино относится к группе режиссеров, к которым я отношусь с большой любовью, всегда с трепетом..."
+     },
+     {
+      "headline": "Синдром восходящего солнца..",
+      "reviewbody": "Паоло Соррентино режиссёр, имя которого я слышу впервые, снял удивительное кино, поразившее меня как гром..."
+     },
+     {
+      "headline": "In a general sort of way",
+      "reviewbody": "Музыка, дух рок-н-ролла, и дорожное приключение — вот то, что я ожидал увидеть в «This Must Be the Place». Не больше,..."
+     },
+     {
+      "headline": "Я под глубоким впечатлением. Не пойму от чего, но от чего-то…",
+      "reviewbody": "Недолго я колебалась прежде, чем решиться смотреть сей фильм. В конце концов, трейлер и эксцентричный главн..."
+     },
+     {
+      "headline": "«Что-то здесь не так, я не уверен что именно, но что-то…»",
+      "reviewbody": "Описывать этот фильм очень не легко. Это должно быть своего рода эпос, что в фильме, кажется около миллиона..."
+     },
+     {
+      "headline": "Пусть вас не отталкивают крашенные губы Пенна.",
+      "reviewbody": "Никакие инстаграмы и мыльницы с миллионным разрешением не смогут запечатлеть изображения так, как это..."
+     },
+     {
+      "headline": "«Я не могу с тобой спать — я женат.»",
+      "reviewbody": "Фильмы Соррентино обладают непередаваемой красотой и с первого взгляда влюбляют в себя, думаю, даже выключ..."
+     },
+     {
+      "headline": "Созерцание изнанки",
+      "reviewbody": "- Лучше поздно, чем никогда! - Чушь! Поздно значит поздно. © Шайенн — постаревшая рок-звезда. Он много заработ..."
+     },
+     {
+      "headline": "Иногда они взрослеют",
+      "reviewbody": "Анемичный то ли метро-, то ли транссексуал шаркающей походкой перемещается на протяжении фильма с места..."
+     },
+     {
+      "reviewbody": "Удивительно красивый, трогательный и пронзительный роуд-драмеди о том, что никто и ничто не вернется назад...."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_90794-39-275147.jpg",
+      "name": "alicz"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_851193-31-917594.jpg",
+      "name": "Ksaradas"
+     },
+     {
+      "name": "andrusha_drug"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/946277-50-290999.jpg",
+      "name": "MoJo_jOjO"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2871531-47-347877.jpg",
+      "name": "MCMXCVIII"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1727773-47-331569.jpg",
+      "name": "Кашапов Александр"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/6455074-1-171304.jpg",
+      "name": "Анатолий Бочкин"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_58127-19-929866.jpg",
+      "name": "Millabrook"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_958986-36.jpg",
+      "name": "Su-35"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2369114-02-761199.jpg",
+      "name": "davismarina"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "7.3",
+      "ratingcount": "6239"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2011-07-14T12:47:10+0400",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a00000151e894776da1d8cb03de6ca99902/640x360_2",
+      "title": "«Где бы ты ни был» (This Must Be the Place, 2011)",
+      "og:title": "«Где бы ты ни был» (This Must Be the Place, 2011)",
+      "twitter:title": "«Где бы ты ни был» (This Must Be the Place, 2011)",
+      "og:url": "https://www.kinopoisk.ru/film/gde-by-ty-ni-byl-2011-537136/",
+      "og:director": "Паоло Соррентино",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/537136",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/537136",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/g2dsr6kmxp.6927?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/g2dsr6kmxp.6927?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D49005%26film%3D537136%26tid%3Dkinopoisk.ru-This-Must-Be-Place-74343.flv&autostart=true&link=https://www.kinopoisk.ru/film/gde-by-ty-ni-byl-2011-537136/",
+      "video:duration": "111",
+      "og:duration": "111",
+      "video_height": "304",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/537136/kinopoisk.ru-This-Must-Be-Place-74343.flv",
+      "twitter:player:width": "540",
+      "twitter:player:height": "304",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/537136/kinopoisk.ru-This-Must-Be-Place-74343.flv",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Где бы ты ни был» (This Must Be the Place, 2011)",
+      "mrc__share_description": "Рок-певец, скучающий на пенсии, отправляется на поиски палача своего отца, бывшего нацистского военного преступника, укрывающегося в США.",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Где бы ты ни был (2011) — This Must Be the Place. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a00000151e894776da1d8cb03de6ca99902/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a00000151e894776da1d8cb03de6ca99902/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/gde-by-ty-ni-byl-2011-537136/video/49005/",
+      "duration": "01:51",
+      "isfamilyfriendly": "true",
+      "description": "Рок-певец, скучающий на пенсии, отправляется на поиски палача своего отца, бывшего нацистского военного...",
+      "uploaddate": "2011-07-14T12:47:10+0400"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.5",
+      "best": "10",
+      "originalrating": "7.3",
+      "votes": "6239",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_537136.jpg",
+      "name": "Где бы ты ни был",
+      "genre": "драма",
+      "directed_by": "Паоло Соррентино",
+      "starring": "Шон Пенн, Фрэнсис МакДорманд, Олуэн Фуэр",
+      "summary": "Рок-певец, скучающий на пенсии, отправляется на поиски палача своего отца, бывшего..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/33804/2a00000151e894776da1d8cb03de6ca99902/640x360_2"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Анализируй это — КиноПоиск",
+   "htmlTitle": "Анализируй это — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/analiziruy-eto-1999-1594/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Анализируй это (1999) — Analyze This. Всё о фильме: дата выхода, \nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "htmlSnippet": "Анализируй это (1999) — Analyze \u003cb\u003eThis\u003c/b\u003e. Всё о фильме: дата выхода, \u003cbr\u003e\nтрейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии.",
+   "cacheId": "k4vbayMt2t4J",
+   "formattedUrl": "https://www.kinopoisk.ru/.../analiziruy-eto-1999-1594/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../analiziruy-eto-1999-1594/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "188",
+      "height": "268",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS1bKtlo9AOjXFCKrbX1-pYDFBuncG3AOY_r759_3OD_6OUT6sqLKyvOrg"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/analiziruy-eto-1999-1594/",
+      "title": "Анализируй это"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Анализируй это",
+      "alternativeheadline": "Analyze This",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_1594.jpg",
+      "director": "Харольд Рэмис",
+      "producer": "Джейн Розенталь, Паула Вайнштейн, Лен Амато, ...",
+      "musicby": "Говард Шор",
+      "genre": "комедия, криминал",
+      "datecreated": "1999-03-05",
+      "actors": "Роберт Де Ниро",
+      "description": "Пол Витти — влиятельный нью-йоркский мафиози на грани нервного срыва. Все гангстеры в шоке: как помочь свое..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "Анализировал",
+      "reviewbody": "Это еще одна фантазия на тему «а давай-те поставим главу мафии в нелепую ситуацию» Очень забавный легкий..."
+     },
+     {
+      "headline": "Пора сублимировать горе в убийственный гнев!",
+      "reviewbody": "Порой на человека сваливается слишком много проблем, и все они скопом могут пошатнуть его психологическое..."
+     },
+     {
+      "headline": "По Фрейду",
+      "reviewbody": "«Анализируй это» — криминальная комедия с элементами драмы и легендарным актером в главной роли. Последне..."
+     },
+     {
+      "reviewbody": "Я никогда не смотрел гангстерские фильмы — они казались мне бессмысленно жестокими. Я думал, что такие..."
+     },
+     {
+      "headline": "- Ты просто мастер! У тебя настоящий талант! Ты молодец, док. Я чувствую, что мы говорим, а у меня уже встает,...",
+      "reviewbody": "Хорошее легкое кино. Забавно видеть Де Ниро, пародирующего образы, которые он сам часто играл. И стоит сказа..."
+     },
+     {
+      "reviewbody": "По началу Анализируй Это воспринимается как чистейшая комедийная пародия, в частности на классический..."
+     },
+     {
+      "reviewbody": "Честно говоря, когда брал посмотреть этот фильм — надеялся просто отдохнуть посмотреть на Де Ниро и Кристе..."
+     },
+     {
+      "reviewbody": "Не часто увидишь, чтобы актер, прославленный серьезной ролью будущего короля преступного мира, сыграл в..."
+     },
+     {
+      "headline": "Отличная комедия!",
+      "reviewbody": "Честно признаться, когда собралась посмотреть «Анализируй это» особо не рассчитывала на хорошую комедию...."
+     },
+     {
+      "headline": "Я не знаю как это анализировать)",
+      "reviewbody": "- Слушай док, мне вчера приснился дичайший сон: я крепко сплю, вдруг слышу плачет младенец. Я иду к холодильни..."
+     }
+    ],
+    "person": [
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/69337/1595924-34-567092.jpg",
+      "name": "vanya_strukov"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_2248395-16-348546.jpg",
+      "name": "Alan Capcace"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1198674-15-852369.jpg",
+      "name": "Dream Is Real"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1415236-54-950413.jpg",
+      "name": "dude with the glasses"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_907799-39-290188.jpg",
+      "name": "velimudr"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_250063-14.jpg",
+      "name": "Fammy"
+     },
+     {
+      "name": "DYPeL"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/33806/1214217-33-18278.jpg",
+      "name": "Максим Черный"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1783186-40-674696.jpg",
+      "name": "rina172008"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/69337/3179653-35-978712.jpg",
+      "name": "Monk of Abyss"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "7.5",
+      "ratingcount": "28402"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "1970-01-01T03:00:00+0300",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://st.kp.yandex.net/images/film_iphone/iphone360_1594.jpg",
+      "title": "«Анализируй это» (Analyze This, 1999)",
+      "og:title": "«Анализируй это» (Analyze This, 1999)",
+      "twitter:title": "«Анализируй это» (Analyze This, 1999)",
+      "og:url": "https://www.kinopoisk.ru/film/analiziruy-eto-1999-1594/",
+      "og:director": "Харольд Рэмис",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/1594",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/1594",
+      "mrc__share_title": "«Анализируй это» (Analyze This, 1999)",
+      "mrc__share_description": "Пол Витти - влиятельный нью-йоркский мафиози на грани нервного срыва. Все гангстеры в шоке: как помочь своему чокнутому боссу? Бен Соболь - обычный психоаналитик. У него есть всего несколько дней на то, чтобы помочь крестному отцу справиться с депрессией.",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Анализируй это (1999) — Analyze This. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "4.0",
+      "best": "10",
+      "originalrating": "7.5",
+      "votes": "28402",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_1594.jpg",
+      "name": "Анализируй это",
+      "genre": "комедия, криминал",
+      "directed_by": "Харольд Рэмис",
+      "starring": "Роберт Де Ниро, Билли Кристал, Лиза Кудроу",
+      "summary": "Пол Витти — влиятельный нью-йоркский мафиози на грани нервного срыва. Все гангстеры..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://st.kp.yandex.net/images/film_iphone/iphone360_1594.jpg"
+     }
+    ]
+   }
+  },
+  {
+   "kind": "customsearch#result",
+   "title": "Дальше живите сами (2014) — КиноПоиск",
+   "htmlTitle": "Дальше живите сами (2014) — КиноПоиск",
+   "link": "https://www.kinopoisk.ru/film/dalshe-zhivite-sami-2014-463356/",
+   "displayLink": "www.kinopoisk.ru",
+   "snippet": "Экранизация книги Джонатана Троппера «Здесь я тебя и оставлю» (This Is \nWhere I Leave You), на русском языке изданной как «Дальше живите сами», ...",
+   "htmlSnippet": "Экранизация книги Джонатана Троппера «Здесь я тебя и оставлю» (\u003cb\u003eThis\u003c/b\u003e Is \u003cbr\u003e\nWhere I Leave You), на русском языке изданной как «Дальше живите сами»,&nbsp;...",
+   "cacheId": "FzyZAWIu8PYJ",
+   "formattedUrl": "https://www.kinopoisk.ru/.../dalshe-zhivite-sami-2014-463356/",
+   "htmlFormattedUrl": "https://www.kinopoisk.ru/.../dalshe-zhivite-sami-2014-463356/",
+   "pagemap": {
+    "cse_thumbnail": [
+     {
+      "width": "300",
+      "height": "168",
+      "src": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQdEviptRHZeyQ2nmC6cNY-cMajntzYurLSOUeb2G_-XzagQLz-ZxBM1GE"
+     }
+    ],
+    "breadcrumb": [
+     {
+      "url": "https://www.kinopoisk.ru/",
+      "title": "Главная"
+     },
+     {
+      "url": "https://www.kinopoisk.ru/film/dalshe-zhivite-sami-2014-463356/",
+      "title": "Дальше живите сами"
+     }
+    ],
+    "movie": [
+     {
+      "name": "Дальше живите сами",
+      "alternativeheadline": "This Is Where I Leave You",
+      "image": "https://st.kp.yandex.net/images/film_iphone/iphone360_463356.jpg",
+      "director": "Шон Леви",
+      "producer": "Шон Леви, Паула Вайнштейн, Jesse Ehrman, ...",
+      "musicby": "Майкл Джаккино",
+      "genre": "драма, мелодрама, комедия",
+      "datecreated": "2014-09-07",
+      "actors": "Джейсон Бейтман",
+      "description": "Еврейская семья, которая не особо привыкла соблюдать традиции своей веры, вынуждена выполнить последнее..."
+     }
+    ],
+    "review": [
+     {
+      "headline": "О вечном, добром, светлом",
+      "reviewbody": "Банальность на то и банальность, что она очевидна. Она находится на поверхности. Но, как правило, то, что..."
+     },
+     {
+      "headline": "Забавная такая семейка",
+      "reviewbody": "Просмотрев трейлер фильма, я решила, что хочу как-то себя развлечь и посмотреть эту смешную комедию, но я..."
+     },
+     {
+      "headline": "Шива Альтманов",
+      "reviewbody": "Долгое время режиссёр, сценарист и продюсер Шон Леви шёл к признанию. Он снимал в качестве приглашённого..."
+     },
+     {
+      "headline": "Такого кино надо делать много. Оно дает возможность почуствовать невыразимое.",
+      "reviewbody": "Мазлтов. Много говорить не хочется. Фильм мне очень сильно понравился. Такой по доброму веселый, в нем много-..."
+     },
+     {
+      "headline": "This Is Where I Leave You",
+      "reviewbody": "Джонатан Троппер — очень интересный молодой писатель, мне довелось прочесть несколько его произведений,..."
+     },
+     {
+      "reviewbody": "О ФИЛЬМЕ Жизнь Джадда идет под откос — его жена изменила ему с его боссом, а значит работы и семьи у него..."
+     },
+     {
+      "headline": "Весь мир такой или только наша семья?©",
+      "reviewbody": "У главного героя Джада наступает не самая лучшая полоса в жизни: его жена изменяла ему с его же шефом и к..."
+     },
+     {
+      "headline": "Ради Адама Драйвера: Эпизод II — Семь дней",
+      "reviewbody": "Если верить представленной на «Кинопоиск» информации о фильме, то можно заметить, что «Дальше живите сами»..."
+     },
+     {
+      "reviewbody": "Неортодоксальная иудейская семья собирается с целью отсидеть шиву (семидневный траур) исполняя последнюю..."
+     },
+     {
+      "headline": "«Дальше живите сами»: История без истории.",
+      "reviewbody": "Шон Леви, ответственный за такие трогательные и действительно смешные картины как «Безумное свидание»..."
+     }
+    ],
+    "person": [
+     {
+      "name": "Ewas"
+     },
+     {
+      "name": "rita0277"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1141874-05.jpg",
+      "name": "Tristo"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_114099-25-402622.jpg",
+      "name": "NickolasFlamel"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_1876983-54-618989.jpg",
+      "name": "fabio rochemback"
+     },
+     {
+      "name": "Upitko"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_992542-29-91023.jpg",
+      "name": "1vka1397"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_/get-kino-vod-users-avatar/34118/589194-42-255085.jpg",
+      "name": "Jedi Aragorn"
+     },
+     {
+      "name": "shuran-kutan"
+     },
+     {
+      "image": "https://st.kp.yandex.net/images/users/bsm_661623-05-37462.jpg",
+      "name": "Cherrytie"
+     }
+    ],
+    "aggregaterating": [
+     {
+      "bestrating": "10",
+      "ratingvalue": "6.6",
+      "ratingcount": "7567"
+     }
+    ],
+    "metatags": [
+     {
+      "fb:app_id": "121953784483000",
+      "msapplication-tilecolor": "#FF6600",
+      "msapplication-tileimage": "https://st.kp.yandex.net/public/img/favicons/favicon-144.png",
+      "application-name": "Кинопоиск",
+      "msapplication-config": "https://st.kp.yandex.net/public/xml/ieconfig.xml",
+      "viewport": "width=960",
+      "ya:ovs:upload_date": "2014-06-23T10:55:52+0400",
+      "ya:ovs:adult": "false",
+      "og:type": "video.movie",
+      "ya:ovs:allow_embed": "true",
+      "og:image": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151eac19ec1235fb2ba7f6cd7d6a5/640x360_2",
+      "title": "«Дальше живите сами» (This Is Where I Leave You, 2014)",
+      "og:title": "«Дальше живите сами» (This Is Where I Leave You, 2014)",
+      "twitter:title": "«Дальше живите сами» (This Is Where I Leave You, 2014)",
+      "og:url": "https://www.kinopoisk.ru/film/dalshe-zhivite-sami-2014-463356/",
+      "og:director": "Шон Леви",
+      "twitter:card": "app",
+      "twitter:description": "Найди свое кино!",
+      "twitter:app:name:iphone": "КиноПоиск",
+      "twitter:app:id:iphone": "477718890",
+      "twitter:app:url:iphone": "kp://film/463356",
+      "twitter:app:name:ipad": "КиноПоиск",
+      "twitter:app:id:ipad": "477718890",
+      "twitter:app:url:ipad": "kp://film/463356",
+      "og:video:url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/u48seyuepy.3729?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "og:video:type": "text/html",
+      "og:video:secure_url": "https://video.kinopoisk.ru/iframe/kinopoisk-trailers/u48seyuepy.3729?fresh=1&wmode=transparent&hidden=rotate&adFoxUrl=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoaq&adFoxUrlPostRoll=https%3A%2F%2Fads.adfox.ru%2F251518%2FgetCode%3Fpp%3Dg%26ps%3Dclfc%26p2%3Dfoar",
+      "video_src": "https://yandex.st/swf/kinoplayer/13_102/kinoplayer-loader.swf?file=https%3A%2F%2Fwww.kinopoisk.ru%2Fgettrailer.php%3Ftrid%3D102653%26film%3D463356%26tid%3Dkinopoisk.ru-This-Is-Where-I-Leave-You-216260.mp4&autostart=true&link=https://www.kinopoisk.ru/film/dalshe-zhivite-sami-2014-463356/",
+      "video:duration": "155",
+      "og:duration": "155",
+      "video_height": "226",
+      "video_width": "540",
+      "video_type": "application/x-shockwave-flash",
+      "medium": "video",
+      "twitter:player": "https://www.kinopoisk.ru/twitter/player/463356/kinopoisk.ru-This-Is-Where-I-Leave-You-216260.mp4",
+      "twitter:player:width": "540",
+      "twitter:player:height": "226",
+      "twitter:player:stream": "https://kp.cdn.yandex.net/463356/kinopoisk.ru-This-Is-Where-I-Leave-You-216260.mp4",
+      "twitter:player:stream:content_type": "video/mp4",
+      "mrc__share_title": "«Дальше живите сами» (This Is Where I Leave You, 2014)",
+      "mrc__share_description": "Еврейская семья, которая не особо привыкла соблюдать традиции своей веры, вынуждена выполнить последнее желание своего отца - им нужно будет провести вместе период траура, целую неделю, и решить свои проблемы.",
+      "og:site_name": "КиноПоиск",
+      "og:description": "Дальше живите сами (2014) — This Is Where I Leave You. Всё о фильме: дата выхода, трейлеры, фото, актеры. Отзывы зрителей и профессиональные рецензии. Рейтинг. Общие сборы и бюджет фильма. Интересные факты и ошибки в фильме."
+     }
+    ],
+    "videoobject": [
+     {
+      "name": "Трейлер (русский язык)",
+      "thumbnail": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151eac19ec1235fb2ba7f6cd7d6a5/640x360_2",
+      "thumbnailurl": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151eac19ec1235fb2ba7f6cd7d6a5/640x360_2",
+      "url": "https://www.kinopoisk.ru/film/dalshe-zhivite-sami-2014-463356/video/102653/",
+      "duration": "02:35",
+      "isfamilyfriendly": "true",
+      "description": "Еврейская семья, которая не особо привыкла соблюдать традиции своей веры, вынуждена выполнить последнее...",
+      "uploaddate": "2014-06-23T10:55:52+0400",
+      "videoquality": "HD"
+     }
+    ],
+    "moviereview": [
+     {
+      "ratingstars": "3.5",
+      "best": "10",
+      "originalrating": "6.6",
+      "votes": "7567",
+      "image_href": "https://st.kp.yandex.net/images/film_iphone/iphone360_463356.jpg",
+      "name": "Дальше живите сами",
+      "genre": "драма, мелодрама, комедия",
+      "directed_by": "Шон Леви",
+      "starring": "Джейсон Бейтман, Тина Фей, Адам Драйвер",
+      "summary": "Еврейская семья, которая не особо привыкла соблюдать традиции своей веры, вынуждена..."
+     }
+    ],
+    "cse_image": [
+     {
+      "src": "https://avatars.mds.yandex.net/get-kino-vod-films-gallery/27707/2a00000151eac19ec1235fb2ba7f6cd7d6a5/640x360_2"
+     }
+    ]
+   }
+  }
+ ]
+}
