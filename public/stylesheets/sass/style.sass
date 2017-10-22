@@ -53,6 +53,17 @@ img
     border-radius: 50px
     border: 3px solid white
 
+#menu-icon
+    position: fixed
+    z-index: 3
+    top: 15px
+    left: 15px
+    img
+        height: 40px
+
+#menu-overlay
+    display: none
+
 .flex-container
     display: flex
     flex-flow: row wrap
@@ -66,16 +77,9 @@ img
         @include respond-to(small)
             flex-basis: 100%
             height: 60vh
-        #menu-open
+        #back, #poster, #front, #user
             position: absolute
-            top: 20px
-            left: 20px
-            z-index: 2
-            img
-                width: 50px
-        #image-background, #poster, #list, #user
-            position: absolute
-        #image-background
+        #back
             filter: blur(15px)
             top: -5vh
             left: -2.5vw
@@ -89,26 +93,24 @@ img
             background-size: cover
             background-position: center center
             background-repeat: no-repeat
-        #list
+        #front
             z-index: 1
             left: 0
+            height: 100vh
             @include respond-to(small)
                 width: 100vw
-                top: 10vh
             @include respond-to(big)
                 width: 40vw
-                top: 8vh
             display: flex
             flex-direction: column
             align-items: center
+            justify-content: space-evenly
             #list-title
                 text-transform: uppercase
                 font-size: 1.3em
                 font-family: $roboto
+                margin-bottom: -20px
             #list-owner
-                margin: 10px 0px 40px 0px
-                @include respond-to(small)
-                    margin-bottom: 20px
                 font-size: 1.2em
                 font-family: $roboto
             #slider
@@ -118,17 +120,16 @@ img
                 align-items: flex-start
                 overflow-x: auto
                 overflow-y: hidden
-                margin-bottom: 20px
                 .list-item
                     margin: 0px 15px
                     img
                         @include respond-to(small)
                             height: 40vh
                         @include respond-to(big)
-                            height: 50vh
+                            height: 45vh
                     .item-title
                         margin: 15px 0px
-                        font-size: 1.2em
+                        font-size: 1.1em
                         font-family: $roboto
                         text-align: center
             #slider::-webkit-scrollbar-track
@@ -136,7 +137,7 @@ img
               	border-radius: 10px
               	background-color: #F5F5F5
             #slider::-webkit-scrollbar
-                width: 12px
+                width: 5px
             #slider::-webkit-scrollbar-thumb
               	border-radius: 10px
               	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3)

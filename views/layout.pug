@@ -4,10 +4,20 @@ html(lang='ru')
         meta(charset='utf-8')
         meta(http-equiv='X-UA-Compatible', content='IE=edge')
         meta(name='viewport', content='width=device-width, initial-scale=1')
-        title #{title} / MOVIER
+        block title
+            title MOVIER
         // Font
         link(href='https://fonts.googleapis.com/css?family=Megrim|Open+Sans|Roboto|Rubik|Istok+Web', rel="stylesheet")
         // Main styles
         link(href='/stylesheets/css/style.css', rel='stylesheet')
     body
+        a#menu-icon(onclick="openNav")
+                img(src="/images/icons/menu.png")
+        #menu-overlay
+            a#menu-toggle(onclick="closeNav()")
+                img(src="/images/icons/menu.png")
+            #menu-content
+                a(href="#") Главная
+                a(href="#") Мой канал
+
         block content

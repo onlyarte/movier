@@ -1,11 +1,12 @@
 extends layout
 
+block title
+    title #{channel._name} / MOVIER
+
 block content
     .flex-container
         #left.custom-sized-left-user
-            #menu-open
-                img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + channel._image + "')")
+            #back(style="background-image: url('" + channel._image + "')")
 
             #user
                 img(src=channel._image)

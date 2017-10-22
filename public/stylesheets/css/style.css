@@ -38,13 +38,24 @@ a:hover {
 img {
   display: block; }
 
-.button, .flex-container #left #list #save-button, .flex-container #left #list #edit-button {
+.button, .flex-container #left #front #save-button, .flex-container #left #front #edit-button {
   display: inline-flex;
   align-items: center;
   height: 50px;
   margin: 10px;
   border-radius: 50px;
   border: 3px solid white; }
+
+#menu-icon {
+  position: fixed;
+  z-index: 3;
+  top: 15px;
+  left: 15px; }
+  #menu-icon img {
+    height: 40px; }
+
+#menu-overlay {
+  display: none; }
 
 .flex-container {
   display: flex;
@@ -61,16 +72,9 @@ img {
       .flex-container #left {
         flex-basis: 100%;
         height: 60vh; } }
-    .flex-container #left #menu-open {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 2; }
-      .flex-container #left #menu-open img {
-        width: 50px; }
-    .flex-container #left #image-background, .flex-container #left #poster, .flex-container #left #list, .flex-container #left #user {
+    .flex-container #left #back, .flex-container #left #poster, .flex-container #left #front, .flex-container #left #user {
       position: absolute; }
-    .flex-container #left #image-background {
+    .flex-container #left #back {
       filter: blur(15px);
       top: -5vh;
       left: -2.5vw;
@@ -79,70 +83,66 @@ img {
       background-position: center center;
       background-repeat: no-repeat; }
       @media only screen and (max-width: 600px) {
-        .flex-container #left #image-background {
+        .flex-container #left #back {
           width: 105vw;
           height: 110vh; } }
       @media only screen and (min-width: 600px) {
-        .flex-container #left #image-background {
+        .flex-container #left #back {
           width: 45vw;
           height: 110vh; } }
-    .flex-container #left #list {
+    .flex-container #left #front {
       z-index: 1;
       left: 0;
+      height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center; }
+      align-items: center;
+      justify-content: space-evenly; }
       @media only screen and (max-width: 600px) {
-        .flex-container #left #list {
-          width: 100vw;
-          top: 10vh; } }
+        .flex-container #left #front {
+          width: 100vw; } }
       @media only screen and (min-width: 600px) {
-        .flex-container #left #list {
-          width: 40vw;
-          top: 8vh; } }
-      .flex-container #left #list #list-title {
+        .flex-container #left #front {
+          width: 40vw; } }
+      .flex-container #left #front #list-title {
         text-transform: uppercase;
         font-size: 1.3em;
-        font-family: "Roboto", sans-serif; }
-      .flex-container #left #list #list-owner {
-        margin: 10px 0px 40px 0px;
+        font-family: "Roboto", sans-serif;
+        margin-bottom: -20px; }
+      .flex-container #left #front #list-owner {
         font-size: 1.2em;
         font-family: "Roboto", sans-serif; }
-        @media only screen and (max-width: 600px) {
-          .flex-container #left #list #list-owner {
-            margin-bottom: 20px; } }
-      .flex-container #left #list #slider {
+      .flex-container #left #front #slider {
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         overflow-x: auto;
-        overflow-y: hidden;
-        margin-bottom: 20px; }
-        .flex-container #left #list #slider .list-item {
+        overflow-y: hidden; }
+        .flex-container #left #front #slider .list-item {
           margin: 0px 15px; }
           @media only screen and (max-width: 600px) {
-            .flex-container #left #list #slider .list-item img {
+            .flex-container #left #front #slider .list-item img {
               height: 40vh; } }
           @media only screen and (min-width: 600px) {
-            .flex-container #left #list #slider .list-item img {
-              height: 50vh; } }
-          .flex-container #left #list #slider .list-item .item-title {
+            .flex-container #left #front #slider .list-item img {
+              height: 45vh; } }
+          .flex-container #left #front #slider .list-item .item-title {
             margin: 15px 0px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-family: "Roboto", sans-serif;
             text-align: center; }
-      .flex-container #left #list #slider::-webkit-scrollbar-track {
+      .flex-container #left #front #slider::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         background-color: #F5F5F5; }
-      .flex-container #left #list #slider::-webkit-scrollbar {
-        width: 12px; }
-      .flex-container #left #list #slider::-webkit-scrollbar-thumb {
+      .flex-container #left #front #slider::-webkit-scrollbar {
+        width: 5px; }
+      .flex-container #left #front #slider::-webkit-scrollbar-thumb {
         border-radius: 10px;
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         background-color: #555; }
-      .flex-container #left #list #save-button, .flex-container #left #list #edit-button {
+      .flex-container #left #front #save-button, .flex-container #left #front #edit-button {
         padding: 0px 20px; }
     .flex-container #left #poster {
       z-index: 1;

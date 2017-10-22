@@ -10,6 +10,8 @@ mixin getPPList(arr, title)
                 else if index==5 || (index==arr.length-1 && index<5)
                     | #{person}
 
+block title
+    title #{film.title} / MOVIER
 block content
     script
         include ../public/javascripts/connect.js
@@ -19,9 +21,7 @@ block content
         var filmid = !{film.id};
     .flex-container
         #left
-            #menu-open
-                img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + film.poster + "')")
+            #back(style="background-image: url('" + film.poster + "')")
             #poster
                 #poster-caption= film.title
                 img(src=film.poster)

@@ -9,10 +9,8 @@ block content
 
     .flex-container
         #left
-            #menu-open
-                img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + list._films[0]._poster + "')")
-            #list
+            #back(style="background-image: url('" + list._films[0]._poster + "')")
+            #front
                 #list-title= list._name
                 #list-owner
                     a(href= '/channel/' + list._owner._id)= list._owner._name

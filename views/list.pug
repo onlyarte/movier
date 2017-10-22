@@ -10,6 +10,9 @@ mixin getPPList(arr, title)
                 else if index==5 || (index==arr.length-1 && index<5)
                     | #{person}
 
+block title
+    title #{list._name} / MOVIER
+
 block content
     script
         include ../public/javascripts/connect.js
@@ -22,10 +25,8 @@ block content
         var listid = "!{list._id}";
     .flex-container
         #left
-            #menu-open
-                img(src='/images/icons/menu.png')
-            #image-background(style="background-image: url('" + list._films[0]._poster + "')")
-            #list
+            #back(style="background-image: url('" + list._films[0]._poster + "')")
+            #front
                 #list-title= list._name
                 #list-owner
                     a(href= '/channel/' + list._owner._id)= list._owner._name
