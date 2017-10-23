@@ -53,18 +53,80 @@ img
     border-radius: 50px
     border: 3px solid white
 
-#menu-icon
-    position: fixed
+#menu-open
+    position: absolute
     z-index: 3
     top: 15px
     left: 15px
     img
-        height: 40px
+        height: 24px
 
 #menu-overlay
-    display: none
+    visibility: hidden
+    position: absolute
+    z-index: 4
+    background: rgba(48,48,48,0.8)
+    height: 100vh
+    width: 300px
+    display: flex
+    flex-direction: column
+    #menu-close
+        span
+            font-family: $megrim
+            font-size: 1.5em
+    .menu-group
+        width: 100%
+        border-bottom: 3px solid rgb(100,100,100)
+        .group-info
+            display: flex
+            flex-direction: row
+            align-items: center
+            img
+                height: 18px
+                margin: 18px
+            span
+                line-height: 50px
+                vertical-align: center
+    .menu-item
+        width: 100%
+        height: 50px
+        display: flex
+        flex-direction: row
+        align-items: center
+        img
+            height: 18px
+            margin: 18px
+        span
+            line-height: 50px
+            vertical-align: center
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+    .menu-item:hover, menu-group:hover
+        background: rgba(32,32,32,0.8)
+    #search
+        position: relative
+        #search-box
+            color: white
+            height: 44px
+            margin: 3px 16px
+            padding: 0px 44px 0px 7px
+            font-size: 1.2em
+            width: 100%
+            border: 0px
+            background: rgba(32,32,32,0.5)
+        .submit
+            position: absolute
+            right: 24px
+            top: 9px
+    #search-results
+        display: none
+            
 
-.flex-container
+
+
+
+#content
     display: flex
     flex-flow: row wrap
     #left

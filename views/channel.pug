@@ -4,49 +4,48 @@ block title
     title #{channel._name} / MOVIER
 
 block content
-    .flex-container
-        #left.custom-sized-left-user
-            #back(style="background-image: url('" + channel._image + "')")
+    #left.custom-sized-left-user
+        #back(style="background-image: url('" + channel._image + "')")
 
-            #user
-                img(src=channel._image)
-                #name= channel._name
-                #desc
-                #stat
-                    .stat-item
-                        .num 178
-                        .stat-desc фильмов
-                    .stat-item
-                        .num 17
-                        .stat-desc списков
-                    .stat-item
-                        .num 30
-                        .stat-desc читателей
+        #user
+            img(src=channel._image)
+            #name= channel._name
+            #desc
+            #stat
+                .stat-item
+                    .num 178
+                    .stat-desc фильмов
+                .stat-item
+                    .num 17
+                    .stat-desc списков
+                .stat-item
+                    .num 30
+                    .stat-desc читателей
 
-                if authch && authch._id == channel._id
-                    #edit-button.button
-                        span.button-title(id=channel._id) Редактировать
-                else
-                    #subscribe-button.button
-                        span.button-title(id=channel._id) Читать
+            if authch && authch._id == channel._id
+                #edit-button.button
+                    span.button-title(id=channel._id) Редактировать
+            else
+                #subscribe-button.button
+                    span.button-title(id=channel._id) Читать
 
-        #right
-            #user-wrapper
-                .lists-block
-                    h1.block-title Мои коллекции
-                    .list-items
-                        each list in channel._lists
-                            a.list-item(href='/list/' + list._id)
-                                each film, index in list._films
-                                    if index == 0
-                                        img(src=film._poster)
-                                .list-title(title=list._name)=list._name
-                .lists-block
-                    h1.block-title Сохраненные
-                    .list-items
-                        each list in channel._saved_lists
-                            a.list-item(href='/list/' + list._id)
-                                each film, index in list._films
-                                    if index == 0
-                                        img(src=film._poster)
-                                .list-title(title=list._name)=list._name
+    #right
+        #user-wrapper
+            .lists-block
+                h1.block-title Мои коллекции
+                .list-items
+                    each list in channel._lists
+                        a.list-item(href='/list/' + list._id)
+                            each film, index in list._films
+                                if index == 0
+                                    img(src=film._poster)
+                            .list-title(title=list._name)=list._name
+            .lists-block
+                h1.block-title Сохраненные
+                .list-items
+                    each list in channel._saved_lists
+                        a.list-item(href='/list/' + list._id)
+                            each film, index in list._films
+                                if index == 0
+                                    img(src=film._poster)
+                            .list-title(title=list._name)=list._name

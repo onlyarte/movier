@@ -10,14 +10,27 @@ html(lang='ru')
         link(href='https://fonts.googleapis.com/css?family=Megrim|Open+Sans|Roboto|Rubik|Istok+Web', rel="stylesheet")
         // Main styles
         link(href='/stylesheets/css/style.css', rel='stylesheet')
-    body
-        a#menu-icon(onclick="openNav")
-                img(src="/images/icons/menu.png")
-        #menu-overlay
-            a#menu-toggle(onclick="closeNav()")
-                img(src="/images/icons/menu.png")
-            #menu-content
-                a(href="#") Главная
-                a(href="#") Мой канал
 
-        block content
+        script(src="/javascripts/nav.js")
+        script(src="/javascripts/search.js")
+    body
+        a#menu-open(onclick="openNav()")
+            img(src="/images/icons/menu.png")
+        #menu-overlay
+            a#menu-close.menu-item(href="", onclick="closeNav()")
+                img(src="/images/icons/close.png")
+                span Movier
+            #search.menu-item
+                input#search-box(type="text", placeholder="Поиск")
+                input.submit(type="image", src="/images/icons/search.png", onclick="search()")
+            #search-results.menu-group
+                .group-info
+                    img(src="/images/icons/search.png")
+                    span Результаты поиска
+            a.menu-item(href="")
+                img(src="/images/icons/home.png")
+                span Мой профиль
+            block collections
+
+        #content
+            block content

@@ -31,48 +31,47 @@ block content
                 l_updateSB("!{list._id}");
             };
     
-    .flex-container
-        #left
-            #back(style="background-image")
-            #front
-                #list-info
-                    #list-title= list._name
-                    #list-owner
-                        a(href= '/channel/' + list._owner._id)= list._owner._name
-                #slider
-                    each film in list._films
-                        a.list-item(href='/film/' + film._id)
-                            img(src=film._poster)
-                            .item-title= film._title
-                if authch && authch._id == list._owner._id
-                    #edit-button
-                        span.button-title РЕДАКТИРОВАТЬ
-                else
-                    #save-button(onclick='l_clickedSB("' + list._id + '")')
-                        span.button-title СОХРАНИТЬ
-                
+    #left
+        #back(style="background-image")
+        #front
+            #list-info
+                #list-title= list._name
+                #list-owner
+                    a(href= '/channel/' + list._owner._id)= list._owner._name
+            #slider
+                each film in list._films
+                    a.list-item(href='/film/' + film._id)
+                        img(src=film._poster)
+                        .item-title= film._title
+            if authch && authch._id == list._owner._id
+                #edit-button
+                    span.button-title РЕДАКТИРОВАТЬ
+            else
+                #save-button(onclick='l_clickedSB("' + list._id + '")')
+                    span.button-title СОХРАНИТЬ
+            
 
-        #right
-            #film-info
-                #rate
-                    span#kp= list._films[0]._rating_kp
-                    | &nbsp;/ 10
-                h1#film-title
-                    |#{list._films[0]._title} / #{list._films[0]._title_original}
-                #short-info
-                    | #{list._films[0]._year} | #{list._films[0]._genre}
+    #right
+        #film-info
+            #rate
+                span#kp= list._films[0]._rating_kp
+                | &nbsp;/ 10
+            h1#film-title
+                |#{list._films[0]._title} / #{list._films[0]._title_original}
+            #short-info
+                | #{list._films[0]._year} | #{list._films[0]._genre}
 
-                p.description!= list._films[0]._description
-                +getPPList(list._films[0]._directors, 'Режиссер')(id='directors')
-                +getPPList(list._films[0]._writers, 'Сценарий')(id='writers')
-                +getPPList(list._films[0]._actors, 'В ролях')(id='actors')
+            p.description!= list._films[0]._description
+            +getPPList(list._films[0]._directors, 'Режиссер')(id='directors')
+            +getPPList(list._films[0]._writers, 'Сценарий')(id='writers')
+            +getPPList(list._films[0]._actors, 'В ролях')(id='actors')
 
-            if authch
-                .list-group
-                    each chlist in authch._lists
-                        .list-button(id!=chlist._id, onclick='f_clickedLB(this.id, ' + list._films[0]._id + ')')
-                            span.button-title!= chlist._name
-                    form
-                        input(type='text', name='filmid', value=list._films[0]._id hidden)
-                        input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
-                        input(type='submit', hidden)
+        if authch
+            .list-group
+                each chlist in authch._lists
+                    .list-button(id!=chlist._id, onclick='f_clickedLB(this.id, ' + list._films[0]._id + ')')
+                        span.button-title!= chlist._name
+                form
+                    input(type='text', name='filmid', value=list._films[0]._id hidden)
+                    input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
+                    input(type='submit', hidden)

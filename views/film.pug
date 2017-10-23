@@ -2,13 +2,14 @@ extends layout
 
 mixin getPPList(arr, title)
     .pp-row
-        .pp-title!= title
-        .pp-list(id!=attributes.id)
-            each person, index in arr
-                if index < 5 && index != arr.length-1
-                    | #{person},&nbsp;
-                else if index==5 || (index==arr.length-1 && index<5)
-                    | #{person}
+        if arr
+            .pp-title!= title
+            .pp-list(id!=attributes.id)
+                each person, index in arr
+                    if index < 5 && index != arr.length-1
+                        | #{person},&nbsp;
+                    else if index==5 || (index==arr.length-1 && index<5)
+                        | #{person}
 
 block title
     title #{film.title} / MOVIER
@@ -20,35 +21,36 @@ block content
         window.onload = function(){
             f_updateLB(!{film.id});
         }
-        var channel = !{JSON.stringify(authch)};
+    if authch
+        script.
+            var channel = !{JSON.stringify(authch)};
 
-    .flex-container
-        #left
-            #back(style="background-image: url('" + film.poster + "')")
-            #poster
-                #poster-caption= film.title
-                img(src=film.poster)
-        #right
-            #film-info
-                #rate
-                    span#kp #{film.rating_kp}
-                    | &nbsp;/ 10
-                h1#film-title
-                    |#{film.title} / #{film.title_original}
-                #short-info
-                    | #{film.year} | #{film.genre}
+    #left
+        #back(style="background-image: url('" + film.poster + "')")
+        #poster
+            #poster-caption= film.title
+            img(src=film.poster)
+    #right
+        #film-info
+            #rate
+                span#kp #{film.rating_kp}
+                | &nbsp;/ 10
+            h1#film-title
+                |#{film.title} / #{film.title_original}
+            #short-info
+                | #{film.year} | #{film.genre}
 
-                p.description!= film.description
-                +getPPList(film.directors, 'Режиссер')(id='directors')
-                +getPPList(film.writers, 'Сценарий')(id='writers')
-                +getPPList(film.actors, 'В ролях')(id='actors')
+            p.description!= film.description
+            +getPPList(film.directors, 'Режиссер')(id='directors')
+            +getPPList(film.writers, 'Сценарий')(id='writers')
+            +getPPList(film.actors, 'В ролях')(id='actors')
 
-            if authch
-                .list-group
-                    each list in authch._lists
-                        .list-button(id!=list._id, onclick='f_clickedLB(this.id, ' + film.id + ')')
-                            span.button-title!= list._name
-                    form(action='/list', method='post')
-                        input(type='text', name='filmid', value=film.id, hidden)
-                        input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
-                        input(type='submit', hidden)
+        if authch
+            .list-group
+                each list in authch._lists
+                    .list-button(id!=list._id, onclick='f_clickedLB(this.id, ' + film.id + ')')
+                        span.button-title!= list._name
+                form(action='/list', method='post')
+                    input(type='text', name='filmid', value=film.id, hidden)
+                    input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
+                    input(type='submit', hidden)

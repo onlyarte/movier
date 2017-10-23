@@ -1,11 +1,9 @@
 function openNav() {
-    document.getElementById('menu').style.visibility = 'visible';
-    document.getElementById('menu').style.opacity = 1;
+    document.getElementById('menu-open').style.display = 'none';
+    document.getElementById('menu-overlay').style.visibility = 'visible';
 }
 
 function closeNav() {
-    document.getElementById('menu').style.opacity = 0;
-    setTimeout(function(){
-        document.getElementById('menu').style.visibility = 'hidden';
-    }, 1000);
+    document.getElementById('menu-overlay').style.visibility = 'hidden';
+    document.getElementById('menu-open').style.display = 'block';
 }
