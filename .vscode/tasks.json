@@ -1,6 +1,7 @@
 {
     "tasks": [
         {
+            "label": "sass",
             "type": "gulp",
             "task": "default",
             "problemMatcher": []

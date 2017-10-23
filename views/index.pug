@@ -11,9 +11,10 @@ block content
         #left
             #back(style="background-image: url('" + list._films[0]._poster + "')")
             #front
-                #list-title= list._name
-                #list-owner
-                    a(href= '/channel/' + list._owner._id)= list._owner._name
+                #list-info
+                    #list-title= list._name
+                    #list-owner
+                        a(href= '/channel/' + list._owner._id)= list._owner._name
                 #slider
                     each film in list._films
                         a.list-item(href='/film/' + film._id)

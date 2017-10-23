@@ -1,17 +1,15 @@
-window.onload = function(){
-    updateListSaveButton();
-}
+let l_displayedF = 0;
 
-function saveList(callback){
+function l_save(listid, callback){
     sendUpdateRequest('/list/' + listid + '/save/', callback);
 }
 
-function removeListFromSaved(callback){
+function l_unsave(listid, callback){
     sendUpdateRequest('/list/' + listid + '/remove/', callback);
 }
 
-function updateListSaveButton(){
-    if(isSaved()){
+function l_updateSB(listid){
+    if(l_isSaved(listid)){
         document.getElementById('save-button').firstChild.textContent = "СОХРАНЕНО";
     }
     else {
@@ -19,20 +17,20 @@ function updateListSaveButton(){
     }
 }
 
-function changeListState(){
-    if(isSaved()){
-        removeListFromSaved(function(){
+function l_clickedSB(listid){
+    if(l_isSaved(listid)){
+        l_unsave(function(){
             location.reload();
         });
     }
     else{
-        saveList(function(){
+        l_save(function(){
             location.reload();
         });
     }
 }
 
-function isSaved(){
+function l_isSaved(listid){
     let list = channel._saved_lists.find(function(element){
         return element._id == listid;
     });

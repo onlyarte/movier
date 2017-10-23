@@ -54,7 +54,7 @@ router.post('/new', function(req, res, next){
     //save image to cloudinary
     function saveImageToCloud(){
         cloudinary.v2.uploader.upload(path,
-            { width: 1000, height: 1000,  crop: "limit" },
+            { crop : "fill", aspect_ratio: "1:1" },
             function(error, result) {
                 if(error)
                     return next(error);
@@ -70,41 +70,8 @@ router.post('/new', function(req, res, next){
             if(error)
                 return next(error);
 
-            addDefaultLists();
+            redirect();
         });
-    }
-
-    //create and add defalt lists to channel
-    function addDefaultLists(){
-        let addList = function(name){
-            return new Promise(function(resolve, reject){
-                listapi.add({
-                    owner: channel.id,
-                    is_open: false,
-                    name: name,
-                    films: []
-                }, function(error, list){
-                    if(error)
-                        reject(error);
-
-                    resolve(list);
-                });
-            });
-        };
-
-        addList('Любимые')
-            .then(function(response){
-                return addList('Просмотренные');
-            })
-            .then(function(response){
-                return addList('Буду смотреть');
-            })
-            .then(function(response){
-                redirect();
-            })
-            .catch(function(error){
-                next(error);
-            });
     }
 
     //save session var and redirect to channel

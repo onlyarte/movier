@@ -17,8 +17,11 @@ block content
         include ../public/javascripts/connect.js
         include ../public/javascripts/filmcontroller.js
     script.
+        window.onload = function(){
+            f_updateLB(!{film.id});
+        }
         var channel = !{JSON.stringify(authch)};
-        var filmid = !{film.id};
+
     .flex-container
         #left
             #back(style="background-image: url('" + film.poster + "')")
@@ -43,7 +46,7 @@ block content
             if authch
                 .list-group
                     each list in authch._lists
-                        .list-button(id!=list._id, onclick='changeState(this.id)')
+                        .list-button(id!=list._id, onclick='f_clickedLB(this.id, ' + film.id + ')')
                             span.button-title!= list._name
                     form(action='/list', method='post')
                         input(type='text', name='filmid', value=film.id, hidden)

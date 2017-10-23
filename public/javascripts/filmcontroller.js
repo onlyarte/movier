@@ -1,33 +1,29 @@
-window.onload = function(){
-    updateOpacity();
-}
-
-function updateOpacity(){
+function f_updateLB(filmid){
     let listbuttons = document.getElementsByClassName('list-button');
 
     for(let i = 0; i < listbuttons.length; i++){
-        if(listbuttons[i].id && containsFilm(listbuttons[i].id)){
-            listbuttons[i].style.opacity = 1;
+        if(listbuttons[i].id && f_inList(listbuttons[i].id, filmid)){
+            listbuttons[i].style.opacity = 0.7;
         }
         else{
-            listbuttons[i].style.opacity = 0.6;
+            listbuttons[i].style.opacity = 0.5;
         }
     }
 }
 
-function changeState(listid){
-    if(containsFilm(listid)){
-        removeFromList(listid, function(){
+function f_clickedLB(listid, filmid){
+    if(f_inList(listid, filmid)){
+        f_removeFromL(listid, filmid, function(){
             location.reload();
         });
     } else {
-        addToList(listid, function(){
+        f_addToL(listid, filmid, function(){
             location.reload();
         });
     }
 }
 
-function containsFilm(listid){
+function f_inList(listid, filmid){
     let list = channel._lists.find(function(element){
         return element._id == listid;
     });
@@ -43,10 +39,10 @@ function containsFilm(listid){
     }
 }
 
-function addToList(listid, callback){
+function f_addToL(listid, filmid, callback){
     sendUpdateRequest('/film/' + filmid + '/tolist/' + listid, callback);
 }
 
-function removeFromList(listid, callback){
+function f_removeFromL(listid, filmid, callback){
     sendUpdateRequest('/film/' + filmid + '/fromlist/' + listid, callback);
 }

@@ -21,15 +21,24 @@ block content
 
     script.
         var channel = !{JSON.stringify(authch)};
-
-        var listid = "!{list._id}";
+        window.onload = function(){
+            f_updateLB(!{list._films[0]._id});
+        };
+    
+    if(authch && authch._id != list._owner._id)
+        script.
+            window.onload = function(){
+                l_updateSB("!{list._id}");
+            };
+    
     .flex-container
         #left
-            #back(style="background-image: url('" + list._films[0]._poster + "')")
+            #back(style="background-image")
             #front
-                #list-title= list._name
-                #list-owner
-                    a(href= '/channel/' + list._owner._id)= list._owner._name
+                #list-info
+                    #list-title= list._name
+                    #list-owner
+                        a(href= '/channel/' + list._owner._id)= list._owner._name
                 #slider
                     each film in list._films
                         a.list-item(href='/film/' + film._id)
@@ -39,7 +48,7 @@ block content
                     #edit-button
                         span.button-title РЕДАКТИРОВАТЬ
                 else
-                    #save-button(onclick='changeListState()')
+                    #save-button(onclick='l_clickedSB("' + list._id + '")')
                         span.button-title СОХРАНИТЬ
                 
 
@@ -60,9 +69,9 @@ block content
 
             if authch
                 .list-group
-                    each list in authch._lists
-                        .list-button(id!=list._id, onclick='changeState(this.id)')
-                            span.button-title!= list._name
+                    each chlist in authch._lists
+                        .list-button(id!=chlist._id, onclick='f_clickedLB(this.id, ' + list._films[0]._id + ')')
+                            span.button-title!= chlist._name
                     form
                         input(type='text', name='filmid', value=list._films[0]._id hidden)
                         input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
