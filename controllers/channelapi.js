@@ -1,24 +1,13 @@
 const listapi = require('./listapi');
 const Channel = require('../models/channel');
 
-let findById = function(id, callback){
-    Channel.findOne({ _id: id })
-    .populate('_lists')
-    .populate({
-        path: '_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .populate({
-        path: '_saved_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .exec(function(error, channel){
+//TODO: POPULATE LISTS USING LISTAPI
+
+const get = function getChannelById(id, callback) {
+    Channel.findById(id)
+    .populate('lists')
+    .populate('saved_lists')
+    .exec((error, channel) => {
         if(error)
             return callback(error, null);
         if(!channel)
@@ -28,46 +17,34 @@ let findById = function(id, callback){
     });
 }
 
-let add = function(channel, callback){
-    new Channel({
-        _id: channel.id,
-        _email: channel.email,
-        _password: channel.password,
-        _name: channel.name,
-        _image: channel.image,
-        _lists: channel.lists,
-        _saved_lists: channel.saved_lists
-    }).save(callback);
+const add = function addChannel(channel, callback) {
+    new Channel(channel).save(callback);
 }
 
-let remove = function(id, callback){
-    Channel.remove({ _id: id }, function(error){
-        if(error) return callback(error);
+const remove = function removeChannel(id, callback) {
+    Channel.remove({ id })
+    .exec(error => {
+        if(error) 
+            return callback(error);
         callback(null);
     });
 }
 
-let addList = function(id, listid, callback){
+const addList = function addListToChannelLists(chid, listid, callback) {
     Channel.findByIdAndUpdate(
-        id,
-        { $addToSet: { '_lists': listid } },
-        { new: true }
-    ).populate('_lists')
-    .populate({
-        path: '_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .populate({
-        path: '_saved_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .exec(function(error, channel){
+        chid,
+        { 
+            $addToSet: { 
+                lists: listid,
+            } 
+        },
+        { 
+            new: true,
+        },
+    )
+    .populate('lists')
+    .populate('saved_lists')
+    .exec((error, channel) => {
         if(error)
             return callback(error, null);
         if(!channel)
@@ -77,27 +54,21 @@ let addList = function(id, listid, callback){
     });
 }
 
-let saveList = function(id, listid, callback){
+const saveList = function addListToChannelSaved(chid, listid, callback) {
     Channel.findByIdAndUpdate(
-        id,
-        { $addToSet: { '_saved_lists': listid } },
-        { new: true }
-    ).populate('_lists')
-    .populate({
-        path: '_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .populate({
-        path: '_saved_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .exec(function(error, channel){
+        chid,
+        { 
+            $addToSet: { 
+                saved_lists: listid,
+            },
+        },
+        { 
+            new: true,
+        },
+    )
+    .populate('lists')
+    .populate('saved_lists')
+    .exec((error, channel) => {
         if(error)
             return callback(error, null);
         if(!channel)
@@ -107,27 +78,21 @@ let saveList = function(id, listid, callback){
     });
 }
 
-let removeFromSaved = function(id, listid, callback){
+const unsaveList = function removeListFromChannelSaved(cdid, listid, callback) {
     Channel.findByIdAndUpdate(
-        id,
-        { $pull: { '_saved_lists': listid } },
-        { new: true }
-    ).populate('_lists')
-    .populate({
-        path: '_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .populate({
-        path: '_saved_lists',
-        populate: {
-            path: '_films',
-            model: 'Film'
-        }
-    })
-    .exec(function(error, channel){
+        chid,
+        { 
+            $pull: { 
+                saved_lists: listid,
+            },
+        },
+        { 
+            new: true,
+        },
+    )
+    .populate('lists')
+    .populate('saved_lists')
+    .exec((error, channel) => {
         if(error)
             return callback(error, null);
         if(!channel)
@@ -137,9 +102,9 @@ let removeFromSaved = function(id, listid, callback){
     });
 }
 
-module.exports.findById = findById;
+module.exports.get = get;
 module.exports.add = add;
 module.exports.remove = remove;
 module.exports.addList = addList;
 module.exports.saveList = saveList;
-module.exports.removeFromSaved = removeFromSaved;
+module.exports.unsaveList = unsaveList;

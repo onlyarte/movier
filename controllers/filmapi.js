@@ -1,8 +1,8 @@
-const request = require('request-json');
-const client = request.createClient('http://getmovie.cc/');
-const https = require('https');
-const fs = require('fs');
-const cloudinary = require('cloudinary');
+const request       = require('request-json');
+const client        = request.createClient('http://getmovie.cc/');
+const https         = require('https');
+const fs            = require('fs');
+const cloudinary    = require('cloudinary');
 
 const Film = require('../models/film');
 

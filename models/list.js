@@ -1,13 +1,11 @@
-// The List model
+const mongoose  = require('mongoose')
+const Schema    = mongoose.Schema;
 
-const mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
-
-let listSchema = new Schema({
-    _owner: { type: String, ref: 'Channel' },
-    _is_open: Boolean,
-    _name: String,
-    _films: [{ type: Number, ref: 'Film' }]
+const listSchema = new Schema({
+    owner: { type: String, ref: 'Channel' },
+    is_open: Boolean,
+    name: String,
+    films: [{ type: String, ref: 'Film' }],
 });
 
 module.exports = mongoose.model('List', listSchema);
