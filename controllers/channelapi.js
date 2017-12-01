@@ -5,16 +5,8 @@ const Channel = require('../models/channel');
 
 const get = function getChannelById(id, callback) {
     Channel.findById(id)
-    .populate('lists')
     .populate('saved_lists')
-    .exec((error, channel) => {
-        if(error)
-            return callback(error, null);
-        if(!channel)
-            return callback(new Error('Channel not found'), null);
-
-        callback(null, channel);
-    });
+    .exec(callback);
 }
 
 const add = function addChannel(channel, callback) {
@@ -22,12 +14,8 @@ const add = function addChannel(channel, callback) {
 }
 
 const remove = function removeChannel(id, callback) {
-    Channel.remove({ id })
-    .exec(error => {
-        if(error) 
-            return callback(error);
-        callback(null);
-    });
+    Channel.findByIdAndRemove(id)
+    .exec(callback);
 }
 
 const addList = function addListToChannelLists(chid, listid, callback) {
@@ -42,16 +30,8 @@ const addList = function addListToChannelLists(chid, listid, callback) {
             new: true,
         },
     )
-    .populate('lists')
     .populate('saved_lists')
-    .exec((error, channel) => {
-        if(error)
-            return callback(error, null);
-        if(!channel)
-            return callback(new Error('Channel not found'), null);
-
-        callback(null, channel);
-    });
+    .exec(callback);
 }
 
 const saveList = function addListToChannelSaved(chid, listid, callback) {
@@ -66,16 +46,8 @@ const saveList = function addListToChannelSaved(chid, listid, callback) {
             new: true,
         },
     )
-    .populate('lists')
     .populate('saved_lists')
-    .exec((error, channel) => {
-        if(error)
-            return callback(error, null);
-        if(!channel)
-            return callback(new Error('Channel not found'), null);
-
-        callback(null, channel);
-    });
+    .exec(callback);
 }
 
 const unsaveList = function removeListFromChannelSaved(cdid, listid, callback) {
@@ -90,16 +62,8 @@ const unsaveList = function removeListFromChannelSaved(cdid, listid, callback) {
             new: true,
         },
     )
-    .populate('lists')
     .populate('saved_lists')
-    .exec((error, channel) => {
-        if(error)
-            return callback(error, null);
-        if(!channel)
-            return callback(new Error('Channel not found'), null);
-
-        callback(null, channel);
-    });
+    .exec(callback);
 }
 
 module.exports.get = get;
