@@ -78,25 +78,25 @@ const removeFilm = function removeFilmFromList(listId, filmId, callback) {
         ])
         .exec((error, lists) => { // error or array containing one list
             if (error) return callback(error, null);
-            
-            if (lists[0] && lists[0].numOfFilms === 0) {
-                remove(
-                    listid,
-                    error => {
-                        if (error) return callback(error, null);
-                        
-                        return callback(null, null);
-                    },
-                );
-            } else {
+
+            if (!lists[0] && lists[0].numOfFilms !== 0){
                 return callback(null, list);
             }
+            
+            remove(
+                listid,
+                error => {
+                    if (error) return callback(error, null);
+                    
+                    return callback(null, null);
+                },
+            );
         });
     });
 }
 
-module.exports.get = get;
-module.exports.add = add;
-module.exports.remove = remove;
-module.exports.addFilm = addFilm;
-module.exports.removeFilm = removeFilm;
+module.exports.get          = get;
+module.exports.add          = add;
+module.exports.remove       = remove;
+module.exports.addFilm      = addFilm;
+module.exports.removeFilm   = removeFilm;

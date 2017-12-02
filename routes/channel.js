@@ -1,22 +1,27 @@
-const express = require('express');
-const router = express.Router();
+const express   = require('express');
+const router    = express.Router();
+
 const channelapi = require('../controllers/channelapi');
 
 router.get('/:id', function(req, res, next) {
-    channelapi.findById(req.params.id, function(error, channel){
-        if(error)
-            return next(error);
+    channelapi.get(req.params.id, (error, channel) => {
+        if (error) return next(error);
+        if (!channel) return next(new Error('Channel not found'));
 
-            if(req.session.channel){
-                channelapi.findById(req.session.channel, function(error, authchannel){
-                    if(error)
-                        next(error);
-                    authchannel._password = null;
-                    res.render('channel', { channel: channel, authch: authchannel});
-                });
-            } else {
-                res.render('channel', { channel : channel });
+        if (!req.session.channel) {
+            return res.render('channel', { channel });
+        }
+        
+        channelapi.get(req.session.channel, (error, authchannel) => {
+            if (error) return next(error);
+            if (!authchannel) return next(new Error('Please, log in again'));
+
+            const state = {
+                owner: channel.id === authchannel.id ? true : false,
             }
+
+            return res.render('channel', { channel, state });
+        });
     });
 });
 

@@ -3,9 +3,9 @@ const client        = request.createClient('https://theimdbapi.org/');
 
 const get = function getFilmById(id, callback){
     client.get(
-        'api/movie?movie_id=${id}', 
+        `api/movie?movie_id=${id}`, 
         (error, res, body) => {
-            const film = format (JSON.parse(body));
+            const film = format (body);
 
             if (!film) return callback(new Error('Film not found!'), null);
 
@@ -19,11 +19,7 @@ const search = function findFilmByTitle(title) {
     client.get(
         'api/find/movie?title=${query}', 
         (error, res, body) => {
-            const films = Array
-                .from(
-                    JSON.parse(body),
-                    format
-                );
+            const films = Array.from(body, format);
 
             if (!films) return callback(null, null);
 
@@ -61,5 +57,5 @@ const format = function fromImdbFormatToOwn({
     };
 }
 
-module.exports.get = get;
-module.exports.search = search;
+module.exports.get      = get;
+module.exports.search   = search;

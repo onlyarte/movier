@@ -33,17 +33,17 @@ block content
     #right
         #film-info
             #rate
-                span#kp #{film.rating_kp}
+                span#kp #{film.rating}
                 | &nbsp;/ 10
             h1#film-title
-                |#{film.title} / #{film.title_original}
+                |#{film.title}
             #short-info
                 | #{film.year} | #{film.genre}
 
             p.description!= film.description
-            +getPPList(film.directors, 'Режиссер')(id='directors')
-            +getPPList(film.writers, 'Сценарий')(id='writers')
-            +getPPList(film.actors, 'В ролях')(id='actors')
+            +getPPList([film.director], 'Director')(id='directors')
+            +getPPList(film.writers, 'Writers')(id='writers')
+            +getPPList(film.stars, 'Stars')(id='actors')
 
         if authch
             .list-group

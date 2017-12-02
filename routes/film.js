@@ -1,44 +1,71 @@
-const express = require('express');
-const router = express.Router();
-const filmapi = require('../controllers/filmapi');
-const listapi = require('../controllers/listapi');
-const channelapi = require('../controllers/channelapi');
+const express       = require('express');
+const router        = express.Router();
+
+const filmapi       = require('../controllers/filmapi');
+const listapi       = require('../controllers/listapi');
+const channelapi    = require('../controllers/channelapi');
 
 router.get('/:id', function(req, res, next) {
-    filmapi.getFromKP(req.params.id, function(error, film){
-        if(error)
-            return next(error);
+    filmapi.get(req.params.id, (error, film) => {
+        if (error) return next(error);
+        if (!film) return next(new Error('Film not found'));
 
-        if(req.session.channel){
-            channelapi.findById(req.session.channel, function(error, channel){
-                if(error)
-                    next(error);
-                channel._password = null;
-                res.render('film', { film: film, authch: channel});
-            });
-        } else {
-            res.render('film', { film : film });
+        if (!req.session.channel){
+            return res.render('film', { film } );
         }
+
+        channelapi.get(req.session.channel, (error, channel) => {
+            if (error) return next(error);
+            if (!channel) return next(new Error('Please, log in again'));
+            
+            const state = {
+                lists: channel.lists
+            }
+
+            return res.render('film', { film, state });
+        });
     });
 });
 
 //add film to list
-router.post('/:id/tolist/:listid', function(req, res, next) {
-    listapi.addToList(req.params.listid, req.params.id, function(error, list){
-        if(error)
-            return next(error);
+router.post('/:filmid/tolist/:listid', function(req, res, next) {
+    if (!req.session.channel) { // if user is not logged in
+        return res.status(401).send({ error: 'Action not allowed!' });
+    }
 
-        res.send('okay');
+    listapi.get(req.params.listid, (error, list) => {
+        if (error || !list || list.owner !== req.session.channel) {
+            return res.status(401).send({ error: 'Action not allowed!' });
+        }
+
+        listapi.addFilm(req.params.listid, req.params.filmid, (error, list) => {
+            if (error) {
+                return res.status(401).send({ error: 'Action not allowed!' });
+            }
+    
+            return res.status(200).send();
+        });
     });
 });
 
 //remove film from list
-router.post('/:id/fromlist/:listid', function(req, res, next){
-    listapi.removeFromList(req.params.listid, req.params.id, function(error, list){
-        if(error)
-            return next(error);
+router.post('/:filmid/fromlist/:listid', function(req, res, next){
+    if (!req.session.channel) { // if user is not logged in
+        return res.status(401).send({ error: 'Action not allowed!' });
+    }
 
-        res.send(list);
+    listapi.get(req.params.listid, (error, list) => {
+        if (error || !list || list.owner !== req.session.channel) { // if user is not list owner
+            return res.status(401).send({ error: 'Action not allowed!' });
+        }
+
+        listapi.removeFilm(req.params.listid, req.params.filmid, (error, list) => {
+            if (error || !list) {
+                return res.status(401).send({ error: 'Action not allowed!' });
+            }
+    
+            return res.status(200).send();
+        });
     });
 });
 

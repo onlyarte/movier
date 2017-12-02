@@ -66,9 +66,9 @@ const unsaveList = function removeListFromChannelSaved(cdid, listid, callback) {
     .exec(callback);
 }
 
-module.exports.get = get;
-module.exports.add = add;
-module.exports.remove = remove;
-module.exports.addList = addList;
-module.exports.saveList = saveList;
-module.exports.unsaveList = unsaveList;
+module.exports.get          = get;
+module.exports.add          = add;
+module.exports.remove       = remove;
+module.exports.addList      = addList;
+module.exports.saveList     = saveList;
+module.exports.unsaveList   = unsaveList;
