@@ -1,42 +1,40 @@
-let l_displayedF = 0;
-
-function l_save(listid, callback){
-    sendUpdateRequest('/list/' + listid + '/save/', callback);
-}
-
-function l_unsave(listid, callback){
-    sendUpdateRequest('/list/' + listid + '/remove/', callback);
-}
-
-function l_updateSB(listid){
-    if(l_isSaved(listid)){
-        document.getElementById('save-button').firstChild.textContent = "СОХРАНЕНО";
-    }
-    else {
-        document.getElementById('save-button').firstChild.textContent = "СОХРАНИТЬ";
+function l_save(event, listId) {
+    const target = event.target;
+    if (sendReq(`/list/${listId}/save/`)) {
+        console.log(`saved ${listId}`);
+        target.setAttribute(
+            'onClick', 
+            `l_unsave(this, ${listId})`,
+        );
+        target.textContent = 'Unsave';
+    } else {
+        console.log(`failed to save ${listId}`);
     }
 }
 
-function l_clickedSB(listid){
-    if(l_isSaved(listid)){
-        l_unsave(function(){
-            location.reload();
-        });
-    }
-    else{
-        l_save(function(){
-            location.reload();
-        });
+function l_unsave(event, listId) {
+    const target = event.target;
+    if (sendReq(`/film/${listId}/unsave/`)) {
+        console.log(`unsaved ${listId}`);
+        target.setAttribute(
+            'onClick', 
+            `l_save(this, ${listId})`,
+        );
+        target.textContent = 'Save';
+    } else {
+        console.log(`failed to unsave ${listId}`);
     }
 }
 
-function l_isSaved(listid){
-    let list = channel._saved_lists.find(function(element){
-        return element._id == listid;
-    });
+function sendReq(req){
+    const xhr = new XMLHttpRequest();
 
-    if(list)
-        return true;
-    else
+    xhr.open('POST', req, false);
+    xhr.send();
+
+    if (xhr.status != 200) {
         return false;
+    } else {
+        return true;
+    }
 }

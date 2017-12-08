@@ -5,7 +5,7 @@ const List          = require('../models/list');
 
 const get = function getListById(id, callback) {
     List.findById(id)
-    .populate('owner')
+    .populate('owner', '-password')
     .exec(callback);
 }
 
@@ -59,7 +59,7 @@ const removeFilm = function removeFilmFromList(listId, filmId, callback) {
     )
     .exec((error, list) => {
         if (error) return callback(error, null);
-        if (!list) return callback(new Error('List not found'), null);
+        if (!list) return callback(null, null);
 
         // remove list if no films left
         List.aggregate([
@@ -95,8 +95,16 @@ const removeFilm = function removeFilmFromList(listId, filmId, callback) {
     });
 }
 
+const findByOwner = function getOwnerLists(ownerId, callback) {
+    List.find({
+        owner: ownerId,
+    })
+    .exec(callback);
+}
+
 module.exports.get          = get;
 module.exports.add          = add;
 module.exports.remove       = remove;
 module.exports.addFilm      = addFilm;
 module.exports.removeFilm   = removeFilm;
+module.exports.findByOwner  = findByOwner;

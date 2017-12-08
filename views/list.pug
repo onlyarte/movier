@@ -1,77 +1,55 @@
 extends layout
 
-mixin getPPList(arr, title)
+mixin peopleList(arr, title)
     .pp-row
         .pp-title!= title
         .pp-list(id!=attributes.id)
-            each person, index in arr
-                if index < 5 && index != arr.length-1
-                    | #{person},&nbsp;
-                else if index==5 || (index==arr.length-1 && index<5)
-                    | #{person}
+            each person in arr
+                #{person},&nbsp;
 
 block title
-    title #{list._name} / MOVIER
+    title #{list.name} / MOVIER
 
 block content
     script
         include ../public/javascripts/connect.js
         include ../public/javascripts/filmcontroller.js
         include ../public/javascripts/listcontroller.js
-
-    script.
-        var channel = !{JSON.stringify(authch)};
-        window.onload = function(){
-            f_updateLB(!{list._films[0]._id});
-        };
-    
-    if(authch && authch._id != list._owner._id)
-        script.
-            window.onload = function(){
-                l_updateSB("!{list._id}");
-            };
     
     #left
-        #back(style="background-image")
+        #back(style='background-image')
         #front
             #list-info
-                #list-title= list._name
+                #list-title= list.name
                 #list-owner
-                    a(href= '/channel/' + list._owner._id)= list._owner._name
+                    a(href=`/channel/${list.owner.id}`)= list.owner.name
             #slider
-                each film in list._films
-                    a.list-item(href='/film/' + film._id)
-                        img(src=film._poster)
-                        .item-title= film._title
-            if authch && authch._id == list._owner._id
+                each film in list.films
+                    a.list-item(href=`/film/${film.id}`)
+                        img(src=film.poster)
+                        .item-title= film.title
+            if state && state.owner
                 #edit-button
-                    span.button-title РЕДАКТИРОВАТЬ
+                    span.button-title EDIT
             else
-                #save-button(onclick='l_clickedSB("' + list._id + '")')
-                    span.button-title СОХРАНИТЬ
+                #save-button
+                    if state && state.saved
+                        span.button-title(onclick=`l_unsave(this, ${list.id})`) UNSAVE
+                    else
+                        span.button-title(onclick=`l_save(this, ${list.id})`) SAVE
             
 
     #right
         #film-info
             #rate
-                span#kp= list._films[0]._rating_kp
+                span#kp= list.films[0].rating
                 | &nbsp;/ 10
             h1#film-title
-                |#{list._films[0]._title} / #{list._films[0]._title_original}
+                | #{list.films[0].title}
             #short-info
-                | #{list._films[0]._year} | #{list._films[0]._genre}
+                | #{list.films[0].year} | #{list.films[0].genre}
 
-            p.description!= list._films[0]._description
-            +getPPList(list._films[0]._directors, 'Режиссер')(id='directors')
-            +getPPList(list._films[0]._writers, 'Сценарий')(id='writers')
-            +getPPList(list._films[0]._actors, 'В ролях')(id='actors')
-
-        if authch
-            .list-group
-                each chlist in authch._lists
-                    .list-button(id!=chlist._id, onclick='f_clickedLB(this.id, ' + list._films[0]._id + ')')
-                        span.button-title!= chlist._name
-                form
-                    input(type='text', name='filmid', value=list._films[0]._id hidden)
-                    input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
-                    input(type='submit', hidden)
+            p.description!= list.films[0].description
+            +peopleList(list.films[0].director, 'Режиссер')(id='directors')
+            +peopleList(list.films[0].writers, 'Сценарий')(id='writers')
+            +peopleList(list.films[0].stars, 'В ролях')(id='actors')

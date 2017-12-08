@@ -19,6 +19,7 @@ router.get('/:id', function(req, res, next) {
             
             const state = {
                 owner: list.owner === channel.id ? true : false,
+                saved: channel.saved_lists.map(list => list.id).includes(req.params.id),
             }
 
             return res.render('list', { list, state });
@@ -83,12 +84,12 @@ router.post('/:id/save', function(req, res, next) {
 });
 
 //remove from channel
-router.post('/:id/remove', function(req, res, next) {
+router.post('/:id/unsave', function(req, res, next) {
     if (!req.session.channel) {
         return res.status(401).send({ error: 'Action not allowed!' });
     }
     
-    channelapi.removeFromSaved(req.session.channel, req.params.id, (error, channel) => {
+    channelapi.unsaveList(req.session.channel, req.params.id, (error, channel) => {
         if (error || !channel) {
             return res.status(401).send({ error: 'Action not allowed!' });
         }

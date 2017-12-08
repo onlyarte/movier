@@ -45,11 +45,16 @@ block content
             +getPPList(film.writers, 'Writers')(id='writers')
             +getPPList(film.stars, 'Stars')(id='actors')
 
-        if authch
+        if state && state.lists
             .list-group
-                each list in authch._lists
-                    .list-button(id!=list._id, onclick='f_clickedLB(this.id, ' + film.id + ')')
-                        span.button-title!= list._name
+                each list in state.lists
+                    - var added = state.inLists.includes(list.id)
+                    if added
+                        .list-button(onclick=`f_remove(this, ${film.id}, ${list.id})`, style='opacity: 0.7')
+                            span.button-title!= list.name
+                    esle
+                        .list-button(onclick=`f_add(this, ${film.id}, ${list.id})`, style='opacity: 0.5')
+                            span.button-title!= list.name
                 form(action='/list', method='post')
                     input(type='text', name='filmid', value=film.id, hidden)
                     input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')

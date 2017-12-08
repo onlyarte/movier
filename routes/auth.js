@@ -9,13 +9,13 @@ const listapi       = require('../controllers/listapi');
 
 //log in
 router.post('/', function (req, res, next) {
-    channelapi.get(req.body.login, (error, channel) => {
-        if(error || !channel || !bcrypt.compareSync(req.body.password, channel.password)) { // compare passwords
+    channelapi.getPassword(req.body.login, (error, password) => {
+        if(error || !password || !bcrypt.compareSync(req.body.password, password)) { // compare passwords
             return next(new Error('Wrong login or password'));
         } 
 
-        req.session.channel = channel.id;
-        return res.redirect('/channel/' + channel.id);
+        req.session.channel = req.body.login;
+        return res.redirect('/channel/' + req.body.login);
     });
 });
 
@@ -31,7 +31,8 @@ router.post('/new', function (req, res, next){
         password: bcrypt.hashSync(req.body.password), // encrypt password
         name: req.body.name,
         image: null,
-        saved_lists: []
+        saved_lists: [],
+        following: [],
     }
 
     const imgPath = './public/images/temp/' + channel.id + req.files.image.name;
