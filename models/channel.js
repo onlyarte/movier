@@ -2,7 +2,7 @@ const mongoose  = require('mongoose');
 const Schema    = mongoose.Schema;
 
 const channelSchema = new Schema({
-    id: String,
+    _id: String,
     email: String, //for access recovering
     password: String,
     name: String,
