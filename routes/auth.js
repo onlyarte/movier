@@ -21,9 +21,9 @@ router.post('/', function (req, res, next) {
 
 //register
 router.post('/new', function (req, res, next){
-    if(!req.body.login || !req.body.email || !req.body.password || !req.body.name){
+    /*if(!req.body.login || !req.body.email || !req.body.password || !req.body.name){
         return next(new Error("All the fields needed"));
-    }
+    }*/
 
     const channel = {
         id: req.body.login,
@@ -34,6 +34,8 @@ router.post('/new', function (req, res, next){
         saved_lists: [],
         following: [],
     }
+
+    console.log(channel);
 
     const imgPath = './public/images/temp/' + channel.id + req.files.image.name;
 
