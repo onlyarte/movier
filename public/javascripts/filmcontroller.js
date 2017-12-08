@@ -28,8 +28,9 @@ function f_remove(event, filmId, listId) {
 
 function sendReq(req) {
     const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
 
-    xhr.open('POST', req, false);
+    xhr.open('POST', req, true);
     xhr.send();
 
     if (xhr.status != 200) {

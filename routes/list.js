@@ -62,7 +62,11 @@ router.delete('/:id', function(req, res, next){
             if(error) {
                 return res.status(401).send({ error: 'Action not allowed!' });
             }
-    
+            
+            res.set({
+                'Access-Control-Allow-Origin': 'http://localhost:3000',
+                'Access-Control-Allow-Credentials': true,
+            });
             return res.status(200).send();
         });
     });
@@ -79,6 +83,10 @@ router.post('/:id/save', function(req, res, next) {
             return res.status(401).send({ error: 'Action not allowed!' });
         }
 
+        res.set({
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Credentials': true,
+        });
         return res.status(200).send();
     });
 });
@@ -94,6 +102,10 @@ router.post('/:id/unsave', function(req, res, next) {
             return res.status(401).send({ error: 'Action not allowed!' });
         }
 
+        res.set({
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Credentials': true,
+        });
         return res.status(200).send();
     });
 });

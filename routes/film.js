@@ -43,7 +43,11 @@ router.post('/:filmid/tolist/:listid', function(req, res, next) {
             if (error) {
                 return res.status(401).send({ error: 'Action not allowed!' });
             }
-    
+            
+            res.set({
+                'Access-Control-Allow-Origin': 'http://localhost:3000',
+                'Access-Control-Allow-Credentials': true,
+            });
             return res.status(200).send();
         });
     });
@@ -64,7 +68,11 @@ router.post('/:filmid/fromlist/:listid', function(req, res, next){
             if (error || !list) {
                 return res.status(401).send({ error: 'Action not allowed!' });
             }
-    
+            
+            res.set({
+                'Access-Control-Allow-Origin': 'http://localhost:3000',
+                'Access-Control-Allow-Credentials': true,
+            });
             return res.status(200).send();
         });
     });

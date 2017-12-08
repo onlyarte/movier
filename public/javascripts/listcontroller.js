@@ -28,8 +28,9 @@ function l_unsave(event, listId) {
 
 function sendReq(req){
     const xhr = new XMLHttpRequest();
-
-    xhr.open('POST', req, false);
+    xhr.withCredentials = true;
+    
+    xhr.open('POST', req, true);
     xhr.send();
 
     if (xhr.status != 200) {

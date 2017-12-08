@@ -21,7 +21,7 @@ router.post('/', function (req, res, next) {
 
 //register
 router.post('/new', function (req, res, next){
-    if(!req.body.login || req.body.email || req.body.password || req.body.name || req.files.image){
+    if(!req.body.login || !req.body.email || !req.body.password || !req.body.name || !req.files.image){
         return next(new Error("All the fields needed"));
     }
 
