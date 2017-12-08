@@ -50,7 +50,7 @@ router.post('/new', function (req, res, next){
     function saveImageLocally(){
         const file = req.files.image;
 
-        file.mv(path, error => {
+        file.mv(imgPath, error => {
             if (error) return next(error);
 
             saveImageToCloud();
@@ -60,7 +60,7 @@ router.post('/new', function (req, res, next){
     //save image to cloudinary
     function saveImageToCloud(){
         cloudinary.v2.uploader.upload(
-            path,
+            imgPath,
             { 
                 crop: "fill", 
                 aspect_ratio: "1:1",
