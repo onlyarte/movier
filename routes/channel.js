@@ -7,7 +7,7 @@ router.get('/:id', function(req, res, next) {
     channelapi.get(req.params.id, (error, channel) => {
         if (error) return next(error);
         if (!channel) return next(new Error('Channel not found'));
-
+        
         if (!req.session.channel) {
             return res.render('channel', { channel });
         }

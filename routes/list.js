@@ -8,7 +8,7 @@ router.get('/:id', function(req, res, next) {
     listapi.get(req.params.id, (error, list) => {
         if (error) return next(error);
         if (!list) return next(new Error('List not found'));
-
+        
         if (!req.session.channel){
             return res.render('list', { list });
         }
@@ -57,6 +57,8 @@ router.delete('/:id', function(req, res, next){
         if (error || !list || list.owner !== req.session.channel) {
             return res.status(401).send({ error: 'Action not allowed!' });
         }
+
+        console.log(list);
 
         listapi.remove(req.params.id, error => {
             if(error) {

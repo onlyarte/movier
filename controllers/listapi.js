@@ -6,7 +6,25 @@ const List          = require('../models/list');
 const get = function getListById(id, callback) {
     List.findById(id)
     .populate('owner', '-password')
-    .exec(callback);
+    .exec((error, list) => {
+        if (error) return callback(error, null);
+        if (!list) return callback(null, null);
+
+        populateFilms(list.films, (error, films) => {
+            if (error) return callback(error, null);
+            list.films = films;
+            callback(
+                null, 
+                {
+                    films,
+                    id: list.id,
+                    owner: list.owner,
+                    name: list.name,
+                    cover: list.cover,
+                },
+            );
+        });
+    });
 }
 
 const add = function addList (list, filmid, callback) {
@@ -100,6 +118,25 @@ const findByOwner = function getOwnerLists(ownerId, callback) {
         owner: ownerId,
     })
     .exec(callback);
+}
+
+const populateFilms = function(ids, callback) {
+    const pool = ids.map(id => {
+        return new Promise((resolve, reject) => {
+            filmapi.get(id, (error, film) => {
+                if (error) reject(error);
+                else resolve(film);
+            });
+        });
+    });
+    Promise.all(pool).then(
+        films => { 
+            callback(null, films);
+        },
+        reason => {
+            callback(reason, null);
+        },
+    );
 }
 
 module.exports.get          = get;

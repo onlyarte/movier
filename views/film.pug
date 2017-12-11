@@ -1,15 +1,14 @@
 extends layout
 
-mixin getPPList(arr, title)
+mixin peopleList(arr, title)
     .pp-row
-        if arr
-            .pp-title!= title
-            .pp-list(id!=attributes.id)
-                each person, index in arr
-                    if index < 5 && index != arr.length-1
-                        | #{person},&nbsp;
-                    else if index==5 || (index==arr.length-1 && index<5)
-                        | #{person}
+        .pp-title!= title
+        .pp-list(id!=attributes.id)
+            each person, index in arr
+                if index != arr.length-1
+                    | #{person},&nbsp;
+                else 
+                    | #{person}
 
 block title
     title #{film.title} / MOVIER
@@ -41,9 +40,9 @@ block content
                 | #{film.year} | #{film.genre}
 
             p.description!= film.description
-            +getPPList([film.director], 'Director')(id='directors')
-            +getPPList(film.writers, 'Writers')(id='writers')
-            +getPPList(film.stars, 'Stars')(id='actors')
+            +peopleList([film.director], 'Director')(id='directors')
+            +peopleList(film.writers, 'Writers')(id='writers')
+            +peopleList(film.stars, 'Stars')(id='actors')
 
         if state && state.lists
             .list-group

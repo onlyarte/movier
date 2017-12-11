@@ -21,7 +21,9 @@ const get = function getChannelById(id, callback) {
             populateLists(id, (error, lists) => {
                 if (error) return callback(error, null);
 
-                return callback(null, { ...channel, lists, followers }); // return populated channel
+                channel.lists = lists;
+                channel.followers = followers;
+                return callback(null, channel); // return populated channel
             })
         });
     });
@@ -123,7 +125,7 @@ const populateFollowers = function ({ id }, callback) {
     .exec(callback);
 }
 
-const populateLists = function ({ id }, callback) {
+const populateLists = function (id, callback) {
     listapi.findByOwner(id, callback);
 }
 
@@ -133,3 +135,4 @@ module.exports.remove       = remove;
 module.exports.addList      = addList;
 module.exports.saveList     = saveList;
 module.exports.unsaveList   = unsaveList;
+module.exports.getPassword  = getPassword;

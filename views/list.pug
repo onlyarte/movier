@@ -4,8 +4,11 @@ mixin peopleList(arr, title)
     .pp-row
         .pp-title!= title
         .pp-list(id!=attributes.id)
-            each person in arr
-                #{person},&nbsp;
+            each person, index in arr
+                if index != arr.length-1
+                    | #{person},&nbsp;
+                else 
+                    | #{person}
 
 block title
     title #{list.name} / MOVIER
@@ -17,7 +20,7 @@ block content
         include ../public/javascripts/listcontroller.js
     
     #left
-        #back(style='background-image')
+        #back(style=`background-image: url('${list.cover}')`)
         #front
             #list-info
                 #list-title= list.name
@@ -50,6 +53,6 @@ block content
                 | #{list.films[0].year} | #{list.films[0].genre}
 
             p.description!= list.films[0].description
-            +peopleList(list.films[0].director, 'Режиссер')(id='directors')
+            +peopleList([list.films[0].director], 'Режиссер')(id='directors')
             +peopleList(list.films[0].writers, 'Сценарий')(id='writers')
             +peopleList(list.films[0].stars, 'В ролях')(id='actors')

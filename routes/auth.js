@@ -21,16 +21,16 @@ router.post('/', function (req, res, next) {
 
 //register
 router.post('/new', function (req, res, next){
-    /*if(!req.body.login || !req.body.email || !req.body.password || !req.body.name){
+    if(!req.body.login || !req.body.email || !req.body.password || !req.body.name){
         return next(new Error("All the fields needed"));
-    }*/
+    }
 
     const channel = {
-        id: req.body.login,
+        _id: req.body.login,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password), // encrypt password
         name: req.body.name,
-        image: null,
+        image: 'https://www.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2017/04/27/13/mendeodorant.jpg',
         saved_lists: [],
         following: [],
     }
@@ -43,7 +43,7 @@ router.post('/new', function (req, res, next){
     channelapi.get(channel.id, (error, channel) => {
         if (channel) return next(new Error('Login already exists'));
 
-        saveImageLocally();
+        saveChannel();
     });
 
     //save image localy

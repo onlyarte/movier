@@ -7,9 +7,10 @@ const get = function getFilmById(id, callback){
         (error, res, body) => {
             const film = format (body);
 
-            if (!film) return callback(new Error('Film not found!'), null);
+            if (!film && callback) return callback(new Error('Film not found!'), null);
 
-            return callback(null, film);
+            if (callback) return callback(null, film);
+            return film;
         },
     );
 };
