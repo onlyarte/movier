@@ -28,6 +28,13 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+router.get('/search/:title', function (req, res, next) {
+    filmapi.search(req.params.title, (error, searchRes) => {
+        if (error) res.send('');
+        res.send(searchRes);
+    });
+});
+
 //add film to list
 router.post('/:filmid/tolist/:listid', function(req, res, next) {
     if (!req.session.channel) { // if user is not logged in

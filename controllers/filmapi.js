@@ -15,7 +15,7 @@ const get = function getFilmById(id, callback){
     );
 };
 
-const search = function findFilmByTitle(title) {
+const search = function findFilmByTitle(title, callback) {
     const query = encodeURI(title);
     client.get(
         'api/find/movie?title=${query}', 
