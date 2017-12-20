@@ -8,6 +8,7 @@ function search(){
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
             const res = JSON.parse(xmlHttp.responseText);
+            console.log(res);
             res.map(film => {
                 const res_item = document.createElement('a');
                 res_item.href = `/films/${film.imdb_id}`;

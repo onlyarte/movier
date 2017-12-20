@@ -1,5 +1,5 @@
 const request       = require('request-json');
-const client        = request.createClient('https://theimdbapi.org/');
+const client        = request.createClient('http://www.theimdbapi.org/');
 
 const get = function getFilmById(id, callback){
     client.get(
