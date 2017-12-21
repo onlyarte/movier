@@ -1,14 +1,9 @@
 extends layout
 
-mixin peopleList(arr, title)
+mixin peopleList(list, title)
     .pp-row
         .pp-title!= title
-        .pp-list(id!=attributes.id)
-            each person, index in arr
-                if index != arr.length-1
-                    | #{person},&nbsp;
-                else 
-                    | #{person}
+        .pp-list!= list
 
 block title
     title #{list.name} / MOVIER
@@ -37,22 +32,21 @@ block content
             else
                 #save-button
                     if state && state.saved
-                        span.button-title(onclick=`l_unsave(this, ${list.id})`) UNSAVE
+                        span.button-title(onclick=`l_unsave(this, '${list.id}')`) UNSAVE
                     else
-                        span.button-title(onclick=`l_save(this, ${list.id})`) SAVE
+                        span.button-title(onclick=`l_save(this, '${list.id}')`) SAVE
             
 
     #right
         #film-info
             #rate
                 span#kp= list.films[0].rating
-                | &nbsp;/ 10
             h1#film-title
                 | #{list.films[0].title}
             #short-info
                 | #{list.films[0].year} | #{list.films[0].genre}
 
             p.description!= list.films[0].description
-            +peopleList([list.films[0].director], 'Режиссер')(id='directors')
-            +peopleList(list.films[0].writers, 'Сценарий')(id='writers')
-            +peopleList(list.films[0].stars, 'В ролях')(id='actors')
+            +peopleList([list.films[0].director], 'Director')(id='directors')
+            +peopleList(list.films[0].writers, 'Writers')(id='writers')
+            +peopleList(list.films[0].stars, 'Stars')(id='actors')

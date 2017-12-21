@@ -1,9 +1,9 @@
 const request       = require('request-json');
-const client        = request.createClient('http://www.theimdbapi.org/');
+const client        = request.createClient('http://www.omdbapi.com/');
 
 const get = function getFilmById(id, callback){
     client.get(
-        `api/movie?movie_id=${id}`, 
+        `?i=${id}&plot=full&apikey=6d2a1ba3`, 
         (error, res, body) => {
             const film = format (body);
 
@@ -18,9 +18,9 @@ const get = function getFilmById(id, callback){
 const search = function findFilmByTitle(title, callback) {
     const query = encodeURI(title);
     client.get(
-        'api/find/movie?title=${query}', 
+        `http://www.omdbapi.com/?s=${query}&apikey=6d2a1ba3&page=1`, 
         (error, res, body) => {
-            const films = Array.from(body, format);
+            const films = body.Search && Array.from(body.Search, format);
 
             if (!films) return callback(null, null);
 
@@ -29,32 +29,18 @@ const search = function findFilmByTitle(title, callback) {
     );
 }
 
-const format = function fromImdbFormatToOwn({
-        imdb_id, 
-        title, 
-        description, 
-        year, 
-        genre, 
-        poster, // object containing large and thumb
-        rating, 
-        director, 
-        writers, 
-        stars,
-    }) {
-    
-    if (!title) return null;
-
+const format = function fromImdbFormatToOwn(film) {
     return {
-        title, 
-        description, 
-        year, 
-        genre,
-        rating, 
-        director, 
-        writers, 
-        stars,
-        id: imdb_id,
-        poster: poster.large,
+        title: film.Title, 
+        description: film.Plot, 
+        year: film.Year, 
+        genre: film.Genre,
+        rating: film.Ratings && film.Ratings[0].Value,
+        director: film.Director, 
+        writers: film.Writer, 
+        stars: film.Actors,
+        id: film.imdbID,
+        poster: film.Poster.replace('@._V1_SX300', '@._V1_SX700'), // change quality
     };
 }
 

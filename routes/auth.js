@@ -85,8 +85,8 @@ router.post('/new', function (req, res, next){
 
     //save session var and redirect to channel
     function redirect(){
-        req.session.channel = channel.id;
-        return res.redirect('/channel/' + channel.id);
+        req.session.channel = channel._id;
+        return res.redirect('/channel/' + channel._id);
     }
 });
 

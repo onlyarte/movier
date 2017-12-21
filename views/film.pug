@@ -1,14 +1,9 @@
 extends layout
 
-mixin peopleList(arr, title)
+mixin peopleList(list, title)
     .pp-row
         .pp-title!= title
-        .pp-list(id!=attributes.id)
-            each person, index in arr
-                if index != arr.length-1
-                    | #{person},&nbsp;
-                else 
-                    | #{person}
+        .pp-list!= list
 
 block title
     title #{film.title} / MOVIER
@@ -16,13 +11,6 @@ block content
     script
         include ../public/javascripts/connect.js
         include ../public/javascripts/filmcontroller.js
-    script.
-        window.onload = function(){
-            f_updateLB(!{film.id});
-        }
-    if authch
-        script.
-            var channel = !{JSON.stringify(authch)};
 
     #left
         #back(style="background-image: url('" + film.poster + "')")
@@ -32,8 +20,7 @@ block content
     #right
         #film-info
             #rate
-                span#kp #{film.rating}
-                | &nbsp;/ 10
+                span#kp!= film.rating
             h1#film-title
                 |#{film.title}
             #short-info
@@ -47,12 +34,13 @@ block content
         if state && state.lists
             .list-group
                 each list in state.lists
-                    - var added = state.inLists.includes(list.id)
+                    - 
+                        var added = state.inLists.includes(list.id)
                     if added
-                        .list-button(onclick=`f_remove(this, ${film.id}, ${list.id})`, style='opacity: 0.7')
+                        .list-button(onclick=`f_remove(this, '${film.id}', '${list.id}')`, style='opacity: 0.8')
                             span.button-title!= list.name
-                    esle
-                        .list-button(onclick=`f_add(this, ${film.id}, ${list.id})`, style='opacity: 0.5')
+                    else
+                        .list-button(onclick=`f_add(this, '${film.id}', '${list.id}')`, style='opacity: 0.5')
                             span.button-title!= list.name
                 form(action='/list', method='post')
                     input(type='text', name='filmid', value=film.id, hidden)

@@ -18,7 +18,7 @@ router.get('/:id', function(req, res, next) {
             if (!channel) return next(new Error('Please, log in again'));
             
             const state = {
-                owner: list.owner === channel.id ? true : false,
+                owner: list.owner.id === channel.id ? true : false,
                 saved: channel.saved_lists.map(list => list.id).includes(req.params.id),
             }
 
@@ -43,7 +43,7 @@ router.post('/', function(req, res, next){
             return res.status(400).send({ error: 'Action not allowed!' });
         }
         
-        return res.status(200).send();
+        return res.redirect(`/list/${list.id}`);
     });
 });
 
@@ -79,7 +79,7 @@ router.post('/:id/save', function(req, res, next) {
     if (!req.session.channel) {
         return res.status(401).send({ error: 'Action not allowed!' });
     }
-
+    
     channelapi.saveList(req.session.channel, req.params.id, (error, channel) => {
         if (error || !channel) {
             return res.status(401).send({ error: 'Action not allowed!' });

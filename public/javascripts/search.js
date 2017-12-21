@@ -11,7 +11,7 @@ function search(){
             console.log(res);
             res.map(film => {
                 const res_item = document.createElement('a');
-                res_item.href = `/films/${film.imdb_id}`;
+                res_item.href = `/film/${film.id}`;
                 res_item.className = 'menu-item';
                 let item_icon = document.createElement('img');
                 item_icon.src = '/images/icons/list.png';
@@ -25,6 +25,6 @@ function search(){
             document.getElementById("search-results").style.display = "block";
         }
     }
-    xmlHttp.open('GET', `/film/search/${document.getElementById('search-box').value}`, true);
+    xmlHttp.open('GET', `/film/search/${encodeURI(document.getElementById('search-box').value)}`, true);
     xmlHttp.send(null);
 }

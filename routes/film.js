@@ -20,7 +20,7 @@ router.get('/:id', function(req, res, next) {
             
             const state = {
                 lists: channel.lists, // list objects
-                inLists: channel.lists.filter(list => list.films.includes(req.params.id)) // list ids
+                inLists: channel.lists.filter(list => list.films.includes(req.params.id)).map(list => list.id) // list ids
             }
 
             return res.render('film', { film, state });
@@ -42,7 +42,7 @@ router.post('/:filmid/tolist/:listid', function(req, res, next) {
     }
 
     listapi.get(req.params.listid, (error, list) => {
-        if (error || !list || list.owner !== req.session.channel) {
+        if (error || !list || list.owner.id != req.session.channel) {
             return res.status(401).send({ error: 'Action not allowed!' });
         }
 
@@ -50,12 +50,14 @@ router.post('/:filmid/tolist/:listid', function(req, res, next) {
             if (error) {
                 return res.status(401).send({ error: 'Action not allowed!' });
             }
+
+            console.log('okay');
             
             res.set({
                 'Access-Control-Allow-Origin': 'http://localhost:3000',
                 'Access-Control-Allow-Credentials': true,
             });
-            return res.status(200).send();
+            return res.send();
         });
     });
 });
@@ -67,12 +69,12 @@ router.post('/:filmid/fromlist/:listid', function(req, res, next){
     }
 
     listapi.get(req.params.listid, (error, list) => {
-        if (error || !list || list.owner !== req.session.channel) { // if user is not list owner
+        if (error || !list || list.owner.id !== req.session.channel) { // if user is not list owner
             return res.status(401).send({ error: 'Action not allowed!' });
         }
 
         listapi.removeFilm(req.params.listid, req.params.filmid, (error, list) => {
-            if (error || !list) {
+            if (error) {
                 return res.status(401).send({ error: 'Action not allowed!' });
             }
             

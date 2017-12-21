@@ -1,41 +1,53 @@
-function l_save(event, listId) {
-    const target = event.target;
-    if (sendReq(`/list/${listId}/save/`)) {
-        console.log(`saved ${listId}`);
-        target.setAttribute(
-            'onClick', 
-            `l_unsave(this, ${listId})`,
-        );
-        target.textContent = 'Unsave';
-    } else {
-        console.log(`failed to save ${listId}`);
-    }
+function l_save(elem, listId) {
+    sendReq(
+        `/list/${listId}/save/`,
+        (success) => {
+            if (!success) {
+                return console.log(`failed to save ${listId}`);
+            }
+
+            console.log(`saved ${listId}`);
+            elem.setAttribute(
+                'onClick', 
+                `l_unsave(this, '${listId}')`,
+            );
+            elem.textContent = 'UNSAVE';
+        },
+    );
 }
 
-function l_unsave(event, listId) {
-    const target = event.target;
-    if (sendReq(`/film/${listId}/unsave/`)) {
-        console.log(`unsaved ${listId}`);
-        target.setAttribute(
-            'onClick', 
-            `l_save(this, ${listId})`,
-        );
-        target.textContent = 'Save';
-    } else {
-        console.log(`failed to unsave ${listId}`);
-    }
+function l_unsave(elem, listId) {
+    sendReq(
+        `/list/${listId}/unsave/`,
+        (success) => {
+            if (!success) {
+                return console.log(`failed to unsave ${listId}`);
+            }
+
+            console.log(`unsaved ${listId}`);
+            elem.setAttribute(
+                'onClick', 
+                `l_save(this, '{listId}')`,
+            );
+            elem.textContent = 'SAVE';
+        },
+    );
 }
 
-function sendReq(req){
+function sendReq(req, callback) {
     const xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
-    
+
     xhr.open('POST', req, true);
     xhr.send();
 
-    if (xhr.status != 200) {
-        return false;
-    } else {
-        return true;
+    console.log(xhr.status);
+
+    xhr.onload = () => {
+        callback(true);
+    }
+    
+    xhr.onerror = () => {
+        callback(false);
     }
 }

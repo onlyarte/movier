@@ -12,7 +12,6 @@ const get = function getListById(id, callback) {
 
         populateFilms(list.films, (error, films) => {
             if (error) return callback(error, null);
-            list.films = films;
             callback(
                 null, 
                 {
@@ -80,36 +79,11 @@ const removeFilm = function removeFilmFromList(listId, filmId, callback) {
         if (!list) return callback(null, null);
 
         // remove list if no films left
-        List.aggregate([
-            {
-                $match: {
-                    id: listId,
-                },
-            },
-            {
-                $project: {
-                    numOfFilms: { 
-                        $size: "$films",
-                    },
-                },
-            },
-        ])
-        .exec((error, lists) => { // error or array containing one list
-            if (error) return callback(error, null);
+        if (list.films.length === 0){
+            list.remove();
+        }
 
-            if (!lists[0] && lists[0].numOfFilms !== 0){
-                return callback(null, list);
-            }
-            
-            remove(
-                listid,
-                error => {
-                    if (error) return callback(error, null);
-                    
-                    return callback(null, null);
-                },
-            );
-        });
+        callback(null, null);
     });
 }
 

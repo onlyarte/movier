@@ -52,25 +52,6 @@ const remove = function removeChannel(id, callback) {
     .exec(callback);
 }
 
-const addList = function addListToChannelLists(chid, listid, callback) {
-    Channel.findByIdAndUpdate(
-        chid,
-        { 
-            $addToSet: { 
-                lists: listid,
-            } 
-        },
-        { 
-            new: true,
-        },
-        {
-            password: 0,
-        },
-    )
-    .populate('saved_lists')
-    .exec(callback);
-}
-
 const saveList = function addListToChannelSaved(chid, listid, callback) {
     Channel.findByIdAndUpdate(
         chid,
@@ -80,17 +61,13 @@ const saveList = function addListToChannelSaved(chid, listid, callback) {
             },
         },
         { 
-            new: true,
-        },
-        {
-            password: 0,
+            new: true 
         },
     )
-    .populate('saved_lists')
     .exec(callback);
 }
 
-const unsaveList = function removeListFromChannelSaved(cdid, listid, callback) {
+const unsaveList = function removeListFromChannelSaved(chid, listid, callback) {
     Channel.findByIdAndUpdate(
         chid,
         { 
@@ -99,13 +76,9 @@ const unsaveList = function removeListFromChannelSaved(cdid, listid, callback) {
             },
         },
         { 
-            new: true,
-        },
-        {
-            password: 0,
+            new: true 
         },
     )
-    .populate('saved_lists')
     .exec(callback);
 }
 
@@ -132,7 +105,6 @@ const populateLists = function (id, callback) {
 module.exports.get          = get;
 module.exports.add          = add;
 module.exports.remove       = remove;
-module.exports.addList      = addList;
 module.exports.saveList     = saveList;
 module.exports.unsaveList   = unsaveList;
 module.exports.getPassword  = getPassword;
