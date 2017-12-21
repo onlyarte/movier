@@ -19,6 +19,7 @@ router.get('/:id', function(req, res, next) {
             if (!channel) return next(new Error('Please, log in again'));
             
             const state = {
+                home: `/channel/${channel.id}`,
                 lists: channel.lists, // list objects
                 inLists: channel.lists.filter(list => list.films.includes(req.params.id)).map(list => list.id) // list ids
             }

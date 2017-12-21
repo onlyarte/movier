@@ -3,6 +3,16 @@ extends layout
 block title
     title #{channel.name} / MOVIER
 
+block usermenu
+    if state && state.home
+        a.menu-item(href!=state.home)
+            img(src="/images/icons/home.png")
+            span My Channel
+
+        a.menu-item(href='/auth/out')
+            img(src="/images/icons/logout.png")
+            span Log Out
+
 block content
     -
         let numOfFilms = 0;

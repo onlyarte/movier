@@ -14,7 +14,7 @@ function search(){
                 res_item.href = `/film/${film.id}`;
                 res_item.className = 'menu-item';
                 let item_icon = document.createElement('img');
-                item_icon.src = '/images/icons/list.png';
+                item_icon.src = '/images/icons/popcorn.png';
                 let item_title = document.createElement('span');
                 item_title.textContent = film.title;
                 res_item.appendChild(item_icon);
@@ -26,5 +26,5 @@ function search(){
         }
     }
     xmlHttp.open('GET', `/film/search/${encodeURI(document.getElementById('search-box').value)}`, true);
-    xmlHttp.send(null);
+    xmlHttp.send();
 }

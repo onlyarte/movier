@@ -7,6 +7,16 @@ mixin peopleList(list, title)
 
 block title
     title #{film.title} / MOVIER
+
+block usermenu
+    if state && state.home
+        a.menu-item(href!=state.home)
+            img(src="/images/icons/home.png")
+            span My Channel
+        a.menu-item(href='/auth/out')
+            img(src="/images/logout/home.png")
+            span Log Out
+
 block content
     script
         include ../public/javascripts/connect.js

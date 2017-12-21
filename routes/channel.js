@@ -17,6 +17,7 @@ router.get('/:id', function(req, res, next) {
             if (!authchannel) return next(new Error('Please, log in again'));
 
             const state = {
+                home: `/channel/${authchannel.id}`,
                 owner: channel.id === authchannel.id ? true : false,
             }
 

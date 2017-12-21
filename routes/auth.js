@@ -19,6 +19,17 @@ router.post('/', function (req, res, next) {
     });
 });
 
+//log out
+router.get('/out', function (req, res, next) {
+    if (!req.session) return res.redirect('/');
+
+    req.session.destroy((error) => {
+        if (error) return next(error);
+
+        res.redirect('/');
+    });
+});
+
 //register
 router.post('/new', function (req, res, next){
     if(!req.body.login || !req.body.email || !req.body.password || !req.body.name){

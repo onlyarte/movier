@@ -18,6 +18,7 @@ router.get('/:id', function(req, res, next) {
             if (!channel) return next(new Error('Please, log in again'));
             
             const state = {
+                home: `/channel/${channel.id}`,
                 owner: list.owner.id === channel.id ? true : false,
                 saved: channel.saved_lists.map(list => list.id).includes(req.params.id),
             }

@@ -5,17 +5,16 @@ const listapi = require('../controllers/listapi');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'MOVIER' });
-    /*if(req.session.channel){
-        res.redirect('/list/59dc82011ed8420012bea72a');
+    if(req.session.channel){
+        res.redirect('/list/5a3b7c66a29c9a1abca7dfa1');
     } else {
-        listapi.findById('59dc82011ed8420012bea72a', function(error, coverlist){
-            if(error)
+        listapi.get('5a3b7c66a29c9a1abca7dfa1', function(error, list){
+            if(error || !list)
                 return next(error);
 
-            res.render('index', { title: 'MOVIER', list: coverlist });
+            res.render('index', { title: 'MOVIER', list: list });
         });
-    }*/
+    }
 });
 
 module.exports = router;
