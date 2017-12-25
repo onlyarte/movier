@@ -14,16 +14,15 @@ block usermenu
             img(src="/images/icons/home.png")
             span My Channel
         a.menu-item(href='/auth/out')
-            img(src="/images/logout/home.png")
+            img(src="/images/icons/logout.png")
             span Log Out
 
 block content
-    script
-        include ../public/javascripts/connect.js
-        include ../public/javascripts/filmcontroller.js
+    script(src='/javascripts/connect.js' async)
+    script(src='/javascripts/filmcontroller.js' async)
 
     #left
-        #back(style="background-image: url('" + film.poster + "')")
+        #back(style=`background-image: url('${film.poster}')`)
         #poster
             #poster-caption= film.title
             img(src=film.poster)

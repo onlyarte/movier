@@ -1,5 +1,5 @@
 function search(){
-    const old_results = document.getElementById("search-results");
+    const old_results = document.getElementById('search-results');
     while (old_results.firstChild) {
         old_results.removeChild(old_results.firstChild);
     }
@@ -22,7 +22,7 @@ function search(){
                 document.getElementById('search-results').appendChild(res_item);
                 return 0;
             });
-            document.getElementById("search-results").style.display = "block";
+            document.getElementById('search-results').style.display = 'block';
         }
     }
     xmlHttp.open('GET', `/film/search/${encodeURI(document.getElementById('search-box').value)}`, true);

@@ -35,7 +35,7 @@ const format = function fromImdbFormatToOwn(film) {
         description: film.Plot, 
         year: film.Year, 
         genre: film.Genre,
-        rating: film.Ratings && film.Ratings[0].Value,
+        rating: film.Ratings && film.Ratings[0] && film.Ratings[0].Value,
         director: film.Director, 
         writers: film.Writer, 
         stars: film.Actors,

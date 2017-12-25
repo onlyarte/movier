@@ -14,12 +14,14 @@ block usermenu
             span Log Out
 
 block content
+    script(src='/javascripts/connect.js' async)
+    script(src='/javascripts/channelcontroller.js' async)
+
     -
         let numOfFilms = 0;
         channel.lists.map(x => numOfFilms += x.films.length);
         const numOfLists = channel.lists.length;
         const numOfFollowers = channel.followers.length;
-
         
     #left.custom-sized-left-user
         #back(style=`background-image: url('${channel.image}')`)
@@ -27,7 +29,6 @@ block content
         #user
             img(src=channel.image)
             #name= channel.name
-            #desc
             #stat
                 .stat-item
                     .num= numOfFilms
@@ -40,24 +41,37 @@ block content
                     .stat-desc followers
 
             #edit-button.button
-                if state && state.owner
-                    span.button-title(id=channel._id) Edit
+                if state 
+                    if state.owner
+                        span.button-title(id=channel._id) EDIT
+                    else
+                        if state.isFollowed
+                            span.button-title(onclick=`c_unfollow(this, '${channel.id}')`) UNFOLLOW
+                        else
+                            span.button-title(onclick=`c_follow(this, '${channel.id}')`) FOLLOW
                 else
-                    span.button-title(id=channel._id) Follow
+                    span.button-title(onclick="location.href='/'") FOLLOW
 
     #right
         #user-wrapper
-            .lists-block
+            .block
                 h1.block-title My lists
-                .list-items
+                .items
                     each list in channel.lists
-                        a.list-item(href='/list/' + list.id)
+                        a.item.list-item(href='/list/' + list.id)
                             img(src=list.cover)
-                            .list-title(title=list.name)=list.name
-            .lists-block
+                            .title(title=list.name)=list.name
+            .block
                 h1.block-title Saved lists
-                .list-items
+                .items
                     each list in channel.saved_lists
-                        a.list-item(href='/list/' + list.id)
+                        a.item.list-item(href='/list/' + list.id)
                             img(src=list.cover)
-                            .list-title(title=list.name)=list.name
+                            .title(title=list.name)=list.name
+            .block
+                h1.block-title Following
+                .items
+                    each elem in channel.following
+                        a.item.channel-item(href='/channel/' + elem.id)
+                            img(src=elem.image)
+                            .title(title=elem.name)=elem.name

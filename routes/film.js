@@ -37,7 +37,7 @@ router.get('/search/:title', function (req, res, next) {
 });
 
 //add film to list
-router.post('/:filmid/tolist/:listid', function(req, res, next) {
+router.post('/:filmid/tolist/:listid', function(req, res) {
     if (!req.session.channel) { // if user is not logged in
         return res.status(401).send({ error: 'Action not allowed!' });
     }
@@ -64,7 +64,7 @@ router.post('/:filmid/tolist/:listid', function(req, res, next) {
 });
 
 //remove film from list
-router.post('/:filmid/fromlist/:listid', function(req, res, next){
+router.post('/:filmid/fromlist/:listid', function(req, res){
     if (!req.session.channel) { // if user is not logged in
         return res.status(401).send({ error: 'Action not allowed!' });
     }

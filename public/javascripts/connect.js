@@ -1,15 +1,17 @@
-//req is a url containing parameters
-function sendUpdateRequest(req, callback){
+function sendReq(req, callback) {
     const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
 
-    xhr.open('POST', req, false);
+    xhr.open('POST', req, true);
     xhr.send();
 
-    if (xhr.status != 200) {
-        console.log("smth went wrong");
-        return false;
-    } else {
-        console.log("okay");
-        return true;
+    console.log(xhr.status);
+
+    xhr.onload = () => {
+        callback(true);
+    }
+    
+    xhr.onerror = () => {
+        callback(false);
     }
 }

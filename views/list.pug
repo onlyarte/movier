@@ -19,10 +19,8 @@ block usermenu
             span Log Out
 
 block content
-    script
-        include ../public/javascripts/connect.js
-        include ../public/javascripts/filmcontroller.js
-        include ../public/javascripts/listcontroller.js
+    script(src='/javascripts/connect.js' async)
+    script(src='/javascripts/listcontroller.js' async)
     
     #left
         #back(style=`background-image: url('${list.cover}')`)

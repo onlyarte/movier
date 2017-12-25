@@ -29,7 +29,7 @@ const get = function getChannelById(id, callback) {
     });
 }
 
-const getPassword = function getChannelPasswordForAuth(id, callback) {
+const getPassword = function getChannelPassword(id, callback) {
     Channel.findById(
         id,
         {
@@ -52,6 +52,36 @@ const remove = function removeChannel(id, callback) {
     .exec(callback);
 }
 
+const follow = function addChannelToFollowing(channelid, followingId, callback) {
+    Channel.findByIdAndUpdate(
+        channelid,
+        { 
+            $addToSet: { 
+                following: followingId,
+            },
+        },
+        { 
+            new: true,
+        },
+    )
+    .exec(callback);
+}
+
+const unfollow = function removeChannelFromFollowing(channelid, followingId, callback) {
+    Channel.findByIdAndUpdate(
+        channelid,
+        { 
+            $pull: { 
+                following: followingId,
+            },
+        },
+        { 
+            new: true,
+        },
+    )
+    .exec(callback);
+}
+
 const saveList = function addListToChannelSaved(chid, listid, callback) {
     Channel.findByIdAndUpdate(
         chid,
@@ -61,7 +91,7 @@ const saveList = function addListToChannelSaved(chid, listid, callback) {
             },
         },
         { 
-            new: true 
+            new: true,
         },
     )
     .exec(callback);
@@ -76,13 +106,13 @@ const unsaveList = function removeListFromChannelSaved(chid, listid, callback) {
             },
         },
         { 
-            new: true 
+            new: true,
         },
     )
     .exec(callback);
 }
 
-const populateFollowers = function ({ id }, callback) {
+const populateFollowers = function (id, callback) {
     Channel.find(
         {
             following: {
@@ -105,6 +135,8 @@ const populateLists = function (id, callback) {
 module.exports.get          = get;
 module.exports.add          = add;
 module.exports.remove       = remove;
+module.exports.follow       = follow;
+module.exports.unfollow     = unfollow;
 module.exports.saveList     = saveList;
 module.exports.unsaveList   = unsaveList;
 module.exports.getPassword  = getPassword;

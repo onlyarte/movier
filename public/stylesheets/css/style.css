@@ -350,21 +350,19 @@ img {
         padding: 0px 20px;
         margin: 10px;
         text-align: center; }
-    #content #right #user-wrapper .lists-block {
-      padding: 20px; }
-      #content #right #user-wrapper .lists-block .block-title {
+    #content #right #user-wrapper .block {
+      padding: 0px 20px; }
+      #content #right #user-wrapper .block .block-title {
         font-family: "Roboto", sans-serif;
         font-weight: 300; }
-      #content #right #user-wrapper .lists-block .list-items {
+      #content #right #user-wrapper .block .items {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         flex-wrap: wrap; }
-        #content #right #user-wrapper .lists-block .list-items .list-item {
+        #content #right #user-wrapper .block .items .item {
           margin: 10px; }
-          #content #right #user-wrapper .lists-block .list-items .list-item img {
-            height: 35vh; }
-          #content #right #user-wrapper .lists-block .list-items .list-item .list-title {
+          #content #right #user-wrapper .block .items .item .title {
             max-width: 10em;
             overflow: hidden;
             white-space: nowrap;
@@ -372,6 +370,12 @@ img {
             text-align: center;
             font-family: "Roboto", sans-serif;
             margin: 10px 0px; }
+        #content #right #user-wrapper .block .items .list-item img {
+          height: 35vh; }
+        #content #right #user-wrapper .block .items .channel-item img {
+          height: 20vh;
+          width: 20vh;
+          border-radius: 20vh; }
     #content #right #index-wrapper {
       display: flex;
       flex-direction: column;

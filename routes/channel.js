@@ -12,17 +12,57 @@ router.get('/:id', function(req, res, next) {
             return res.render('channel', { channel });
         }
         
-        channelapi.get(req.session.channel, (error, authchannel) => {
+        channelapi.get(req.session.channel, (error, userchannel) => {
             if (error) return next(error);
-            if (!authchannel) return next(new Error('Please, log in again'));
+            if (!userchannel) return next(new Error('Please, log in again'));
 
             const state = {
-                home: `/channel/${authchannel.id}`,
-                owner: channel.id === authchannel.id ? true : false,
+                home: `/channel/${userchannel.id}`,
+                owner: channel.id === userchannel.id ? true : false,
+                following: channel.id === userchannel.id && userchannel.following,
+                isFollowed: userchannel.following.filter(elem => elem.id === channel.id).length > 0,
             }
 
             return res.render('channel', { channel, state });
         });
+    });
+});
+
+//follow
+router.post('/:id/follow', function(req, res) {
+    if (!req.session.channel) {
+        return res.status(401).send({ error: 'Action not allowed!' });
+    }
+    
+    channelapi.follow(req.session.channel, req.params.id, (error, channel) => {
+        if (error || !channel) {
+            return res.status(401).send({ error: 'Action not allowed!' });
+        }
+
+        res.set({
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Credentials': true,
+        });
+        return res.status(200).send();
+    });
+});
+
+//follow
+router.post('/:id/follow', function(req, res) {
+    if (!req.session.channel) {
+        return res.status(401).send({ error: 'Action not allowed!' });
+    }
+    
+    channelapi.unfollow(req.session.channel, req.params.id, (error, channel) => {
+        if (error || !channel) {
+            return res.status(401).send({ error: 'Action not allowed!' });
+        }
+
+        res.set({
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Access-Control-Allow-Credentials': true,
+        });
+        return res.status(200).send();
     });
 });
 

@@ -75,7 +75,7 @@ router.delete('/:id', function(req, res, next){
     });
 });
 
-//save to channel
+//save
 router.post('/:id/save', function(req, res, next) {
     if (!req.session.channel) {
         return res.status(401).send({ error: 'Action not allowed!' });
@@ -94,7 +94,7 @@ router.post('/:id/save', function(req, res, next) {
     });
 });
 
-//remove from channel
+//unsave
 router.post('/:id/unsave', function(req, res, next) {
     if (!req.session.channel) {
         return res.status(401).send({ error: 'Action not allowed!' });

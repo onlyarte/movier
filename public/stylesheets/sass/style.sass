@@ -352,21 +352,19 @@ img
 
 
         #user-wrapper
-            .lists-block
-                padding: 20px
+            .block
+                padding: 0px 20px
                 .block-title
                     font-family: $roboto
                     font-weight: 300
-                .list-items
+                .items
                     display: flex
                     flex-direction: row
                     align-items: flex-start
                     flex-wrap: wrap
-                    .list-item
+                    .item
                         margin: 10px
-                        img
-                            height: 35vh
-                        .list-title
+                        .title
                             max-width: 10em
                             overflow: hidden
                             white-space: nowrap
@@ -374,6 +372,14 @@ img
                             text-align: center
                             font-family: $roboto
                             margin: 10px 0px
+                    .list-item
+                        img
+                            height: 35vh
+                    .channel-item
+                        img
+                            height: 20vh
+                            width: 20vh
+                            border-radius: 20vh
 
         #index-wrapper
             display: flex
