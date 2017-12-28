@@ -1,48 +1,47 @@
-const request       = require('request-json');
-const client        = request.createClient('http://www.omdbapi.com/');
+const request = require('request-json');
 
-const get = function getFilmById(id, callback){
-    client.get(
-        `?i=${id}&plot=full&apikey=6d2a1ba3`, 
-        (error, res, body) => {
-            const film = format (body);
+const client = request.createClient('http://www.omdbapi.com/');
 
-            if (!film && callback) return callback(new Error('Film not found!'), null);
-
-            if (callback) return callback(null, film);
-            return film;
-        },
-    );
+const cast = function readFilm(film) {
+  return {
+    title: film.Title,
+    description: film.Plot,
+    year: film.Year,
+    genre: film.Genre,
+    rating: film.Ratings && film.Ratings[0] && film.Ratings[0].Value,
+    director: film.Director,
+    writers: film.Writer,
+    stars: film.Actors,
+    id: film.imdbID,
+    poster: film.Poster && film.Poster.replace('@._V1_SX300', '@._V1_SX700'), // change quality
+  };
 };
 
-const search = function findFilmByTitle(title, callback) {
-    const query = encodeURI(title);
+const get = function getFilmById(id) {
+  return new Promise((resolve, reject) => {
     client.get(
-        `http://www.omdbapi.com/?s=${query}&apikey=6d2a1ba3&page=1`, 
-        (error, res, body) => {
-            const films = body.Search && Array.from(body.Search, format);
-
-            if (!films) return callback(null, null);
-
-            return callback(null, films);
-        },
+      `?i=${id}&plot=full&apikey=6d2a1ba3`,
+      (error, res, body) => {
+        if (error) reject(error);
+        resolve(cast(body));
+      },
     );
-}
+  });
+};
 
-const format = function fromImdbFormatToOwn(film) {
-    return {
-        title: film.Title, 
-        description: film.Plot, 
-        year: film.Year, 
-        genre: film.Genre,
-        rating: film.Ratings && film.Ratings[0] && film.Ratings[0].Value,
-        director: film.Director, 
-        writers: film.Writer, 
-        stars: film.Actors,
-        id: film.imdbID,
-        poster: film.Poster.replace('@._V1_SX300', '@._V1_SX700'), // change quality
-    };
-}
+const search = function findFilmByTitle(title) {
+  return new Promise((resolve, reject) => {
+    client.get(
+      `http://www.omdbapi.com/?s=${encodeURI(title)}&apikey=6d2a1ba3&page=1`,
+      (error, res, body) => {
+        if (error) reject(error);
+        if (!body.Search) reject(new Error('Search not available'));
 
-module.exports.get      = get;
-module.exports.search   = search;
+        resolve(Array.from(body.Search, cast));
+      },
+    );
+  });
+};
+
+module.exports.get = get;
+module.exports.search = search;

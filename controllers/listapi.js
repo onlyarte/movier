@@ -1,121 +1,103 @@
-const filmapi       = require('./filmapi');
-const channelapi    = require('./channelapi');
+const filmapi = require('./filmapi');
 
-const List          = require('../models/list');
+const List = require('../models/list');
 
-const get = function getListById(id, callback) {
-    List.findById(id)
+const get = function getListById(id) {
+  return List
+    .findById(id)
     .populate('owner', '-password')
-    .exec((error, list) => {
-        if (error) return callback(error, null);
-        if (!list) return callback(null, null);
-
-        populateFilms(list.films, (error, films) => {
-            if (error) return callback(error, null);
-            callback(
-                null, 
-                {
-                    films,
-                    id: list.id,
-                    owner: list.owner,
-                    name: list.name,
-                    cover: list.cover,
-                },
-            );
-        });
-    });
-}
-
-const add = function addList (list, filmid, callback) {
-    filmapi.get(
-        filmid,
-        (error, film) => {
-            if (error) return callback(error, null);
-
-            list.cover = film.poster;
-            list.films = [filmid]
-
-            new List(list)
-            .save(callback);
-        },
-    );
-    
-}
-
-const remove = function removeList (id, callback) {
-    List.findByIdAndRemove(id)
-    .exec(callback);
-}
-
-const addFilm = function addFilmToList(listId, filmId, callback) {
-    List.findByIdAndUpdate(
-        listId,
-        { 
-            $addToSet: { 
-                films: filmId,
-            },
-        },
-        { 
-            new: true 
-        },
-    )
-    .exec(callback);
-}
-
-const removeFilm = function removeFilmFromList(listId, filmId, callback) {
-    List.findByIdAndUpdate(
-        listId,
-        { 
-            $pull: { 
-                films: filmId,
-            },
-        },
-        { 
-            new: true,
-        },
-    )
-    .exec((error, list) => {
-        if (error) return callback(error, null);
-        if (!list) return callback(null, null);
-
-        // remove list if no films left
-        if (list.films.length === 0){
-            list.remove();
-        }
-
-        callback(null, null);
-    });
-}
-
-const findByOwner = function getOwnerLists(ownerId, callback) {
-    List.find({
-        owner: ownerId,
-    })
-    .exec(callback);
-}
-
-const populateFilms = function(ids, callback) {
-    const pool = ids.map(id => {
-        return new Promise((resolve, reject) => {
-            filmapi.get(id, (error, film) => {
-                if (error) reject(error);
-                else resolve(film);
+    .exec()
+    .then(list => new Promise((resolve, reject) => {
+      Promise.all(list.films.map(fid => filmapi.get(fid)))
+        .then(
+          (films) => {
+            resolve({
+              films,
+              id: list.id,
+              owner: list.owner,
+              name: list.name,
+              cover: list.cover,
             });
-        });
-    });
-    Promise.all(pool).then(
-        films => { 
-            callback(null, films);
-        },
-        reason => {
-            callback(reason, null);
-        },
-    );
-}
+          },
+          reject,
+        );
+    }));
+};
 
-module.exports.get          = get;
-module.exports.add          = add;
-module.exports.remove       = remove;
-module.exports.addFilm      = addFilm;
-module.exports.removeFilm   = removeFilm;
-module.exports.findByOwner  = findByOwner;
+const add = function addList(list) {
+  return filmapi
+    .get(list.films[0])
+    .then((film) => {
+      if (!film) throw new Error('Film not found');
+      return new List({
+        ...list,
+        cover: film.poster,
+      })
+        .save()
+        .then(added => added.toObject());
+    });
+};
+
+const remove = function removeList(id) {
+  return List
+    .findByIdAndRemove(id)
+    .exec()
+    .then(removed => removed.toObject());
+};
+
+const addFilm = function addFilmToList(listId, filmId) {
+  return List
+    .findByIdAndUpdate(
+      listId,
+      {
+        $addToSet: {
+          films: filmId,
+        },
+      },
+      {
+        new: true,
+      },
+    )
+    .exec()
+    .then(updated => updated.toObject());
+};
+
+const removeFilm = function removeFilmFromList(listId, filmId) {
+  return List
+    .findByIdAndUpdate(
+      listId,
+      {
+        $pull: {
+          films: filmId,
+        },
+      },
+      {
+        new: true,
+      },
+    )
+    .exec()
+    // if no films left, remove list
+    .then((list) => {
+      if (list.films.length === 0) {
+        return list
+          .remove()
+          .then(removed => removed.toObject());
+      }
+      return list.toObject();
+    });
+};
+
+const findByOwner = function getOwnerLists(ownerId) {
+  return List
+    .find({
+      owner: ownerId,
+    })
+    .exec();
+};
+
+module.exports.get = get;
+module.exports.add = add;
+module.exports.remove = remove;
+module.exports.addFilm = addFilm;
+module.exports.removeFilm = removeFilm;
+module.exports.findByOwner = findByOwner;

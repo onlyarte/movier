@@ -1,34 +1,35 @@
 doctype html
 html(lang='ru')
-    head
-        meta(charset='utf-8')
-        meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
-        block title
-            title MOVIER
-        // Font
-        link(href='https://fonts.googleapis.com/css?family=Megrim|Open+Sans|Roboto|Rubik|Istok+Web', rel="stylesheet")
-        // Main styles
-        link(href='/stylesheets/css/style.css', rel='stylesheet')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    block title
+      title MOVIER
+    // Font
+    link(href='https://fonts.googleapis.com/css?family=Megrim|Open+Sans|Roboto|Rubik|Istok+Web', rel="stylesheet")
+    // Main styles
+    link(href='/stylesheets/css/main.css', rel='stylesheet')
+    block styles
+      
+    script(src='/javascripts/nav.js')
+    script(src='/javascripts/search.js')
+  body
+    #menu-open(onclick='openNav()')
+      img(src='/images/icons/menu.png')
+    #menu-overlay
+      #menu-close.menu-item(onclick='closeNav()')
+        img(src='/images/icons/close.png')
+        span Movier
+      #search.menu-item
+        input#search-box(type='text', placeholder='SEARCH')
+        input.submit(type='image', src='/images/icons/search.png', onclick='search()')
+      #search-results.menu-group
+      a.menu-item(href='/')
+        img(src='/images/icons/home.png')
+        span Home
+      block usermenu
+      block collections
 
-        script(src="/javascripts/nav.js")
-        script(src="/javascripts/search.js")
-    body
-        #menu-open(onclick="openNav()")
-            img(src="/images/icons/menu.png")
-        #menu-overlay
-            #menu-close.menu-item(onclick="closeNav()")
-                img(src="/images/icons/close.png")
-                span Movier
-            #search.menu-item
-                input#search-box(type="text", placeholder="Поиск")
-                input.submit(type="image", src="/images/icons/search.png", onclick="search()")
-            #search-results.menu-group
-            a.menu-item(href="/")
-                img(src="/images/icons/home.png")
-                span Home
-            block usermenu
-            block collections
-
-        #content
-            block content
+    #content
+      block content

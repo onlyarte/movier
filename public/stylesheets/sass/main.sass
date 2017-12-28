@@ -1,0 +1,154 @@
+$break: 600px
+$roboto: 'Roboto', sans-serif
+$megrim: 'Megrim', cursive
+
+@mixin respond-to($media)
+  @if $media == small
+    @media only screen and (max-width: $break) { @content; }
+  @else
+    @media only screen and (min-width: $break) { @content; }
+
+html
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
+  body
+    margin: 0
+    font-family: 'Istok Web', sans-serif
+    color: white
+    background: black
+    img, article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary
+      display: block
+    a
+      text-decoration: none
+      color: white
+    a:active, a:hover
+      outline: 0
+    *:focus
+      outline: none
+    .button
+      display: inline-flex
+      align-items: center
+      height: 50px
+      margin: 10px
+      border-radius: 50px
+      border: 3px solid white
+
+    *::-webkit-scrollbar-track
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+      border-radius: 10px
+      background-color: #F5F5F5
+    *::-webkit-scrollbar
+      width: 5px
+      height: 3px
+    *::-webkit-scrollbar-thumb
+      border-radius: 10px
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3)
+      background-color: #555
+
+#menu-open
+  position: fixed
+  z-index: 3
+  top: 15px
+  left: 15px
+  img
+    height: 24px
+
+#menu-overlay
+  visibility: hidden
+  position: fixed
+  z-index: 4
+  background: rgba(48,48,48,0.8)
+  height: 100vh
+  width: 300px
+  overflow: auto
+  #menu-close
+    span
+      font-family: $megrim
+      font-size: 1.5em
+  .menu-group
+    width: 100%
+    border-bottom: 3px solid rgb(100,100,100)
+  .menu-item
+    width: 100%
+    height: 50px
+    display: flex
+    flex-direction: row
+    align-items: center
+    img
+      height: 18px
+      margin: 18px
+    span
+      line-height: 50px
+      vertical-align: center
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+  .menu-item:hover, menu-group:hover
+    background: rgba(32,32,32,0.8)
+
+  #search
+    position: relative
+    #search-box
+      color: white
+      height: 44px
+      margin: 3px 16px
+      padding: 0px 44px 0px 7px
+      font-size: 1.2em
+      width: 100%
+      border: 0px
+      background: rgba(32,32,32,0.5)
+    .submit
+      position: absolute
+      right: 24px
+      top: 9px
+
+#content
+  display: flex
+  flex-flow: row wrap
+  #left
+    position: relative
+    overflow: hidden
+    @include respond-to(big)
+      flex-basis: 40%
+      height: 100vh
+    @include respond-to(small)
+      flex-basis: 100%
+      height: 100vh
+    #back, #front, #user
+      position: absolute
+    #back
+      filter: blur(15px)
+      top: -5vh
+      left: -2.5vw
+      @include respond-to(small)
+        width: 105vw
+        height: 110vh
+      @include respond-to(big)
+        width: 45vw
+        height: 110vh
+      opacity: 0.7
+      background-size: cover
+      background-position: center center
+      background-repeat: no-repeat
+    #front
+      z-index: 1
+      top: 0vh
+      left: 0vw
+      height: 100vh
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: space-evenly
+      @include respond-to(big)
+        width: 40vw
+      @include respond-to(small)
+        width: 100vw
+
+  #right
+    @include respond-to(big)
+      flex-basis: 60%
+      height: 100vh
+      overflow-y: auto
+    @include respond-to(small)
+      flex-basis: 100%
+    padding: 15px 20px

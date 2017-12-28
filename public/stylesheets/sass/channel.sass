@@ -1,0 +1,77 @@
+$break: 600px
+$roboto: 'Roboto', sans-serif
+$megrim: 'Megrim', cursive
+
+@mixin respond-to($media)
+  @if $media == small
+    @media only screen and (max-width: $break) { @content; }
+  @else
+    @media only screen and (min-width: $break) { @content; }
+
+#content
+  #left
+    #front
+      justify-content: center
+      img
+        margin: 15px 0px
+        @include respond-to(big)
+          width: 16vw
+          border-radius: 16vw
+        @include respond-to(small)
+          width: 60vw
+          border-radius: 84vw
+      #name
+        text-align: center
+        text-transform: uppercase
+        font-size: 1.3em
+        font-family: 'Roboto', sans-serif
+        @include respond-to(big)
+            width: 16vw
+        @include respond-to(small)
+            width: 84vw
+      #stat
+        display: flex
+        flex-direction: row
+        margin: 30px 0px
+        .stat-item
+          display: flex
+          flex-direction: column
+          align-items: center
+          margin: 0px 15px
+          .num
+            font-size: 3em
+            font-family: $megrim
+            font-weight: 500
+      #edit-button, #subscribe-button
+        padding: 0px 30px
+  #right
+    #user-wrapper
+      .block
+        .block-title
+          font-family: $roboto
+          font-weight: 300
+        .items
+          display: flex
+          flex-direction: row
+          align-items: flex-start
+          flex-wrap: wrap
+          .desc
+            font-size: 1.2em
+          .item
+            margin: 10px
+            .title
+              max-width: 10em
+              overflow: hidden
+              white-space: nowrap
+              text-overflow: ellipsis
+              text-align: center
+              font-family: $roboto
+              margin: 10px 0px
+          .list-item
+            img
+              height: 32vh
+          .channel-item
+            img
+              height: 20vh
+              width: 20vh
+              border-radius: 20vh

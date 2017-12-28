@@ -1,60 +1,61 @@
 extends layout
 
+block styles
+  link(href='/stylesheets/css/index.css', rel='stylesheet')
+
 block content
+  #left
+    #back(style=`background-image: url('${list.cover}')`)
+    #front
+      #list-info
+        #list-title= list.name
+        #list-owner
+          a(href= `/channel/${list.owner.id}`)= list.owner.name
+      #slider
+        each film in list.films
+          a.list-item(href=`/film/${film.id}`)
+            img(src=film.poster)
+            .item-title= film.title
+      a#log-button.button(href='#right')
+        span.button-title LOG IN
 
-    #left
-        #back(style=`background-image: url('${list.cover}')`)
-        #front
-            #list-info
-                #list-title= list.name
-                #list-owner
-                    a(href= `/channel/${list.owner.id}`)= list.owner.name
-            #slider
-                each film in list.films
-                    a.list-item(href=`/film/${film.id}`)
-                        img(src=film.poster)
-                        .item-title= film.title
-            if authch
-                .save-button(id!= list.id)
-                    span.button-title СОХРАНИТЬ
-
-    #right
-        #index-wrapper
-            #info
-                h1#title MOVIER
-                #subtitle COLLECTION
-                #description movies &#124; lists &#124; channels
-            #auth
-                #caption
-                    a(href='#' onclick='openAuth()') LOG IN
-                    | &#32;&#124;&#32;
-                    a(href='#' onclick='openReg()') SIGN UP
-                script.
-                    function openAuth(){
-                        document.getElementById('reg-form').style.display = 'none';
-                        document.getElementById('auth-form').style.display = 'flex';
-                    }
-                    function openReg(){
-                        document.getElementById('auth-form').style.display = 'none';
-                        document.getElementById('reg-form').style.display = 'flex';
-                    }
-                form#auth-form(action='/auth', enctype='multipart/form-data', method='post')
-                    input(type='text', name='login', placeholder='LOGIN', required)
-                    br
-                    input(type='password', name='password', placeholder='PASSWORD', required)
-                    br
-                    input(type='submit', value='LOG IN')
-                form#reg-form(action='/auth/new', enctype='multipart/form-data', method='post')
-                    input(type='email', name='email', placeholder='EMAIL', required)
-                    br
-                    input(type='text', name='login', placeholder='LOGIN', required)
-                    br
-                    input(type='password', name='password', placeholder='PASSWORD', required)
-                    br
-                    input(type='text', name='name', placeholder='CHANNEL NAME', required)
-                    br
-                    label
-                        input(type='file', name='image', accept='image/*', hidden, required)
-                        | IMAGE
-                    br
-                    input(type='submit', value='CREATE CHANNEL')
+  #right
+    #index-wrapper
+      #info
+        h1#title MOVIER
+        #subtitle COLLECTION
+        #description movies &#124; lists &#124; channels
+      #auth
+        #caption
+          a(href='#right' onclick='openAuth()') LOG IN
+          | &#32;&#124;&#32;
+          a(href='#right' onclick='openReg()') SIGN UP
+        script.
+          function openAuth(){
+            document.getElementById('reg-form').style.display = 'none';
+            document.getElementById('auth-form').style.display = 'flex';
+          }
+          function openReg(){
+            document.getElementById('auth-form').style.display = 'none';
+            document.getElementById('reg-form').style.display = 'flex';
+          }
+        form#auth-form(action='/auth', enctype='multipart/form-data', method='post')
+          input(type='text', name='login', placeholder='LOGIN', required)
+          br
+          input(type='password', name='password', placeholder='PASSWORD', required)
+          br
+          input(type='submit', value='LOG IN')
+        form#reg-form(action='/auth/new', enctype='multipart/form-data', method='post')
+          input(type='email', name='email', placeholder='EMAIL', required)
+          br
+          input(type='text', name='login', placeholder='LOGIN', required)
+          br
+          input(type='password', name='password', placeholder='PASSWORD', required)
+          br
+          input(type='text', name='name', placeholder='CHANNEL NAME', required)
+          br
+          label
+            input(type='file', name='image', accept='image/*', hidden, required)
+            | IMAGE
+          br
+          input(type='submit', value='CREATE CHANNEL')

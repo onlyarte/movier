@@ -1,0 +1,66 @@
+#content #left #front {
+  justify-content: center; }
+  #content #left #front img {
+    margin: 15px 0px; }
+    @media only screen and (min-width: 600px) {
+      #content #left #front img {
+        width: 16vw;
+        border-radius: 16vw; } }
+    @media only screen and (max-width: 600px) {
+      #content #left #front img {
+        width: 60vw;
+        border-radius: 84vw; } }
+  #content #left #front #name {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-family: 'Roboto', sans-serif; }
+    @media only screen and (min-width: 600px) {
+      #content #left #front #name {
+        width: 16vw; } }
+    @media only screen and (max-width: 600px) {
+      #content #left #front #name {
+        width: 84vw; } }
+  #content #left #front #stat {
+    display: flex;
+    flex-direction: row;
+    margin: 30px 0px; }
+    #content #left #front #stat .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0px 15px; }
+      #content #left #front #stat .stat-item .num {
+        font-size: 3em;
+        font-family: "Megrim", cursive;
+        font-weight: 500; }
+  #content #left #front #edit-button, #content #left #front #subscribe-button {
+    padding: 0px 30px; }
+
+#content #right #user-wrapper .block .block-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300; }
+
+#content #right #user-wrapper .block .items {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap; }
+  #content #right #user-wrapper .block .items .desc {
+    font-size: 1.2em; }
+  #content #right #user-wrapper .block .items .item {
+    margin: 10px; }
+    #content #right #user-wrapper .block .items .item .title {
+      max-width: 10em;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: center;
+      font-family: "Roboto", sans-serif;
+      margin: 10px 0px; }
+  #content #right #user-wrapper .block .items .list-item img {
+    height: 32vh; }
+  #content #right #user-wrapper .block .items .channel-item img {
+    height: 20vh;
+    width: 20vh;
+    border-radius: 20vh; }

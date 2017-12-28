@@ -1,104 +1,104 @@
-const express       = require('express');
-const router        = express.Router();
-const fileUpload    = require('express-fileupload');
-const cloudinary    = require('cloudinary');
-const bcrypt        = require('bcrypt-nodejs');
+const express = require('express');
+const cloudinary = require('cloudinary');
+const bcrypt = require('bcrypt-nodejs');
 
-const channelapi    = require('../controllers/channelapi');
-const listapi       = require('../controllers/listapi');
+const channelapi = require('../controllers/channelapi');
 
-//log in
-router.post('/', function (req, res, next) {
-    channelapi.getPassword(req.body.login, (error, password) => {
-        if(error || !password || !bcrypt.compareSync(req.body.password, password)) { // compare passwords
-            return next(new Error('Wrong login or password'));
-        } 
+const router = express.Router();
 
-        req.session.channel = req.body.login;
-        return res.redirect('/channel/' + req.body.login);
-    });
+// log in
+router.post('/', (req, res, next) => {
+  if (!req.body.login || !req.body.password) {
+    next(new Error('Empty login request'));
+    return;
+  }
+
+  channelapi
+    .getPassword(req.body.login)
+    .then((password) => {
+      if (!password || !bcrypt.compareSync(req.body.password, password)) {
+        throw new Error('Wrong password');
+      }
+      req.session.login = req.body.login;
+      res.redirect(`/channel/${req.body.login}`);
+    })
+    .catch(next);
 });
 
-//log out
-router.get('/out', function (req, res, next) {
-    if (!req.session) return res.redirect('/');
+// log out
+router.get('/out', (req, res, next) => {
+  if (!req.session) {
+    res.redirect('/');
+    return;
+  }
 
-    req.session.destroy((error) => {
-        if (error) return next(error);
-
-        res.redirect('/');
-    });
-});
-
-//register
-router.post('/new', function (req, res, next){
-    if(!req.body.login || !req.body.email || !req.body.password || !req.body.name){
-        return next(new Error("All the fields needed"));
+  req.session.destroy((error) => {
+    if (error) {
+      next(error);
+      return;
     }
 
-    const channel = {
+    res.redirect('/');
+  });
+});
+
+// register
+router.post('/new', (req, res, next) => {
+  if (!req.body.login || !req.body.email || !req.body.password || !req.body.name) {
+    next(new Error('Fill in all the fields'));
+    return;
+  }
+
+  channelapi
+    .get(req.body.login)
+    .then((channel) => {
+      // check if login has not been taken
+      if (channel) throw new Error('Login is already taken');
+
+      // save image to local storage
+      const path = `./public/images/temp/${channel.id + req.files.image.name}`;
+
+      return new Promise((resolve, reject) => {
+        req.files.image
+          .mv(
+            path,
+            (error) => {
+              if (error) reject(error);
+              resolve(path);
+            },
+          );
+      });
+    })
+    // save image to cloud
+    .then(imgLocalPath => new Promise((resolve, reject) => {
+      cloudinary.v2.uploader.upload(
+        imgLocalPath,
+        {
+          crop: 'fill',
+          aspect_ratio: '1:1',
+        },
+        (error, result) => {
+          if (error) reject(error);
+          resolve(result.url);
+        },
+      );
+    }))
+    // save channel to database
+    .then(imgGlobalPath => channelapi
+      .add({
         _id: req.body.login,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password), // encrypt password
+        password: bcrypt.hashSync(req.body.password),
         name: req.body.name,
-        image: 'https://www.standard.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2017/04/27/13/mendeodorant.jpg',
-        saved_lists: [],
-        following: [],
-    }
-
-    console.log(channel);
-
-    const imgPath = './public/images/temp/' + channel.id + req.files.image.name;
-
-    //check if account exists
-    channelapi.get(channel.id, (error, channel) => {
-        if (channel) return next(new Error('Login already exists'));
-
-        saveChannel();
-    });
-
-    //save image localy
-    function saveImageLocally(){
-        const file = req.files.image;
-
-        file.mv(imgPath, error => {
-            if (error) return next(error);
-
-            saveImageToCloud();
-        });
-    }
-
-    //save image to cloudinary
-    function saveImageToCloud(){
-        cloudinary.v2.uploader.upload(
-            imgPath,
-            { 
-                crop: "fill", 
-                aspect_ratio: "1:1",
-            },
-            (error, result) => {
-                if (error) return next(error);
-
-                channel.image = result.url;
-                saveChannel();
-        });
-    }
-
-    //save channel to db
-    function saveChannel(){
-        channelapi.add(channel, (error, channel) => {
-            if (error) return next(error);
-            if (!channel) return next(new Error('Temporary not available'));
-
-            redirect();
-        });
-    }
-
-    //save session var and redirect to channel
-    function redirect(){
-        req.session.channel = channel._id;
-        return res.redirect('/channel/' + channel._id);
-    }
+        image: imgGlobalPath,
+      }))
+    // set session variable, and redirect to channel
+    .then((channel) => {
+      if (!channel) throw new Error('Failed to save new channel');
+      req.session.login = channel.id;
+      res.redirect(`/channel/${channel.id}`);
+    })
+    .catch(next);
 });
 
 module.exports = router;

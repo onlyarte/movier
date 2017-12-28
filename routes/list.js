@@ -1,116 +1,121 @@
-const express       = require('express');
-const router        = express.Router();
+const express = require('express');
 
-const listapi       = require('../controllers/listapi');
-const channelapi    = require('../controllers/channelapi');
+const listapi = require('../controllers/listapi');
+const channelapi = require('../controllers/channelapi');
 
-router.get('/:id', function(req, res, next) {
-    listapi.get(req.params.id, (error, list) => {
-        if (error) return next(error);
-        if (!list) return next(new Error('List not found'));
-        
-        if (!req.session.channel){
-            return res.render('list', { list });
-        }
+const router = express.Router();
 
-        channelapi.get(req.session.channel, (error, channel) => {
-            if (error) return next(error);
-            if (!channel) return next(new Error('Please, log in again'));
-            
-            const state = {
-                home: `/channel/${channel.id}`,
-                owner: list.owner.id === channel.id ? true : false,
-                saved: channel.saved_lists.map(list => list.id).includes(req.params.id),
-            }
+router.get('/:id', (req, res, next) => {
+  listapi
+    .get(req.params.id)
+    .then((list) => {
+      if (!list) throw new Error('List not found');
+      if (!req.session.login) return { list };
 
-            return res.render('list', { list, state });
+      return channelapi
+        .get(req.session.login)
+        .then((channel) => {
+          if (!channel) throw new Error('Session lost');
+
+          const state = {
+            home: `/channel/${channel.id}`,
+            owner: list.owner.id === channel.id,
+            saved: channel.saved_lists.map(l => l.id).includes(req.params.id),
+          };
+
+          return { list, state };
         });
-    });
+    })
+    .then(data => res.render('list', data))
+    .catch(next);
 });
 
-//add new list
-router.post('/', function(req, res, next){
-    if (!req.session.channel || !req.body.name || !req.body.filmid) { // if user is not logged in
-        return res.status(401).send({ error: 'Action not allowed!' });
-    }
+// add new list
+router.post('/', (req, res, next) => {
+  if (!req.session.login || !req.body.name || !req.body.filmid) {
+    next(new Error('Access denied'));
+    return;
+  }
 
-    const list = {
-        owner: req.session.channel,
-        name: req.body.name,
-    };
-
-    listapi.add(list, req.body.filmid, (error, list) => {
-        if (error || !list) {
-            return res.status(400).send({ error: 'Action not allowed!' });
-        }
-        
-        return res.redirect(`/list/${list.id}`);
-    });
+  listapi
+    .add({
+      owner: req.session.login,
+      name: req.body.name,
+      films: [req.body.filmid],
+    })
+    .then((list) => {
+      console.log(list);
+      res.redirect(`/list/${list._id}`);
+    })
+    .catch(next);
 });
 
-//delete list
-router.delete('/:id', function(req, res, next){
-    if (!req.session.channel) { // if user is not logged in
-        return res.status(401).send({ error: 'Action not allowed!' });
-    }
+// delete list
+router.delete('/:id', (req, res, next) => {
+  if (!req.session.login) {
+    next(new Error('Access denied'));
+    return;
+  }
 
-    listapi.get(req.params.id, (error, list) => {
-        if (error || !list || list.owner !== req.session.channel) {
-            return res.status(401).send({ error: 'Action not allowed!' });
-        }
+  listapi
+    .get(req.params.id)
+    .then((list) => {
+      if (!list) throw new Error('List not found');
 
-        console.log(list);
+      if (list.owner !== req.session.login) throw new Error('Access denied');
 
-        listapi.remove(req.params.id, error => {
-            if(error) {
-                return res.status(401).send({ error: 'Action not allowed!' });
-            }
-            
-            res.set({
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
-                'Access-Control-Allow-Credentials': true,
-            });
-            return res.status(200).send();
-        });
-    });
+      return listapi.remove(list.id);
+    })
+    .then(() => {
+      res.set({
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': true,
+      });
+      res.status(200).send();
+    })
+    .catch(next);
 });
 
-//save
-router.post('/:id/save', function(req, res, next) {
-    if (!req.session.channel) {
-        return res.status(401).send({ error: 'Action not allowed!' });
-    }
-    
-    channelapi.saveList(req.session.channel, req.params.id, (error, channel) => {
-        if (error || !channel) {
-            return res.status(401).send({ error: 'Action not allowed!' });
-        }
+// save
+router.post('/:id/save', (req, res, next) => {
+  if (!req.session.login) {
+    next(new Error('Action not allowed!'));
+    return;
+  }
 
-        res.set({
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Access-Control-Allow-Credentials': true,
-        });
-        return res.status(200).send();
-    });
+  channelapi
+    .saveList(req.session.login, req.params.id)
+    .then((channel) => {
+      if (!channel) throw new Error('Channel not found');
+
+      res.set({
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': true,
+      });
+      res.status(200).send();
+    })
+    .catch(next);
 });
 
-//unsave
-router.post('/:id/unsave', function(req, res, next) {
-    if (!req.session.channel) {
-        return res.status(401).send({ error: 'Action not allowed!' });
-    }
-    
-    channelapi.unsaveList(req.session.channel, req.params.id, (error, channel) => {
-        if (error || !channel) {
-            return res.status(401).send({ error: 'Action not allowed!' });
-        }
+// unsave
+router.post('/:id/unsave', (req, res, next) => {
+  if (!req.session.login) {
+    next(new Error('Action not allowed!'));
+    return;
+  }
 
-        res.set({
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Access-Control-Allow-Credentials': true,
-        });
-        return res.status(200).send();
-    });
+  channelapi
+    .unsaveList(req.session.login, req.params.id)
+    .then((channel) => {
+      if (!channel) throw new Error('Channel not found');
+
+      res.set({
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': true,
+      });
+      res.status(200).send();
+    })
+    .catch(next);
 });
 
 module.exports = router;

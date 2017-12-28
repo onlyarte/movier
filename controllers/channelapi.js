@@ -2,141 +2,181 @@ const Channel = require('../models/channel');
 
 const listapi = require('./listapi');
 
-const get = function getChannelById(id, callback) {
-    Channel.findById(
-        id,
-        {
-            password: 0,
-        },
-    )
+const get = function getChannelById(id) {
+  return Channel
+    .findById(id)
+    .select('-password')
     .populate('saved_lists')
     .populate('following', '-password')
-    .exec((error, channel) => {
-        if (error) return callback(error, null);
-        if (!channel) return callback(null, null);
+    .exec()
+    // populate followers
+    .then(channel => new Promise((resolve, reject) => {
+      Channel
+        .find({
+          following: {
+            $elemMatch: {
+              $eq: id,
+            },
+          },
+        })
+        .select('-password')
+        .exec()
+        .then(
+          (followers) => {
+            /* channel is a mongoose document
+            spread-operator should not be used with it
+            alternatively use channel.toObject() */
+            resolve({
+              followers,
+              id: channel.id,
+              email: channel.email,
+              name: channel.name,
+              image: channel.image,
+              saved_lists: channel.saved_lists,
+              following: channel.following,
+            });
+          },
+          reject,
+        );
+    }))
+    // populate lists
+    .then(channel => new Promise((resolve, reject) => {
+      listapi
+        .findByOwner(channel.id)
+        .then(
+          (lists) => {
+            console.log(lists);
+            resolve({ ...channel, lists });
+          },
+          reject,
+        );
+    }));
+};
 
-        populateFollowers(id, (error, followers) => {
-            if (error) return callback(error, null);
+const add = function addChannel(channel) {
+  return new Channel(channel)
+    .save()
+    .select('-password')
+    .exec()
+    .then(added => added.toObject());
+};
 
-            populateLists(id, (error, lists) => {
-                if (error) return callback(error, null);
+const remove = function removeChannel(id) {
+  return Channel
+    .findByIdAndRemove(id)
+    .exec()
+    .then(removed => removed.toObject());
+};
 
-                channel.lists = lists;
-                channel.followers = followers;
-                return callback(null, channel); // return populated channel
-            })
-        });
+const update = function updateChannelInfo({ id, email, password, name, image }) {
+  return Channel
+    .findById(id)
+    .exec()
+    .then((channel) => {
+      // if there is new value, then asign, else leave previous
+      channel.email = email || channel.email;
+      channel.password = password || channel.password;
+      channel.name = name || channel.name;
+      channel.image = image || channel.image;
+
+      return channel.save()
+        .select('-password')
+        .exec()
+        .then(updated => updated.toObject());
     });
-}
+};
 
-const getPassword = function getChannelPassword(id, callback) {
-    Channel.findById(
-        id,
-        {
-            password: 1,
+const follow = function addChannelToFollowing(channelId, followingId) {
+  return Channel
+    .findByIdAndUpdate(
+      channelId,
+      {
+        $addToSet: {
+          following: followingId,
         },
+      },
+      {
+        new: true,
+      },
     )
-    .exec((error, channel)  => {
-        if (error) return callback(error);
-        if (!channel) return callback(null, null);
-        return callback(null, channel.password);
-    });
-}
+    .select('-password')
+    .exec()
+    .then(updated => updated.toObject());
+};
 
-const add = function addChannel(channel, callback) {
-    new Channel(channel).save(callback);
-}
-
-const remove = function removeChannel(id, callback) {
-    Channel.findByIdAndRemove(id)
-    .exec(callback);
-}
-
-const follow = function addChannelToFollowing(channelid, followingId, callback) {
-    Channel.findByIdAndUpdate(
-        channelid,
-        { 
-            $addToSet: { 
-                following: followingId,
-            },
+const unfollow = function removeChannelFromFollowing(channelId, followingId) {
+  return Channel
+    .findByIdAndUpdate(
+      channelId,
+      {
+        $pull: {
+          following: followingId,
         },
-        { 
-            new: true,
-        },
+      },
+      {
+        new: true,
+      },
     )
-    .exec(callback);
-}
+    .select('-password')
+    .exec()
+    .then(updated => updated.toObject);
+};
 
-const unfollow = function removeChannelFromFollowing(channelid, followingId, callback) {
-    Channel.findByIdAndUpdate(
-        channelid,
-        { 
-            $pull: { 
-                following: followingId,
-            },
+const saveList = function addListToChannelSaved(channelId, listId) {
+  return Channel
+    .findByIdAndUpdate(
+      channelId,
+      {
+        $addToSet: {
+          saved_lists: listId,
         },
-        { 
-            new: true,
-        },
+      },
+      {
+        new: true,
+      },
     )
-    .exec(callback);
-}
+    .select('-password')
+    .exec()
+    .then(updated => updated.toObject);
+};
 
-const saveList = function addListToChannelSaved(chid, listid, callback) {
-    Channel.findByIdAndUpdate(
-        chid,
-        { 
-            $addToSet: { 
-                saved_lists: listid,
-            },
+const unsaveList = function removeListFromChannelSaved(channelId, listId) {
+  return Channel
+    .findByIdAndUpdate(
+      channelId,
+      {
+        $pull: {
+          saved_lists: listId,
         },
-        { 
-            new: true,
-        },
+      },
+      {
+        new: true,
+      },
     )
-    .exec(callback);
-}
+    .select('-password')
+    .exec()
+    .then(updated => updated.toObject);
+};
 
-const unsaveList = function removeListFromChannelSaved(chid, listid, callback) {
-    Channel.findByIdAndUpdate(
-        chid,
-        { 
-            $pull: { 
-                saved_lists: listid,
-            },
-        },
-        { 
-            new: true,
-        },
-    )
-    .exec(callback);
-}
+// only for auth
+const getPassword = function getChannelPassword(id) {
+  return Channel
+    .findById(id)
+    .select('password')
+    .exec()
+    // extract password from channel
+    .then(channel => new Promise((resolve, reject) => {
+      if (!channel) reject(new Error('Channel not found'));
+      resolve(channel.password);
+    }));
+};
 
-const populateFollowers = function (id, callback) {
-    Channel.find(
-        {
-            following: {
-                $elemMatch: {
-                    $eq: id,                 
-                },
-            },
-        },
-        {
-            password: 0,
-        },
-    )
-    .exec(callback);
-}
-
-const populateLists = function (id, callback) {
-    listapi.findByOwner(id, callback);
-}
-
-module.exports.get          = get;
-module.exports.add          = add;
-module.exports.remove       = remove;
-module.exports.follow       = follow;
-module.exports.unfollow     = unfollow;
-module.exports.saveList     = saveList;
-module.exports.unsaveList   = unsaveList;
-module.exports.getPassword  = getPassword;
+module.exports.get = get;
+module.exports.add = add;
+module.exports.remove = remove;
+module.exports.update = update;
+module.exports.follow = follow;
+module.exports.unfollow = unfollow;
+module.exports.saveList = saveList;
+module.exports.unsaveList = unsaveList;
+module.exports.getPassword = getPassword;

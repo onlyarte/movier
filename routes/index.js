@@ -1,20 +1,25 @@
 const express = require('express');
-const router = express.Router();
-const channelapi = require('../controllers/channelapi');
+
 const listapi = require('../controllers/listapi');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    if(req.session.channel){
-        res.redirect('/list/5a3b7c66a29c9a1abca7dfa1');
-    } else {
-        listapi.get('5a3b7c66a29c9a1abca7dfa1', function(error, list){
-            if(error || !list)
-                return next(error);
+const router = express.Router();
 
-            res.render('index', { title: 'MOVIER', list: list });
-        });
-    }
+router.get('/', (req, res, next) => {
+  const coverId = '5a3b7c66a29c9a1abca7dfa1';
+
+  if (req.session.login) {
+    res.redirect(`/list/${coverId}`);
+    return;
+  }
+
+  listapi
+    .get(coverId)
+    .then((list) => {
+      if (!list) throw new Error('Cover not found');
+
+      res.render('index', { list, title: 'THE MOVIER' });
+    })
+    .catch(next);
 });
 
 module.exports = router;

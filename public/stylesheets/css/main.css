@@ -1,0 +1,148 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+  html body {
+    margin: 0;
+    font-family: 'Istok Web', sans-serif;
+    color: white;
+    background: black; }
+    html body img, html body article, html body aside, html body details, html body figcaption, html body figure, html body footer, html body header, html body hgroup, html body main, html body menu, html body nav, html body section, html body summary {
+      display: block; }
+    html body a {
+      text-decoration: none;
+      color: white; }
+    html body a:active, html body a:hover {
+      outline: 0; }
+    html body *:focus {
+      outline: none; }
+    html body .button {
+      display: inline-flex;
+      align-items: center;
+      height: 50px;
+      margin: 10px;
+      border-radius: 50px;
+      border: 3px solid white; }
+    html body *::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: #F5F5F5; }
+    html body *::-webkit-scrollbar {
+      width: 5px;
+      height: 3px; }
+    html body *::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #555; }
+
+#menu-open {
+  position: fixed;
+  z-index: 3;
+  top: 15px;
+  left: 15px; }
+  #menu-open img {
+    height: 24px; }
+
+#menu-overlay {
+  visibility: hidden;
+  position: fixed;
+  z-index: 4;
+  background: rgba(48, 48, 48, 0.8);
+  height: 100vh;
+  width: 300px;
+  overflow: auto; }
+  #menu-overlay #menu-close span {
+    font-family: "Megrim", cursive;
+    font-size: 1.5em; }
+  #menu-overlay .menu-group {
+    width: 100%;
+    border-bottom: 3px solid #646464; }
+  #menu-overlay .menu-item {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; }
+    #menu-overlay .menu-item img {
+      height: 18px;
+      margin: 18px; }
+    #menu-overlay .menu-item span {
+      line-height: 50px;
+      vertical-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+  #menu-overlay .menu-item:hover, #menu-overlay menu-group:hover {
+    background: rgba(32, 32, 32, 0.8); }
+  #menu-overlay #search {
+    position: relative; }
+    #menu-overlay #search #search-box {
+      color: white;
+      height: 44px;
+      margin: 3px 16px;
+      padding: 0px 44px 0px 7px;
+      font-size: 1.2em;
+      width: 100%;
+      border: 0px;
+      background: rgba(32, 32, 32, 0.5); }
+    #menu-overlay #search .submit {
+      position: absolute;
+      right: 24px;
+      top: 9px; }
+
+#content {
+  display: flex;
+  flex-flow: row wrap; }
+  #content #left {
+    position: relative;
+    overflow: hidden; }
+    @media only screen and (min-width: 600px) {
+      #content #left {
+        flex-basis: 40%;
+        height: 100vh; } }
+    @media only screen and (max-width: 600px) {
+      #content #left {
+        flex-basis: 100%;
+        height: 100vh; } }
+    #content #left #back, #content #left #front, #content #left #user {
+      position: absolute; }
+    #content #left #back {
+      filter: blur(15px);
+      top: -5vh;
+      left: -2.5vw;
+      opacity: 0.7;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat; }
+      @media only screen and (max-width: 600px) {
+        #content #left #back {
+          width: 105vw;
+          height: 110vh; } }
+      @media only screen and (min-width: 600px) {
+        #content #left #back {
+          width: 45vw;
+          height: 110vh; } }
+    #content #left #front {
+      z-index: 1;
+      top: 0vh;
+      left: 0vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly; }
+      @media only screen and (min-width: 600px) {
+        #content #left #front {
+          width: 40vw; } }
+      @media only screen and (max-width: 600px) {
+        #content #left #front {
+          width: 100vw; } }
+  #content #right {
+    padding: 15px 20px; }
+    @media only screen and (min-width: 600px) {
+      #content #right {
+        flex-basis: 60%;
+        height: 100vh;
+        overflow-y: auto; } }
+    @media only screen and (max-width: 600px) {
+      #content #right {
+        flex-basis: 100%; } }

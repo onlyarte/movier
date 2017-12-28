@@ -1,91 +1,105 @@
-const express       = require('express');
-const router        = express.Router();
+const express = require('express');
 
-const filmapi       = require('../controllers/filmapi');
-const listapi       = require('../controllers/listapi');
-const channelapi    = require('../controllers/channelapi');
+const filmapi = require('../controllers/filmapi');
+const listapi = require('../controllers/listapi');
+const channelapi = require('../controllers/channelapi');
 
-router.get('/:id', function(req, res, next) {
-    filmapi.get(req.params.id, (error, film) => {
-        if (error) return next(error);
-        if (!film) return next(new Error('Film not found'));
+const router = express.Router();
 
-        if (!req.session.channel){
-            return res.render('film', { film } );
-        }
+router.get('/:id', (req, res, next) => {
+  filmapi
+    .get(req.params.id)
+    .then((film) => {
+      if (!film) throw Error('Film not found');
 
-        channelapi.get(req.session.channel, (error, channel) => {
-            if (error) return next(error);
-            if (!channel) return next(new Error('Please, log in again'));
-            
-            const state = {
-                home: `/channel/${channel.id}`,
-                lists: channel.lists, // list objects
-                inLists: channel.lists.filter(list => list.films.includes(req.params.id)).map(list => list.id) // list ids
-            }
+      if (!req.session.login) return { film };
 
-            return res.render('film', { film, state });
+      return channelapi
+        .get(req.session.login)
+        .then((userchannel) => {
+          if (!userchannel) throw new Error('Session lost');
+
+          const state = {
+            home: `/channel/${userchannel.id}`,
+            lists: userchannel.lists, // list objects
+            inLists: userchannel.lists
+              .filter(list => list.films.includes(req.params.id)) // lists containing the film
+              .map(list => list.id), // only ids
+          };
+
+          return { film, state };
         });
-    });
+    })
+    .then((data) => {
+      res.render('film', data);
+    })
+    .catch(next);
 });
 
-router.get('/search/:title', function (req, res, next) {
-    filmapi.search(req.params.title, (error, searchRes) => {
-        if (error) res.send('');
-        res.send(searchRes);
-    });
+router.get('/search/:title', (req, res, next) => {
+  filmapi.search(req.params.title)
+    .then((films) => {
+      if (!films) throw new Error('Search temporary not available');
+
+      res.send(films);
+    })
+    .catch(next);
 });
 
-//add film to list
-router.post('/:filmid/tolist/:listid', function(req, res) {
-    if (!req.session.channel) { // if user is not logged in
-        return res.status(401).send({ error: 'Action not allowed!' });
-    }
+// add film to list
+router.post('/:filmid/tolist/:listid', (req, res, next) => {
+  if (!req.session.login) { // if user is not logged in
+    next(new Error('Access denied'));
+    return;
+  }
 
-    listapi.get(req.params.listid, (error, list) => {
-        if (error || !list || list.owner.id != req.session.channel) {
-            return res.status(401).send({ error: 'Action not allowed!' });
-        }
+  listapi
+    .get(req.params.listid)
+    .then((list) => {
+      if (!list) throw new Error('List not found');
+      if (list.owner.id !== req.session.login) throw new Error('Access denied');
 
-        listapi.addFilm(req.params.listid, req.params.filmid, (error, list) => {
-            if (error) {
-                return res.status(401).send({ error: 'Action not allowed!' });
-            }
+      return listapi
+        .addFilm(req.params.listid, req.params.filmid);
+    })
+    .then((list) => {
+      if (!list) throw new Error('Failed to add film to list. Try again later.');
 
-            console.log('okay');
-            
-            res.set({
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
-                'Access-Control-Allow-Credentials': true,
-            });
-            return res.send();
-        });
-    });
+      res.set({
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': true,
+      });
+      res.send();
+    })
+    .catch(next);
 });
 
-//remove film from list
-router.post('/:filmid/fromlist/:listid', function(req, res){
-    if (!req.session.channel) { // if user is not logged in
-        return res.status(401).send({ error: 'Action not allowed!' });
-    }
+// remove film from list
+router.post('/:filmid/fromlist/:listid', (req, res, next) => {
+  if (!req.session.login) { // if user is not logged in
+    next(new Error('Access denied'));
+    return;
+  }
 
-    listapi.get(req.params.listid, (error, list) => {
-        if (error || !list || list.owner.id !== req.session.channel) { // if user is not list owner
-            return res.status(401).send({ error: 'Action not allowed!' });
-        }
+  listapi
+    .get(req.params.listid)
+    .then((list) => {
+      if (!list) throw new Error('List not found');
+      if (list.owner.id !== req.session.login) throw new Error('Access denied');
 
-        listapi.removeFilm(req.params.listid, req.params.filmid, (error, list) => {
-            if (error) {
-                return res.status(401).send({ error: 'Action not allowed!' });
-            }
-            
-            res.set({
-                'Access-Control-Allow-Origin': 'http://localhost:3000',
-                'Access-Control-Allow-Credentials': true,
-            });
-            return res.status(200).send();
-        });
-    });
+      return listapi
+        .removeFilm(req.params.listid, req.params.filmid);
+    })
+    .then((list) => {
+      if (!list) throw new Error('Failed to remove film from list. Try again later.');
+
+      res.set({
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': true,
+      });
+      res.send();
+    })
+    .catch(next);
 });
 
 module.exports = router;

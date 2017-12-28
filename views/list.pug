@@ -1,60 +1,61 @@
 extends layout
 
 mixin peopleList(list, title)
-    .pp-row
-        .pp-title!= title
-        .pp-list!= list
+  .pp-row
+    .pp-title!= title
+    .pp-list!= list
 
 block title
-    title #{list.name} / MOVIER
+  title #{list.name} / MOVIER
 
+block styles
+  link(href='/stylesheets/css/list.css', rel='stylesheet')
 
 block usermenu
-    if state && state.home
-        a.menu-item(href!=state.home)
-            img(src="/images/icons/home.png")
-            span My Channel
-        a.menu-item(href='/auth/out')
-            img(src="/images/icons/logout.png")
-            span Log Out
+  if state && state.home
+    a.menu-item(href!=state.home)
+      img(src='/images/icons/home.png')
+      span My Channel
+    a.menu-item(href='/auth/out')
+      img(src='/images/icons/logout.png')
+      span Log Out
 
 block content
-    script(src='/javascripts/connect.js' async)
-    script(src='/javascripts/listcontroller.js' async)
-    
-    #left
-        #back(style=`background-image: url('${list.cover}')`)
-        #front
-            #list-info
-                #list-title= list.name
-                #list-owner
-                    a(href=`/channel/${list.owner.id}`)= list.owner.name
-            #slider
-                each film in list.films
-                    a.list-item(href=`/film/${film.id}`)
-                        img(src=film.poster)
-                        .item-title= film.title
-            if state && state.owner
-                #edit-button
-                    span.button-title EDIT
-            else
-                #save-button
-                    if state && state.saved
-                        span.button-title(onclick=`l_unsave(this, '${list.id}')`) UNSAVE
-                    else
-                        span.button-title(onclick=`l_save(this, '${list.id}')`) SAVE
-            
+  script(src='/javascripts/connect.js' async)
+  script(src='/javascripts/listcontroller.js' async)
+  
+  #left
+    #back(style=`background-image: url('${list.cover}')`)
+    #front
+      #list-info
+        #list-title= list.name
+        #list-owner
+          a(href=`/channel/${list.owner.id}`)= list.owner.name
+      #slider
+        each film in list.films
+          a.list-item(href=`/film/${film.id}`)
+            img(src=film.poster)
+            .item-title= film.title
+      if state && state.owner
+        #edit-button.button
+          span.button-title EDIT
+      else
+        #save-button.button
+          if state && state.saved
+            span.button-title(onclick=`l_unsave(this, '${list.id}')`) UNSAVE
+          else
+            span.button-title(onclick=`l_save(this, '${list.id}')`) SAVE
+          
+  #right
+    #film-info
+      #rate
+        span#kp= list.films[0].rating
+      h1#film-title
+        | #{list.films[0].title}
+      #short-info
+        | #{list.films[0].year} | #{list.films[0].genre}
 
-    #right
-        #film-info
-            #rate
-                span#kp= list.films[0].rating
-            h1#film-title
-                | #{list.films[0].title}
-            #short-info
-                | #{list.films[0].year} | #{list.films[0].genre}
-
-            p.description!= list.films[0].description
-            +peopleList([list.films[0].director], 'Director')(id='directors')
-            +peopleList(list.films[0].writers, 'Writers')(id='writers')
-            +peopleList(list.films[0].stars, 'Stars')(id='actors')
+      p.description!= list.films[0].description
+      +peopleList([list.films[0].director], 'Director')(id='directors')
+      +peopleList(list.films[0].writers, 'Writers')(id='writers')
+      +peopleList(list.films[0].stars, 'Stars')(id='actors')

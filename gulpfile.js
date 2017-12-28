@@ -1,13 +1,11 @@
 // Sass configuration
-var gulp = require('gulp');
-var sass = require('gulp-sass');
+const gulp = require('gulp');
+const sass = require('gulp-sass');
 
-gulp.task('sass', function() {
-    return gulp.src('./public/stylesheets/sass/*.sass')
-        .pipe(sass())
-        .pipe(gulp.dest('./public/stylesheets/css'))
-});
+gulp.task('sass', () => gulp.src('./public/stylesheets/sass/*.sass')
+  .pipe(sass())
+  .pipe(gulp.dest('./public/stylesheets/css')));
 
-gulp.task('default', ['sass'], function() {
-    gulp.watch('./public/stylesheets/sass/*.sass', ['sass']);
+gulp.task('default', ['sass'], () => {
+  gulp.watch('./public/stylesheets/sass/*.sass', ['sass']);
 });

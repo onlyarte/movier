@@ -1,57 +1,60 @@
 extends layout
 
 mixin peopleList(list, title)
-    .pp-row
-        .pp-title!= title
-        .pp-list!= list
+  .pp-row
+    .pp-title!= title
+    .pp-list!= list
 
 block title
     title #{film.title} / MOVIER
 
+block styles
+  link(href='/stylesheets/css/film.css', rel='stylesheet')
+
 block usermenu
-    if state && state.home
-        a.menu-item(href!=state.home)
-            img(src="/images/icons/home.png")
-            span My Channel
-        a.menu-item(href='/auth/out')
-            img(src="/images/icons/logout.png")
-            span Log Out
+  if state && state.home
+    a.menu-item(href!=state.home)
+      img(src="/images/icons/home.png")
+      span My Channel
+    a.menu-item(href='/auth/out')
+      img(src="/images/icons/logout.png")
+      span Log Out
 
 block content
-    script(src='/javascripts/connect.js' async)
-    script(src='/javascripts/filmcontroller.js' async)
+  script(src='/javascripts/connect.js' async)
+  script(src='/javascripts/filmcontroller.js' async)
 
-    #left
-        #back(style=`background-image: url('${film.poster}')`)
-        #poster
-            #poster-caption= film.title
-            img(src=film.poster)
-    #right
-        #film-info
-            #rate
-                span#kp!= film.rating
-            h1#film-title
-                |#{film.title}
-            #short-info
-                | #{film.year} | #{film.genre}
+  #left
+    #back(style=`background-image: url('${film.poster}')`)
+    #front
+      #poster-caption= film.title
+      img(src=film.poster)
+  #right
+    #film-info
+      #rate
+        span!= film.rating
+      h1#film-title
+        |#{film.title}
+      #short-info
+        | #{film.year} | #{film.genre}
 
-            p.description!= film.description
-            +peopleList([film.director], 'Director')(id='directors')
-            +peopleList(film.writers, 'Writers')(id='writers')
-            +peopleList(film.stars, 'Stars')(id='actors')
+      p.description!= film.description
+      +peopleList([film.director], 'Director')(id='directors')
+      +peopleList(film.writers, 'Writers')(id='writers')
+      +peopleList(film.stars, 'Stars')(id='actors')
 
-        if state && state.lists
-            .list-group
-                each list in state.lists
-                    - 
-                        var added = state.inLists.includes(list.id)
-                    if added
-                        .list-button(onclick=`f_remove(this, '${film.id}', '${list.id}')`, style='opacity: 0.8')
-                            span.button-title!= list.name
-                    else
-                        .list-button(onclick=`f_add(this, '${film.id}', '${list.id}')`, style='opacity: 0.5')
-                            span.button-title!= list.name
-                form(action='/list', method='post')
-                    input(type='text', name='filmid', value=film.id, hidden)
-                    input(type='text', name='name', placeholder='НОВАЯ ПОДБОРКА')
-                    input(type='submit', hidden)
+    if state && state.lists
+      .list-group
+        each list in state.lists
+          - 
+            var added = state.inLists.includes(list.id)
+          if added
+            .list-button(onclick=`f_remove(this, '${film.id}', '${list.id}')`, style='opacity: 0.8')
+              span.button-title!= list.name
+          else
+            .list-button(onclick=`f_add(this, '${film.id}', '${list.id}')`, style='opacity: 0.5')
+              span.button-title!= list.name
+        form(action='/list', method='post')
+          input(type='text', name='filmid', value=film.id, hidden)
+          input(type='text', name='name', placeholder='NEW LIST')
+          input(type='submit', hidden)
