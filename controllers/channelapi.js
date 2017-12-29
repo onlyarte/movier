@@ -45,7 +45,6 @@ const get = function getChannelById(id) {
         .findByOwner(channel.id)
         .then(
           (lists) => {
-            console.log(lists);
             resolve({ ...channel, lists });
           },
           reject,

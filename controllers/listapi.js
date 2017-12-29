@@ -12,7 +12,7 @@ const get = function getListById(id) {
         .then(
           (films) => {
             resolve({
-              films,
+              films: films.reverse(),
               id: list.id,
               owner: list.owner,
               name: list.name,
@@ -53,6 +53,9 @@ const addFilm = function addFilmToList(listId, filmId) {
         $addToSet: {
           films: filmId,
         },
+        $set: {
+          updated: Date.now(),
+        },
       },
       {
         new: true,
@@ -63,12 +66,16 @@ const addFilm = function addFilmToList(listId, filmId) {
 };
 
 const removeFilm = function removeFilmFromList(listId, filmId) {
+  // findById does not trigger pre update hook
   return List
-    .findByIdAndUpdate(
-      listId,
+    .findOneAndUpdate(
+      { _id: listId },
       {
         $pull: {
           films: filmId,
+        },
+        $set: {
+          updated: Date.now(),
         },
       },
       {

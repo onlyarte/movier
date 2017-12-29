@@ -27,9 +27,4 @@ const List = new Schema({
   },
 });
 
-List.pre('save', (next) => {
-  this.updated = Date.now();
-  next();
-});
-
 module.exports = mongoose.model('List', List);
