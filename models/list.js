@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const listSchema = new Schema({
+const List = new Schema({
   owner: {
     type: String,
     ref: 'Channel',
@@ -20,6 +20,16 @@ const listSchema = new Schema({
     type: [String],
     required: true,
   },
+  updated: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('List', listSchema);
+List.pre('save', (next) => {
+  this.updated = Date.now();
+  next();
+});
+
+module.exports = mongoose.model('List', List);

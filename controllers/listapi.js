@@ -92,6 +92,7 @@ const findByOwner = function getOwnerLists(ownerId) {
     .find({
       owner: ownerId,
     })
+    .sort('-updated')
     .exec();
 };
 

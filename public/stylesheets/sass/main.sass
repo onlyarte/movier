@@ -151,4 +151,8 @@ html
       overflow-y: auto
     @include respond-to(small)
       flex-basis: 100%
-    padding: 15px 20px
+    #film-info, #user-wrapper
+      @include respond-to(big)
+        padding: 2vh 2vw
+      @include respond-to(small)
+        padding: 3vh 4vw
