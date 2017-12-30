@@ -56,7 +56,7 @@ router.post('/new', (req, res, next) => {
       if (channel) throw new Error('Login is already taken');
 
       // save image to local storage
-      const path = `./public/images/temp/${channel.id + req.files.image.name}`;
+      const path = `./public/images/temp/${req.body.login + req.files.image.name}`;
 
       return new Promise((resolve, reject) => {
         req.files.image
