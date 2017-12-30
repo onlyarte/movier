@@ -18,11 +18,11 @@ html(lang='ru')
     #menu-open(onclick='openNav()')
       img(src='/images/icons/menu.png')
     #menu-overlay
-      #menu-close.menu-item(onclick='closeNav()')
+      .menu-close.menu-item(onclick='closeNav()')
         img(src='/images/icons/close.png')
         span Movier
-      #search.menu-item
-        input#search-box(type='text', placeholder='SEARCH')
+      .search.menu-item
+        input.search-box(type='text', placeholder='SEARCH')
         input.submit(type='image', src='/images/icons/search.png', onclick='search()')
       #search-results.menu-group
       a.menu-item(href='/')
@@ -31,5 +31,5 @@ html(lang='ru')
       block usermenu
       block collections
 
-    #content
+    .content
       block content

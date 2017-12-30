@@ -4,29 +4,29 @@ block styles
   link(href='/stylesheets/css/index.css', rel='stylesheet')
 
 block content
-  #left
-    #back(style=`background-image: url('${list.cover}')`)
-    #front
-      #list-info
-        #list-title= list.name
-        #list-owner
+  .left
+    .back(style=`background-image: url('${list.cover}')`)
+    .front
+      .list-info
+        .list-title= list.name
+        .list-owner
           a(href= `/channel/${list.owner.id}`)= list.owner.name
-      #slider
+      .slider
         each film in list.films
           a.list-item(href=`/film/${film.id}`)
             img(src=film.poster)
             .item-title= film.title
-      a#log-button.button(href='#right')
+      a.log-button.button(href='#right')
         span.button-title LOG IN
 
-  #right
-    #index-wrapper
-      #info
-        h1#title MOVIER
-        #subtitle COLLECTION
-        #description movies &#124; lists &#124; channels
-      #auth
-        #caption
+  .right#right
+    .index-wrapper
+      .info
+        h1.title MOVIER
+        .subtitle COLLECTION
+        .description movies &#124; lists &#124; channels
+      .auth
+        .caption
           a(href='#right' onclick='openAuth()') LOG IN
           | &#32;&#124;&#32;
           a(href='#right' onclick='openReg()') SIGN UP

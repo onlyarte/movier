@@ -8,71 +8,69 @@ $megrim: 'Megrim', cursive
   @else
     @media only screen and (min-width: $break) { @content; }
 
-#content
-  #left
-    #front
-      img, #poster-caption
-        @include respond-to(big)
-          width: 70%
-          max-height: 80%
-        @include respond-to(small)
-          width: 85%
-          max-height: 85%
-      #poster-caption
-          text-align: center
-          text-transform: uppercase
-          font-size: 1.3em
-          font-family: $roboto
-  #right
-    #film-info
-      #rate
-        float: right
-        font-size: 2em
-        line-height: 3em
-        span
-          font-size: 1.5em
-      #film-title
-        @include respond-to(small)
-          clear: both
-          padding-top: 20px
-        font-family: $roboto
-        font-weight: 400
-      #short-info
-        display: block
-        font-size: 1.2em
-        margin-bottom: 30px
-      .pp-row
-        display: flex
-        flex-flow: row wrap
-        margin-bottom: 12px
-        font-size: 1.1em
-        .pp-title
-          flex-basis: 30%
-        .pp-list
-          flex-basis: 70%
-    .list-group
-      width: 100%
-      display: flex
-      flex-direction: row
-      flex-wrap: wrap
-      justify-content: center
-      .list-button
-        opacity: 0.5
-        height: 50px
-        border-radius: 50px
-        color: white
-        background-color: #3E3E3E
-        margin: 10px
-        .button-title
-          line-height: 50px
-          padding: 0px 20px
-      form
-        input
-          height: 50px
-          border-radius: 50px
-          color: white
-          background-color: #3E3E3E
-          border: 0
-          padding: 0px 20px
-          margin: 10px
-          text-align: center
+.front
+  .poster, .film-title
+    @include respond-to(big)
+      width: 70%
+      max-height: 80%
+    @include respond-to(small)
+      width: 85%
+      max-height: 85%
+  .film-title
+      text-align: center
+      text-transform: uppercase
+      font-size: 1.3em
+      font-family: $roboto
+
+.film-info
+  .rate
+    float: right
+    font-size: 2em
+    line-height: 3em
+    span
+      font-size: 1.5em
+  .film-title
+    @include respond-to(small)
+      clear: both
+      padding-top: 20px
+    font-family: $roboto
+    font-weight: 400
+  .short-info
+    display: block
+    font-size: 1.2em
+    margin-bottom: 30px
+  .pp-row
+    display: flex
+    flex-flow: row wrap
+    margin-bottom: 12px
+    font-size: 1.1em
+    .pp-title
+      flex-basis: 30%
+    .pp-list
+      flex-basis: 70%
+.list-group
+  width: 100%
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  justify-content: center
+  .list-button
+    opacity: 0.5
+    height: 50px
+    border-radius: 50px
+    color: white
+    background-color: #3E3E3E
+    margin: 10px
+    .button-title
+      line-height: 50px
+      padding: 0px 20px
+  form
+    input
+      height: 50px
+      border-radius: 50px
+      color: white
+      background-color: #3E3E3E
+      border: 0
+      padding: 0px 20px
+      margin: 10px
+      text-align: center

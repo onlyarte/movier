@@ -1,64 +1,64 @@
-#content #left #front #list-info {
+.list-info {
   text-align: center;
   line-height: 2em; }
-  #content #left #front #list-info #list-title {
+  .list-info .list-title {
     text-transform: uppercase;
     font-size: 1.3em;
     font-family: "Roboto", sans-serif; }
-  #content #left #front #list-info #list-owner {
+  .list-info .list-owner {
     font-size: 1.2em;
     font-family: "Roboto", sans-serif; }
 
-#content #left #front #slider {
+.slider {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   overflow-x: auto;
   overflow-y: hidden; }
-  #content #left #front #slider .list-item {
+  .slider .list-item {
     margin: 0px 15px; }
     @media only screen and (max-width: 600px) {
-      #content #left #front #slider .list-item img {
+      .slider .list-item img {
         height: 40vh; } }
     @media only screen and (min-width: 600px) {
-      #content #left #front #slider .list-item img {
+      .slider .list-item img {
         height: 47vh; } }
-    #content #left #front #slider .list-item .item-title {
+    .slider .list-item .item-title {
       margin: 15px 0px;
       font-size: 1.1em;
       font-family: "Roboto", sans-serif;
       text-align: center; }
 
-#content #left #front #save-button, #content #left #front #edit-button {
+.save-button, .edit-button {
   padding: 0px 20px; }
 
-#content #right #film-info #rate {
+.film-info .rate {
   float: right;
   font-size: 2em;
   line-height: 3em; }
-  #content #right #film-info #rate span {
+  .film-info .rate span {
     font-size: 1.5em; }
 
-#content #right #film-info #film-title {
+.film-info .film-title {
   font-family: "Roboto", sans-serif;
   font-weight: 400; }
   @media only screen and (max-width: 600px) {
-    #content #right #film-info #film-title {
+    .film-info .film-title {
       clear: both;
       padding-top: 20px; } }
 
-#content #right #film-info #short-info {
+.film-info .short-info {
   display: block;
   font-size: 1.2em;
   margin-bottom: 30px; }
 
-#content #right #film-info .pp-row {
+.film-info .pp-row {
   display: flex;
   flex-flow: row wrap;
   margin-bottom: 12px;
   font-size: 1.1em; }
-  #content #right #film-info .pp-row .pp-title {
+  .film-info .pp-row .pp-title {
     flex-basis: 30%; }
-  #content #right #film-info .pp-row .pp-list {
+  .film-info .pp-row .pp-list {
     flex-basis: 70%; }

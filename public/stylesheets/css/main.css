@@ -50,7 +50,7 @@ html {
   height: 100vh;
   width: 300px;
   overflow: auto; }
-  #menu-overlay #menu-close span {
+  #menu-overlay .menu-close span {
     font-family: "Megrim", cursive;
     font-size: 1.5em; }
   #menu-overlay .menu-group {
@@ -73,9 +73,9 @@ html {
       text-overflow: ellipsis; }
   #menu-overlay .menu-item:hover, #menu-overlay menu-group:hover {
     background: rgba(32, 32, 32, 0.8); }
-  #menu-overlay #search {
+  #menu-overlay .search {
     position: relative; }
-    #menu-overlay #search #search-box {
+    #menu-overlay .search .search-box {
       color: white;
       height: 44px;
       margin: 3px 16px;
@@ -84,69 +84,77 @@ html {
       width: 100%;
       border: 0px;
       background: rgba(32, 32, 32, 0.5); }
-    #menu-overlay #search .submit {
+    #menu-overlay .search .submit {
       position: absolute;
       right: 24px;
       top: 9px; }
 
-#content {
+.content {
   display: flex;
   flex-flow: row wrap; }
-  #content #left {
-    position: relative;
-    overflow: hidden; }
-    @media only screen and (min-width: 600px) {
-      #content #left {
-        flex-basis: 40%;
-        height: 100vh; } }
-    @media only screen and (max-width: 600px) {
-      #content #left {
-        flex-basis: 100%;
-        height: 100vh; } }
-    #content #left #back, #content #left #front, #content #left #user {
-      position: absolute; }
-    #content #left #back {
-      filter: blur(15px);
-      top: -5vh;
-      left: -2.5vw;
-      opacity: 0.7;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat; }
-      @media only screen and (max-width: 600px) {
-        #content #left #back {
-          width: 105vw;
-          height: 110vh; } }
-      @media only screen and (min-width: 600px) {
-        #content #left #back {
-          width: 45vw;
-          height: 110vh; } }
-    #content #left #front {
-      z-index: 1;
-      top: 0vh;
-      left: 0vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly; }
-      @media only screen and (min-width: 600px) {
-        #content #left #front {
-          width: 40vw; } }
-      @media only screen and (max-width: 600px) {
-        #content #left #front {
-          width: 100vw; } }
+
+.left {
+  position: relative;
+  overflow: hidden; }
   @media only screen and (min-width: 600px) {
-    #content #right {
-      flex-basis: 60%;
-      height: 100vh;
-      overflow-y: auto; } }
+    .left {
+      flex-basis: 40%;
+      height: 100vh; } }
   @media only screen and (max-width: 600px) {
-    #content #right {
-      flex-basis: 100%; } }
+    .left {
+      flex-basis: 100%;
+      height: 100vh; } }
+
+.back, .front, .user {
+  position: absolute; }
+
+.back {
+  filter: blur(15px);
+  top: -5vh;
+  left: -2.5vw;
+  opacity: 0.7;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
+  @media only screen and (max-width: 600px) {
+    .back {
+      width: 105vw;
+      height: 110vh; } }
   @media only screen and (min-width: 600px) {
-    #content #right #film-info, #content #right #user-wrapper {
-      padding: 2vh 2vw; } }
+    .back {
+      width: 45vw;
+      height: 110vh; } }
+
+.front {
+  z-index: 1;
+  top: 0vh;
+  left: 0vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly; }
+  @media only screen and (min-width: 600px) {
+    .front {
+      width: 40vw; } }
   @media only screen and (max-width: 600px) {
-    #content #right #film-info, #content #right #user-wrapper {
-      padding: 3vh 4vw; } }
+    .front {
+      width: 100vw; } }
+
+@media only screen and (min-width: 600px) {
+  .right {
+    flex-basis: 60%;
+    height: 100vh;
+    overflow-y: auto; } }
+
+@media only screen and (max-width: 600px) {
+  .right {
+    flex-basis: 100%; } }
+
+@media only screen and (min-width: 600px) {
+  .right .film-info, .right .user-wrapper {
+    padding: 2vh 2vw; } }
+
+@media only screen and (max-width: 600px) {
+  .right .film-info, .right .user-wrapper {
+    padding: 3vh 4vw; } }

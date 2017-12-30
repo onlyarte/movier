@@ -1,84 +1,87 @@
-#content #left #front #list-info {
+.front .list-info {
   text-align: center;
   line-height: 2em; }
-  #content #left #front #list-info #list-title {
+  .front .list-info .list-title {
     text-transform: uppercase;
     font-size: 1.3em;
     font-family: "Roboto", sans-serif; }
-  #content #left #front #list-info #list-owner {
+  .front .list-info .list-owner {
     font-size: 1.2em;
     font-family: "Roboto", sans-serif; }
 
-#content #left #front #slider {
+.slider {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   overflow-x: auto;
   overflow-y: hidden; }
-  #content #left #front #slider .list-item {
+  .slider .list-item {
     margin: 0px 15px; }
     @media only screen and (max-width: 600px) {
-      #content #left #front #slider .list-item img {
+      .slider .list-item img {
         height: 40vh; } }
     @media only screen and (min-width: 600px) {
-      #content #left #front #slider .list-item img {
+      .slider .list-item img {
         height: 47vh; } }
-    #content #left #front #slider .list-item .item-title {
+    .slider .list-item .item-title {
       margin: 15px 0px;
       font-size: 1.1em;
       font-family: "Roboto", sans-serif;
       text-align: center; }
 
-#content #left #front #log-button {
+.log-button {
   padding: 0px 20px; }
 
-#content #right #index-wrapper {
+.index-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100vh; }
-  #content #right #index-wrapper #info {
+  .index-wrapper .info {
     text-align: center; }
-    #content #right #index-wrapper #info #title {
+    .index-wrapper .info .title {
       margin: 0;
       font-family: "Megrim", cursive;
       font-size: 4em; }
-    #content #right #index-wrapper #info #subtitle {
+    .index-wrapper .info .subtitle {
       font-size: 1.5em; }
-  #content #right #index-wrapper #auth #caption {
-    text-align: center;
-    margin: 20px 0px; }
-  #content #right #index-wrapper #auth form {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; }
-    #content #right #index-wrapper #auth form input {
-      height: 50px;
-      border-radius: 50px;
-      color: white; }
-      #content #right #index-wrapper #auth form input[type='text'], #content #right #index-wrapper #auth form input[type='email'], #content #right #index-wrapper #auth form input[type='password'] {
-        width: 200px;
-        background-color: #3E3E3E;
-        border: 0;
-        padding: 0px 20px; }
-      #content #right #index-wrapper #auth form input[type='submit'] {
-        background-color: black;
-        border: 5px solid white;
-        padding: 0px 20px; }
-    #content #right #index-wrapper #auth form label {
-      padding: 0px 15px;
-      height: 30px;
-      width: 120px;
-      text-align: center;
-      border: 1px solid white;
-      border-radius: 30px;
+
+.auth .caption {
+  text-align: center;
+  margin: 20px 0px; }
+
+.auth form {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .auth form input {
+    height: 50px;
+    border-radius: 50px;
+    color: white; }
+    .auth form input[type='text'], .auth form input[type='email'], .auth form input[type='password'] {
+      width: 200px;
       background-color: #3E3E3E;
-      line-height: 30px;
-      font-size: 0.8em;
-      color: gray; }
-  #content #right #index-wrapper #auth #reg-form {
-    display: none; }
+      border: 0;
+      padding: 0px 20px; }
+    .auth form input[type='submit'] {
+      background-color: black;
+      border: 5px solid white;
+      padding: 0px 20px; }
+  .auth form label {
+    padding: 0px 15px;
+    height: 30px;
+    width: 120px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 30px;
+    background-color: #3E3E3E;
+    line-height: 30px;
+    font-size: 0.8em;
+    color: gray; }
+
+.auth #reg-form {
+  display: none; }

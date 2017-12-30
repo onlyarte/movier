@@ -78,9 +78,8 @@ const update = function updateChannelInfo({ id, email, password, name, image }) 
       channel.name = name || channel.name;
       channel.image = image || channel.image;
 
-      return channel.save()
-        .select('-password')
-        .exec()
+      return channel
+        .save()
         .then(updated => updated.toObject());
     });
 };

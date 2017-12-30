@@ -1,4 +1,5 @@
 const express = require('express');
+const cloudinary = require('cloudinary');
 const bcrypt = require('bcrypt-nodejs');
 
 const channelapi = require('../controllers/channelapi');
@@ -37,22 +38,48 @@ router.post('/update', (req, res, next) => {
     return;
   }
 
-  channelapi
-    .update({
-      id: req.session.login,
-      email: req.body.email,
-      password: req.body.password && bcrypt.hashSync(req.body.password), // encrypt password
-      name: req.body.name,
-      image: null,
-    })
-    .then((channel) => {
-      if (!channel) throw new Error('Failed to save new data');
+  new Promise((resolve, reject) => {
+    if (!req.files.image) resolve(null);
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
+    const path = `./public/images/temp/${req.session.login + req.files.image.name}`;
+
+    req.files.image
+      .mv(
+        path,
+        (error) => {
+          if (error) reject(error);
+          resolve(path);
+        },
+      );
+  })
+    .then((imgLocalPath) => {
+      if (!imgLocalPath) return null;
+
+      return new Promise((resolve, reject) => {
+        cloudinary.v2.uploader.upload(
+          imgLocalPath,
+          {
+            crop: 'fill',
+            aspect_ratio: '1:1',
+          },
+          (error, result) => {
+            if (error) reject(error);
+            resolve(result.url);
+          },
+        );
       });
-      res.status(200).send();
+    })
+    .then(imgGlobalPath => channelapi.update({
+      id: req.session.login,
+      email: req.body.email === '' ? null : req.session.email,
+      password: req.body.password === '' ? null : bcrypt.hashSync(req.body.password),
+      name: req.body.name === '' ? null : req.body.name,
+      image: imgGlobalPath,
+    }))
+    .then((updated) => {
+      if (!updated) throw new Error('Failed to update channel');
+
+      res.redirect(`/channel/${req.session.login}`);
     })
     .catch(next);
 });

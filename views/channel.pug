@@ -25,14 +25,35 @@ block content
     channel.lists.map(x => numOfFilms += x.films.length);
     const numOfLists = channel.lists.length;
     const numOfFollowers = channel.followers.length;
-      
-  #left
-    #back(style=`background-image: url('${channel.image}')`)
+  
+  #edit-overflow
+    script.
+      function closeEdit() {
+        document.getElementById('edit-overflow').style.visibility = 'hidden';
+      }
+    .edit-close(onclick='closeEdit()')
+        img(src='/images/icons/close.png')
+    form#reg-form(autocomplete='off', action='/channel/update', enctype='multipart/form-data', method='post')
+      span.desc Change or leave empty
+      input(type='email', name='email', placeholder=`EMAIL: ${channel.email}`)
+      br
+      input(type='password', name='password', placeholder='PASSWORD', autocomplete='new-password')
+      br
+      input(type='text', name='name', placeholder=`NAME: ${channel.name}`)
+      br
+      label
+        input(type='file', name='image', accept='image/*', hidden)
+        | IMAGE
+      br
+      input(type='submit', value='SAVE')
 
-    #front
-      img(src=channel.image)
-      #name= channel.name
-      #stat
+  .left
+    .back(style=`background-image: url('${channel.image}')`)
+
+    .front
+      img.userpic(src=channel.image)
+      .name= channel.name
+      .stat
         .stat-item
           .num= numOfFilms
           .stat-desc films
@@ -43,20 +64,24 @@ block content
           .num= numOfFollowers
           .stat-desc followers
       if state      
-        #edit-button.button
+        .edit-button.button
+          script.
+            function openEdit() {
+              document.getElementById('edit-overflow').style.visibility = 'visible';
+            }
           if state.owner
-            span.button-title(id=channel._id) EDIT
+            span.button-title(onclick='openEdit()') EDIT
           else
             if state.isFollowed
               span.button-title(onclick=`c_unfollow(this, '${channel.id}')`) UNFOLLOW
             else
               span.button-title(onclick=`c_follow(this, '${channel.id}')`) FOLLOW
       else
-        #subscribe-button.button
+        .subscribe-button.button
           span.button-title(onclick="location.href='/'") FOLLOW
 
-  #right
-    #user-wrapper
+  .right
+    .user-wrapper
       .block
         h1.block-title My lists
         .items

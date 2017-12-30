@@ -24,21 +24,22 @@ block content
   script(src='/javascripts/connect.js' async)
   script(src='/javascripts/filmcontroller.js' async)
 
-  #left
-    #back(style=`background-image: url('${film.poster}')`)
-    #front
-      #poster-caption= film.title
-      img(src=film.poster)
-  #right
-    #film-info
-      #rate
+  .left
+    .back(style=`background-image: url('${film.poster}')`)
+    .front
+      .film-title= film.title
+      img.poster(src=film.poster)
+  .right
+    .film-info
+      .rate
         span!= film.rating
-      h1#film-title
+      h1.film-title
         |#{film.title}
-      #short-info
+      .short-info
         | #{film.year} | #{film.genre}
 
       p.description!= film.description
+
       +peopleList([film.director], 'Director')(id='directors')
       +peopleList(film.writers, 'Writers')(id='writers')
       +peopleList(film.stars, 'Stars')(id='actors')
