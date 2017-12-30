@@ -51,24 +51,26 @@ router.post('/new', (req, res, next) => {
 
   channelapi
     .get(req.body.login)
-    .then((channel) => {
-      // check if login has not been taken
-      if (channel) throw new Error('Login is already taken');
+    .then(
+      () => {
+        throw new Error('Login is already taken');
+      },
+      () => {
+        // save image to local storage
+        const path = `./public/images/temp/${req.body.login + req.files.image.name}`;
 
-      // save image to local storage
-      const path = `./public/images/temp/${req.body.login + req.files.image.name}`;
-
-      return new Promise((resolve, reject) => {
-        req.files.image
-          .mv(
-            path,
-            (error) => {
-              if (error) reject(error);
-              resolve(path);
-            },
-          );
-      });
-    })
+        return new Promise((resolve, reject) => {
+          req.files.image
+            .mv(
+              path,
+              (error) => {
+                if (error) reject(error);
+                resolve(path);
+              },
+            );
+        });
+      },
+    )
     // save image to cloud
     .then(imgLocalPath => new Promise((resolve, reject) => {
       cloudinary.v2.uploader.upload(
