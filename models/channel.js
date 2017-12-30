@@ -40,7 +40,7 @@ const Channel = new Schema({
     }],
     default: [],
   },
-});
+}, { toObject: { getters: true } });
 
 Channel.pre(
   'remove',

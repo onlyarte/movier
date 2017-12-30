@@ -44,8 +44,7 @@ router.post('/', (req, res, next) => {
       films: [req.body.filmid],
     })
     .then((list) => {
-      console.log(list);
-      res.redirect(`/list/${list._id}`);
+      res.redirect(`/list/${list.id}`);
     })
     .catch(next);
 });

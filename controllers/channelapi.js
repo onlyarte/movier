@@ -163,10 +163,10 @@ const getPassword = function getChannelPassword(id) {
     .select('password')
     .exec()
     // extract password from channel
-    .then(channel => new Promise((resolve, reject) => {
-      if (!channel) reject(new Error('Channel not found'));
-      resolve(channel.password);
-    }));
+    .then((channel) => {
+      if (!channel) throw new Error('Channel not found');
+      return channel.password;
+    });
 };
 
 module.exports.get = get;

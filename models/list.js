@@ -25,6 +25,6 @@ const List = new Schema({
     required: true,
     default: Date.now,
   },
-});
+}, { toObject: { getters: true } });
 
 module.exports = mongoose.model('List', List);
