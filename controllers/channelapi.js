@@ -57,8 +57,6 @@ const get = function getChannelById(id) {
 const add = function addChannel(channel) {
   return new Channel(channel)
     .save()
-    .select('-password')
-    .exec()
     .then(added => added.toObject());
 };
 
