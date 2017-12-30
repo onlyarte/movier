@@ -84,14 +84,13 @@ router.post('/new', (req, res, next) => {
       );
     }))
     // save channel to database
-    .then(imgGlobalPath => channelapi
-      .add({
-        _id: req.body.login,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password),
-        name: req.body.name,
-        image: imgGlobalPath,
-      }))
+    .then(imgGlobalPath => channelapi.add({
+      _id: req.body.login,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password),
+      name: req.body.name,
+      image: imgGlobalPath,
+    }))
     // set session variable, and redirect to channel
     .then((channel) => {
       if (!channel) throw new Error('Failed to save new channel');

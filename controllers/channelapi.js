@@ -11,6 +11,8 @@ const get = function getChannelById(id) {
     .exec()
     // populate followers
     .then(channel => new Promise((resolve, reject) => {
+      if (!channel) reject(new Error('Channel not found'));
+
       Channel
         .find({
           following: {
