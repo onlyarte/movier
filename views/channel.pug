@@ -72,7 +72,7 @@ block content
           if state.owner
             span.button-title(onclick='openEdit()') EDIT
           else
-            if state.isFollowed
+            if state.follower
               span.button-title(onclick=`c_unfollow(this, '${channel.id}')`) UNFOLLOW
             else
               span.button-title(onclick=`c_follow(this, '${channel.id}')`) FOLLOW

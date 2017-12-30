@@ -19,15 +19,16 @@ router.get('/:id', (req, res, next) => {
         .then((userchannel) => {
           if (!userchannel) throw new Error('Session lost');
 
-          const state = {
-            home: `/channel/${userchannel.id}`,
-            lists: userchannel.lists, // list objects
-            inLists: userchannel.lists
-              .filter(list => list.films.includes(req.params.id)) // lists containing the film
-              .map(list => list.id), // only ids
+          return {
+            film,
+            state: {
+              lists: userchannel.lists,
+              inLists: userchannel.lists
+                .filter(list => list.films.includes(req.params.id)) // lists containing the film
+                .map(list => list.id), // ids
+              home: `/channel/${userchannel.id}`,
+            },
           };
-
-          return { film, state };
         });
     })
     .then((data) => {
