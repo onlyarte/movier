@@ -33,6 +33,23 @@ const add = function addList(list) {
     });
 };
 
+const update = function updateListName(id, { name }) {
+  return List
+    .findByIdAndUpdate(
+      id,
+      {
+        $set: {
+          name,
+        },
+      },
+      {
+        new: true,
+      },
+    )
+    .exec()
+    .then(updated => updated.toObject());
+};
+
 const remove = function removeList(id) {
   return List
     .findByIdAndRemove(id)
@@ -100,6 +117,7 @@ const findByOwner = function getOwnerLists(ownerId) {
 
 module.exports.get = get;
 module.exports.add = add;
+module.exports.update = update;
 module.exports.remove = remove;
 module.exports.addFilm = addFilm;
 module.exports.removeFilm = removeFilm;

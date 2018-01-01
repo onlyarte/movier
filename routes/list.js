@@ -49,8 +49,8 @@ router.post('/', (req, res, next) => {
     .catch(next);
 });
 
-// delete list
-router.delete('/:id', (req, res, next) => {
+// update list name
+router.post('/:id/update', (req, res, next) => {
   if (!req.session.login) {
     next(new Error('Access denied'));
     return;
@@ -61,12 +61,12 @@ router.delete('/:id', (req, res, next) => {
     .then((list) => {
       if (!list) throw new Error('List not found');
 
-      if (list.owner !== req.session.login) throw new Error('Access denied');
+      if (list.owner.id !== req.session.login) throw new Error('Access denied');
 
-      return listapi.remove(list.id);
+      return listapi.update(list.id, { name: req.body.name });
     })
     .then(() => {
-      res.status(200).send();
+      res.redirect(`/list/${req.params.id}`);
     })
     .catch(next);
 });
@@ -74,7 +74,7 @@ router.delete('/:id', (req, res, next) => {
 // save
 router.post('/:id/save', (req, res, next) => {
   if (!req.session.login) {
-    next(new Error('Action not allowed!'));
+    next(new Error('Access denied'));
     return;
   }
 
@@ -91,7 +91,7 @@ router.post('/:id/save', (req, res, next) => {
 // unsave
 router.post('/:id/unsave', (req, res, next) => {
   if (!req.session.login) {
-    next(new Error('Action not allowed!'));
+    next(new Error('Acces denied'));
     return;
   }
 
@@ -101,6 +101,28 @@ router.post('/:id/unsave', (req, res, next) => {
       if (!channel) throw new Error('Channel not found');
 
       res.status(200).send();
+    })
+    .catch(next);
+});
+
+// delete list
+router.post('/:id/delete', (req, res, next) => {
+  if (!req.session.login) {
+    next(new Error('Access denied'));
+    return;
+  }
+
+  listapi
+    .get(req.params.id)
+    .then((list) => {
+      if (!list) throw new Error('List not found');
+
+      if (list.owner.id !== req.session.login) throw new Error('Access denied');
+
+      return listapi.remove(list.id);
+    })
+    .then(() => {
+      res.redirect('/');
     })
     .catch(next);
 });

@@ -45,9 +45,40 @@ const Channel = new Schema({
 Channel.pre(
   'remove',
   (document) => {
-    List.remove({
-      owner: document.id,
-    }).exec();
+    List
+    // remove channel lists
+      .remove({
+        owner: document.id,
+      })
+      .exec()
+    // remove channel from other's following
+      .then(() => (
+        Channel
+          .update(
+            {
+              following: {
+                $elemMatch: {
+                  $eq: document._id,
+                },
+              },
+            },
+            {
+              $pull: {
+                following: document._id,
+              },
+            },
+            {
+              multi: true,
+            },
+          ).exec()
+      ))
+      .then(() => {
+        console.log('channel cascade delete successful');
+      })
+      .catch((error) => {
+        console.log('channel cascade delete failed');
+        console.log(error);
+      });
   },
 );
 

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+const Channel = require('./channel');
+
 const List = new Schema({
   owner: {
     type: String,
@@ -26,5 +28,30 @@ const List = new Schema({
     default: Date.now,
   },
 }, { toObject: { getters: true } });
+
+List.pre(
+  'remove',
+  (document) => {
+    Channel
+    // remove list from channels' saved_lists
+      .update(
+        {
+          saved_lists: {
+            $elemMatch: {
+              $eq: document._id,
+            },
+          },
+        },
+        {
+          $pull: {
+            saved_lists: document._id,
+          },
+        },
+        {
+          multi: true,
+        },
+      ).exec();
+  },
+);
 
 module.exports = mongoose.model('List', List);

@@ -64,11 +64,11 @@ block content
           .num= numOfFollowers
           .stat-desc followers
       if state      
-        script.
-          function openEdit() {
-            document.getElementById('edit-overflow').style.visibility = 'visible';
-          }
         if state.owner
+          script.
+            function openEdit() {
+              document.getElementById('edit-overflow').style.visibility = 'visible';
+            }
           button.edit-button(onclick='openEdit()')
             span.button-title EDIT
         else

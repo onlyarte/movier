@@ -24,6 +24,21 @@ block content
   script(src='/javascripts/connect.js' async)
   script(src='/javascripts/listcontroller.js' async)
   
+  #edit-overflow
+    script.
+      function closeEdit() {
+        document.getElementById('edit-overflow').style.visibility = 'hidden';
+      }
+    .edit-close(onclick='closeEdit()')
+        img(src='/images/icons/close.png')
+    form(action=`/list/${list.id}/update`, enctype='multipart/form-data', method='post')
+      input(type='text', name='name', placeholder=`NAME: ${list.name}`)
+      br
+      input(type='submit', value='SAVE')
+      br
+    form(action=`/list/${list.id}/delete`, enctype='multipart/form-data', method='post')
+      input(type='submit', value='DELETE')
+
   .left
     .back(style=`background-image: url('${list.cover}')`)
     .front
@@ -38,7 +53,11 @@ block content
             .item-title= film.title
       if state 
         if state.owner
-          button.edit-button
+          script.
+            function openEdit() {
+              document.getElementById('edit-overflow').style.visibility = 'visible';
+            }
+          button.edit-button(onclick='openEdit()')
             span.button-title EDIT
         else
           if state.saved
@@ -48,7 +67,7 @@ block content
             button.save-button(onclick=`l_save(this, '${list.id}')`)
               span.button-title SAVE
       else
-        button.save-button(onclick=`l_save(this, '${list.id}')`)
+        button.save-button(onclick="location.href='/'")
           span.button-title SAVE
           
   .right
