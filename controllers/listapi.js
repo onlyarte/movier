@@ -7,21 +7,17 @@ const get = function getListById(id) {
     .findById(id)
     .populate('owner', '-password')
     .exec()
-    .then(list => new Promise((resolve, reject) => {
+  // populate films
+    .then(list => (
       Promise.all(list.films.map(fid => filmapi.get(fid)))
-        .then(
-          (films) => {
-            resolve({
-              films: films.reverse(),
-              id: list.id,
-              owner: list.owner,
-              name: list.name,
-              cover: list.cover,
-            });
-          },
-          reject,
-        );
-    }));
+        .then(films => ({
+          films: films.reverse(),
+          id: list.id,
+          owner: list.owner,
+          name: list.name,
+          cover: list.cover,
+        }))
+    ));
 };
 
 const add = function addList(list) {
@@ -32,8 +28,7 @@ const add = function addList(list) {
       return new List({
         ...list,
         cover: film.poster,
-      })
-        .save()
+      }).save()
         .then(added => added.toObject());
     });
 };
@@ -45,6 +40,7 @@ const remove = function removeList(id) {
     .then(removed => removed.toObject());
 };
 
+// TODO: update list poster
 const addFilm = function addFilmToList(listId, filmId) {
   return List
     .findByIdAndUpdate(
@@ -66,10 +62,9 @@ const addFilm = function addFilmToList(listId, filmId) {
 };
 
 const removeFilm = function removeFilmFromList(listId, filmId) {
-  // findById does not trigger pre update hook
   return List
-    .findOneAndUpdate(
-      { _id: listId },
+    .findByIdAndUpdate(
+      listId,
       {
         $pull: {
           films: filmId,
@@ -83,7 +78,7 @@ const removeFilm = function removeFilmFromList(listId, filmId) {
       },
     )
     .exec()
-    // if no films left, remove list
+  // if no films left, remove list
     .then((list) => {
       if (list.films.length === 0) {
         return list

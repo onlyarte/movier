@@ -2,6 +2,19 @@ const Channel = require('../models/channel');
 
 const listapi = require('./listapi');
 
+const getFollowers = function getChannelFollowers(id) {
+  return Channel
+    .find({
+      following: {
+        $elemMatch: {
+          $eq: id,
+        },
+      },
+    })
+    .select('-password')
+    .exec();
+};
+
 const get = function getChannelById(id) {
   return Channel
     .findById(id)
@@ -9,49 +22,20 @@ const get = function getChannelById(id) {
     .populate('saved_lists')
     .populate('following', '-password')
     .exec()
-    // populate followers
-    .then(channel => new Promise((resolve, reject) => {
-      if (!channel) reject(new Error('Channel not found'));
+  // populate followers
+    .then((channel) => {
+      if (!channel) throw new Error('Channel not found');
+      const channelObj = channel.toObject();
 
-      Channel
-        .find({
-          following: {
-            $elemMatch: {
-              $eq: id,
-            },
-          },
-        })
-        .select('-password')
-        .exec()
-        .then(
-          (followers) => {
-            /* channel is a mongoose document
-            spread-operator should not be used with it
-            alternatively use channel.toObject() */
-            resolve({
-              followers,
-              id: channel.id,
-              email: channel.email,
-              name: channel.name,
-              image: channel.image,
-              saved_lists: channel.saved_lists,
-              following: channel.following,
-            });
-          },
-          reject,
-        );
-    }))
-    // populate lists
-    .then(channel => new Promise((resolve, reject) => {
+      return getFollowers(channelObj.id)
+        .then(followers => ({ ...channelObj, followers }));
+    })
+  // populate lists
+    .then(channel => (
       listapi
         .findByOwner(channel.id)
-        .then(
-          (lists) => {
-            resolve({ ...channel, lists });
-          },
-          reject,
-        );
-    }));
+        .then(lists => ({ ...channel, lists }))
+    ));
 };
 
 const add = function addChannel(channel) {

@@ -1,17 +1,14 @@
 function sendReq(req, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
+  const xhr = new XMLHttpRequest();
 
-    xhr.open('POST', req, true);
-    xhr.send();
+  xhr.open('POST', req, true);
+  xhr.send();
 
-    console.log(xhr.status);
+  xhr.onload = () => {
+    callback(true);
+  };
 
-    xhr.onload = () => {
-        callback(true);
-    }
-    
-    xhr.onerror = () => {
-        callback(false);
-    }
+  xhr.onerror = () => {
+    callback(false);
+  };
 }

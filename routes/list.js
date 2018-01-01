@@ -66,10 +66,6 @@ router.delete('/:id', (req, res, next) => {
       return listapi.remove(list.id);
     })
     .then(() => {
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.status(200).send();
     })
     .catch(next);
@@ -87,10 +83,6 @@ router.post('/:id/save', (req, res, next) => {
     .then((channel) => {
       if (!channel) throw new Error('Channel not found');
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.status(200).send();
     })
     .catch(next);
@@ -108,10 +100,6 @@ router.post('/:id/unsave', (req, res, next) => {
     .then((channel) => {
       if (!channel) throw new Error('Channel not found');
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.status(200).send();
     })
     .catch(next);

@@ -66,10 +66,6 @@ router.post('/:filmid/tolist/:listid', (req, res, next) => {
     .then((list) => {
       if (!list) throw new Error('Failed to add film to list. Try again later.');
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.send();
     })
     .catch(next);
@@ -94,10 +90,6 @@ router.post('/:filmid/fromlist/:listid', (req, res, next) => {
     .then((list) => {
       if (!list) throw new Error('Failed to remove film from list. Try again later.');
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.send();
     })
     .catch(next);

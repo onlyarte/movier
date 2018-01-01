@@ -62,7 +62,10 @@ router.post('/new', (req, res, next) => {
         req.files.image.mv(
           imgLocalPath,
           (error) => {
-            if (error) reject(error);
+            if (error) {
+              reject(error);
+              return;
+            }
             resolve(imgLocalPath);
           },
         );
@@ -77,7 +80,10 @@ router.post('/new', (req, res, next) => {
           aspect_ratio: '1:1',
         },
         (error, result) => {
-          if (error) reject(error);
+          if (error) {
+            reject(error);
+            return;
+          }
           resolve(result.url);
         },
       );

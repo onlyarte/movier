@@ -94,10 +94,6 @@ router.post('/:id/follow', (req, res, next) => {
     .then((channel) => {
       if (!channel) throw new Error('Channel not found');
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.status(200).send();
     })
     .catch(next);
@@ -115,10 +111,6 @@ router.post('/:id/unfollow', (req, res, next) => {
     .then((channel) => {
       if (!channel) throw new Error('Channel not found');
 
-      res.set({
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': true,
-      });
       res.status(200).send();
     })
     .catch(next);

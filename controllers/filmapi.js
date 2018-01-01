@@ -22,7 +22,10 @@ const get = function getFilmById(id) {
     client.get(
       `?i=${id}&plot=full&apikey=6d2a1ba3`,
       (error, res, body) => {
-        if (error) reject(error);
+        if (error) {
+          reject(error);
+          return;
+        }
         resolve(cast(body));
       },
     );
@@ -34,8 +37,14 @@ const search = function findFilmByTitle(title) {
     client.get(
       `http://www.omdbapi.com/?s=${encodeURI(title)}&apikey=6d2a1ba3&page=1`,
       (error, res, body) => {
-        if (error) reject(error);
-        if (!body.Search) reject(new Error('Search not available'));
+        if (error) {
+          reject(error);
+          return;
+        }
+        if (!body.Search || !(body.Search instanceof Array)) {
+          reject(new Error('Search not available'));
+          return;
+        }
 
         resolve(Array.from(body.Search, cast));
       },
