@@ -28,11 +28,11 @@ block content
     .back(style=`background-image: url('${film.poster}')`)
     .front
       .film-title= film.title
+      script.
+        function goBack() {
+          window.history.back()
+        }
       img.poster(src=film.poster, onclick='goBack()')
-    script.
-      function goBack() {
-        window.history.back()
-      }
   .right
     .film-info
       .rate

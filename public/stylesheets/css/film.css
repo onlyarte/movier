@@ -8,6 +8,9 @@
     width: 85%;
     max-height: 85%; } }
 
+.front .poster {
+  margin: 20px 0px; }
+
 .front .film-title {
   text-align: center;
   text-transform: uppercase;
