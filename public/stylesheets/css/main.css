@@ -205,3 +205,13 @@ html {
 @media only screen and (max-width: 600px) {
   .right .film-info, .right .user-wrapper {
     padding: 3vh 4vw; } }
+
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .error h1, .error h2 {
+    font-family: "Megrim", cursive; }

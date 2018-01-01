@@ -7,6 +7,7 @@ const channelapi = require('../controllers/channelapi');
 const router = express.Router();
 
 router.get('/:id', (req, res, next) => {
+  console.log('User-Agent: ' + req.headers['user-agent']);
   channelapi
     .get(req.params.id)
     .then((channel) => {
