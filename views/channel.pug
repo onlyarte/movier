@@ -89,7 +89,7 @@ block content
         .items
           if channel.lists.length == 0
             .desc 
-              if state.owner
+              if state && state.owner
                 |Search some films, and add them to lists
               else
                 |Channel owner hasn't added any lists
@@ -102,7 +102,7 @@ block content
         .items
           if channel.saved_lists.length == 0
             .desc 
-              if state.owner
+              if state && state.owner
                 |You can save lists of the others
               else
                 |No saved lists
@@ -115,7 +115,7 @@ block content
         .items
           if channel.following.length == 0
             .desc 
-              if state.owner
+              if state && state.owner
                 |Start following another channel to see it here
               else
                 |Not following other channels
