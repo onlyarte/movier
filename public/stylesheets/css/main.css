@@ -55,6 +55,10 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center; }
+
+@-moz-document url-prefix() {
+  #edit-overflow form input {
+    margin: 10px 0px; } }
     #edit-overflow form .desc {
       line-height: 50px; }
     #edit-overflow form input {
