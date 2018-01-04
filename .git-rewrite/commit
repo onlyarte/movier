@@ -1,0 +1,6 @@
+tree 8d253101ddeaef9610a74e5fd91f3e3431ddaf7a
+parent 6f809fb44e3004c64f8d390d3b3e45c1bd9b31a9
+author Ruslan Purii <ruslanpurii@gmail.com> 1512740530 +0200
+committer Ruslan Purii <ruslanpurii@gmail.com> 1512740530 +0200
+
+changed frontend controllers to fit new router
