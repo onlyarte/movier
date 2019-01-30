@@ -1,8 +1,7 @@
 # THE MOVIER
 
-Movie sharing platform. People can discover new films, create own channels and share movie lists.
+An online DB of movies and lists of movies.
 
-<img src="https://image.ibb.co/kN3T09/Screen_Shot_2018_08_26_at_7_55_57_PM.png" alt="Screen_Shot_2018_08_26_at_7_55_57_PM" border="0">
-<img src="https://image.ibb.co/j7HML9/Screen_Shot_2018_08_26_at_7_56_14_PM.png" alt="Screen_Shot_2018_08_26_at_7_56_14_PM" border="0">
-<img src="https://image.ibb.co/gSrTYU/Screen_Shot_2018_08_26_at_8_04_46_PM.png" alt="Screen_Shot_2018_08_26_at_8_04_46_PM" border="0">
-<img src="https://image.ibb.co/kDVaf9/Screen_Shot_2018_08_26_at_7_57_34_PM.png" alt="Screen_Shot_2018_08_26_at_7_57_34_PM" border="0">
+<img src="https://drive.google.com/uc?export=download&id=1ORplv6GvT8MjvTg3e5WvqPo9BVVxlU1B" border="0">
+<img src="https://drive.google.com/uc?export=download&id=1Oi6g4Q6gogDRSsCj92E1zR89YIldkUeC" border="0">
+<img src="https://drive.google.com/uc?export=download&id=1Hjka0ty0NbW2Ysihw6iKkMu4bUrHLYfJ" border="0">
